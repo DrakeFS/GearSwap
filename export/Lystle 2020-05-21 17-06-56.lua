@@ -1,0 +1,17 @@
+sets.exported={
+    main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
+    sub="Genmei Shield",
+    range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
+    head="Fili Calot +1",
+    body="Inyanga Jubbah",
+    hands="Aya. Manopolas +1",
+    legs="Doyen Pants",
+    feet="Fili Cothurnes +1",
+    neck="Loricate Torque",
+    waist="Embla Sash",
+    left_ear="Steelflash Earring",
+    right_ear="Bladeborn Earring",
+    left_ring="Lebeche Ring",
+    right_ring="Inyanga Ring",
+    back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+5','"Fast Cast"+10',}},
+}
