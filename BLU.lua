@@ -265,15 +265,9 @@ function init_gear_sets()
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Requiescat'] = set_combine(sets.precast.WS, {
-	head="Jhakri Coronal +2",
-    body="Jhakri Robe +2",
-    hands=gear.HercMB,
-    legs="Jhakri Slops +2",
-    feet="Jhakri Pigaches +2",
 	neck="Soil Gorget",
 	waist="Soil Belt",
-	left_ear="Novio Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+	right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
 	})
 
     sets.precast.WS['Sanguine Blade'] = {

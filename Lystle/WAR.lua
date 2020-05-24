@@ -33,7 +33,7 @@ function user_setup()
 	state.OffenseMode:options('Normal', 'AccLow', 'AccHigh')
 	state.RangedMode:options('Normal')
 	state.HybridMode:options('Normal', 'PDT')
-	state.WeaponskillMode:options('Normal', 'AccLow', 'AccHigh', 'Attack')
+	state.WeaponskillMode:options('Normal','DW')
 	state.CastingMode:options('Normal')
 	state.IdleMode:options('Normal', 'Regen')
 	state.RestingMode:options('Normal')
@@ -44,11 +44,7 @@ function user_setup()
 	update_melee_groups()
 	--select_default_macro_book()
 	update_combat_form()
-	
-	-- Additional Binds
-	--send_command('alias g510_m1g13 input /ws "Ukko\'s Fury" <t>;')
-	--send_command('alias g510_m1g14 input /ws "King\'s Justice" <t>;')
-	--send_command('alias g510_m1g15 input /ws "Upheaval" <t>;')
+
 end
 
 function init_gear_sets()
@@ -78,7 +74,7 @@ function init_gear_sets()
 
 	-- Weaponskill sets
 	sets.precast.WS = {
-    ammo="Seething Bomblet",
+    --[[ammo="Seething Bomblet",
     head="Sulevia's Mask +1",
     body="Sulevia's Plate. +1",
     hands="Sulev. Gauntlets +1",
@@ -90,13 +86,17 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Sulevia's Ring",
     right_ring="Begrudging Ring",
-    back="Atheling Mantle",
+    back="Atheling Mantle",]]
 	}
+	
 	
 	sets.precast.WS.AccLow = set_combine(sets.precast.WS, {})
 	sets.precast.WS.AccHigh = set_combine(sets.precast.WS.AccLow, {})
 	sets.precast.WS.Attack = set_combine(sets.precast.WS, {})
 	sets.precast.WS.MS = set_combine(sets.precast.WS, {})
+	
+	sets.precast.WS['Decimation'] = {body="Sulevia's Plate. +1",}
+	sets.precast.WS['Decimation'].DW = {legs="Sulevi. Cuisses +1",}
 	
 	-- Specific weaponskill sets.
 	--[[sets.precast.WS['Upheaval'] = {}
@@ -541,9 +541,12 @@ function update_combat_form()
     -- Check for HTD or single-wielding
     if player.equipment.sub == 'Round Shield' or player.equipment.sub == 'empty' then
         state.CombatForm:reset()
+		state.WeaponskillMode:set('normal')
     elseif player.equipment.sub == 'Tzacab Grip' then
 		state.CombatForm:set('TD')
+		state.WeaponskillMode:set('normal')
 	else
         state.CombatForm:set('DW')
+		state.WeaponskillMode:set('DW')
     end
 end

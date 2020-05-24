@@ -154,7 +154,7 @@ function init_gear_sets()
 	head="Jhakri Coronal +2",
 	neck= {name="Duelist's Torque", augments={'Path: A',}},
     body= {name="Viti. Tabard +1", augments={'Enhances "Chainspell" effect',}},
-    hands="Atrophy Gloves +1",
+    hands="Atrophy Gloves +2",
     feet="Leth. Houseaux +1",
     waist="Embla Sash",
 	back = gear.RdmCMB,
