@@ -74,7 +74,7 @@ function init_gear_sets()
 
 	-- Weaponskill sets
 	sets.precast.WS = {
-    --[[ammo="Seething Bomblet",
+    -ammo="Seething Bomblet",
     head="Sulevia's Mask +1",
     body="Sulevia's Plate. +1",
     hands="Sulev. Gauntlets +1",
@@ -86,7 +86,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Sulevia's Ring",
     right_ring="Begrudging Ring",
-    back="Atheling Mantle",]]
+    back="Atheling Mantle",
 	}
 	
 	
@@ -95,8 +95,8 @@ function init_gear_sets()
 	sets.precast.WS.Attack = set_combine(sets.precast.WS, {})
 	sets.precast.WS.MS = set_combine(sets.precast.WS, {})
 	
-	sets.precast.WS['Decimation'] = {body="Sulevia's Plate. +1",}
-	sets.precast.WS['Decimation'].DW = {legs="Sulevi. Cuisses +1",}
+	sets.precast.WS['Decimation'] = {}
+	sets.precast.WS['Decimation'].DW = {}
 	
 	-- Specific weaponskill sets.
 	--[[sets.precast.WS['Upheaval'] = {}
@@ -142,7 +142,7 @@ function init_gear_sets()
 
     -- Generic spell recast set
 	sets.midcast.FastRecast = {}
-		
+	
 	-- Specific spells
 	sets.midcast.Utsusemi = {}
 

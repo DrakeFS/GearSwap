@@ -217,6 +217,7 @@ function init_gear_sets()
 	sets.midcast['Valor Minuet IV'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
 	sets.midcast['Mage\'s Ballad III'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
 	sets.midcast['Adventurer\'s Dirge'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+	sets.midcast['Advancing March'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
     -- For song defbuffs (duration primary, accuracy secondary)
     sets.midcast.SongEnfeeble = {}
 

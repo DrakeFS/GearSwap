@@ -13,7 +13,7 @@ function define_global_sets()
 
 	-- Legs
 	gear.HercLTH = {name="Herculean Trousers", augments={'Weapon skill damage +2%','Chance of successful block +1','"Treasure Hunter"+1','Mag. Acc.+16 "Mag.Atk.Bns."+16',}}
-	gear.SamTTP = {name="Samnuha Tights", augments={'STR+7','"Dbl.Atk."+2','"Triple Atk."+1',}}
+	gear.SamTTP = { name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}}
 	gear.LengoFC = {name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}}
 	gear.EnticeMBP = {name="Enticer's Pants", augments={'MP+40','Pet: Mag. Acc.+9','Pet: Damage taken -2%',}}
 
