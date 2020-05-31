@@ -327,7 +327,7 @@ function init_gear_sets()
 	}
     
 	sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
-			
+
     -- Defense sets
     sets.defense.PDT = {
 	ammo="Ginsen",

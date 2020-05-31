@@ -4,7 +4,7 @@ function define_global_sets()
 
 	-- Head
 	gear.HercHFC = {name="Herculean Helm", augments={'"Fast Cast"+4','Mag. Acc.+3',}}
-	gear.HercFTH = {name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}}
+	gear.HercHTH = {name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}}
 	
 	-- Hands
 	gear.HercGMB = {name="Herculean Gloves", augments={'VIT+15','"Mag.Atk.Bns."+24','Accuracy+6 Attack+6','Mag. Acc.+17 "Mag.Atk.Bns."+17',}}
@@ -13,7 +13,7 @@ function define_global_sets()
 	gear.HercBTH = {name="Herculean Vest", augments={'Sklchn.dmg.+1%','"Cure" spellcasting time -5%','"Treasure Hunter"+1',}}
 
 	-- Legs
-	gear.HercLTH = {name="Herculean Trousers", augments={'Weapon skill damage +2%','Chance of successful block +1','"Treasure Hunter"+1','Mag. Acc.+16 "Mag.Atk.Bns."+16',}}
+	gear.HercLTH = {name="Herculean Trousers", augments={'Mag. Acc.+7','DEX+9','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 	gear.SamTTP = { name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}}
 	gear.LengoFC = {name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}}
 	gear.EnticeMBP = {name="Enticer's Pants", augments={'MP+40','Pet: Mag. Acc.+9','Pet: Damage taken -2%',}}

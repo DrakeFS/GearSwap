@@ -48,19 +48,13 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc')
     state.PhysicalDefenseMode:options('Evasion', 'PDT')
 
-    -- Additional local binds
-    -- send_command('bind ^` input /ja "Flee" <me>')
-    send_command('bind ^= gs c cycle treasuremode')
-    send_command('bind !- gs c cycle targetmode')
-
     select_default_macro_book()
 	lockstyleset()
 end
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-    -- send_command('unbind ^`')
-    send_command('unbind !-')
+
 end
 
 -- Define sets and vars used by this job file.
@@ -142,7 +136,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Rajas Ring",
     right_ring="Mummu Ring",
-    back="Solemnity Cape",
+    back="Sacro Mantle",
 	}
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {ammo="Honed Tathlum"})
 
@@ -174,7 +168,7 @@ function init_gear_sets()
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     left_ring="Mummu Ring",
     right_ring="Apate Ring",
-    back="Canny Cape",
+    back="Sacro Cape",
 	})
     sets.precast.WS['Evisceration'].Acc = set_combine(sets.precast.WS['Evisceration'], {})
     -- sets.precast.WS['Evisceration'].Mod = set_combine(sets.precast.WS['Evisceration'], {})
@@ -282,20 +276,28 @@ function init_gear_sets()
 	}
     -- Defense sets
 
-    sets.defense.Evasion = {}
+    sets.defense.Evasion = {
+	head="Malignance Chapeau",
+    neck="Loricate Torque +1",
+    left_ring="Vocane Ring",
+    right_ring="Defending Ring",
+    back="Solemnity Cape",
+	}
 
     sets.defense.PDT = {    
-	neck="Loricate Torque +1",
-    left_ring="Defending Ring",
-    right_ring="Vocane Ring",
-	back="Solemnity Cape",
+	head="Malignance Chapeau",
+    neck="Loricate Torque +1",
+    left_ring="Vocane Ring",
+    right_ring="Defending Ring",
+    back="Solemnity Cape",
 	}
 
     sets.defense.MDT = {
-	neck="Loricate Torque +1",
-    left_ring="Defending Ring",
-    right_ring="Vocane Ring",
-	back="Solemnity Cape",
+	head="Malignance Chapeau",
+    neck="Loricate Torque +1",
+    left_ring="Vocane Ring",
+    right_ring="Defending Ring",
+    back="Solemnity Cape",
 	}
 
 
@@ -317,7 +319,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Rajas Ring",
     right_ring="Pernicious Ring",
-    back="Canny Cape",
+    back="Sacro Cape",
 	}
     
 	sets.engaged.Acc = set_combine(sets.engaged,{
