@@ -371,23 +371,23 @@ function init_gear_sets()
     left_ear="Steelflash Earring",
     right_ear="Bladeborn Earring",
     left_ring="Pernicious Ring",
-    right_ring="Rajas Ring",
+    right_ring="Petrov Ring",
 	back=gear.RdmCTP,
 	}
 
 	sets.engaged.DW = {
     ammo="Ginsen",
     head="Malignance Chapeau",
-    body="Malignance Tabard",
+    body="Ayanmo Corazza +2",
     hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +1",
+    legs="Aya. Cosciales +2",
     feet="Battlecast Gaiters",
-	neck="Clotharius Torque",
+    neck="Clotharius Torque",
     waist="Windbuffet Belt +1",
-    left_ear="Suppanomimi",
-    right_ear="Eabani Earring",
+    left_ear="Eabani Earring",
+    right_ear="Suppanomimi",
     left_ring="Pernicious Ring",
-    right_ring="Rajas Ring",
+    right_ring="Petrov Ring",
     back=gear.RdmCTP,
 	}
 end

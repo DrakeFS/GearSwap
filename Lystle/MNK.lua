@@ -141,7 +141,7 @@ function init_gear_sets()
     
     -- Normal melee sets
     sets.engaged = {
-	ammo="Sapience Orb",
+	ammo="Ginsen",
     head="Mummu Bonnet +2",
     body="Mummu Jacket",
     hands="Mummu Wrists +2",

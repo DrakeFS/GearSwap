@@ -74,7 +74,7 @@ function init_gear_sets()
 
 	-- Weaponskill sets
 	sets.precast.WS = {
-    -ammo="Seething Bomblet",
+    ammo="Seething Bomblet",
     head="Sulevia's Mask +1",
     body="Sulevia's Plate. +1",
     hands="Sulev. Gauntlets +1",

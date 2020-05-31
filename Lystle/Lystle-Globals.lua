@@ -3,7 +3,7 @@ function define_global_sets()
 	gear.CPCape = { name="Mecisto. Mantle", augments={'Cap. Point+26%','Rng.Atk.+1','DEF+5',}}
 
 	-- Head
-
+	gear.HercHeTH = {name="Herculean Helm", augments={'Phys. dmg. taken -1%','STR+1','"Treasure Hunter"+1',}}
 	-- Hands
 	
 	-- Body
@@ -11,7 +11,7 @@ function define_global_sets()
 	-- Legs
 	gear.HercLTH = {name="Herculean Trousers", augments={'MND+10','CHR+7','"Treasure Hunter"+2','Accuracy+6 Attack+6',}}
 
-	-- Boots
+	-- Feet
 	
 	-- JSE Capes
 	gear.ThfCTP = {name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}

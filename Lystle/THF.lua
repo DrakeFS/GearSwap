@@ -70,6 +70,7 @@ function init_gear_sets()
     --------------------------------------
 
     sets.TreasureHunter = {
+	head=gear.HercHeTH,
 	hands={ name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
 	legs=gear.HercLTH,
 	feet="Skulk. Poulaines +1",

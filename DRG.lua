@@ -106,18 +106,18 @@ function init_gear_sets()
 	-- Weaponskill sets
 	-- Default set for any weaponskill that isn't any more specifically defined
 	sets.precast.WS = {
-    ammo="Ginsen",
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
+	ammo="Ginsen",
+    head="Flam. Zucchetto +1",
+    body="Flamma Korazin +1",
     hands="Sulev. Gauntlets +1",
     legs="Sulevi. Cuisses +1",
     feet="Sulev. Leggings +1",
-    neck="Sanctity Necklace",
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+    neck="Clotharius Torque",
+    waist="Anguinus Belt",
     left_ring="Apate Ring",
-    right_ring="Rajas Ring",
+    right_ring="Petrov Ring",
+    left_ear="Cessance Earring",
+    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     back=gear.DrgCTP,
 	}
 	sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
@@ -195,7 +195,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Defending Ring",
     right_ring="Vocane Ring",
-    back="Solemnity Cape",
+    back=gear.DrgCTP,
 	}
 
 	sets.defense.Reraise = set_combine(sets.defense.PDT, {})
@@ -216,17 +216,17 @@ function init_gear_sets()
 	-- Normal melee group
 	sets.engaged = {
     ammo="Ginsen",
-    head="Yaoyotl Helm",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Ostro Greaves",
+    head="Terminal Helm",
+    body="Flamma Korazin +1",
+    hands="Flam. Manopolas +1",
+    legs="Flamma Dirs +1",
+    feet="Flam. Gambieras +1",
     neck="Clotharius Torque",
-    waist="Windbuffet Belt +1",
+    waist="Sarissapho. Belt",
     left_ear="Steelflash Earring",
     right_ear="Bladeborn Earring",
-    left_ring="Sulevia's Ring",
-    right_ring="Rajas Ring",
+    left_ring="Pernicious Ring",
+    right_ring="Petrov Ring",
     back=gear.DrgCTP,
 	}
 

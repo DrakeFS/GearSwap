@@ -219,6 +219,7 @@ function init_gear_sets()
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
     sets.buff['Divine Caress'] = {}
+	sets.Sublimation = {waist = "Embla Sash",}
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -240,6 +241,12 @@ end
     end
 end]]
 
+-- Forces an update on 
+function job_buff_change(buff, gain)
+	if buff == "Sublimation: Activated" then
+		send_command('gs c update')
+	end
+end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
     -- Apply Divine Caress boosting items as highest priority over other gear, if applicable.
@@ -290,6 +297,10 @@ function customize_idle_set(idleSet)
     if player.mpp < 51 then
         idleSet = set_combine(idleSet, sets.latent_refresh)
     end
+	if buffactive['Sublimation: Activated'] then
+		idleSet = set_combine(idleSet, sets.Sublimation)
+	end
+	
     return idleSet
 end
 
