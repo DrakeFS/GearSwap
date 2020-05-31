@@ -758,19 +758,7 @@ function update_combat_form()
     end
 end
 
---[[ Enables Capacity Mode
-function customize_melee_set(meleeSet)
-	if state.TreasureMode.value == 'Fulltime' then
-		meleeSet = set_combine(meleeSet, sets.TreasureHunter)
-	end
-    if state.CapacityMode.value then
-        meleeSet = set_combine(meleeSet, sets.CapacityMantle)
-    end
-	return meleeSet
-end]]
-
 -- Set a Haste Group
-
 function determine_haste_group()
  
     -- Low haste DW required: 
