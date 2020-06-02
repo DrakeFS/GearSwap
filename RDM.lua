@@ -98,7 +98,7 @@ function init_gear_sets()
     body="Jhakri Robe +2",
     hands="Jhakri Cuffs +2",
     legs="Jhakri Slops +2",
-    feet="Jhakri Pigaches +1",
+    feet="Jhakri Pigaches +2",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt +1",
     left_ear="Malignance Earring",
@@ -124,7 +124,7 @@ function init_gear_sets()
     body="Jhakri Robe +2",
     hands="Jhakri Cuffs +2",
 	legs="Jhakri Slops +2",
-    feet="Jhakri Pigaches +1",
+    feet="Jhakri Pigaches +2",
     neck="Thunder Gorget",
     waist="Thunder Belt",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -151,19 +151,26 @@ function init_gear_sets()
     sets.midcast.CureSelf = sets.midcast.Cure
 
     sets.midcast['Enhancing Magic'] = {
-	head="Jhakri Coronal +2",
 	neck= {name="Duelist's Torque", augments={'Path: A',}},
     body= {name="Viti. Tabard +1", augments={'Enhances "Chainspell" effect',}},
     hands="Atrophy Gloves +2",
+	legs="Atrophy Tights +1",
     feet="Leth. Houseaux +1",
     waist="Embla Sash",
+	left_ear="Mimir Earring",
+    right_ear="Andoaa Earring",
 	back = gear.RdmCMB,
 	}
 
     sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'], {})
 
-	sets.midcast['Temper II']= sets.midcast['Enhancing Magic']	
-	
+	sets.midcast['Temper II']= set_combine(sets.midcast['Enhancing Magic'],	{
+    body={ name="Viti. Tabard +1", augments={'Enhances "Chainspell" effect',}},
+    hands={ name="Viti. Gloves +1", augments={'Enhancing Magic duration',}},
+    legs="Atrophy Tights +1",
+    back = gear.RdmCES,
+	})
+		
 	sets.midcast.Blink = sets.midcast.FastRecast
 	
 	sets.midcast.Aquaveil = set_combine(sets.midcast['Enhancing Magic'], {legs="Shedir Seraweels",})
@@ -188,6 +195,20 @@ function init_gear_sets()
 	sets.midcast['Shock Spikes'] = sets.midcast.Haste
 	sets.midcast['Ice Spikes'] = sets.midcast.Haste
 	sets.midcast['Blaze Spikes'] = sets.midcast.Haste
+	
+	sets.midcast['Enfire'] = sets.midcast['Temper II']
+	sets.midcast['Enfire II'] = sets.midcast['Temper II']
+	sets.midcast['Enblizzard'] = sets.midcast['Temper II']
+	sets.midcast['Enblizzard II'] = sets.midcast['Temper II']
+	sets.midcast['Enaero'] = sets.midcast['Temper II']
+	sets.midcast['Enaero II'] = sets.midcast['Temper II']
+	sets.midcast['Enstone'] = sets.midcast['Temper II']
+	sets.midcast['Enstone II'] = sets.midcast['Temper II']
+	sets.midcast['Enthunder'] = sets.midcast['Temper II']
+	sets.midcast['Enthunder II'] = sets.midcast['Temper II']
+	sets.midcast['Enwater'] = sets.midcast['Temper II']
+	sets.midcast['Enwater II'] = sets.midcast['Temper II']
+	
 	sets.midcast['Refresh II'] = sets.midcast.Refresh
 	sets.midcast['Refresh III'] = sets.midcast.Refresh
 	sets.midcast['Regen II'] = sets.midcast.Refresh
@@ -261,7 +282,7 @@ function init_gear_sets()
     body="Jhakri Robe +2",
     hands="Jhakri Cuffs +2",
     legs="Jhakri Slops +2",
-    feet="Jhakri Pigaches +1",
+    feet="Jhakri Pigaches +2",
     neck="Sanctity Necklace",
 	waist={ name="Acuity Belt +1", augments={'Path: A',}},
     left_ear="Novio Earring",
@@ -334,7 +355,7 @@ function init_gear_sets()
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +1",
+    legs="Aya. Cosciales +2",
     feet="Aya. Gambieras +2",
     neck="Loricate Torque +1",
     waist="Windbuffet Belt +1",
@@ -364,7 +385,7 @@ function init_gear_sets()
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +1",
+    legs="Aya. Cosciales +2",
     feet="BAttlecast Gaiters",
     neck="Clotharius Torque",
     waist="Windbuffet Belt +1",

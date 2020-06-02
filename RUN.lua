@@ -277,6 +277,7 @@ function init_gear_sets()
 
     sets.precast.WS['Upheaval'] = sets.precast.WS['Resolution']
     sets.precast.WS['Full Break'] = sets.precast.WS['Shockwave']
+	sets.precast.WS['Savage Blade'] = {left_ear = "Moonshade Earring"}
 
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Midcast Sets ------------------------------------------
@@ -366,6 +367,21 @@ function init_gear_sets()
     waist="Windbuffet Belt +1",
     left_ear="Steelflash Earring",
     right_ear="Bladeborn Earring",
+    left_ring="Pernicious Ring",
+    right_ring="Petrov Ring",
+	}
+	
+	sets.engaged.DW = {
+	ammo="Ginsen",
+    head="Aya. Zucchetto +2",
+    body="Ayanmo Corazza +2",
+    hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+    legs="Aya. Cosciales +2",
+    feet="Aya. Gambieras +2",
+    neck="Clotharius Torque",
+    waist="Windbuffet Belt +1",
+    left_ear="Suppanomimi",
+    right_ear="Eabani Earring",
     left_ring="Pernicious Ring",
     right_ring="Petrov Ring",
 	}
@@ -539,14 +555,6 @@ end
 
 function job_buff_change(buff,gain)
     -- If we gain or lose any haste buffs, adjust which gear set we target.
---    if buffactive['Reive Mark'] then
---        if gain then
---            equip(sets.Reive)
---            disable('neck')
---        else
---            enable('neck')
---        end
---    end
 
     if buff == "terror" then
         if gain then
@@ -596,6 +604,7 @@ function job_state_change(stateField, newValue, oldValue)
     end
 
     equip(sets[state.WeaponSet.current])
+	update_combat_form()
 
 end
 
@@ -615,14 +624,7 @@ function customize_idle_set(idleSet)
     if state.Knockback.value == true then
         idleSet = set_combine(idleSet, sets.defense.Knockback)
     end
-
-    --if state.CP.current == 'on' then
-    --    equip(sets.CP)
-    --    disable('back')
-    --else
-    --    enable('back')
-    --end
-
+	update_combat_form()
     return idleSet
 end
 
@@ -740,6 +742,14 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
+function update_combat_form()
+    -- Check for H2H or single-wielding
+    if player.equipment.sub == "Kaja Grip" or player.equipment.sub == 'empty' then
+        state.CombatForm:reset()
+    else
+        state.CombatForm:set('DW')
+    end
+end
 
 -- Select default macro book on initial load or subjob change.
 function select_default_macro_book()
