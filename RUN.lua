@@ -277,7 +277,21 @@ function init_gear_sets()
 
     sets.precast.WS['Upheaval'] = sets.precast.WS['Resolution']
     sets.precast.WS['Full Break'] = sets.precast.WS['Shockwave']
-	sets.precast.WS['Savage Blade'] = {left_ear = "Moonshade Earring"}
+	sets.precast.WS['Savage Blade'] = {
+    ammo="Aqreqaq Bomblet",
+    head={ name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}},
+    body="Ayanmo Corazza +2",
+    hands="Meg. Gloves +1",
+    legs="Meg. Chausses +1",
+    feet="Aya. Gambieras +2",
+    neck="Thunder Gorget",
+    waist="Thunder Belt",
+    left_ear="Odr Earring",
+    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+    left_ring="Petrov Ring",
+    right_ring="Apate Ring",
+    back="Xucau Mantle",
+	}
 
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Midcast Sets ------------------------------------------
