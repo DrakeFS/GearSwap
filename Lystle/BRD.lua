@@ -138,10 +138,13 @@ function init_gear_sets()
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC, {legs = "Doyen Pants",})
 
-    sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
+    sets.precast.FC.BardSong = {
 	range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
+	head="Nahtirah Hat",
 	head="Fili Calot +1",
-	legs = "Doyen Pants",})
+	legs = "Doyen Pants",
+	waist="Embla Sash",
+	back = gear.BrdCFC,}
 
     --sets.precast.FC.SongPlaceholder = set_combine(sets.precast.FC.BardSong, {range=info.ExtraSongInstrument})
 
@@ -181,7 +184,7 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     -- General set for recast times.
-    sets.midcast.FastRecast = sets.precast.FC
+    sets.midcast.FastRecast = {}
 
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong = {
@@ -211,13 +214,14 @@ function init_gear_sets()
     sets.midcast["Sentinel's Scherzo"] = {feet="Fili Cothurnes +1"}
 
 	--3rd/4th song sets
-	sets.midcast['Army\'s Paeon'] = {
-	range="Terpander",
-	}
-	sets.midcast['Valor Minuet IV'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-	sets.midcast['Mage\'s Ballad III'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-	sets.midcast['Adventurer\'s Dirge'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-	sets.midcast['Advancing March'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+	
+	sets.midcast['Army\'s Paeon'] = {range="Terpander",}
+	sets.midcast['Knight\'s Minne'] = {range="Terpander",}
+	--sets.midcast['Valor Minuet IV'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+	--sets.midcast['Mage\'s Ballad III'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+	--sets.midcast['Adventurer\'s Dirge'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+	--sets.midcast['Advancing March'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+	
     -- For song defbuffs (duration primary, accuracy secondary)
     sets.midcast.SongEnfeeble = {}
 
