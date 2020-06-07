@@ -169,7 +169,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Sulevia's Ring",
     right_ring="Begrudging Ring",
-    back="Atheling Mantle",
+    back="Solemnity Cape",
 	}
 
 	sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
@@ -211,7 +211,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Sulevia's Ring",
     right_ring="Begrudging Ring",
-    back="Atheling Mantle",
+    back=gear.WarCTP,
 	}
 	
 	sets.engaged.AccLow = set_combine(sets.engaged, {})
@@ -275,7 +275,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Sulevia's Ring",
     right_ring="Begrudging Ring",
-    back="Atheling Mantle",
+    back=gear.WarCTP,
 	}
 	
 	sets.engaged.TD.AccLow = set_combine(sets.engaged.TD, {})
@@ -299,7 +299,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Sulevia's Ring",
     right_ring="Begrudging Ring",
-    back="Atheling Mantle",
+    back=gear.WarCTP,
 	}
 	
 	sets.engaged.DW.AccLow = set_combine(sets.engaged.DW, {})
