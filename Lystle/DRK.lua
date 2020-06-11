@@ -10,9 +10,34 @@ function user_setup()
 end
 
 function init_gear_sets()
+sets.precast.FC = {
+	ammo="Impatiens",
+	left_ring="Lebeche Ring",
+}
+
 sets.precast.WS = {
 	ammo="Seething Bomblet", 
 	feet="Sulev. Leggings +1",
+}
+
+sets.precast.WS['Entropy'] = set_combine(sets.precast.WS, {waist="Shadow Belt"})
+
+sets.midcast['Dark Magic'] = {
+    neck="Sanctity Necklace",
+	left_ear="Hermetic Earring",
+    right_ear="Gwati Earring",
+}
+
+sets.defense.PDT = {
+    head="Sulevia's Mask +1",
+    body="Sulevia's Plate. +1",
+    hands="Sulev. Gauntlets +1",
+    legs="Sulevi. Cuisses +1",
+    feet="Sulev. Leggings +1",
+    neck="Loricate Torque",
+    left_ring="Defending Ring",
+    right_ring="Sulevia's Ring",
+    back="Solemnity Cape",
 }
 
 sets.engaged = {
