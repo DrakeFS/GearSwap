@@ -592,7 +592,7 @@ function init_gear_sets()
     back=gear.BluCTP,
 	}
 
-    sets.engaged.Acc = {
+    sets.engaged.Acc = set_combine(sets.engaged, {
 	ammo="Honed Tathlum",
     head="Malignance Chapeau",
     body="Malignance Tabard",
@@ -606,7 +606,7 @@ function init_gear_sets()
     left_ring="Ayanmo Ring",
     right_ring="Beeline Ring",
     back=gear.BluCTP,
-	}
+	})
 
 	sets.engaged.Subtle = set_combine(sets.engaged, sets.Subtle)
 
@@ -639,7 +639,7 @@ function init_gear_sets()
 	
 	sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
 
-    sets.engaged.DW.Acc = {
+    sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {
     ammo="Falcon Eye",
     head="Malignance Chapeau",
     body="Malignance Tabard",
@@ -653,7 +653,7 @@ function init_gear_sets()
     left_ring="Ayanmo Ring",
     right_ring="Beeline Ring",
     back=gear.BluCTP,
-	}
+	})
 	
 	sets.engaged.DW.Subtle = set_combine(sets.engaged.DW, sets.Subtle)
 
