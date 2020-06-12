@@ -26,7 +26,7 @@ function user_setup()
     state.HybridMode:options('Normal')
     state.CastingMode:options('Normal', 'ConserveMP')
     state.IdleMode:options('Normal', 'Leveling')
-	
+	state.MACC = M(false, 'MACC')
 	lockstyleset()
 	state.MagicBurst = M(false, 'Magic Burst')
 	
@@ -34,6 +34,7 @@ function user_setup()
 	
 	send_command('bind ^q gs c cycle CastingMode')
 	send_command('bind !q gs c toggle MagicBurst')
+	send_command('bind !- gs c toggle MACC')
 
 	update_combat_form()
     
@@ -46,8 +47,7 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
-    sets.CapacityMantle = {back=gear.CPCape}
-	
+    sets.MACC = {range = "Kaja Bow"}
 	-- Precast Sets
     
     -- Precast sets to enhance JAs
@@ -197,17 +197,17 @@ function init_gear_sets()
 	sets.midcast['Blaze Spikes'] = sets.midcast.Haste
 	
 	sets.midcast['Enfire'] = sets.midcast['Temper II']
-	sets.midcast['Enfire II'] = sets.midcast['Temper II']
+	--sets.midcast['Enfire II'] = sets.midcast['Temper II']
 	sets.midcast['Enblizzard'] = sets.midcast['Temper II']
-	sets.midcast['Enblizzard II'] = sets.midcast['Temper II']
+	--sets.midcast['Enblizzard II'] = sets.midcast['Temper II']
 	sets.midcast['Enaero'] = sets.midcast['Temper II']
-	sets.midcast['Enaero II'] = sets.midcast['Temper II']
+	--sets.midcast['Enaero II'] = sets.midcast['Temper II']
 	sets.midcast['Enstone'] = sets.midcast['Temper II']
-	sets.midcast['Enstone II'] = sets.midcast['Temper II']
+	--sets.midcast['Enstone II'] = sets.midcast['Temper II']
 	sets.midcast['Enthunder'] = sets.midcast['Temper II']
-	sets.midcast['Enthunder II'] = sets.midcast['Temper II']
+	--sets.midcast['Enthunder II'] = sets.midcast['Temper II']
 	sets.midcast['Enwater'] = sets.midcast['Temper II']
-	sets.midcast['Enwater II'] = sets.midcast['Temper II']
+	--sets.midcast['Enwater II'] = sets.midcast['Temper II']
 	
 	sets.midcast['Refresh II'] = sets.midcast.Refresh
 	sets.midcast['Refresh III'] = sets.midcast.Refresh
@@ -276,6 +276,7 @@ function init_gear_sets()
 	sets.midcast['Distract III'] = sets.midcast['Dia III']
 	sets.midcast['Frazzle III'] = sets.midcast['Dia III']
 	sets.midcast['Dispel'] = set_combine(sets.midcast['Enfeebling Magic'], {neck={ name="Duelist's Torque", augments={'Path: A',}},})
+	sets.midcast['Frazzle II'] = sets.midcast['Dia III']
 
     sets.midcast['Elemental Magic'] = {
 	head="Jhakri Coronal +2",
@@ -423,7 +424,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     if spell.skill == 'Enfeebling Magic' and state.Buff.Saboteur then
         equip(sets.buff.Saboteur)
     elseif spell.skill == 'Enhancing Magic' then
-        equip(sets.midcast.EnhancingDuration)
+		equip(sets.midcast.EnhancingDuration)
         if buffactive.composure and spell.target.type == 'PLAYER' then
             equip(sets.buff.ComposureOther)
         end
@@ -431,22 +432,25 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         equip(sets.midcast.CureSelf)
     end
 	if spell.action_type == 'Magic' then
-	if spell.element == "Earth" and spell.skill == 'Elemental Magic' and (state.CastingMode.value == "Normal" or state.CastingMode.value == "ConserveMP")  then
-		equip({ neck="Quanpur Necklace" })
-	end
+		if spell.element == "Earth" and spell.skill == 'Elemental Magic' and (state.CastingMode.value == "Normal" or state.CastingMode.value == "ConserveMP")  then
+			equip({ neck="Quanpur Necklace" })
+		end
 	    if spellMap == 'Cure' and spell.target.type == 'SELF' then
-        equip(sets.midcast.CureSelf)
-    end
+			equip(sets.midcast.CureSelf)
+		end
 		if spell.skill == 'Elemental Magic' and state.MagicBurst.value then
-		if state.CastingMode.value == "ConserveMP" then
-            equip(sets.magic_burst.ConserveMP)		
-		elseif state.CastingMode.value == "MACC" then
-        equip(sets.magic_burst.MACC)        
-		else
-        equip(sets.magic_burst)
-        end	
-end
-end
+			if state.CastingMode.value == "ConserveMP" then
+				equip(sets.magic_burst.ConserveMP)		
+			elseif state.CastingMode.value == "MACC" then
+				equip(sets.magic_burst.MACC)        
+			else
+				equip(sets.magic_burst)
+			end	
+		end
+	end
+	if state.MACC.value and spell.name == 'Frazzle II' then
+		equip(set_combine(sets.MACC, {ammo="none"}))
+	end
 end
 function job_aftercast(spell, action, spellMap, eventArgs)
 	if not spell.interrupted then
@@ -496,7 +500,7 @@ end
 
 function update_combat_form()
     -- Check for H2H or single-wielding
-    if player.equipment.sub == "Genmei Shield" or player.equipment.sub == 'empty' then
+    if player.equipment.sub == "Genmei Shield" or "Ammurapi Shield" or player.equipment.sub == 'empty' then
         state.CombatForm:reset()
     else
         state.CombatForm:set('DW')
