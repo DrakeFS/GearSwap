@@ -355,35 +355,21 @@ function init_gear_sets()
     
     sets.midcast['Blue Magic'].Physical = {
 	ammo="Ginsen",
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Mirage Stole +2",
+    head="Jhakri Coronal +2",
+    body="Jhakri Robe +2",
+    hands="Jhakri Cuffs +2",
+    legs="Jhakri Slops +2",
+    feet={ name="Luhlaza Charuqs +3", augments={'Enhances "Diffusion" effect',}},
+    neck={ name="Mirage Stole +2", augments={'Path: A',}},
     waist="Anguinus Belt",
-    left_ear="Steelflash Earring",
+    left_ear="Njordr Earring",
     right_ear="Bladeborn Earring",
-    left_ring="Jhakri Ring",
-    right_ring="Ayanmo Ring",
-    back=gear.BluCTP,
+    left_ring="Rajas Ring",
+    right_ring="Apate Ring",
+    back=gear.BluCSTR,
 	}
 
-    sets.midcast['Blue Magic'].PhysicalAcc = {
-    ammo="Ginsen",
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Mirage Stole +2",
-    waist="Anguinus Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Jhakri Ring",
-    right_ring="Ayanmo Ring",
-    back=gear.BluCTP,	
-	}
+    sets.midcast['Blue Magic'].PhysicalAcc = set_combine(sets.midcast['Blue Magic'].Physical, {})
 
     sets.midcast['Blue Magic'].PhysicalStr = set_combine(sets.midcast['Blue Magic'].Physical, {})
 
@@ -413,11 +399,11 @@ function init_gear_sets()
     feet="Jhakri Pigaches +2",
     neck="Mirage Stole +2",
 	waist={ name="Acuity Belt +1", augments={'Path: A',}},
-	back=gear.BluCMB,
-    left_ear="Hermetic Earring",
+	left_ear="Hermetic Earring",
     right_ear="Novio Earring",
     left_ring="Jhakri Ring",
     right_ring="Ayanmo Ring",
+	back=gear.BluCMB,
 	}
 
     sets.midcast['Blue Magic'].Magical.Resistant = set_combine(sets.midcast['Blue Magic'].Magical, {})
