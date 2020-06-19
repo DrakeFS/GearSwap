@@ -5,17 +5,15 @@
 -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
-    
+
     -- Load and initialize the include file.
     include('Mote-Include.lua')
-	include('Mote-TreasureHunter')
+    include('Mote-TreasureHunter')
 end
 
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-	
-	
     state.Buff['Burst Affinity'] = buffactive['Burst Affinity'] or false
     state.Buff['Chain Affinity'] = buffactive['Chain Affinity'] or false
     state.Buff.Convergence = buffactive.Convergence or false
@@ -23,7 +21,7 @@ function job_setup()
     state.Buff.Efflux = buffactive.Efflux or false
     state.Buff['Unbridled Learning'] = buffactive['Unbridled Learning'] or false
 
-	determine_haste_group()
+    determine_haste_group()
 
     blue_magic_maps = {}
     
@@ -98,7 +96,7 @@ function job_setup()
         'Diffusion Ray','Droning Whirlwind','Embalming Earth','Firespit','Foul Waters',
         'Ice Break','Leafstorm','Maelstrom','Rail Cannon','Regurgitation','Rending Deluge',
         'Retinal Glare','Subduction','Spectral Floe','Tem. Upheaval','Water Bomb','Entomb',
-		'tenebral crush',
+        'tenebral crush',
     }
 
     -- Magical spells with a primary Mnd mod
@@ -189,7 +187,7 @@ function user_setup()
     state.IdleMode:options('Normal', 'PDT', 'Learning')
 
     update_combat_form()
-	lockstyleset()
+    lockstyleset()
     --select_default_macro_book()
 end
 
@@ -203,13 +201,13 @@ end
 
 -- Set up gear sets.
 function init_gear_sets()
-	--------------------------------------
+    --------------------------------------
     -- Start defining the sets
     --------------------------------------
 
-	sets.TreasureHunter = {head="Wh. Rarab Cap +1",gear.HercBTH, legs=gear.HercLTH, waist="Chaac Belt",}
-	sets.Kiting	 = {legs="Carmine Cuisses +1",}
-	
+    sets.TreasureHunter = {head="Wh. Rarab Cap +1",gear.HercBTH, legs=gear.HercLTH, waist="Chaac Belt",}
+    sets.Kiting  = {legs="Carmine Cuisses +1",}
+    
     --sets.buff['Burst Affinity'] = {}
     --sets.buff['Chain Affinity'] = {}
     --sets.buff.Convergence = {}
@@ -233,15 +231,15 @@ function init_gear_sets()
     -- Fast cast sets for spells
     
     sets.precast.FC = {
-	ammo="Impatiens",
+    ammo="Impatiens",
     head="Herculean Helm",
     body="Hashishin Mintan",
     hands="Jhakri Cuffs +2",
     legs=gear.LengoFC,
     feet="Jhakri Pigaches +2",
     left_ring="Jhakri Ring",
-	right_ring="Kishar Ring",
-	}
+    right_ring="Kishar Ring",
+    }
 
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
@@ -258,19 +256,19 @@ function init_gear_sets()
     left_ring="Ayanmo Ring",
     right_ring="Jhakri Ring",
     back=gear.BluCDEX,
-	}
+    }
     
     sets.precast.WS.acc = set_combine(sets.precast.WS, {})
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Requiescat'] = set_combine(sets.precast.WS, {
-	neck="Soil Gorget",
-	waist="Soil Belt",
-	right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-	})
+    neck="Soil Gorget",
+    waist="Soil Belt",
+    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+    })
 
     sets.precast.WS['Sanguine Blade'] = {
-	ammo="Ginsen",
+    ammo="Ginsen",
     head="Jhakri Coronal +2",
     body="Jhakri Robe +2",
     hands=gear.HercMB,
@@ -282,9 +280,9 @@ function init_gear_sets()
     left_ring="Jhakri Ring",
     right_ring="Ayanmo Ring",
     back="Cornflower Cape",
-	}
-	
-	sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
+    }
+    
+    sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
     ammo="Ginsen",
     head="Jhakri Coronal +2",
     hands="Jhakri Cuffs +2",
@@ -296,10 +294,10 @@ function init_gear_sets()
     left_ring="Rajas Ring",
     right_ring="Apate Ring",
     back=gear.BluCSTR,
-	})
-	
-	sets.precast.WS['Savage Blade'].Acc = {
-	ammo="Honed Tathlum",
+    })
+    
+    sets.precast.WS['Savage Blade'].Acc = {
+    ammo="Honed Tathlum",
     head="Malignance Chapeau",
     body="Ayanmo Corazza +2",
     hands="Assim. Bazu. +2",
@@ -312,9 +310,9 @@ function init_gear_sets()
     left_ring="Ayanmo Ring",
     right_ring="Beeline Ring",
     back=gear.BluCDEX,
-	}
-	
-	sets.precast.WS['Chant du Cygne'] = {
+    }
+    
+    sets.precast.WS['Chant du Cygne'] = {
     ammo="Falcon Eye",
     head="Malignance Chapeau",
     body="Ayanmo Corazza +2",
@@ -323,14 +321,14 @@ function init_gear_sets()
     feet="Aya. Gambieras +2",
     neck="Light Gorget",
     waist="Light Belt",
-    left_ear="Steelflash Earring",
+    left_ear="Cessance Earring",
     right_ear="Odr Earring",
-    left_ring="Jhakri Ring",
-    right_ring="Ayanmo Ring",
+    left_ring="Petrov Ring",
+    right_ring="Begrudging Ring",
     back=gear.BluCDEX,
-	}
-	
-	sets.precast.WS['Chant du Cygne'].Acc = {
+    }
+    
+    sets.precast.WS['Chant du Cygne'].Acc = {
     ammo="Falcon Eye",
     head="Malignance Chapeau",
     body="Ayanmo Corazza +2",
@@ -344,17 +342,17 @@ function init_gear_sets()
     left_ring="Jhakri Ring",
     right_ring="Ayanmo Ring",
     back=gear.BluDEX,
-	}
+    }
 
     -- Midcast Sets
     sets.midcast.FastRecast = {}
-	
+    
     sets.midcast['Blue Magic'] = {}
     
     -- Physical Spells --
     
     sets.midcast['Blue Magic'].Physical = {
-	ammo="Ginsen",
+    ammo="Ginsen",
     head="Jhakri Coronal +2",
     body="Jhakri Robe +2",
     hands="Jhakri Cuffs +2",
@@ -367,7 +365,7 @@ function init_gear_sets()
     left_ring="Rajas Ring",
     right_ring="Apate Ring",
     back=gear.BluCSTR,
-	}
+    }
 
     sets.midcast['Blue Magic'].PhysicalAcc = set_combine(sets.midcast['Blue Magic'].Physical, {})
 
@@ -398,27 +396,27 @@ function init_gear_sets()
     legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
     feet="Jhakri Pigaches +2",
     neck="Mirage Stole +2",
-	waist={ name="Acuity Belt +1", augments={'Path: A',}},
-	left_ear="Hermetic Earring",
+    waist={ name="Acuity Belt +1", augments={'Path: A',}},
+    left_ear="Hermetic Earring",
     right_ear="Novio Earring",
     left_ring="Jhakri Ring",
     right_ring="Ayanmo Ring",
-	back=gear.BluCMB,
-	}
+    back=gear.BluCMB,
+    }
 
     sets.midcast['Blue Magic'].Magical.Resistant = set_combine(sets.midcast['Blue Magic'].Magical, {})
     
     sets.midcast['Blue Magic'].MagicalMnd = set_combine(sets.midcast['Blue Magic'].Magical, {})
 
     sets.midcast['Blue Magic'].MagicalChr = set_combine(sets.midcast['Blue Magic'].Magical, {})
-	
-	sets.midcast['Blue Magic'].MagicalVit = set_combine(sets.midcast['Blue Magic'].Magical, {})
+    
+    sets.midcast['Blue Magic'].MagicalVit = set_combine(sets.midcast['Blue Magic'].Magical, {})
 
     sets.midcast['Blue Magic'].MagicalDex = set_combine(sets.midcast['Blue Magic'].Magical, {})
 
     sets.midcast['Blue Magic'].MagicAccuracy = 
-	{
-	ammo="Mavi Tathlum",
+    {
+    ammo="Mavi Tathlum",
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands="Hashi. Bazu. +1",
@@ -431,7 +429,7 @@ function init_gear_sets()
     left_ring="Kishar Ring",
     right_ring="Ayanmo Ring",
     back=gear.BluCMAC,
-	}
+    }
 
     -- Breath Spells --
     
@@ -446,14 +444,14 @@ function init_gear_sets()
     sets.midcast['Blue Magic'].Healing = {}
 
     sets.midcast['Blue Magic'].SkillBasedBuff = {
-	ammo="Mavi Tathlum",
-	--head="Luhlaza Keffiyeh",  
-	body="Assim. Jubbah +3",
-	legs="Hashishin Tayt",
-	feet="Luhlaza Charuqs +3",
-	neck="Mirage Stole +2",
-	back=gear.BluCMAC,
-	}
+    ammo="Mavi Tathlum",
+    --head="Luhlaza Keffiyeh",  
+    body="Assim. Jubbah +3",
+    legs="Hashishin Tayt",
+    feet="Luhlaza Charuqs +3",
+    neck="Mirage Stole +2",
+    back=gear.BluCMAC,
+    }
 
     sets.midcast['Blue Magic'].Buff = {}
     
@@ -469,37 +467,37 @@ function init_gear_sets()
 
     -- Gear for learning spells: +skill and AF hands.
     sets.Learning = {
-	ammo="Mavi Tathlum",
-	--head="Luhlaza Keffiyeh",  
-	body="Assim. Jubbah +3",
-	hands="Assimilator's Bazubands +2",
-	legs="Hashishin Tayt",
-	feet="Luhlaza Charuqs +3",
-	neck="Mirage Stole +2",
-	back="Cornflower Cape"
-	}
+    ammo="Mavi Tathlum",
+    --head="Luhlaza Keffiyeh",  
+    body="Assim. Jubbah +3",
+    hands="Assimilator's Bazubands +2",
+    legs="Hashishin Tayt",
+    feet="Luhlaza Charuqs +3",
+    neck="Mirage Stole +2",
+    back="Cornflower Cape"
+    }
 
-	sets.Subtle = {
+    sets.Subtle = {
     neck="Bathy Choker",
-	head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
+    head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
     right_ear="Ouesk Pearl",
-	left_ring="Beeline Ring",
+    left_ring="Beeline Ring",
     right_ring="Rajas Ring",
-	}
+    }
 
     --[[sets.latent_refresh = {
-	body="Jhakri Robe +2",
-	legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
-	}]]
+    body="Jhakri Robe +2",
+    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
+    }]]
 
     -- Resting sets
     sets.resting = {}
     
     -- Idle sets
     sets.idle = {
-	ammo="Ginsen",
+    ammo="Ginsen",
     head="Malignance Chapeau",
-	body="Jhakri Robe +2",
+    body="Jhakri Robe +2",
     hands="Assim. Bazu. +2",
     legs="Carmine Cuisses +1",
     feet="Aya. Gambieras +2",
@@ -510,10 +508,10 @@ function init_gear_sets()
     left_ring="Defending Ring",
     right_ring="Vocane Ring",
     back=gear.BluCTP,
-	}
+    }
 
     sets.idle.PDT = {
-	ammo="Ginsen",
+    ammo="Ginsen",
     head="Malignance Chapeau",
     body="Ayanmo Corazza +2",
     hands="Assim. Bazu. +2",
@@ -525,15 +523,15 @@ function init_gear_sets()
     left_ring="Defending Ring",
     right_ring="Vocane Ring",
     back=gear.BluCTP,
-	}
+    }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
- 	sets.idle.Learning = set_combine(sets.idle, sets.Learning)
+    sets.idle.Learning = set_combine(sets.idle, sets.Learning)
     
     -- Defense sets
-    sets.defense.PDT = {	
-	ammo="Ginsen",
+    sets.defense.PDT = {    
+    ammo="Ginsen",
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands="Assim. Bazu. +2",
@@ -546,13 +544,13 @@ function init_gear_sets()
     left_ring="Defending Ring",
     right_ring="Vocane Ring",
     back=gear.BluCTP,
-	}
+    }
 
     sets.defense.MDT = set_combine(sets.defense.PDT, {})
 
-	sets.Kiting = {
-	legs="Carmine Cuisses +1",
-	}
+    sets.Kiting = {
+    legs="Carmine Cuisses +1",
+    }
 
     -- Engaged sets
 
@@ -576,10 +574,10 @@ function init_gear_sets()
     left_ring="Pernicious Ring",
     right_ring="Petrov Ring",
     back=gear.BluCTP,
-	}
+    }
 
     sets.engaged.Acc = set_combine(sets.engaged, {
-	ammo="Honed Tathlum",
+    ammo="Honed Tathlum",
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -592,13 +590,13 @@ function init_gear_sets()
     left_ring="Ayanmo Ring",
     right_ring="Beeline Ring",
     back=gear.BluCTP,
-	})
+    })
 
-	sets.engaged.Subtle = set_combine(sets.engaged, sets.Subtle)
+    sets.engaged.Subtle = set_combine(sets.engaged, sets.Subtle)
 
     sets.engaged.Learning = set_combine(sets.engaged, sets.Learning)
-	
-	sets.engaged.DW = {
+    
+    sets.engaged.DW = {
     ammo="Ginsen",
     head="Malignance Chapeau",
     body="Malignance Tabard",
@@ -612,18 +610,18 @@ function init_gear_sets()
     left_ring="Pernicious Ring",
     right_ring="Petrov Ring",
     back=gear.BluCTP,
-	}
+    }
 
-	sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {})
-	
-	sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW, {
+    sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {})
+    
+    sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW, {
     left_ear="Suppanomimi",
     right_ear="Eabani Earring",
-	})
-	
-	sets.engaged.DW.MidHaste = set_combine(sets.engaged.DW.HighHaste, {})
-	
-	sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
+    })
+    
+    sets.engaged.DW.MidHaste = set_combine(sets.engaged.DW.HighHaste, {})
+    
+    sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
 
     sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {
     ammo="Falcon Eye",
@@ -639,11 +637,11 @@ function init_gear_sets()
     left_ring="Ayanmo Ring",
     right_ring="Beeline Ring",
     back=gear.BluCTP,
-	})
-	
-	sets.engaged.DW.Subtle = set_combine(sets.engaged.DW, sets.Subtle)
+    })
+    
+    sets.engaged.DW.Subtle = set_combine(sets.engaged.DW, sets.Subtle)
 
-	sets.engaged.DW.Learning = set_combine(sets.engaged.DW, sets.Learning)
+    sets.engaged.DW.Learning = set_combine(sets.engaged.DW, sets.Learning)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -691,7 +689,7 @@ end
 function job_buff_change(buff, gain)
     if S{'haste','march','embrava','haste samba'}:contains(buff:lower()) then
         determine_haste_group()
-		state.Buff[buff] = gain
+        state.Buff[buff] = gain
     elseif state.Buff[buff] ~= nil then
         state.Buff[buff] = gain
     end
@@ -726,7 +724,7 @@ end
 -- Set eventArgs.handled to true if we don't want automatic equipping of gear.
 function job_update(cmdParams, eventArgs)
     update_combat_form()
-	determine_haste_group()
+    determine_haste_group()
 end
 
 
@@ -747,36 +745,36 @@ end
 function determine_haste_group()
  
     -- Low haste DW required: 
-	-- DW6: 19%
-	-- DW5: 21%
-	-- DW4: 26%
+    -- DW6: 19%
+    -- DW5: 21%
+    -- DW4: 26%
     -- DW3: 31%
-	
-	--Mid Haste DW required:
-	-- DW6: 13% 
-	-- DW5: 15%
-	-- DW4: 20%
-	-- DW3: 25%
-	
-	--High Haste DW required:
-	-- DW6: -1% (potential minor TP loss if barely above a TP\Delay threshold)
-	-- DW5: 1%
-	-- DW4: 6%
-	-- DW3: 11%
-	
-	-- Max haste DW Required:
-	-- DW3 -1% (potential minor TP loss if barely above a TP\Delay threshold)
-	-- DW2 9% (Sub Dancer only, no DW trait set)
-	
-	-- Sets assume DW3
+    
+    --Mid Haste DW required:
+    -- DW6: 13% 
+    -- DW5: 15%
+    -- DW4: 20%
+    -- DW3: 25%
+    
+    --High Haste DW required:
+    -- DW6: -1% (potential minor TP loss if barely above a TP\Delay threshold)
+    -- DW5: 1%
+    -- DW4: 6%
+    -- DW3: 11%
+    
+    -- Max haste DW Required:
+    -- DW3 -1% (potential minor TP loss if barely above a TP\Delay threshold)
+    -- DW2 9% (Sub Dancer only, no DW trait set)
+    
+    -- Sets assume DW3
     
     classes.CustomMeleeGroups:clear()
     
     if (buffactive.haste and buffactive['Haste Samba'] and buffactive.march) 
-	or (buffactive.march == 2 and buffactive['Haste Samba']) 
-	or (buffactive.embrava and (buffactive.haste or buffactive.march) and buffactive['Haste Samba']) then
-		classes.CustomMeleeGroups:append('MaxHaste')
-	elseif (buffactive.haste and buffactive.march) or (buffactive.march == 2) then
+    or (buffactive.march == 2 and buffactive['Haste Samba']) 
+    or (buffactive.embrava and (buffactive.haste or buffactive.march) and buffactive['Haste Samba']) then
+        classes.CustomMeleeGroups:append('MaxHaste')
+    elseif (buffactive.haste and buffactive.march) or (buffactive.march == 2) then
         classes.CustomMeleeGroups:append('HighHaste')
     elseif buffactive.haste and buffactive['Haste Samba'] then
         classes.CustomMeleeGroups:append('MidHaste')
@@ -785,7 +783,7 @@ function determine_haste_group()
     end
 end
 
-	-- Select default macro book on initial load or subjob change.
+    -- Select default macro book on initial load or subjob change.
 
 --[[function select_default_macro_book()
     -- Default macro set/book
@@ -796,7 +794,7 @@ end
     end
 end ]]
 
-	-- Set a Style Lock
+    -- Set a Style Lock
 function lockstyleset()
-	send_command('wait 5;input /lockstyleset 20')
+    send_command('wait 5;input /lockstyleset 20')
 end

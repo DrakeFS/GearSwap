@@ -1,6 +1,6 @@
 function get_sets()
     mote_include_version = 2
-	include('Mote-Include.lua')
+    include('Mote-Include.lua')
 end
 
 function job_setup()
@@ -11,20 +11,20 @@ end
 
 function init_gear_sets()
 sets.precast.FC = {
-	ammo="Impatiens",
-	left_ring="Lebeche Ring",
+    ammo="Impatiens",
+    left_ring="Lebeche Ring",
 }
 
 sets.precast.WS = {
-	ammo="Seething Bomblet", 
-	feet="Sulev. Leggings +1",
+    ammo="Seething Bomblet", 
+    feet="Sulev. Leggings +1",
 }
 
 sets.precast.WS['Entropy'] = set_combine(sets.precast.WS, {waist="Shadow Belt"})
 
 sets.midcast['Dark Magic'] = {
     neck="Sanctity Necklace",
-	left_ear="Hermetic Earring",
+    left_ear="Hermetic Earring",
     right_ear="Gwati Earring",
 }
 
