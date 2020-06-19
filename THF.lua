@@ -168,7 +168,7 @@ function init_gear_sets()
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     left_ring="Mummu Ring",
     right_ring="Apate Ring",
-    back="Sacro Cape",
+    back="Sacro Mantle",
 	})
     sets.precast.WS['Evisceration'].Acc = set_combine(sets.precast.WS['Evisceration'], {})
     -- sets.precast.WS['Evisceration'].Mod = set_combine(sets.precast.WS['Evisceration'], {})
@@ -319,7 +319,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Rajas Ring",
     right_ring="Pernicious Ring",
-    back="Sacro Cape",
+    back="Sacro Mantle",
 	}
     
 	sets.engaged.Acc = set_combine(sets.engaged,{
