@@ -96,7 +96,7 @@ function job_setup()
         'Diffusion Ray','Droning Whirlwind','Embalming Earth','Firespit','Foul Waters',
         'Ice Break','Leafstorm','Maelstrom','Rail Cannon','Regurgitation','Rending Deluge',
         'Retinal Glare','Subduction','Spectral Floe','Tem. Upheaval','Water Bomb','Entomb',
-        'tenebral crush',
+        'Tenebral Crush',
     }
 
     -- Magical spells with a primary Mnd mod
@@ -269,7 +269,7 @@ function init_gear_sets()
 
     sets.precast.WS['Sanguine Blade'] = {
     ammo="Ginsen",
-    head="Jhakri Coronal +2",
+    head = "Pixie Hairpin +1",
     body="Jhakri Robe +2",
     hands=gear.HercMB,
     legs="Jhakri Slops +2",
@@ -288,7 +288,7 @@ function init_gear_sets()
     hands="Jhakri Cuffs +2",
     feet="Jhakri Pigaches +2",
     neck="Thunder Gorget",
-    waist="Thunder Belt",
+    waist="Sailfi Belt +1",
     left_ear="Odr Earring",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     left_ring="Rajas Ring",
@@ -455,10 +455,13 @@ function init_gear_sets()
 
     sets.midcast['Blue Magic'].Buff = {}
     
+    sets.midcast['Tenebral Crush'] = set_combine(sets.midcast['Blue Magic'].Magical,{head = "Pixie Hairpin +1"})
+    
     sets.midcast.Protect = {}
     sets.midcast.Protectra = {}
     sets.midcast.Shell = {}
     sets.midcast.Shellra = {}
+    
     
 
     
@@ -480,7 +483,6 @@ function init_gear_sets()
     sets.Subtle = {
     neck="Bathy Choker",
     head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
-    right_ear="Ouesk Pearl",
     left_ring="Beeline Ring",
     right_ring="Rajas Ring",
     }

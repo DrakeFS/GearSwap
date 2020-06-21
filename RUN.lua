@@ -356,6 +356,7 @@ function init_gear_sets()
     legs="Aya. Cosciales +2",
     feet="Aya. Gambieras +2",
     neck="Loricate Torque +1",
+    waist="Flume Belt",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
 	}
