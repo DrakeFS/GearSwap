@@ -43,6 +43,7 @@ function init_gear_sets()
 	ammo="Impatiens",
     body="Inyanga Jubbah",
     neck={ name="Cleric's Torque", augments={'Path: A',}},
+    waist="Embla Sash",
 	left_ring="Lebeche Ring",
     back=gear.WhmCFC,
 	}
@@ -56,11 +57,21 @@ function init_gear_sets()
     sets.precast.FC.StatusRemoval = sets.precast.FC['Healing Magic']
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC['Healing Magic'],{
-	main="Ababinili",
+    main="Ababinili",
+    ammo="Impatiens",
     head="Theo. Cap +1",
-	left_ear="Nourish. Earring",
-    right_ear="Nourish. Earring +1",
-	})
+    body="Inyanga Jubbah +2",
+    hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
+    legs="Ebers Pantaloons",
+    feet="Aya. Gambieras +1",
+    neck={ name="Cleric's Torque", augments={'Path: A',}},
+    left_ear="Nourish. Earring",
+    right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
+    left_ring="Lebeche Ring",
+    right_ring="Ayanmo Ring",
+    back={ name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
+    })
+    
     sets.precast.FC.Curaga = sets.precast.FC.Cure
     sets.precast.FC.CureSolace = sets.precast.FC.Cure
     -- CureMelee spell map should default back to Healing Magic.

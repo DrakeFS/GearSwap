@@ -89,7 +89,7 @@ function init_gear_sets()
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Requiescat'] = {
-    ammo="Regal Gem",
+    ammo="Pemphredo Tathlum",
     head="Jhakri Coronal +2",
     body="Atrophy Tabard +3",
     hands="Jhakri Cuffs +2",
@@ -104,8 +104,11 @@ function init_gear_sets()
     back=gear.RdmCMB,
 	}
 
-    sets.precast.WS['Sanguine Blade'] = {
-	head = "Pixie Hairpin +1",
+    sets.precast.WS['Sanguine Blade'] = set_combine( sets.precast.WS['Seraph Blade'], {head="Pixie Hairpin +1",})
+	
+	sets.precast.WS['Seraph Blade'] = {
+    ammo="Pemphredo Tathlum",
+    head="Jhakri Coronal +2",
     body="Jhakri Robe +2",
     hands="Jhakri Cuffs +2",
     legs="Jhakri Slops +2",
@@ -117,17 +120,26 @@ function init_gear_sets()
     left_ring="Ayanmo Ring",
     right_ring="Jhakri Ring",
     back=gear.RdmCMB,
-	}
-	
-	sets.precast.WS['Seraph Blade'] = set_combine( sets.precast.WS['Sanguine Blade'],{})
-	sets.precast.WS['Red Lotus Blade'] = set_combine( sets.precast.WS['Sanguine Blade'],{})
-	sets.precast.WS['Black Halo'] = set_combine( sets.precast.WS['Sanguine Blade'],{})
-	sets.precast.WS['Aeolian Edge'] = set_combine( sets.precast.WS['Sanguine Blade'],{})
+    }
+    
+	sets.precast.WS['Red Lotus Blade'] = set_combine( sets.precast.WS['Seraph Blade'],{})
+	sets.precast.WS['Black Halo'] = set_combine( sets.precast.WS['Seraph Blade'],{})
+	sets.precast.WS['Aeolian Edge'] = set_combine( sets.precast.WS['Seraph Blade'],{})
 	
 	sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
-	neck="Light Gorget",
-	waist="Light Belt",
-	})
+    ammo="Jukukik Feather",
+    head="Malignance Chapeau",
+    body="Malignance Tabard",
+    hands="Jhakri Cuffs +2",
+    legs="Aya. Cosciales +2",
+    feet="Battlecast Gaiters",
+    neck="Light Gorget",
+    waist="Light Belt",
+    left_ear="Cessance Earring",
+    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+    left_ring="Petrov Ring",
+    right_ring="Begrudging Ring",
+    })
 
 	sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
     ammo="Ginsen",
@@ -142,6 +154,20 @@ function init_gear_sets()
     left_ring="Rajas Ring",
     right_ring="Apate Ring",
 	})
+    
+    sets.precast.WS['Empyreal Arrow'] = {
+    head="Malignance Chapeau",
+    body="Malignance Tabard",
+    hands="Aya. Manopolas +2",
+    legs="Carmine Cuisses +1",
+    feet="Aya. Gambieras +2",
+    neck="Sanctity Necklace",
+    waist="Windbuffet Belt +1",
+    left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+    right_ear="Suppanomimi",
+    left_ring="Ilabrat Ring",
+    right_ring="Beeline Ring",
+    }
 
     -- Midcast Sets
 	
