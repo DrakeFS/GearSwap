@@ -50,7 +50,7 @@ function init_gear_sets()
     
     -- Precast Sets
 	-- Precast sets to enhance JAs
-	sets.precast.JA.Angon = {}
+	sets.precast.JA.Angon = {range = "Angon"}
     --sets.Berserker = {neck="Berserker's Torque"}
     --sets.WSDayBonus = {}
 	--sets.Organizer = {}
@@ -168,14 +168,17 @@ function init_gear_sets()
 	
 	-- Defense sets
 	sets.defense.PDT = {
-	head="Sulevia's Mask +1",
+    head="Sulevia's Mask +1",
     body="Sulevia's Plate. +1",
     hands="Sulev. Gauntlets +1",
     legs="Sulevi. Cuisses +1",
     feet="Sulev. Leggings +1",
-    neck="Loricate Torque +1",
+    neck="Loricate Torque",
+    waist="Dynamic Belt",
     left_ear="Steelflash Earring",
     right_ear="Bladeborn Earring",
+    left_ring="Defending Ring",
+    right_ring="Sulevia's Ring",
     back="Solemnity Cape",
 	}
 

@@ -8,12 +8,13 @@ function get_sets()
 
     -- Load and initialize the include file.
     include('Mote-Include.lua')
-    include('Mote-TreasureHunter')
 end
 
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
+    include('Mote-TreasureHunter')
+
     state.Buff['Burst Affinity'] = buffactive['Burst Affinity'] or false
     state.Buff['Chain Affinity'] = buffactive['Chain Affinity'] or false
     state.Buff.Convergence = buffactive.Convergence or false
@@ -181,7 +182,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('Normal', 'Acc', 'Subtle', 'Refresh', 'Learning')
+    state.OffenseMode:options('Normal', 'Acc')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
@@ -205,7 +206,13 @@ function init_gear_sets()
     -- Start defining the sets
     --------------------------------------
 
-    sets.TreasureHunter = {head="Wh. Rarab Cap +1",gear.HercBTH, legs=gear.HercLTH, waist="Chaac Belt",}
+    sets.TreasureHunter = {
+    head = gear.HercHTH,
+    body = gear.HercBTH, 
+    legs = gear.HercLTH,
+    waist = "Chaac Belt",
+    }
+    
     sets.Kiting  = {legs="Carmine Cuisses +1",}
     
     --sets.buff['Burst Affinity'] = {}
@@ -512,7 +519,7 @@ function init_gear_sets()
     back=gear.BluCTP,
     }
 
-    sets.idle.PDT = {
+    --[[sets.idle.PDT = {
     ammo="Ginsen",
     head="Malignance Chapeau",
     body="Ayanmo Corazza +2",
@@ -525,7 +532,7 @@ function init_gear_sets()
     left_ring="Defending Ring",
     right_ring="Vocane Ring",
     back=gear.BluCTP,
-    }
+    }]]
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 

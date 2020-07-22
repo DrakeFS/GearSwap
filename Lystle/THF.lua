@@ -130,13 +130,21 @@ function init_gear_sets()
 
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {    
-	head="Mummu Bonnet +2",
-    body="Mummu Jacket",
-    hands="Mummu Wrists +2",
-    legs="Mummu Kecks +1",
-    feet="Mummu Gamash. +1",
+    ammo="Seething Bomblet",
+    head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    legs="Mummu Kecks +2",
+    feet="Herculean Boots",
+    neck="Clotharius Torque",
+    waist="Sailfi Belt",
+    left_ear="Steelflash Earring",
+    right_ear="Bladeborn Earring",
+    left_ring="Mummu Ring",
+    right_ring="Begrudging Ring",
+    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
 	}
-    sets.precast.WS.Acc = set_combine(sets.precast.WS, {ammo="Honed Tathlum"})
+    sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
@@ -155,7 +163,6 @@ function init_gear_sets()
     sets.precast.WS['Dancing Edge'].SATA = set_combine(sets.precast.WS['Dancing Edge'], {})
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
-	neck="Shadow Gorget", 
 	waist="Shadow Belt",
 	})
     sets.precast.WS['Evisceration'].Acc = set_combine(sets.precast.WS['Evisceration'], {})
@@ -165,7 +172,6 @@ function init_gear_sets()
     sets.precast.WS['Evisceration'].SATA = set_combine(sets.precast.WS['Evisceration'], {})
 
     sets.precast.WS["Rudra's Storm"] = set_combine(sets.precast.WS, {
-	neck="Shadow Gorget", 
 	waist="Shadow Belt",
 	})
     sets.precast.WS["Rudra's Storm"].Acc = set_combine(sets.precast.WS["Rudra's Storm"], {})
@@ -255,7 +261,7 @@ function init_gear_sets()
     body="Meghanada Cuirie +2",
     hands="Mummu Wrists +2",
     legs="Meg. Chausses +1",
-    feet="Mummu Gamash. +1",
+    feet="Mummu Gamash. +2",
     neck="Clotharius Torque",
     waist="Dynamic Belt",
     left_ear="Steelflash Earring",
