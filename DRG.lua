@@ -62,7 +62,7 @@ function init_gear_sets()
     
     -- Precast Sets
 	-- Precast sets to enhance JAs
-	sets.precast.JA.Angon = {}
+	sets.precast.JA['Angon'] = {ammo = "Angon"}
     --sets.Berserker = {neck="Berserker's Torque"}
     --sets.WSDayBonus = {}
 	--sets.Organizer = {}
