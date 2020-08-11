@@ -39,8 +39,8 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-	--main="Daybreak",
-    --sub="Sors Shield",
+	main="Daybreak",
+    sub="Sors Shield",
     ammo="Impatiens",
     head="Theo. Cap +1",
     body="Ebers Bliaud",
@@ -105,8 +105,8 @@ function init_gear_sets()
     
     -- Cure sets
     sets.midcast.CureSolace = {
-	--main="Daybreak",
-    --sub="Sors Shield",
+	main="Daybreak",
+    sub="Sors Shield",
     ammo="Impatiens",
     head="Theo. Cap +1",
     body="Ebers Bliaud",
@@ -114,7 +114,6 @@ function init_gear_sets()
     legs="Ebers Pantaloons",
     feet="Theo. Duckbills +1",
     neck="Cleric's Torque",
-    waist="Windbuffet Belt +1",
     left_ear="Glorious Earring",
     right_ear="Nourish. Earring",
     left_ring="Vocane Ring",
@@ -123,8 +122,8 @@ function init_gear_sets()
 	}
 
     sets.midcast.Cure = {
-	--main="Daybreak",
-    --sub="Sors Shield",
+	main="Daybreak",
+    sub="Sors Shield",
     ammo="Impatiens",
     head="Theo. Cap +1",
     body="Ebers Bliaud",
@@ -132,7 +131,6 @@ function init_gear_sets()
     legs="Ebers Pantaloons",
     feet="Theo. Duckbills +1",
     neck="Cleric's Torque",
-    waist="Windbuffet Belt +1",
     left_ear="Glorious Earring",
     right_ear="Nourish. Earring",
     left_ring="Vocane Ring",
@@ -182,8 +180,8 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-	--main="Daybreak",
-    --sub="Sors Shield",
+	main="Daybreak",
+    sub="Sors Shield",
     ammo="Impatiens",
     head="Aya. Zucchetto +2",
     body="Ebers Bliaud",

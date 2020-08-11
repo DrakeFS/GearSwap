@@ -165,7 +165,21 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     -- Default set for any weaponskill that isn't any more specifically defined
-    sets.precast.WS = {}
+    sets.precast.WS = {
+    ammo="Ginsen",
+    head="Aya. Zucchetto +1",
+    body="Ayanmo Corazza +1",
+    hands="Aya. Manopolas +1",
+    legs="Aya. Cosciales +1",
+    feet="Aya. Gambieras +1",
+    neck="Clotharius Torque",
+    waist="Shadow Belt",
+    left_ear="Steelflash Earring",
+    right_ear="Bladeborn Earring",
+    left_ring="Begrudging Ring",
+    right_ring="Ayanmo Ring",
+    back="Atheling Mantle",
+    }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {})
@@ -312,7 +326,7 @@ function init_gear_sets()
     hands="Aya. Manopolas +1",
     legs="Aya. Cosciales +1",
     feet="Aya. Gambieras +1",
-    neck="Moonbow Whistle",
+    neck="Clotharius Torque",
     waist="Dynamic Belt",
     left_ear="Steelflash Earring",
     right_ear="Bladeborn Earring",
