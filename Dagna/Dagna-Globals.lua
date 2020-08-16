@@ -5,7 +5,8 @@ function define_global_sets()
 	
 	-- Hands
 	gear.HercGMB = {name="Herculean Gloves", augments={'VIT+15','"Mag.Atk.Bns."+24','Accuracy+6 Attack+6','Mag. Acc.+17 "Mag.Atk.Bns."+17',}}
-
+    gear.MerlGPBP = { name="Merlinic Dastanas", augments={'Pet: Attack+10 Pet: Rng.Atk.+10','Blood Pact Dmg.+10',}}
+    
 	-- Body
 	gear.HercBTH = {name="Herculean Vest", augments={'Sklchn.dmg.+1%','"Cure" spellcasting time -5%','"Treasure Hunter"+1',}}
 

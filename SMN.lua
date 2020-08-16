@@ -56,14 +56,19 @@ function job_setup()
 
     avatars = S{"Carbuncle", "Fenrir", "Diabolos", "Ifrit", "Titan", "Leviathan", "Garuda", "Shiva", "Ramuh", "Odin", "Alexander", "Cait Sith", "Siren"}
   
-    magicalRagePacts = S{
-        'Inferno','Earthen Fury','Tidal Wave','Aerial Blast','Diamond Dust','Judgment Bolt','Searing Light','Howling Moon','Ruinous Omen',
-        'Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II',
-        'Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV','Chaotic strike',
-        'Thunderspark','Volt strike','Burning Strike','Meteorite','Nether Blast',
-        'Meteor Strike','Conflag Strike','Heavenly Strike','Wind Blade','Geocrush','Crag Throw','Grand Fall','Thunderstorm',
-        'Holy Mist','Lunar Bay','Night Terror','Level ? Holy','Impact','Zantetsuken'
+    bp_magical = S{'Inferno','Earthen Fury','Tidal Wave','Aerial Blast','Diamond Dust','Judgment Bolt','Searing Light','Howling Moon',
+        'Ruinous Omen','Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II','Thunderspark','Somnolence','Meteorite',
+        'Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV','Nether Blast','Meteor Strike','Geocrush','Grand Fall',
+        'Wind Blade','Heavenly Strike','Thunderstorm','Level ? Holy','Holy Mist','Lunar Bay','Night Terror','Conflag Strike'
 	}
+    
+    bp_physical=S{'Punch','Rock Throw','Barracuda Dive','Claw','Axe Kick','Shock Strike','Camisado','Regal Scratch','Poison Nails',
+        'Moonlit Charge','Crescent Fang','Rock Buster','Tail Whip','Double Punch','Megalith Throw','Double Slap','Eclipse Bite','Mountain Buster',
+        'Spinning Dive','Predator Claws','Rush','Chaotic Strike','Crag Throw','Volt Strike'
+    }
+    
+    bp_hybrid=S{'Burning Strike','Flaming Crush'}
+    
     enticersRagePacts = S{
         'Impact','Conflag Strike', 'Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II',
         'Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV'
@@ -251,24 +256,47 @@ function init_gear_sets()
 
     sets.midcast.Pet.DebuffBloodPactWard.Acc = set_combine(sets.midcast.Pet.DebuffBloodPactWard, {})
 
-    sets.midcast.Pet.PhysicalBloodPactRage = {
+    sets.midcast.Pet.PhysicalBP = {
 	main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
     sub="Elan Strap",
     ammo="Sancus Sachet",
+    head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
     body="Con. Doublet +1",
+    hands=gear.MerlGPBP,
     legs={ name="Apogee Slacks", augments={'Pet: STR+15','Blood Pact Dmg.+13','Pet: "Dbl. Atk."+3',}},
-    feet="Psycloth Boots",
+    feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+    neck="Adad Amulet",
+    waist="Incarnation Sash",
+    left_ear="Esper Earring",
+    right_ear="Lugalbanda Earring",
+    left_ring="Varar Ring",
+    right_ring="Varar Ring",
+    back=gear.SmnCPHY,
+	}
+
+    sets.midcast.Pet.PhysicalBP.Acc = sets.midcast.Pet.PhysicalBP
+
+    sets.midcast.Pet.HybridBP = {
+    main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
+    sub="Elan Strap",
+    ammo="Sancus Sachet",
+    head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+    body="Con. Doublet +1",
+    hands=gear.MerlGPBP,
+    legs={ name="Apogee Slacks", augments={'Pet: STR+15','Blood Pact Dmg.+13','Pet: "Dbl. Atk."+3',}},
+    feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+    neck="Adad Amulet",
     waist="Regal Belt",
     left_ear="Esper Earring",
     right_ear="Lugalbanda Earring",
     left_ring="Varar Ring",
     right_ring="Varar Ring",
-	back=gear.SmnCPHY,
-	}
-
-    sets.midcast.Pet.PhysicalBloodPactRage.Acc = sets.midcast.Pet.PhysicalBloodPactRage
-
-    sets.midcast.Pet.MagicalBloodPactRage = {
+    back=gear.SmnCPHY,
+    }
+    
+    sets.midcast.Pet.HybridBP.Acc = sets.midcast.Pet.HybridBP
+    
+    sets.midcast.Pet.MagicalBP = {
 	main={name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
     sub="Elan Strap",
     ammo="Sancus Sachet",
@@ -286,7 +314,7 @@ function init_gear_sets()
 	back=gear.SmnCPHY,
 	}
 
-    sets.midcast.Pet.MagicalBloodPactRage.Acc = sets.midcast.Pet.MagicalBloodPactRage
+    sets.midcast.Pet.MagicalBP.Acc = sets.midcast.Pet.MagicalBP
 
     -- Spirits cast magic spells, which can be identified in standard ways.
     
@@ -502,10 +530,17 @@ end
 -- Custom spell mapping.
 function job_get_spell_map(spell)
     if spell.type == 'BloodPactRage' then
-        if magicalRagePacts:contains(spell.english) then
+        --[[if magicalRagePacts:contains(spell.english) then
             return 'MagicalBloodPactRage'
         else
             return 'PhysicalBloodPactRage'
+        end]]
+        if bp_physical:contains(spell.name) then
+            return 'PhysicalBP'
+        elseif bp_hybrid:contains(spell.name) then
+            return 'HybridBP'
+        elseif bp_magical:contains(spell.name) then
+            return 'MagicalBP'
         end
     elseif spell.type == 'BloodPactWard' and spell.target.type == 'MONSTER' then
         return 'DebuffBloodPactWard'
