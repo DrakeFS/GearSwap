@@ -261,6 +261,21 @@ function init_gear_sets()
     sets.midcast.Cursna = set_combine(sets.midcast.StatusRemoval, {})
 
     sets.midcast['Enhancing Magic'] = {}
+    
+    sets.midcast['Enfeebling Magic'] = {
+    head="Aya. Zucchetto +1",
+    body="Ayanmo Corazza +1",
+    hands="Aya. Manopolas +1",
+    legs="Aya. Cosciales +1",
+    feet="Aya. Gambieras +1",
+    neck="Sanctity Necklace",
+    waist="Famine Sash",
+    left_ear="Hermetic Earring",
+    right_ear="Gwati Earring",
+    left_ring="Ayanmo Ring",
+    right_ring="Inyanga Ring",
+    back="Solemnity Cape",
+    }
 
     --[[sets.midcast.Regen = set_combine(sets.midcast['Enhancing Magic'], {head="Inyanga Tiara"})
     sets.midcast.Haste = sets.midcast['Enhancing Magic']

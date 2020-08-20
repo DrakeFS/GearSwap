@@ -205,6 +205,11 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
+    gear.BluCTP = {name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}}
+	gear.BluCDEX = {name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10',}}
+	gear.BluCSTR = {name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
+	gear.BluCMB	= {name="Rosmerta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}}
+	gear.BluCMAC = {name="Cornflower Cape", augments={'MP+22','DEX+5','Blue Magic skill +10',}}
 
     sets.TreasureHunter = {
     head = gear.HercHTH,
@@ -423,17 +428,17 @@ function init_gear_sets()
 
     sets.midcast['Blue Magic'].MagicAccuracy = 
     {
-    ammo="Mavi Tathlum",
+    ammo="Pemphredo Tathlum",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands="Hashi. Bazu. +1",
+    hands="Aya. Manopolas +2",
     legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-    feet="Luhlaza Charuqs +3",
+    feet="Aya. Gambieras +2",
     neck={ name="Mirage Stole +2", augments={'Path: A',}},
     waist={ name="Acuity Belt +1", augments={'Path: A',}},
     left_ear="Njordr Earring",
     right_ear="Hermetic Earring",
-    left_ring="Kishar Ring",
+    left_ring="Jhakri Ring",
     right_ring="Ayanmo Ring",
     back=gear.BluCMAC,
     }
@@ -668,7 +673,7 @@ end]]
 
 -- Run after the default midcast() is done.
 -- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
-function job_post_midcast(spell, action, spellMap, eventArgs)
+function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
     -- Add enhancement gear for Chain Affinity, etc.
     if spell.skill == 'Blue Magic' then
         for buff,active in pairs(state.Buff) do
@@ -684,6 +689,10 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     -- If in learning mode, keep on gear intended to help with that, regardless of action.
     if state.OffenseMode.value == 'Learning' then
         equip(sets.Learning)
+    end
+    
+    if state.TreasureMode.value == 'Tag' then
+        equip(sets.TreasureHunter)
     end
 end
 

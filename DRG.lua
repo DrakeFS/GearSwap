@@ -60,6 +60,8 @@ function init_gear_sets()
 	-- Start defining the sets
 	--------------------------------------
     
+    gear.DrgCTP = {name="Brigantia's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}}
+    
     -- Precast Sets
 	-- Precast sets to enhance JAs
 	sets.precast.JA['Angon'] = {ammo = "Angon"}

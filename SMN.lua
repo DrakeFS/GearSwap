@@ -175,6 +175,9 @@ function init_gear_sets()
     --------------------------------------
     -- Precast Sets
     --------------------------------------
+
+	gear.SmnCPHY = {name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Eva.+20 /Mag. Eva.+20',}}
+    gear.SmnBPR = {name="Conveyance Cape", augments={'Summoning magic skill +2','Pet: Enmity+14','Blood Pact ab. del. II -3',}}
     
     -- Precast sets to enhance JAs
     sets.precast.JA['Astral Flow'] = {}
@@ -188,14 +191,16 @@ function init_gear_sets()
     main={name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
     sub="Vox Grip",
     ammo="Sancus Sachet",
-    head="Con. Horn +1",
-    body="Con. Doublet +1",
+    head="Beckoner's Horn +1",
+    body="Con. Doublet +2",
     hands="Lamassu Mitts",
     neck="Caller's Pendant",
     waist="Lucidity Sash",
+    legs = "Glyphic Spats +1",
     left_ear="Lodurr Earring",
     right_ear="Evans Earring",
     left_ring="Evoker's Ring",
+    gear.SmnBPR,
 	}
 
     sets.precast.BloodPactRage = sets.precast.BloodPactWard
@@ -261,7 +266,7 @@ function init_gear_sets()
     sub="Elan Strap",
     ammo="Sancus Sachet",
     head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
-    body="Con. Doublet +1",
+    body="Con. Doublet +2",
     hands=gear.MerlGPBP,
     legs={ name="Apogee Slacks", augments={'Pet: STR+15','Blood Pact Dmg.+13','Pet: "Dbl. Atk."+3',}},
     feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
@@ -281,7 +286,7 @@ function init_gear_sets()
     sub="Elan Strap",
     ammo="Sancus Sachet",
     head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
-    body="Con. Doublet +1",
+    body="Con. Doublet +2",
     hands=gear.MerlGPBP,
     legs={ name="Apogee Slacks", augments={'Pet: STR+15','Blood Pact Dmg.+13','Pet: "Dbl. Atk."+3',}},
     feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
@@ -301,7 +306,7 @@ function init_gear_sets()
     sub="Elan Strap",
     ammo="Sancus Sachet",
     head="Con. Horn +1",
-    body="Con. Doublet +1",
+    body="Con. Doublet +2",
     hands="Lamassu Mitts",
     legs=gear.EnticeMBP,
     feet="Con. Pigaches +1",
@@ -361,7 +366,7 @@ function init_gear_sets()
 	main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
 	ammo="Sancus Sachet",
     head="Con. Horn +1",
-    body="Con. Doublet +1",
+    body="Con. Doublet +2",
     hands="Lamassu Mitts",
     legs="Assid. Pants +1",
     feet="Con. Pigaches +1",
@@ -389,7 +394,7 @@ function init_gear_sets()
 	main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
 	ammo="Sancus Sachet",
     head="Con. Horn +1",
-    body="Con. Doublet +1",
+    body="Con. Doublet +2",
     hands="Lamassu Mitts",
     legs="Assid. Pants +1",
     feet="Con. Pigaches +1",
@@ -437,7 +442,7 @@ function init_gear_sets()
     sets.engaged = {
 	ammo="Sancus Sachet",
     head="Con. Horn +1",
-    body="Con. Doublet +1",
+    body="Con. Doublet +2",
     hands="Lamassu Mitts",
     legs="Assid. Pants +1",
     feet="Con. Pigaches +1",
@@ -509,12 +514,8 @@ end
 function job_pet_change(petparam, gain)
     classes.CustomIdleGroups:clear()
     if gain then
-        if avatars:contains(pet.name) and state.CapacityMode.value then
-            classes.CustomIdleGroups:append('AvatarCP')
-		elseif avatars:contains(pet.name) then
+        if avatars:contains(pet.name) then
             classes.CustomIdleGroups:append('Avatar')
-		elseif spirits:contains(pet.name) and state.CapacityMode.value then
-            classes.CustomIdleGroups:append('SpiritCP')
 		elseif spirits:contains(pet.name) then
             classes.CustomIdleGroups:append('Spirit')
         end

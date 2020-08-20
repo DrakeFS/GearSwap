@@ -47,6 +47,10 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
+    gear.RdmCTP = {name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20',}}
+	gear.RdmCMB = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10','Mag. Evasion+15',}}
+	gear.RdmCES = {name="Ghostfyre Cape", augments={'Enfb.mag. skill +6','Enha.mag. skill +10',}}
+    
     sets.MACC = {range = "Kaja Bow"}
 	-- Precast Sets
     
@@ -489,6 +493,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
 		equip(set_combine(sets.MACC, {ammo="none"}))
 	end
 end
+
 function job_aftercast(spell, action, spellMap, eventArgs)
 	if not spell.interrupted then
 		if spell.english == 'Break' or spell.english == 'Breakga' then
