@@ -177,7 +177,7 @@ function init_gear_sets()
     --------------------------------------
 
 	gear.SmnCPHY = {name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Eva.+20 /Mag. Eva.+20',}}
-    gear.SmnBPR = {name="Conveyance Cape", augments={'Summoning magic skill +2','Pet: Enmity+14','Blood Pact ab. del. II -3',}}
+    gear.SmnBPD = {name="Conveyance Cape", augments={'Summoning magic skill +2','Pet: Enmity+14','Blood Pact ab. del. II -3',}}
     
     -- Precast sets to enhance JAs
     sets.precast.JA['Astral Flow'] = {}
@@ -188,19 +188,20 @@ function init_gear_sets()
 
     -- Pact delay reduction gear
     sets.precast.BloodPactWard = {
-    main={name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
+    main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
     sub="Vox Grip",
     ammo="Sancus Sachet",
     head="Beckoner's Horn +1",
     body="Con. Doublet +2",
     hands="Lamassu Mitts",
+    legs={ name="Glyphic Spats +1", augments={'Increases Sp. "Blood Pact" accuracy',}},
+    feet={ name="Glyph. Pigaches +1", augments={'Inc. Sp. "Blood Pact" magic crit. dmg.',}},
     neck="Caller's Pendant",
     waist="Lucidity Sash",
-    legs = "Glyphic Spats +1",
     left_ear="Lodurr Earring",
-    right_ear="Evans Earring",
+    right_ear="Andoaa Earring",
     left_ring="Evoker's Ring",
-    gear.SmnBPR,
+    back=gear.SmnBPD,
 	}
 
     sets.precast.BloodPactRage = sets.precast.BloodPactWard
@@ -338,7 +339,7 @@ function init_gear_sets()
     sets.resting = {}
 
     -- Idle sets
-    sets.idle = {waist="Fucho-no-Obi",}
+    sets.idle = {}
 
     sets.idle.PDT = {}
 
@@ -369,7 +370,7 @@ function init_gear_sets()
     body="Con. Doublet +2",
     hands="Lamassu Mitts",
     legs="Assid. Pants +1",
-    feet="Con. Pigaches +1",
+    feet="Apogee Pumps",
     neck="Caller's Pendant",
     waist="Lucidity Sash",
     left_ear="Evans Earring",
@@ -389,7 +390,8 @@ function init_gear_sets()
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
     -- Favor uses Caller's Horn instead of Convoker's Horn for refresh
-    sets.idle.Avatar.Favor = {}
+    sets.idle.Avatar.Favor = set_combine(sets.idle.Avatar, {})
+    
     sets.idle.Avatar.Melee = {
 	main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
 	ammo="Sancus Sachet",

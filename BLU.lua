@@ -692,7 +692,9 @@ function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
     end
     
     if state.TreasureMode.value == 'Tag' then
-        equip(sets.TreasureHunter)
+        if spell.english == 'Entomb' or spell.english == 'Whirl of Rage' then
+            equip(sets.TreasureHunter)
+        end
     end
 end
 
