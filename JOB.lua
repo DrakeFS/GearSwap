@@ -2,7 +2,7 @@
 -- Rename JOB.lua to the job you wish to use  --    Theif = THF       Paladin = PLD   Dark Knight = DRK   Beastmaster = BST  Bard = BRD
 -- this lua on.  ie. rename to BLU.lua to     --    Ranger = RNG      Samurai = SAM   Ninja = NIN         Dragoon = DRG      Summoner = SMN
 -- load it for Blue Mage                      --    Blue Mage = BLU   Corsair = COR   Puppetmaster = PUP  Dancer = DNC       Scholar = SCH
-------------------------------------------------    Geomancer = GEO   Rune Fancer = RUN
+------------------------------------------------    Geomancer = GEO   Rune Fencer = RUN
 
 function get_sets()
     mote_include_version = 2
