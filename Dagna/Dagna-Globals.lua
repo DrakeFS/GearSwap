@@ -8,7 +8,7 @@ function define_global_sets()
     gear.MerlGPBP = { name="Merlinic Dastanas", augments={'Pet: Attack+10 Pet: Rng.Atk.+10','Blood Pact Dmg.+10',}}
     
 	-- Body
-	gear.HercBTH = {name="Herculean Vest", augments={'Sklchn.dmg.+1%','"Cure" spellcasting time -5%','"Treasure Hunter"+1',}}
+	gear.HercBTH = { name="Herculean Vest", augments={'Pet: INT+1','Accuracy+5','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 
 	-- Legs
 	gear.HercLTH = {name="Herculean Trousers", augments={'Mag. Acc.+7','DEX+9','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}

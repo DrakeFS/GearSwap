@@ -614,9 +614,9 @@ function job_self_command(cmdParams, eventArgs)
     elseif cmdParams[1]:lower() == 'siphon' then
         handle_siphoning()
         eventArgs.handled = true
-    --elseif cmdParams[1]:lower() == 'pact' then
-    --    handle_pacts(cmdParams)
-    --    eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'bprc' then
+        handle_bprc()
+        eventArgs.handled = true
     elseif cmdParams[1] == 'reset_ward_flag' then
         wards.flag = false
         wards.spell = ''
@@ -628,6 +628,39 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
+
+-- Cast BP based on summon. Grouped most common BPs together
+function handle_bprc()
+    if pet.isvalid and avatars:contains(pet.name) then
+        if pet.name == "Ifrit" then
+            send_command('@input /pet "Flaming Crush" <t>')
+        elseif pet.name == "Ramuh" then
+            send_command('@input /pet "Volt Strike" <t>')
+        elseif pet.name == "Siren" then
+            send_command('@input /pet "Hysteric Assault" <t>')
+        elseif pet.name == "Garuda" then
+            send_command('@input /pet "Predator Claws" <t>')
+        elseif pet.name == "Carbuncle" then
+            send_command('@input /pet "Meteorite" <t>')
+        elseif pet.name == "Cait Sith" then
+            send_command('@input /pet "Regal Scratch" <t>')
+        elseif pet.name == "Fenrir" then
+            send_command('@input /pet "Eclipse Bite" <t>')
+        elseif pet.name == "Titan" then
+            send_command('@input /pet "Mountain Buster" <t>')
+        elseif pet.name == "Leviathan" then
+            send_command('@input /pet "Spinning Dive" <t>')
+        elseif pet.name == "Shiva" then
+            send_command('@input /pet "Rush" <t>')
+        elseif pet.name == "Diabolos" then
+            send_command('@input /pet "Blindside" <t>')
+        else
+            add_to_chat(122, "No Blood Pact: Rage set for this summon")
+        end
+    else
+        add_to_chat(122, 'No pet summoned.')
+    end
+end
 
 -- Cast the appopriate storm for the currently summoned avatar, if possible.
 function handle_petweather()
