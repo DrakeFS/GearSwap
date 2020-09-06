@@ -617,6 +617,9 @@ function job_self_command(cmdParams, eventArgs)
     elseif cmdParams[1]:lower() == 'bprc' then
         handle_bprc()
         eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'bpwc' then
+        handle_bpwc()
+        eventArgs.handled = true
     elseif cmdParams[1] == 'reset_ward_flag' then
         wards.flag = false
         wards.spell = ''
@@ -654,6 +657,38 @@ function handle_bprc()
             send_command('@input /pet "Rush" <t>')
         elseif pet.name == "Diabolos" then
             send_command('@input /pet "Blindside" <t>')
+        else
+            add_to_chat(122, "No Blood Pact: Rage set for this summon")
+        end
+    else
+        add_to_chat(122, 'No pet summoned.')
+    end
+end
+
+function handle_bpwc()
+    if pet.isvalid and avatars:contains(pet.name) then
+        if pet.name == "Ifrit" then
+            send_command('@input /pet "Crimson Howl" <me>')
+        elseif pet.name == "Ramuh" then
+            send_command('@input /pet "Lightning Armor" <me>')
+        elseif pet.name == "Siren" then
+            send_command('@input /pet "Wind’s Blessing" <me>')
+        elseif pet.name == "Garuda" then
+            send_command('@input /pet "Hastega II" <me>')
+        elseif pet.name == "Carbuncle" then
+            send_command('@input /pet "Shining Ruby" <me>')
+        elseif pet.name == "Cait Sith" then
+            send_command('@input /pet "Reraise II" <me>')
+        elseif pet.name == "Fenrir" then
+            send_command('@input /pet "Ecliptic Growl" <me>')
+        elseif pet.name == "Titan" then
+            send_command('@input /pet "Earthen Armor" <me>')
+        elseif pet.name == "Leviathan" then
+            send_command('@input /pet "Soothing Current" <me>')
+        elseif pet.name == "Shiva" then
+            send_command('@input /pet "Crystal Blessing" <me>')
+        elseif pet.name == "Diabolos" then
+            send_command('@input /pet "Noctoshield" <me>')
         else
             add_to_chat(122, "No Blood Pact: Rage set for this summon")
         end

@@ -108,9 +108,7 @@ function init_gear_sets()
     back=gear.RdmCMB,
 	}
 
-    sets.precast.WS['Sanguine Blade'] = set_combine( sets.precast.WS['Seraph Blade'], {head="Pixie Hairpin +1",})
-	
-	sets.precast.WS['Seraph Blade'] = {
+    sets.precast.WS['Seraph Blade'] = {
     ammo="Pemphredo Tathlum",
     head="Jhakri Coronal +2",
     body="Jhakri Robe +2",
@@ -123,6 +121,22 @@ function init_gear_sets()
     right_ear="Novio Earring",
     left_ring="Ayanmo Ring",
     right_ring="Jhakri Ring",
+    back=gear.RdmCMB,
+    }
+    
+    sets.precast.WS['Sanguine Blade'] ={
+    ammo="Pemphredo Tathlum",
+    head="Pixie Hairpin +1",
+    body="Atrophy Tabard +3",
+    hands="Jhakri Cuffs +2",
+    legs="Jhakri Slops +2",
+    feet="Jhakri Pigaches +2",
+    neck="Soil Gorget",
+    waist="Soil Belt",
+    left_ear="Malignance Earring",
+    right_ear="Snotra Earring",
+    left_ring="Petrov Ring",
+    right_ring="Pernicious Ring",
     back=gear.RdmCMB,
     }
     
