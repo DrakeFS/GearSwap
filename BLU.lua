@@ -182,7 +182,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('Normal', 'Acc')
+    state.OffenseMode:options('Normal', 'Acc', 'Subtle')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
@@ -452,6 +452,10 @@ function init_gear_sets()
     sets.midcast['Blue Magic'].Stun = set_combine(sets.midcast['Blue Magic'].MagicAccuracy, {})
 
     sets.midcast['Blue Magic']['White Wind'] = {}
+    
+    sets.midcast['Blue Magic']['Reaving Wind'] = set_combine(sets.midcast['Blue Magic'].Magical, sets.precast.FC)
+    
+    sets.midcast['Blue Magic']['Feather Tickle'] = set_combine(sets.midcast['Blue Magic'].Magical, sets.precast.FC)
 
     sets.midcast['Blue Magic'].Healing = {}
 

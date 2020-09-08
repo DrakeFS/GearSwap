@@ -52,7 +52,7 @@ function init_gear_sets()
     
     -- Precast sets to enhance JAs on use
     sets.precast.JA['Hundred Fists'] = {}
-    sets.precast.JA['Boost'] = {}
+    sets.precast.JA['Boost'] = {waist="Ask Sash"}
     sets.precast.JA['Dodge'] = {}
     sets.precast.JA['Focus'] = {}
     sets.precast.JA['Counterstance'] = {}
@@ -143,10 +143,10 @@ function init_gear_sets()
     sets.engaged = {
 	ammo="Ginsen",
     head="Mummu Bonnet +2",
-    body="Mummu Jacket",
+    body="Mummu Jacket +2",
     hands="Mummu Wrists +2",
-    legs="Mummu Kecks +1",
-    feet="Mummu Gamash. +1",
+    legs="Mummu Kecks +2",
+    feet="Mummu Gamash. +2",
     neck="Sanctity Necklace",
     waist="Famine Sash",
     left_ear="Steelflash Earring",
@@ -253,7 +253,7 @@ function job_buff_change(buff, gain)
     end
 
     -- Update gear if any of the above changed
-    if buff == "Hundred Fists" or buff == "Impetus" or buff == "Footwork" then
+    if buff == "Hundred Fists" or buff == "Impetus" or buff == "Footwork" or buff == "Boost" then
         handle_equipping_gear(player.status)
     end
 end
@@ -263,12 +263,18 @@ end
 -- User code that supplements standard library decisions.
 -------------------------------------------------------------------------------------------------------------------
 
-function customize_idle_set(idleSet)
-    if player.hpp < 75 then
-        idleSet = set_combine(idleSet, sets.ExtraRegen)
+function customize_idle_set (idleSet)
+    if buffactive['Boost'] then
+        idleSet = set_combine(idleSet, {waist="Ask Sash"})
     end
-    
     return idleSet
+end
+
+function customize_melee_set(meleeSet)
+    if buffactive['Boost'] then
+        meleeSet = set_combine(meleeSet, {waist="Ask Sash"})
+    end
+    return meleeSet
 end
 
 -- Called by the 'update' self-command.
@@ -277,10 +283,25 @@ function job_update(cmdParams, eventArgs)
     update_melee_groups()
 end
 
-
 -------------------------------------------------------------------------------------------------------------------
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'ws' then
+        handle_WS()
+        eventArgs.handled = true
+    end
+end
+
+function handle_WS()
+    if buffactive.footwork then
+        send_command('@input /ws "Tornado Kick" <t>')
+    elseif player.tp < 2000 then
+        send_command('@input /ws "Asuran Fists" <t>')
+    else 
+        send_command('@input /ws "Raging Fists" <t>')
+    end
+end 
 
 function update_combat_form()
     if buffactive.footwork and not buffactive['hundred fists'] then
