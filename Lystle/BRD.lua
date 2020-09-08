@@ -66,7 +66,7 @@ end
 function job_setup()
     state.SongMode = M{['description']='Song Mode', 'None', 'Placeholder'}
     state.Buff['Pianissimo'] = buffactive['pianissimo'] or false
-	lockstyleset()
+    lockstyleset()
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -125,26 +125,26 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-	ammo="Impatiens",
+    ammo="Impatiens",
     head="Nahtirah Hat",
     body="Inyanga Jubbah +2",
     legs="Aya. Cosciales +1",
     left_ring="Lebeche Ring",
-	waist="Embla Sash",
-	back = gear.BrdCFC,
-	}
+    waist="Embla Sash",
+    back = gear.BrdCFC,
+    }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {})
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC, {legs = "Doyen Pants",})
 
     sets.precast.FC.BardSong = {
-	range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
-	head="Nahtirah Hat",
-	head="Fili Calot +1",
-	legs = "Doyen Pants",
-	waist="Embla Sash",
-	back = gear.BrdCFC,}
+    range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
+    head="Nahtirah Hat",
+    head="Fili Calot +1",
+    legs = "Doyen Pants",
+    waist="Embla Sash",
+    back = gear.BrdCFC,}
 
     --sets.precast.FC.SongPlaceholder = set_combine(sets.precast.FC.BardSong, {range=info.ExtraSongInstrument})
 
@@ -202,12 +202,12 @@ function init_gear_sets()
 
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong = {
-	range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
-	body="Fili Hongreline",
-	legs="Inyanga Shalwar +2",
+    range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
+    body="Fili Hongreline",
+    legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +1",
     neck="Moonbow Whistle",
-	}
+    }
 
     -- Gear to enhance certain classes of songs.
     --sets.midcast.Ballad = {legs="Fili Rhingrave +1"}
@@ -227,15 +227,15 @@ function init_gear_sets()
     --sets.midcast['Magic Finale'] = {legs="Fili Rhingrave +1"}
     sets.midcast["Sentinel's Scherzo"] = {feet="Fili Cothurnes +1"}
 
-	--3rd/4th song sets
-	
-	sets.midcast['Army\'s Paeon'] = {range="Terpander",}
-	sets.midcast['Knight\'s Minne'] = {range="Terpander",}
-	--sets.midcast['Valor Minuet IV'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-	--sets.midcast['Mage\'s Ballad III'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-	--sets.midcast['Adventurer\'s Dirge'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-	--sets.midcast['Advancing March'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-	
+    --3rd/4th song sets
+    
+    sets.midcast['Army\'s Paeon'] = {range="Terpander",}
+    sets.midcast['Knight\'s Minne'] = {range="Terpander",}
+    --sets.midcast['Valor Minuet IV'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+    --sets.midcast['Mage\'s Ballad III'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+    --sets.midcast['Adventurer\'s Dirge'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+    --sets.midcast['Advancing March'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+    
     -- For song defbuffs (duration primary, accuracy secondary)
     sets.midcast.SongEnfeeble = {}
 
@@ -252,7 +252,7 @@ function init_gear_sets()
     hands="Inyanga Dastanas +1",
     legs="Chironic Hose",
     left_ring="Lebeche Ring",
-	}
+    }
 
     sets.midcast.Curaga = sets.midcast.Cure
 
@@ -296,7 +296,7 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.idle = {
-	head="Aya. Zucchetto +1",
+    head="Aya. Zucchetto +1",
     body="Annoint. Kalasiris",
     hands="Aya. Manopolas +1",
     legs="Aya. Cosciales +1",
@@ -305,15 +305,15 @@ function init_gear_sets()
     left_ring="Ayanmo Ring",
     right_ring="Inyanga Ring",
     waist="Fucho-no-obi",
-	back="Solemnity Cape",
-	}
+    back="Solemnity Cape",
+    }
 
     sets.idle.DT = {}
 
     sets.idle.MEva = {}
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
-	
+    
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Defense Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -336,7 +336,7 @@ function init_gear_sets()
     -- EG: sets.engaged.Dagger.Accuracy.Evasion
 
     sets.engaged = {
-	head="Aya. Zucchetto +1",
+    head="Aya. Zucchetto +1",
     body="Ayanmo Corazza +1",
     hands="Aya. Manopolas +1",
     legs="Aya. Cosciales +1",
@@ -347,7 +347,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Begrudging Ring",
     right_ring="Ayanmo Ring",
-	}
+    }
 
     sets.engaged.Acc = set_combine(sets.engaged, {})
 
@@ -356,7 +356,7 @@ function init_gear_sets()
 
     -- No Magic Haste (74% DW to cap)
     sets.engaged.DW = set_combine(sets.engaged, {})
-	--[[sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {})
+    --[[sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {})
 
     -- 15% Magic Haste (67% DW to cap)
     sets.engaged.DW.LowHaste = sets.engaged.DW
@@ -817,5 +817,5 @@ function select_default_macro_book()
 end
 
 function lockstyleset()
-	send_command('wait 5;input /lockstyleset 3')
+    send_command('wait 5;input /lockstyleset 3')
 end

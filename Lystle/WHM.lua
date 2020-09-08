@@ -27,7 +27,7 @@ function user_setup()
     state.IdleMode:options('Normal', 'PDT')
 
     select_default_macro_book()
-	lockstyleset()
+    lockstyleset()
 end
 
 -- Define sets and vars used by this job file.
@@ -40,14 +40,14 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-	ammo="Impatiens",
+    ammo="Impatiens",
     body="Inyanga Jubbah +2",
     neck={ name="Cleric's Torque", augments={'Path: A',}},
     hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
     waist="Embla Sash",
-	left_ring="Lebeche Ring",
+    left_ring="Lebeche Ring",
     back=gear.WhmCFC,
-	}
+    }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC,{})
 
@@ -104,7 +104,7 @@ function init_gear_sets()
     right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
     left_ring="Lebeche Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.midcast.Curaga = {}
 
@@ -148,9 +148,9 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-	main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
+    main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
     sub="Sors Shield",
-	head="Aya. Zucchetto +1",
+    head="Aya. Zucchetto +1",
     body="Annoint. Kalasiris",
     hands="Aya. Manopolas +1",
     legs="Aya. Cosciales +1",
@@ -162,10 +162,10 @@ function init_gear_sets()
     left_ring="Inyanga Ring",
     right_ring="Ayanmo Ring",
     back=gear.WhmCFC,
-	}
+    }
 
     sets.idle.PDT = {
-	head="Aya. Zucchetto +1",
+    head="Aya. Zucchetto +1",
     body="Ayanmo Corazza +1",
     hands="Aya. Manopolas +1",
     legs="Aya. Cosciales +1",
@@ -173,16 +173,16 @@ function init_gear_sets()
     left_ring="Inyanga Ring",
     right_ring="Ayanmo Ring",
     back=gear.WhmCFC
-	}
+    }
 
-	sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
+    sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
     
     sets.idle.Weak = {}
     
     -- Defense sets
 
     sets.defense.PDT = {
-	head="Aya. Zucchetto +1",
+    head="Aya. Zucchetto +1",
     body="Ayanmo Corazza +1",
     hands="Aya. Manopolas +1",
     legs="Aya. Cosciales +1",
@@ -190,7 +190,7 @@ function init_gear_sets()
     left_ring="Inyanga Ring",
     right_ring="Ayanmo Ring",
     back=gear.WhmCFC
-	}
+    }
 
     sets.defense.MDT = {}
 
@@ -207,9 +207,9 @@ function init_gear_sets()
     
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
-	head="Aya. Zucchetto +1",
+    head="Aya. Zucchetto +1",
     hands="Aya. Manopolas +1",
-	body="Ayanmo Corazza +1",
+    body="Ayanmo Corazza +1",
     legs="Aya. Cosciales +1",
     feet="Aya. Gambieras +1",
     neck="Sanctity Necklace",
@@ -218,12 +218,12 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Begrudging Ring",
     right_ring="Ayanmo Ring",
-	}
+    }
 
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
     sets.buff['Divine Caress'] = {}
-	sets.Sublimation = {waist = "Embla Sash",}
+    sets.Sublimation = {waist = "Embla Sash",}
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -247,9 +247,9 @@ end]]
 
 -- Forces an update on 
 function job_buff_change(buff, gain)
-	if buff == "Sublimation: Activated" then
-		send_command('gs c update')
-	end
+    if buff == "Sublimation: Activated" then
+        send_command('gs c update')
+    end
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
@@ -301,10 +301,10 @@ function customize_idle_set(idleSet)
     if player.mpp < 51 then
         idleSet = set_combine(idleSet, sets.latent_refresh)
     end
-	if buffactive['Sublimation: Activated'] then
-		idleSet = set_combine(idleSet, sets.Sublimation)
-	end
-	
+    if buffactive['Sublimation: Activated'] then
+        idleSet = set_combine(idleSet, sets.Sublimation)
+    end
+    
     return idleSet
 end
 
@@ -346,5 +346,5 @@ function select_default_macro_book()
 end
 
 function lockstyleset()
-	send_command('wait 5;input /lockstyleset 2')
+    send_command('wait 5;input /lockstyleset 2')
 end

@@ -49,7 +49,7 @@ function user_setup()
     state.PhysicalDefenseMode:options('Evasion', 'PDT')
 
     select_default_macro_book()
-	lockstyleset()
+    lockstyleset()
 end
 
 -- Called when this job file is unloaded (eg: job change)
@@ -64,13 +64,13 @@ function init_gear_sets()
     --------------------------------------
 
     sets.TreasureHunter = {
-	head = gear.HercHTH,
-	body = gear.HercBTH,
-	hands = {name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
-	legs = gear.HercLTH,
-	feet = "Skulk. Poulaines +1",
-	waist = "Chaac Belt",
-	}
+    head = gear.HercHTH,
+    body = gear.HercBTH,
+    hands = {name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
+    legs = gear.HercLTH,
+    feet = "Skulk. Poulaines +1",
+    waist = "Chaac Belt",
+    }
     -- sets.ExtraRegen = {head="Ocelomeh Headpiece +1"}
     sets.Kiting = {feet="Jute Boots",}
 
@@ -101,7 +101,7 @@ function init_gear_sets()
 
     sets.precast.JA['Sneak Attack'] = sets.buff['Sneak Attack']
     sets.precast.JA['Trick Attack'] = sets.buff['Trick Attack']
-	]]
+    ]]
 
     -- Waltz set (chr and vit)
     sets.precast.Waltz = {}
@@ -124,8 +124,8 @@ function init_gear_sets()
 
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-	ammo="Jukukik Feather",
-	head="Malignance Chapeau",
+    ammo="Jukukik Feather",
+    head="Malignance Chapeau",
     body="Mummu Jacket +1",
     hands="Mummu Wrists +1",
     legs=gear.SamTTP,
@@ -137,12 +137,12 @@ function init_gear_sets()
     left_ring="Rajas Ring",
     right_ring="Mummu Ring",
     back="Sacro Mantle",
-	}
+    }
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {ammo="Honed Tathlum"})
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
-	
+    
     sets.precast.WS['Exenterator'].Acc = set_combine(sets.precast.WS['Exenterator'], {})
     -- sets.precast.WS['Exenterator'].Mod = set_combine(sets.precast.WS['Exenterator'], {})
     sets.precast.WS['Exenterator'].SA = set_combine(sets.precast.WS['Exenterator'], {})
@@ -169,7 +169,7 @@ function init_gear_sets()
     left_ring="Mummu Ring",
     right_ring="Apate Ring",
     back="Sacro Mantle",
-	})
+    })
     sets.precast.WS['Evisceration'].Acc = set_combine(sets.precast.WS['Evisceration'], {})
     -- sets.precast.WS['Evisceration'].Mod = set_combine(sets.precast.WS['Evisceration'], {})
     sets.precast.WS['Evisceration'].SA = set_combine(sets.precast.WS['Evisceration'], {})
@@ -197,10 +197,10 @@ function init_gear_sets()
     sets.precast.WS['Mandalic Stab'].TA = {}
     sets.precast.WS['Mandalic Stab'].SATA = {}
     
-	sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {})
+    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {})
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
-	
-	sets.precast.WS['Savage Blade'] = {
+    
+    sets.precast.WS['Savage Blade'] = {
     ammo="Aqreqaq Bomblet",
     head="Meghanada Visor +1",
     body="Rawhide Vest",
@@ -213,7 +213,7 @@ function init_gear_sets()
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     left_ring="Rajas Ring",
     right_ring="Apate Ring",
-	}
+    }
     
     --------------------------------------
     -- Midcast sets
@@ -241,7 +241,7 @@ function init_gear_sets()
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 
     sets.idle = {
-	ammo="Ginsen",
+    ammo="Ginsen",
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands="Mummu Wrists +1",
@@ -254,14 +254,14 @@ function init_gear_sets()
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
     sets.idle.Weak = {}
-	
-	sets.idle.HP = {
-	ammo="Aqreqaq Bomblet",
+    
+    sets.idle.HP = {
+    ammo="Aqreqaq Bomblet",
     head="Malignance Chapeau",
     body="Mummu Jacket +1",
     hands="Mummu Wrists +1",
@@ -273,32 +273,32 @@ function init_gear_sets()
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Xucau Mantle",
-	}
+    }
     -- Defense sets
 
     sets.defense.Evasion = {
-	head="Malignance Chapeau",
+    head="Malignance Chapeau",
     neck="Loricate Torque +1",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.defense.PDT = {    
-	head="Malignance Chapeau",
+    head="Malignance Chapeau",
     neck="Loricate Torque +1",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.defense.MDT = {
-	head="Malignance Chapeau",
+    head="Malignance Chapeau",
     neck="Loricate Torque +1",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
 
     --------------------------------------
@@ -320,10 +320,10 @@ function init_gear_sets()
     left_ring="Rajas Ring",
     right_ring="Pernicious Ring",
     back="Sacro Mantle",
-	}
+    }
     
-	sets.engaged.Acc = set_combine(sets.engaged,{
-	ammo="C. Palug Stone",
+    sets.engaged.Acc = set_combine(sets.engaged,{
+    ammo="C. Palug Stone",
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands="Mummu Wrists +1",
@@ -336,16 +336,16 @@ function init_gear_sets()
     left_ring="Mummu Ring",
     right_ring="Beeline Ring",
     back="Canny Cape",
-	})
+    })
 
-	sets.engaged.Subtle = set_combine(sets.engaged,{
-	neck="Bathy Choker",
-	head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
-	hands=gear.HercGMB,
-	feet=gear.HercBTP,
+    sets.engaged.Subtle = set_combine(sets.engaged,{
+    neck="Bathy Choker",
+    head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
+    hands=gear.HercGMB,
+    feet=gear.HercBTP,
     left_ring="Beeline Ring",
     right_ring="Rajas Ring",
-	})
+    })
     -- Mod set for trivial mobs (Skadi+1)
     -- sets.engaged.Mod = {}
 
@@ -353,26 +353,26 @@ function init_gear_sets()
     -- sets.engaged.Mod2 = {}
 
     sets.engaged.Evasion = set_combine(sets.engaged,{
-	head="Malignance Chapeau",
+    head="Malignance Chapeau",
     neck="Loricate Torque +1",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	})
+    })
     sets.engaged.Acc.Evasion = set_combine(sets.engaged,{})
 
     sets.engaged.PDT = set_combine(sets.engaged,{
-	head="Malignance Chapeau",
-	body="Malignance Tabard",
+    head="Malignance Chapeau",
+    body="Malignance Tabard",
     neck="Loricate Torque +1",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	})
+    })
     sets.engaged.Acc.PDT = set_combine(sets.engaged,{})
-	
-	sets.engaged.HP = {
-	ammo="Aqreqaq Bomblet",
+    
+    sets.engaged.HP = {
+    ammo="Aqreqaq Bomblet",
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands="Mummu Wrists +1",
@@ -385,7 +385,7 @@ function init_gear_sets()
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Xucau Mantle",
-	}
+    }
 
 end
 
@@ -592,7 +592,7 @@ function select_default_macro_book()
     end
 end
 
-	-- Set a Style Lock
+    -- Set a Style Lock
 function lockstyleset()
-	send_command('wait 5;input /lockstyleset 22')
+    send_command('wait 5;input /lockstyleset 22')
 end

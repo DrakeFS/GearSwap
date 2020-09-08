@@ -8,7 +8,7 @@
     Custom commands:
     
     gs c petweather
-		Automatically casts the storm appropriate for the current avatar, if possible.
+        Automatically casts the storm appropriate for the current avatar, if possible.
     
     gs c siphon
         Automatically run the process to: dismiss the current avatar; cast appropriate
@@ -60,7 +60,7 @@ function job_setup()
         'Ruinous Omen','Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II','Thunderspark','Somnolence','Meteorite',
         'Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV','Nether Blast','Meteor Strike','Geocrush','Grand Fall',
         'Wind Blade','Heavenly Strike','Thunderstorm','Level ? Holy','Holy Mist','Lunar Bay','Night Terror','Conflag Strike'
-	}
+    }
     
     bp_physical=S{'Punch','Rock Throw','Barracuda Dive','Claw','Axe Kick','Shock Strike','Camisado','Regal Scratch','Poison Nails',
         'Moonlit Charge','Crescent Fang','Rock Buster','Tail Whip','Double Punch','Megalith Throw','Double Slap','Eclipse Bite','Mountain Buster',
@@ -176,7 +176,7 @@ function init_gear_sets()
     -- Precast Sets
     --------------------------------------
 
-	gear.SmnCPHY = {name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Eva.+20 /Mag. Eva.+20',}}
+    gear.SmnCPHY = {name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Eva.+20 /Mag. Eva.+20',}}
     gear.SmnBPD = {name="Conveyance Cape", augments={'Summoning magic skill +2','Pet: Enmity+14','Blood Pact ab. del. II -3',}}
     
     -- Precast sets to enhance JAs
@@ -202,22 +202,22 @@ function init_gear_sets()
     right_ear="Andoaa Earring",
     left_ring="Evoker's Ring",
     back=gear.SmnBPD,
-	}
+    }
 
     sets.precast.BloodPactRage = sets.precast.BloodPactWard
 
     -- Fast cast sets for spells
     
     sets.precast.FC = {
-	main={ name="Malevolence", augments={'INT+10','Mag. Acc.+10','"Mag.Atk.Bns."+10','"Fast Cast"+5',}},
+    main={ name="Malevolence", augments={'INT+10','Mag. Acc.+10','"Mag.Atk.Bns."+10','"Fast Cast"+5',}},
     ammo="Sancus Sachet",
     head="Nahtirah Hat",
     legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
     feet=gear.MerlFFC,
-	waist="Embla Sash",
+    waist="Embla Sash",
     left_ear="Malignance Earring",
     left_ring="Kishar Ring",
-	}
+    }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {})
 
@@ -233,7 +233,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Apate Ring",
     right_ring="Beeline Ring",
-	}
+    }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Myrkr'] = {}
@@ -263,7 +263,7 @@ function init_gear_sets()
     sets.midcast.Pet.DebuffBloodPactWard.Acc = set_combine(sets.midcast.Pet.DebuffBloodPactWard, {})
 
     sets.midcast.Pet.PhysicalBP = {
-	main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
+    main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
     sub="Elan Strap",
     ammo="Sancus Sachet",
     head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
@@ -278,7 +278,7 @@ function init_gear_sets()
     left_ring="Varar Ring",
     right_ring="Varar Ring",
     back=gear.SmnCPHY,
-	}
+    }
 
     sets.midcast.Pet.PhysicalBP.Acc = sets.midcast.Pet.PhysicalBP
 
@@ -303,7 +303,7 @@ function init_gear_sets()
     sets.midcast.Pet.HybridBP.Acc = sets.midcast.Pet.HybridBP
     
     sets.midcast.Pet.MagicalBP = {
-	main={name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
+    main={name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
     sub="Elan Strap",
     ammo="Sancus Sachet",
     head="Con. Horn +1",
@@ -317,8 +317,8 @@ function init_gear_sets()
     right_ear="Lugalbanda Earring",
     left_ring="Varar Ring",
     right_ring="Varar Ring",
-	back=gear.SmnCPHY,
-	}
+    back=gear.SmnCPHY,
+    }
 
     sets.midcast.Pet.MagicalBP.Acc = sets.midcast.Pet.MagicalBP
 
@@ -364,8 +364,8 @@ function init_gear_sets()
     -- Can make due without either the head or the body, and use +refresh items in those slots.
     
     sets.idle.Avatar = {
-	main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
-	ammo="Sancus Sachet",
+    main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
+    ammo="Sancus Sachet",
     head="Con. Horn +1",
     body="Con. Doublet +2",
     hands="Lamassu Mitts",
@@ -378,14 +378,14 @@ function init_gear_sets()
     left_ring="Evoker's Ring",
     right_ring="Kishar Ring",
     back=gear.SmnCPHY,
-	}
-	
+    }
+    
     sets.idle.AvatarCP = set_combine(sets.idle.Avatar, {back=gear.CPCape,})
     sets.idle.PDT.Avatar = set_combine(sets.idle.Avatar, {main="Malignance Pole",neck="Loricate Torque +1",})
 
     sets.idle.Spirit = {}
-	
-	sets.idle.SpiritCP = {back=gear.CPCape,}
+    
+    sets.idle.SpiritCP = {back=gear.CPCape,}
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
@@ -393,8 +393,8 @@ function init_gear_sets()
     sets.idle.Avatar.Favor = set_combine(sets.idle.Avatar, {})
     
     sets.idle.Avatar.Melee = {
-	main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
-	ammo="Sancus Sachet",
+    main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
+    ammo="Sancus Sachet",
     head="Con. Horn +1",
     body="Con. Doublet +2",
     hands="Lamassu Mitts",
@@ -407,10 +407,10 @@ function init_gear_sets()
     left_ring="Evoker's Ring",
     right_ring="Kishar Ring",
     back=gear.SmnCPHY,
-	}
-	
-	sets.idle.Avatar.MeleeCP = set_combine(sets.idle.Avatar.Melee, {back=gear.CPCape,})
-	
+    }
+    
+    sets.idle.Avatar.MeleeCP = set_combine(sets.idle.Avatar.Melee, {back=gear.CPCape,})
+    
     sets.perp = {}
     -- Caller's Bracer's halve the perp cost after other costs are accounted for.
     -- Using -10 (Gridavor, ring, Conv.feet), standard avatars would then cost 5, halved to 2.
@@ -442,7 +442,7 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-	ammo="Sancus Sachet",
+    ammo="Sancus Sachet",
     head="Con. Horn +1",
     body="Con. Doublet +2",
     hands="Lamassu Mitts",
@@ -455,7 +455,7 @@ function init_gear_sets()
     left_ring="Evoker's Ring",
     right_ring="Kishar Ring",
     back=gear.SmnCPHY,
-	}
+    }
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -518,7 +518,7 @@ function job_pet_change(petparam, gain)
     if gain then
         if avatars:contains(pet.name) then
             classes.CustomIdleGroups:append('Avatar')
-		elseif spirits:contains(pet.name) then
+        elseif spirits:contains(pet.name) then
             classes.CustomIdleGroups:append('Spirit')
         end
     else
@@ -571,8 +571,8 @@ function customize_idle_set(idleSet)
         end
         if pet.status == 'Engaged' and state.CapacityMode.value then
             idleSet = set_combine(idleSet, sets.idle.Avatar.MeleeCP)
-		elseif pet.status == 'Engaged' then
-			idleSet = set_combine(idleSet, sets.idle.Avatar.Melee)
+        elseif pet.status == 'Engaged' then
+            idleSet = set_combine(idleSet, sets.idle.Avatar.Melee)
         end
     end
     

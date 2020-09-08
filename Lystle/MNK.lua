@@ -8,7 +8,7 @@ function get_sets()
     
     -- Load and initialize the include file.
     include('Mote-Include.lua')
-	include('organizer-lib')
+    include('organizer-lib')
 end
 
 
@@ -99,7 +99,7 @@ function init_gear_sets()
     sets.precast.WS['Spinning Attack'] = set_combine(sets.precast.WS, {})
     
     sets.precast.WS['Cataclysm'] = {}
-	
+    
     -- Midcast Sets
     sets.midcast.FastRecast = {}
 
@@ -114,8 +114,8 @@ function init_gear_sets()
 
     -- Idle sets
     sets.idle = {
-	neck="Sanctity Necklace",
-	}
+    neck="Sanctity Necklace",
+    }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
     
@@ -141,7 +141,7 @@ function init_gear_sets()
     
     -- Normal melee sets
     sets.engaged = {
-	ammo="Ginsen",
+    ammo="Ginsen",
     head="Mummu Bonnet +2",
     body="Mummu Jacket +2",
     hands="Mummu Wrists +2",
@@ -154,7 +154,7 @@ function init_gear_sets()
     left_ring="Mummu Ring",
     right_ring="Begrudging Ring",
     back="Atheling Mantle",
-	}
+    }
     
     -- Defensive melee hybrid sets
     sets.engaged.PDT = {}
@@ -164,17 +164,17 @@ function init_gear_sets()
     -- Hundred Fists/Impetus melee set mods
     --[[sets.engaged.HF = set_combine(sets.engaged)
     sets.engaged.HF.Impetus = set_combine(sets.engaged, {body="Bhikku Cyclas +1"})
-	sets.engaged.Impetus = set_combine(sets.engaged, {body="Bhikku Cyclas +1"})
+    sets.engaged.Impetus = set_combine(sets.engaged, {body="Bhikku Cyclas +1"})
     sets.engaged.Acc.HF = set_combine(sets.engaged.Acc)
     sets.engaged.Acc.HF.Impetus = set_combine(sets.engaged.Acc, {body="Bhikku Cyclas +1"})
-	sets.engaged.Acc.Impetus = set_combine(sets.engaged.Acc, {body="Bhikku Cyclas +1"})
+    sets.engaged.Acc.Impetus = set_combine(sets.engaged.Acc, {body="Bhikku Cyclas +1"})
     sets.engaged.Counter.HF = set_combine(sets.engaged.Counter)
     sets.engaged.Counter.HF.Impetus = set_combine(sets.engaged.Counter, {body="Bhikku Cyclas +1"})
-	sets.engaged.Counter.Impetus = set_combine(sets.engaged.Counter, {body="Bhikku Cyclas +1"})
+    sets.engaged.Counter.Impetus = set_combine(sets.engaged.Counter, {body="Bhikku Cyclas +1"})
     sets.engaged.Acc.Counter.HF = set_combine(sets.engaged.Acc.Counter)
     sets.engaged.Acc.Counter.HF.Impetus = set_combine(sets.engaged.Acc.Counter, {body="Bhikku Cyclas +1"})
-	sets.engaged.Acc.Counter.Impetus = set_combine(sets.engaged.Acc.Counter, {body="Bhikku Cyclas +1"})
-	]]
+    sets.engaged.Acc.Counter.Impetus = set_combine(sets.engaged.Acc.Counter, {body="Bhikku Cyclas +1"})
+    ]]
 
     -- Footwork combat form
     sets.engaged.Footwork = {}

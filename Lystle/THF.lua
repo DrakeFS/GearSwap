@@ -52,9 +52,9 @@ function user_setup()
     -- send_command('bind ^` input /ja "Flee" <me>')
     send_command('bind ^= gs c cycle treasuremode')
     send_command('bind !- gs c cycle targetmode')
-	state.TreasureMode:set('Fulltime')
+    state.TreasureMode:set('Fulltime')
     select_default_macro_book()
-	lockstyleset()
+    lockstyleset()
 end
 
 -- Called when this job file is unloaded (eg: job change)
@@ -70,13 +70,13 @@ function init_gear_sets()
     --------------------------------------
 
     sets.TreasureHunter = {
-	head=gear.HercHeTH,
-	hands={ name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
-	legs=gear.HercLTH,
-	feet="Skulk. Poulaines +1",
-	waist="Chaac Belt",
-	left_ring="Gorney Ring",
-	}
+    head=gear.HercHeTH,
+    hands={ name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
+    legs=gear.HercLTH,
+    feet="Skulk. Poulaines +1",
+    waist="Chaac Belt",
+    left_ring="Gorney Ring",
+    }
     -- sets.ExtraRegen = {head="Ocelomeh Headpiece +1"}
     sets.Kiting = {feet="Jute Boots +1",}
 
@@ -107,7 +107,7 @@ function init_gear_sets()
 
     sets.precast.JA['Sneak Attack'] = sets.buff['Sneak Attack']
     sets.precast.JA['Trick Attack'] = sets.buff['Trick Attack']
-	]]
+    ]]
 
     -- Waltz set (chr and vit)
     sets.precast.Waltz = {}
@@ -143,12 +143,12 @@ function init_gear_sets()
     left_ring="Mummu Ring",
     right_ring="Begrudging Ring",
     back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-	}
+    }
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
-	
+    
     sets.precast.WS['Exenterator'].Acc = set_combine(sets.precast.WS['Exenterator'], {})
     -- sets.precast.WS['Exenterator'].Mod = set_combine(sets.precast.WS['Exenterator'], {})
     sets.precast.WS['Exenterator'].SA = set_combine(sets.precast.WS['Exenterator'], {})
@@ -163,8 +163,8 @@ function init_gear_sets()
     sets.precast.WS['Dancing Edge'].SATA = set_combine(sets.precast.WS['Dancing Edge'], {})
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
-	waist="Shadow Belt",
-	})
+    waist="Shadow Belt",
+    })
     sets.precast.WS['Evisceration'].Acc = set_combine(sets.precast.WS['Evisceration'], {})
     -- sets.precast.WS['Evisceration'].Mod = set_combine(sets.precast.WS['Evisceration'], {})
     sets.precast.WS['Evisceration'].SA = set_combine(sets.precast.WS['Evisceration'], {})
@@ -172,8 +172,8 @@ function init_gear_sets()
     sets.precast.WS['Evisceration'].SATA = set_combine(sets.precast.WS['Evisceration'], {})
 
     sets.precast.WS["Rudra's Storm"] = set_combine(sets.precast.WS, {
-	waist="Shadow Belt",
-	})
+    waist="Shadow Belt",
+    })
     sets.precast.WS["Rudra's Storm"].Acc = set_combine(sets.precast.WS["Rudra's Storm"], {})
     -- sets.precast.WS["Rudra's Storm"].Mod = set_combine(sets.precast.WS["Rudra's Storm"], {})
     sets.precast.WS["Rudra's Storm"].SA = set_combine(sets.precast.WS["Rudra's Storm"], {})
@@ -194,7 +194,7 @@ function init_gear_sets()
     sets.precast.WS['Mandalic Stab'].TA = {}
     sets.precast.WS['Mandalic Stab'].SATA = {}
     
-	sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {})
+    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {})
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
 
 
@@ -226,7 +226,7 @@ function init_gear_sets()
     sets.idle = {
     feet="Jute Boots +1",
     neck="Sanctity Necklace",    
-	}
+    }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
@@ -236,14 +236,14 @@ function init_gear_sets()
     -- Defense sets
 
     sets.defense.Evasion = {
-	head="Meghanada Visor +1",
+    head="Meghanada Visor +1",
     body="Meghanada Cuirie +2",
     hands="Meg. Gloves +2",
     legs="Meg. Chausses +1",
     feet="Meg. Jam. +1",
     right_ring="Meghanada Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.defense.PDT = set_combine(sets.defense.Evasion, {})
 
@@ -269,11 +269,11 @@ function init_gear_sets()
     left_ring="Mummu Ring",
     right_ring="Begrudging Ring",
     back = gear.ThfCTP,
-	}
+    }
     
-	sets.engaged.Acc = set_combine(sets.engaged,{neck="Sanctity Necklace",})
+    sets.engaged.Acc = set_combine(sets.engaged,{neck="Sanctity Necklace",})
 
-	sets.engaged.Subtle = set_combine(sets.engaged,{})
+    sets.engaged.Subtle = set_combine(sets.engaged,{})
     -- Mod set for trivial mobs (Skadi+1)
     -- sets.engaged.Mod = {}
 
@@ -491,7 +491,7 @@ function select_default_macro_book()
     end
 end
 
-	-- Set a Style Lock
+    -- Set a Style Lock
 function lockstyleset()
-	send_command('wait 5;input /lockstyleset 4')
+    send_command('wait 5;input /lockstyleset 4')
 end

@@ -7,32 +7,32 @@
 -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
-	-- Load and initialize the include file.
-	include('Mote-Include.lua')
-	include('organizer-lib')
+    -- Load and initialize the include file.
+    include('Mote-Include.lua')
+    include('organizer-lib')
 end
 
 
 -- Setup vars that are user-independent.
 function job_setup()
-	get_combat_form()
-	state.Buff = {}
+    get_combat_form()
+    state.Buff = {}
 end
 
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-	-- Options: Override default values
-	state.OffenseMode:options('Normal', 'Mid', 'Acc')
-	state.IdleMode:options('Normal')
-	state.HybridMode:options('Normal', 'PDT', 'Reraise')
-	state.WeaponskillMode:options('Normal', 'Mid', 'Acc')
-	state.PhysicalDefenseMode:options('PDT', 'Reraise')
-	state.MagicalDefenseMode:options('MDT')
+    -- Options: Override default values
+    state.OffenseMode:options('Normal', 'Mid', 'Acc')
+    state.IdleMode:options('Normal')
+    state.HybridMode:options('Normal', 'PDT', 'Reraise')
+    state.WeaponskillMode:options('Normal', 'Mid', 'Acc')
+    state.PhysicalDefenseMode:options('PDT', 'Reraise')
+    state.MagicalDefenseMode:options('MDT')
     
     war_sj = player.sub_job == 'WAR' or false
 
-	--lockstyleset()
+    --lockstyleset()
 end
 
 
@@ -44,56 +44,56 @@ end
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
-	--------------------------------------
-	-- Start defining the sets
-	--------------------------------------
+    --------------------------------------
+    -- Start defining the sets
+    --------------------------------------
     
     -- Precast Sets
-	-- Precast sets to enhance JAs
-	sets.precast.JA.Angon = {ammo = "Angon"}
+    -- Precast sets to enhance JAs
+    sets.precast.JA.Angon = {ammo = "Angon"}
     --sets.Berserker = {neck="Berserker's Torque"}
     --sets.WSDayBonus = {}
-	--sets.Organizer = {}
+    --sets.Organizer = {}
 
-	sets.precast.JA.Jump = {
-	feet="Ostro Greaves",
-	}
+    sets.precast.JA.Jump = {
+    feet="Ostro Greaves",
+    }
 
-	sets.precast.JA['Ancient Circle'] = {}
+    sets.precast.JA['Ancient Circle'] = {}
     sets.TreasureHunter = {}
 
-	sets.precast.JA['High Jump'] = set_combine(sets.precast.JA.Jump, {})
-	sets.precast.JA['Soul Jump'] = set_combine(sets.precast.JA.Jump, {})
-	sets.precast.JA['Spirit Jump'] = set_combine(sets.precast.JA.Jump, {})
-	sets.precast.JA['Super Jump'] = sets.precast.JA.Jump
+    sets.precast.JA['High Jump'] = set_combine(sets.precast.JA.Jump, {})
+    sets.precast.JA['Soul Jump'] = set_combine(sets.precast.JA.Jump, {})
+    sets.precast.JA['Spirit Jump'] = set_combine(sets.precast.JA.Jump, {})
+    sets.precast.JA['Super Jump'] = sets.precast.JA.Jump
 
-	sets.precast.JA['Spirit Link'] = {}
-	sets.precast.JA['Call Wyvern'] = {
-	body="Pteroslaver Mail",
-	}
-	sets.precast.JA['Deep Breathing'] = {}
+    sets.precast.JA['Spirit Link'] = {}
+    sets.precast.JA['Call Wyvern'] = {
+    body="Pteroslaver Mail",
+    }
+    sets.precast.JA['Deep Breathing'] = {}
     sets.precast.JA['Spirit Surge'] = {}
-	
-	-- Healing Breath sets
-	sets.HB = {}
+    
+    -- Healing Breath sets
+    sets.HB = {}
 
     sets.MadrigalBonus = {}
-	-- Waltz set (chr and vit)
-	sets.precast.Waltz = {}
-	
-	-- Don't need any special gear for Healing Waltz.
-	sets.precast.Waltz['Healing Waltz'] = {}
-
-	-- Fast cast sets for spells
-	sets.precast.FC = {}
+    -- Waltz set (chr and vit)
+    sets.precast.Waltz = {}
     
-	-- Midcast Sets
-	sets.midcast.FastRecast = {}	
-	
-	sets.midcast.Breath = set_combine(sets.midcast.FastRecast, {})
-	-- Weaponskill sets
-	-- Default set for any weaponskill that isn't any more specifically defined
-	sets.precast.WS = {
+    -- Don't need any special gear for Healing Waltz.
+    sets.precast.Waltz['Healing Waltz'] = {}
+
+    -- Fast cast sets for spells
+    sets.precast.FC = {}
+    
+    -- Midcast Sets
+    sets.midcast.FastRecast = {}    
+    
+    sets.midcast.Breath = set_combine(sets.midcast.FastRecast, {})
+    -- Weaponskill sets
+    -- Default set for any weaponskill that isn't any more specifically defined
+    sets.precast.WS = {
     ammo="Ginsen",
     head="Sulevia's Mask +1",
     body="Sulevia's Plate. +1",
@@ -107,67 +107,67 @@ function init_gear_sets()
     left_ring="Begrudging Ring",
     right_ring="Sulevia's Ring",
     back="Atheling Mantle",
-	}
-	sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
-	
-	-- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
-	sets.precast.WS['Stardiver'] = set_combine(sets.precast.WS, {
+    }
+    sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
+    
+    -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
+    sets.precast.WS['Stardiver'] = set_combine(sets.precast.WS, {
     waist="Shadow Belt",
     })
-	
-	sets.precast.WS['Stardiver'].Mid = set_combine(sets.precast.WS['Stardiver'], {})
-	
-	sets.precast.WS['Stardiver'].Acc = set_combine(sets.precast.WS.Acc, {})
+    
+    sets.precast.WS['Stardiver'].Mid = set_combine(sets.precast.WS['Stardiver'], {})
+    
+    sets.precast.WS['Stardiver'].Acc = set_combine(sets.precast.WS.Acc, {})
 
     sets.precast.WS["Camlann's Torment"] = set_combine(sets.precast.WS, {})
-	
-	sets.precast.WS["Camlann's Torment"].Mid = set_combine(sets.precast.WS["Camlann's Torment"], {})
-	
-	sets.precast.WS["Camlann's Torment"].Acc = set_combine(sets.precast.WS["Camlann's Torment"].Mid, {})
+    
+    sets.precast.WS["Camlann's Torment"].Mid = set_combine(sets.precast.WS["Camlann's Torment"], {})
+    
+    sets.precast.WS["Camlann's Torment"].Acc = set_combine(sets.precast.WS["Camlann's Torment"].Mid, {})
 
-	sets.precast.WS['Drakesbane'] = set_combine(sets.precast.WS, {})
-	
-	sets.precast.WS['Drakesbane'].Mid = set_combine(sets.precast.WS['Drakesbane'], {})
-	
-	sets.precast.WS['Drakesbane'].Acc = set_combine(sets.precast.WS['Drakesbane'].Mid, {})
+    sets.precast.WS['Drakesbane'] = set_combine(sets.precast.WS, {})
+    
+    sets.precast.WS['Drakesbane'].Mid = set_combine(sets.precast.WS['Drakesbane'], {})
+    
+    sets.precast.WS['Drakesbane'].Acc = set_combine(sets.precast.WS['Drakesbane'].Mid, {})
     
     sets.precast.WS['Impulse Drive'] = set_combine(sets.precast.WS, {
-	neck="Soil Gorget",
-	waist="Soil Belt"
-	})
-	
-	sets.precast.WS['Impulse Drive'].Mid = set_combine(sets.precast.WS['Impulse Drive'], {})
-	
-	sets.precast.WS['Impulse Drive'].Acc = set_combine(sets.precast.WS['Impulse Drive'].Mid, {})
-	
-	-- Sets to return to when not performing an action.
-	
-	-- Resting sets
-	sets.resting = {}
-	
-
-	-- Idle sets
-	sets.idle = {
-	legs="Carmine Cuisses +1",
-	neck="Sanctity Necklace",
-	}
-
-	-- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
-	sets.idle.Town = set_combine(sets.idle, {
-	body="Councilor's Garb",
-	})
-	
-	sets.idle.Field = set_combine(sets.idle, {
-	})
+    neck="Soil Gorget",
+    waist="Soil Belt"
+    })
     
-	sets.idle.Regen = set_combine(sets.idle.Field, {
+    sets.precast.WS['Impulse Drive'].Mid = set_combine(sets.precast.WS['Impulse Drive'], {})
+    
+    sets.precast.WS['Impulse Drive'].Acc = set_combine(sets.precast.WS['Impulse Drive'].Mid, {})
+    
+    -- Sets to return to when not performing an action.
+    
+    -- Resting sets
+    sets.resting = {}
+    
+
+    -- Idle sets
+    sets.idle = {
+    legs="Carmine Cuisses +1",
+    neck="Sanctity Necklace",
+    }
+
+    -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
+    sets.idle.Town = set_combine(sets.idle, {
+    body="Councilor's Garb",
+    })
+    
+    sets.idle.Field = set_combine(sets.idle, {
+    })
+    
+    sets.idle.Regen = set_combine(sets.idle.Field, {
     neck="Sanctity Necklace",
     })
 
-	sets.idle.Weak = set_combine(sets.idle.Field, {})
-	
-	-- Defense sets
-	sets.defense.PDT = {
+    sets.idle.Weak = set_combine(sets.idle.Field, {})
+    
+    -- Defense sets
+    sets.defense.PDT = {
     head="Sulevia's Mask +1",
     body="Sulevia's Plate. +1",
     hands="Sulev. Gauntlets +1",
@@ -180,25 +180,25 @@ function init_gear_sets()
     left_ring="Defending Ring",
     right_ring="Sulevia's Ring",
     back="Solemnity Cape",
-	}
+    }
 
-	sets.defense.Reraise = set_combine(sets.defense.PDT, {})
+    sets.defense.Reraise = set_combine(sets.defense.PDT, {})
 
-	sets.defense.MDT = set_combine(sets.defense.PDT, {})
+    sets.defense.MDT = set_combine(sets.defense.PDT, {})
 
-	sets.Kiting = {}
+    sets.Kiting = {}
 
-	sets.Reraise = {}
+    sets.Reraise = {}
 
-	-- Engaged sets
+    -- Engaged sets
 
-	-- Variations for TP weapon and (optional) offense/defense modes.  Code will fall back on previous
-	-- sets if more refined versions aren't defined.
-	-- If you create a set with both offense and defense modes, the offense mode should be first.
-	-- EG: sets.engaged.Dagger.Accuracy.Evasion
-	
-	-- Normal melee group
-	sets.engaged = {
+    -- Variations for TP weapon and (optional) offense/defense modes.  Code will fall back on previous
+    -- sets if more refined versions aren't defined.
+    -- If you create a set with both offense and defense modes, the offense mode should be first.
+    -- EG: sets.engaged.Dagger.Accuracy.Evasion
+    
+    -- Normal melee group
+    sets.engaged = {
     ammo="Ginsen",
     head={ name="Founder's Corona", augments={'DEX+3',}},
     body={ name="Found. Breastplate", augments={'Accuracy+5','Attack+3','"Mag.Atk.Bns."+1',}},
@@ -212,22 +212,22 @@ function init_gear_sets()
     left_ring="Begrudging Ring",
     right_ring="Sulevia's Ring",
     back="Atheling Mantle",
-	}
+    }
 
-	sets.engaged.Mid = set_combine(sets.engaged, {})
+    sets.engaged.Mid = set_combine(sets.engaged, {})
 
-	sets.engaged.Acc = set_combine(sets.engaged.Mid, {})
+    sets.engaged.Acc = set_combine(sets.engaged.Mid, {})
 
     sets.engaged.PDT = set_combine(sets.engaged, {})
-	sets.engaged.Mid.PDT = set_combine(sets.engaged.Mid, {})
-	sets.engaged.Acc.PDT = set_combine(sets.engaged.Acc, {})
+    sets.engaged.Mid.PDT = set_combine(sets.engaged.Mid, {})
+    sets.engaged.Acc.PDT = set_combine(sets.engaged.Acc, {})
 
     sets.engaged.War = set_combine(sets.engaged, {})
     sets.engaged.War.Mid = set_combine(sets.engaged.Mid, {})
 
-	sets.engaged.Reraise = set_combine(sets.engaged, {})
+    sets.engaged.Reraise = set_combine(sets.engaged, {})
 
-	sets.engaged.Acc.Reraise = sets.engaged.Reraise
+    sets.engaged.Acc.Reraise = sets.engaged.Reraise
 
 end
 
@@ -259,9 +259,9 @@ end
 -- Run after the default precast() is done.
 -- eventArgs is the same one used in job_precast, in case information needs to be persisted.
 function job_post_precast(spell, action, spellMap, eventArgs)
-	if player.hpp < 51 then
-		classes.CustomClass = "Breath" 
-	end
+    if player.hpp < 51 then
+        classes.CustomClass = "Breath" 
+    end
     if spell.type == 'WeaponSkill' then
         if state.CapacityMode.value then
             equip(sets.CapacityMantle)
@@ -277,12 +277,12 @@ end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 function job_midcast(spell, action, spellMap, eventArgs)
-	if spell.action_type == 'Magic' then
-	    equip(sets.midcast.FastRecast)
-	    if player.hpp < 51 then
-		    classes.CustomClass = "Breath" 
-	    end
-	end
+    if spell.action_type == 'Magic' then
+        equip(sets.midcast.FastRecast)
+        if player.hpp < 51 then
+            classes.CustomClass = "Breath" 
+        end
+    end
 end
 
 -- Run after the default midcast() is done.
@@ -296,22 +296,22 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 function job_pet_midcast(spell, action, spellMap, eventArgs)
     if spell.english:startswith('Healing Breath') or spell.english == 'Restoring Breath' or spell.english == 'Steady Wing' or spell.english == 'Smiting Breath' then
-		equip(sets.HB)
-	end
+        equip(sets.HB)
+    end
 end
 
 -- Run after the default pet midcast() is done.
 -- eventArgs is the same one used in job_pet_midcast, in case information needs to be persisted.
 function job_pet_post_midcast(spell, action, spellMap, eventArgs)
-	
+    
 end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 function job_aftercast(spell, action, spellMap, eventArgs)
-	if state.HybridMode.value == 'Reraise' or
+    if state.HybridMode.value == 'Reraise' or
     (state.HybridMode.value == 'Physical' and state.PhysicalDefenseMode.value == 'Reraise') then
-		equip(sets.Reraise)
-	end
+        equip(sets.Reraise)
+    end
 end
 
 -- Run after the default aftercast() is done.
@@ -354,7 +354,7 @@ function customize_idle_set(idleSet)
     if player.hpp < 90 then
         idleSet = set_combine(idleSet, sets.idle.Regen)
     end
-	return idleSet
+    return idleSet
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -390,8 +390,8 @@ function job_buff_change(buff, gain)
 end
 
 function job_update(cmdParams, eventArgs)
-	classes.CustomMeleeGroups:clear()
-	get_combat_form()
+    classes.CustomMeleeGroups:clear()
+    get_combat_form()
 end
 -------------------------------------------------------------------------------------------------------------------
 -- User code that supplements self-commands.
@@ -439,27 +439,27 @@ end
 -- This will only ever be called if TreasureMode is not 'None'.
 -- Category and Param are as specified in the action event packet.
 function th_action_check(category, param)
-	if category == 2 or -- any ranged attack
-		--category == 4 or -- any magic action
-		(category == 3 and param == 30) or -- Aeolian Edge
-		(category == 6 and info.default_ja_ids:contains(param)) or -- Provoke, Animated Flourish
-		(category == 14 and info.default_u_ja_ids:contains(param)) -- Quick/Box/Stutter Step, Desperate/Violent Flourish
-		then return true
-	end
+    if category == 2 or -- any ranged attack
+        --category == 4 or -- any magic action
+        (category == 3 and param == 30) or -- Aeolian Edge
+        (category == 6 and info.default_ja_ids:contains(param)) or -- Provoke, Animated Flourish
+        (category == 14 and info.default_u_ja_ids:contains(param)) -- Quick/Box/Stutter Step, Desperate/Violent Flourish
+        then return true
+    end
 end
 -- Select default macro book on initial load or subjob change.
 --[[function select_default_macro_book()
     -- Default macro set/book
     if player.sub_job == 'WAR' then
-    	set_macro_page(1, 14)
+        set_macro_page(1, 14)
     elseif player.sub_job == 'WHM' then
-    	set_macro_page(1, 14)
+        set_macro_page(1, 14)
     else
-    	set_macro_page(1, 14)
+        set_macro_page(1, 14)
     end
 end]]
 
 -- Set a Style Lock
 function lockstyleset()
-	send_command('wait 5;input /lockstyleset 41')
+    send_command('wait 5;input /lockstyleset 41')
 end

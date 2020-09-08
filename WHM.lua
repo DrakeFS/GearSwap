@@ -39,12 +39,12 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-	main="Daybreak",
+    main="Daybreak",
     sub="Sors Shield",
     ammo="Impatiens",
     head="Theo. Cap +1",
     body="Ebers Bliaud",
-	hands="Gende. Gages +1",
+    hands="Gende. Gages +1",
     legs="Ebers Pantaloons",
     feet="Theo. Duckbills +1",
     neck={ name="Cleric's Torque", augments={'Path: A',}},
@@ -54,7 +54,7 @@ function init_gear_sets()
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC,{})
 
@@ -80,7 +80,7 @@ function init_gear_sets()
 
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-	--main="Daybreak",
+    --main="Daybreak",
     --sub="Sors Shield",
     ammo="Impatiens",
     head="Theo. Cap +1",
@@ -95,7 +95,7 @@ function init_gear_sets()
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.precast.WS['Flash Nova'] = {}
 
@@ -105,7 +105,7 @@ function init_gear_sets()
     
     -- Cure sets
     sets.midcast.CureSolace = {
-	main="Daybreak",
+    main="Daybreak",
     sub="Sors Shield",
     ammo="Impatiens",
     head="Theo. Cap +1",
@@ -119,10 +119,10 @@ function init_gear_sets()
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.midcast.Cure = {
-	main="Daybreak",
+    main="Daybreak",
     sub="Sors Shield",
     ammo="Impatiens",
     head="Theo. Cap +1",
@@ -136,7 +136,7 @@ function init_gear_sets()
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.midcast.Curaga = set_combine(sets.midcast.CureSolace, {})
 
@@ -180,7 +180,7 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-	main="Daybreak",
+    main="Daybreak",
     sub="Sors Shield",
     ammo="Impatiens",
     head="Aya. Zucchetto +2",
@@ -195,7 +195,7 @@ function init_gear_sets()
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
-	}
+    }
 
     sets.idle.PDT = {}
 
@@ -222,7 +222,7 @@ function init_gear_sets()
     
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
-	head="Aya. Zucchetto +2",
+    head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
     hands="Aya. Manopolas +2",
     legs="Aya. Cosciales +1",
@@ -234,7 +234,7 @@ function init_gear_sets()
     left_ring="Apate Ring",
     right_ring="Pernicious Ring",
     back="Solemnity Cape",
-	}
+    }
 
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.

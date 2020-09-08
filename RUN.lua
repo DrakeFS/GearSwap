@@ -277,7 +277,7 @@ function init_gear_sets()
 
     sets.precast.WS['Upheaval'] = sets.precast.WS['Resolution']
     sets.precast.WS['Full Break'] = sets.precast.WS['Shockwave']
-	sets.precast.WS['Savage Blade'] = {
+    sets.precast.WS['Savage Blade'] = {
     ammo="Aqreqaq Bomblet",
     head={ name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}},
     body="Ayanmo Corazza +2",
@@ -291,7 +291,7 @@ function init_gear_sets()
     left_ring="Petrov Ring",
     right_ring="Apate Ring",
     back="Xucau Mantle",
-	}
+    }
 
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Midcast Sets ------------------------------------------
@@ -350,7 +350,7 @@ function init_gear_sets()
     sets.defense.Knockback = {}
 
     sets.defense.PDT = {
-	head="Aya. Zucchetto +2",
+    head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
     hands="Aya. Manopolas +2",
     legs="Aya. Cosciales +2",
@@ -359,7 +359,7 @@ function init_gear_sets()
     waist="Flume Belt",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
-	}
+    }
 
     sets.defense.MDT = {}
 
@@ -372,7 +372,7 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.engaged = {
-	ammo="Ginsen",
+    ammo="Ginsen",
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
     hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -384,10 +384,10 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Pernicious Ring",
     right_ring="Petrov Ring",
-	}
-	
-	sets.engaged.DW = {
-	ammo="Ginsen",
+    }
+    
+    sets.engaged.DW = {
+    ammo="Ginsen",
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
     hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -399,7 +399,7 @@ function init_gear_sets()
     right_ear="Eabani Earring",
     left_ring="Pernicious Ring",
     right_ring="Petrov Ring",
-	}
+    }
 
     sets.engaged.LowAcc = set_combine(sets.engaged, {})
 
@@ -425,7 +425,7 @@ function init_gear_sets()
     neck="Loricate Torque +1",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
-	}
+    }
 
     sets.engaged.DT = set_combine(sets.engaged, sets.Hybrid)
     sets.engaged.LowAcc.DT = set_combine(sets.engaged.LowAcc, sets.Hybrid)
@@ -464,12 +464,12 @@ function job_precast(spell, action, spellMap, eventArgs)
             equip(sets.precast.FC.HP)
         elseif spell.action_type == 'Ability' then
             equip(sets.Enmity.HP)
-			equip(sets.precast.JA[currentSpell])
+            equip(sets.precast.JA[currentSpell])
         end
-	else
+    else
         if spell.action_type == 'Ability' then
             equip(sets.Enmity)
-			equip(sets.precast.JA[spell])
+            equip(sets.precast.JA[spell])
         end
     end
     if spell.english == 'Lunge' then
@@ -532,7 +532,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             if spellMap == 'Refresh' then
                 equip(sets.midcast.Refresh)
             end
-		end
+        end
         if spell.english == 'Phalanx' and buffactive['Embolden'] then
             equip(sets.midcast.EnhancingDuration)
         end
@@ -619,7 +619,7 @@ function job_state_change(stateField, newValue, oldValue)
     end
 
     equip(sets[state.WeaponSet.current])
-	update_combat_form()
+    update_combat_form()
 
 end
 
@@ -639,7 +639,7 @@ function customize_idle_set(idleSet)
     if state.Knockback.value == true then
         idleSet = set_combine(idleSet, sets.defense.Knockback)
     end
-	update_combat_form()
+    update_combat_form()
     return idleSet
 end
 
