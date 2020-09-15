@@ -347,6 +347,7 @@ function init_gear_sets()
     right_ear="Bladeborn Earring",
     left_ring="Begrudging Ring",
     right_ring="Ayanmo Ring",
+    back="Atheling Mantle",
     }
 
     sets.engaged.Acc = set_combine(sets.engaged, {})

@@ -335,7 +335,7 @@ function init_gear_sets()
     waist="Light Belt",
     left_ear="Cessance Earring",
     right_ear="Odr Earring",
-    left_ring="Petrov Ring",
+    left_ring="Ilabrat ring",
     right_ring="Begrudging Ring",
     back=gear.BluCDEX,
     }
@@ -696,7 +696,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
     end
     
     if state.TreasureMode.value == 'Tag' then
-        if spell.english == 'Entomb' or spell.english == 'Whirl of Rage' then
+        if spell.english == 'Entomb' or spell.english == 'Whirl of Rage' or spell.english == 'Embalming Earth' then
             equip(sets.TreasureHunter)
         end
     end

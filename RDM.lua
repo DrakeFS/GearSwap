@@ -22,7 +22,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('None')
+    state.OffenseMode:options('None', 'Enspell')
     state.HybridMode:options('Normal')
     state.CastingMode:options('Normal', 'ConserveMP')
     state.IdleMode:options('Normal', 'Leveling')
@@ -71,7 +71,7 @@ function init_gear_sets()
     left_ring="Kishar Ring",
     }
 
-    sets.precast.FC.Impact = set_combine(sets.precast.FC, {})
+    sets.precast.FC['Impact'] = set_combine(sets.precast.FC, {head="empty", body="Twilight Cloak"})
 
     -- Weaponskill sets
     
@@ -467,6 +467,22 @@ function init_gear_sets()
     right_ring="Petrov Ring",
     back=gear.RdmCTP,
     }
+
+    sets.engaged.DW.Enspell = {
+        ammo="Regal Gem",
+        head={ name="Vitiation Chapeau +2", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+        body="Atrophy Tabard +3",
+        hands="Leth. Gantherots +1",
+        legs="Jhakri Slops +2",
+        feet={ name="Vitiation Boots +1", augments={'Immunobreak Chance',}},
+        neck={ name="Duelist's Torque", augments={'Path: A',}},
+        waist={ name="Acuity Belt +1", augments={'Path: A',}},
+        left_ear="Malignance Earring",
+        right_ear="Hermetic Earring",
+        left_ring="Kishar Ring",
+        right_ring="Jhakri Ring",
+        back = gear.RdmCMB,
+    }
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -556,7 +572,7 @@ end
 
 function update_combat_form()
     -- Check for H2H or single-wielding
-    if player.equipment.sub == "Genmei Shield" or "Ammurapi Shield" or player.equipment.sub == 'empty' then
+    if player.equipment.sub == "Genmei Shield" or player.equipment.sub == "Ammurapi Shield" or player.equipment.sub == 'empty' then
         state.CombatForm:reset()
     else
         state.CombatForm:set('DW')
