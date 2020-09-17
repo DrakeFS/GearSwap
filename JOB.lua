@@ -18,11 +18,15 @@ end
 function init_gear_sets()
 sets.precast.FC = {}  -- Fast Cast Set
 
+-- sets.precast.RA = {}  -- Ranged delay reduction.  Ignore if uneeded, remove the first "--" to activate.
+
 sets.precast.WS = {}  -- General Weapon Skill Set
 
 -- sets.precast.WS['WS_Name'] = set_combine(sets.precast.WS, {gear goes here}) -- Specific Weapon Skill Set.  Ignore if uneeded, remove the first "--" to activate.
 
 sets.midcast = {} -- Casting Set
+
+-- sets.midcast.RA = {} -- Ranged TP Set.  Ignore if uneeded, remove the first "--" to activate.
 
 -- sets.midcast['Spell Name or Magic Type'] = set_combine(sets.midcast,{gear goes here}) -- Specific casting set for a spell or magic type (ie. Enhancing Magic).  Ignore if uneeded, remove the first "--" to activate.
 
