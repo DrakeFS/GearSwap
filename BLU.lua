@@ -22,6 +22,9 @@ function job_setup()
     state.Buff.Efflux = buffactive.Efflux or false
     state.Buff['Unbridled Learning'] = buffactive['Unbridled Learning'] or false
 
+    state.delayMod = M{'none', 'Samba'}
+    state.delayMod:set('none')
+
     determine_haste_group()
 
     blue_magic_maps = {}
@@ -186,16 +189,17 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
-
+    
     update_combat_form()
     lockstyleset()
     --select_default_macro_book()
+    send_command('bind @= gs c cycle delayMod')
 end
 
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-
+    send_command('unbind @= gs c cycle delayMod')
     
 end
 
@@ -767,7 +771,11 @@ end
 
 -- Set a Haste Group
 function determine_haste_group()
- 
+    if buffactive['Haste Samba'] or state.delayMod.Value ~= 'none' then
+        hasteSamba = 'Samba'
+    else
+        hasteSamba = false
+    end
     -- Low haste DW required: 
     -- DW6: 19%
     -- DW5: 21%
@@ -794,13 +802,13 @@ function determine_haste_group()
     
     classes.CustomMeleeGroups:clear()
     
-    if (buffactive.haste and buffactive['Haste Samba'] and buffactive.march) 
-    or (buffactive.march == 2 and buffactive['Haste Samba']) 
-    or (buffactive.embrava and (buffactive.haste or buffactive.march) and buffactive['Haste Samba']) then
+    if (buffactive.haste and hasteSamba == 'Samba' and buffactive.march == 1) 
+    or (buffactive.march == 2 and hasteSamba =='Samba') 
+    or (buffactive.embrava and (buffactive.haste or buffactive.march) and hasteSamba) then
         classes.CustomMeleeGroups:append('MaxHaste')
     elseif (buffactive.haste and buffactive.march) or (buffactive.march == 2) then
         classes.CustomMeleeGroups:append('HighHaste')
-    elseif buffactive.haste and buffactive['Haste Samba'] then
+    elseif buffactive.haste and hasteSamba then
         classes.CustomMeleeGroups:append('MidHaste')
     elseif buffactive.haste then
         classes.CustomMeleeGroups:append('LowHaste')
