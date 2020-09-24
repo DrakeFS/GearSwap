@@ -108,26 +108,27 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-    ammo="Ginsen",
-    head="Flam. Zucchetto +1",
-    body="Flamma Korazin +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Vishap Brais +2",
-    feet="Sulev. Leggings +1",
-    neck="Clotharius Torque",
-    waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-    left_ear="Cessance Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Pernicious Ring",
-    right_ring="Petrov Ring",
-    back=gear.DrgCTP,
+        ammo="Ginsen",
+        head="Sulevia's Mask +2",
+        body="Sulevia's Plate. +1",
+        hands="Sulev. Gauntlets +2",
+        legs="Vishap Brais +2",
+        feet="Flam. Gambieras +2",
+        neck="Clotharius Torque",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear="Cessance Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Pernicious Ring",
+        right_ring="Petrov Ring",
+        back=gear.DrgCTP,
     }
+    
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
     
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Stardiver'] = set_combine(sets.precast.WS, {
-    neck="Soil Gorget",
-    waist="Soil Belt",
+        neck="Soil Gorget",
+        waist="Snow Belt",
     })
     
     sets.precast.WS['Stardiver'].Mid = set_combine(sets.precast.WS['Stardiver'], {})
@@ -186,19 +187,18 @@ function init_gear_sets()
     
     -- Defense sets
     sets.defense.PDT = {
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
-    neck="Loricate Torque +1",
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Defending Ring",
-    right_ring="Vocane Ring",
-    back=gear.DrgCTP,
-    }
+        ammo="Ginsen",
+        head="Sulevia's Mask +2",
+        body="Flamma Korazin +2",
+        hands="Sulev. Gauntlets +2",
+        legs="Sulevi. Cuisses +1",
+        feet="Flam. Gambieras +2",
+        neck="Loricate Torque +1",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        back=gear.DrgCTP,
+        }
 
     sets.defense.Reraise = set_combine(sets.defense.PDT, {})
 
@@ -217,20 +217,20 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-    ammo="Ginsen",
-    head="Flam. Zucchetto +1",
-    body={ name="Found. Breastplate", augments={'Accuracy+3','Mag. Acc.+6',}},
-    hands="Sulev. Gauntlets +1",
-    legs={ name="Valor. Hose", augments={'CHR+1','Attack+2','Quadruple Attack +1','Accuracy+7 Attack+7',}},
-    feet="Flam. Gambieras +1",
-    neck="Clotharius Torque",
-    waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Pernicious Ring",
-    right_ring="Petrov Ring",
-    back=gear.DrgCTP,
-    }
+        ammo="Ginsen",
+        head="Sulevia's Mask +2",
+        body="Flamma Korazin +2",
+        hands="Sulev. Gauntlets +2",
+        legs="Flamma Dirs +2",
+        feet="Flam. Gambieras +2",
+        neck="Clotharius Torque",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Pernicious Ring",
+        right_ring="Petrov Ring",
+        back=gear.DrgCTP,
+        }
 
     sets.engaged.Mid = set_combine(sets.engaged, {})
 

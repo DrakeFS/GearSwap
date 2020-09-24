@@ -448,7 +448,7 @@ function init_gear_sets()
     }
 
     -- Breath Spells --
-    
+    sets.midcast['Blue Magic']['Regurgitation']=sets.midcast['Blue Magic'].MagicAccuracy
     sets.midcast['Blue Magic'].Breath = {}
 
     -- Other Types --

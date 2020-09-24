@@ -44,6 +44,7 @@ function user_setup()
     update_melee_groups()
     --select_default_macro_book()
     update_combat_form()
+    lockstyleset()
 
 end
 
@@ -54,12 +55,12 @@ function init_gear_sets()
     --------------------------------------
     
     -- Sets to apply to arbitrary JAs
-    sets.precast.JA.Berserk = {body="Pumm. Lorica +2",feet="Agoge Calligae +1"}
-    sets.precast.JA['Aggressor'] = {head="Pumm. Mask +1",body="Agoge Lorica +1"}
-    sets.precast.JA['Mighty Strikes'] = {hands="Agoge Mufflers +1"}
-    sets.precast.JA['Blood Rage'] = {body="Rvg. Lorica +2"}
-    sets.precast.JA['Warcry'] = {head="Agoge Mask +1"}
-    sets.precast.JA['Tomahawk'] = {ammo="Thr. Tomahawk",feet="Agoge Calligae +1"}
+    sets.precast.JA.Berserk = {}
+    sets.precast.JA['Aggressor'] = {}
+    sets.precast.JA['Mighty Strikes'] = {}
+    sets.precast.JA['Blood Rage'] = {}
+    sets.precast.JA['Warcry'] = {}
+    sets.precast.JA['Tomahawk'] = {}
     -- Sets to apply to any actions of spell.type
     sets.precast.Waltz = {}
         
@@ -75,11 +76,11 @@ function init_gear_sets()
     -- Weaponskill sets
     sets.precast.WS = {
     ammo="Seething Bomblet",
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
+    head="Sulevia's Mask +2",
+    body="Sulevia's Plate. +2",
+    hands="Sulev. Gauntlets +2",
+    legs="Sulevi. Cuisses +2",
+    feet="Sulev. Leggings +2",
     neck="Sanctity Necklace",
     waist="Dynamic Belt",
     left_ear="Steelflash Earring",
@@ -95,8 +96,22 @@ function init_gear_sets()
     sets.precast.WS.Attack = set_combine(sets.precast.WS, {})
     sets.precast.WS.MS = set_combine(sets.precast.WS, {})
     
-    sets.precast.WS['Decimation'] = {}
-    sets.precast.WS['Decimation'].DW = {}
+    sets.precast.WS['Decimation'] = {
+        ammo="Seething Bomblet",
+        head="Flam. Zucchetto +2",
+        body={ name="Found. Breastplate", augments={'Accuracy+5','Attack+3','"Mag.Atk.Bns."+1',}},
+        hands="Sulev. Gauntlets +2",
+        legs="Sulev. Cuisses +2",
+        feet="Sulev. Leggings +2",
+        neck="Clotharius Torque",
+        waist="Sailfi Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Sulevia's Ring",
+        right_ring="Begrudging Ring",
+        back=gear.WarCTP,
+    }
+    --sets.precast.WS['Decimation'].DW = {}
     
     -- Specific weaponskill sets.
     --[[sets.precast.WS['Upheaval'] = {}
@@ -158,11 +173,11 @@ function init_gear_sets()
     -- Idle sets
     sets.idle = {
     ammo="Seething Bomblet",
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
+    head="Sulevia's Mask +2",
+    body="Sulevia's Plate. +2",
+    hands="Sulev. Gauntlets +2",
+    legs="Sulevi. Cuisses +2",
+    feet="Sulev. Leggings +2",
     neck="Sanctity Necklace",
     waist="Dynamic Belt",
     left_ear="Steelflash Earring",
@@ -199,19 +214,19 @@ function init_gear_sets()
     -- If using a weapon that isn't specified later, the basic engaged sets should automatically be used.
     -- Equip the weapon you want to use and engage, disengage, or force update with f12, the correct gear will be used; default weapon is whats equip when file loads.
     sets.engaged = {
-    ammo="Seething Bomblet",
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
-    neck="Sanctity Necklace",
-    waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Sulevia's Ring",
-    right_ring="Begrudging Ring",
-    back=gear.WarCTP,
+        ammo="Seething Bomblet",
+        head="Flam. Zucchetto +2",
+        body="Flamma Korazin +2",
+        hands="Flam. Manopolas +2",
+        legs="Flamma Dirs +2",
+        feet="Flam. Gambieras +2",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Suppanomimi",
+        right_ear="Eabani Earring",
+        left_ring="Sulevia's Ring",
+        right_ring="Begrudging Ring",
+        back=gear.WarCTP,
     }
     
     sets.engaged.AccLow = set_combine(sets.engaged, {})
@@ -263,19 +278,19 @@ function init_gear_sets()
     -- Twohanded sets
     --------------------------------------  
     sets.engaged.TD = {
-    ammo="Seething Bomblet",
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
-    neck="Sanctity Necklace",
-    waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Sulevia's Ring",
-    right_ring="Begrudging Ring",
-    back=gear.WarCTP,
+        ammo="Seething Bomblet",
+        head="Flam. Zucchetto +2",
+        body="Flamma Korazin +2",
+        hands="Flam. Manopolas +2",
+        legs="Flamma Dirs +2",
+        feet="Flam. Gambieras +2",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Suppanomimi",
+        right_ear="Eabani Earring",
+        left_ring="Sulevia's Ring",
+        right_ring="Begrudging Ring",
+        back=gear.WarCTP,
     }
     
     sets.engaged.TD.AccLow = set_combine(sets.engaged.TD, {})
@@ -287,19 +302,19 @@ function init_gear_sets()
     -- DW sets
     --------------------------------------
     sets.engaged.DW = {
-    ammo="Seething Bomblet",
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
-    neck="Sanctity Necklace",
-    waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Sulevia's Ring",
-    right_ring="Begrudging Ring",
-    back=gear.WarCTP,
+        ammo="Seething Bomblet",
+        head="Flam. Zucchetto +2",
+        body="Flamma Korazin +2",
+        hands="Flam. Manopolas +2",
+        legs="Flamma Dirs +2",
+        feet="Flam. Gambieras +2",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Suppanomimi",
+        right_ear="Eabani Earring",
+        left_ring="Sulevia's Ring",
+        right_ring="Begrudging Ring",
+        back=gear.WarCTP,
     }
     
     sets.engaged.DW.AccLow = set_combine(sets.engaged.DW, {})
@@ -312,15 +327,15 @@ function init_gear_sets()
     -- Custom buff sets
     --------------------------------------
     -- Mighty Strikes TP Gear, combines with current melee set.
-    sets.buff.MS = {ammo="Yetshila +1",neck="Portus Collar",back="Cavaros Mantle",feet="Huginn Gambieras"}
+    sets.buff.MS = {}
     -- Day/Element Helm, if helm is not in inventory or wardrobe, this will not fire, for those who do not own one
-    sets.WSDayBonus = {head="Gavialis Helm"}
+    sets.WSDayBonus = {}
     -- Earrings to use with Upheaval when TP is 3000
-    sets.VIT_earring = {ear1="Terra's Pearl",ear2="Brutal Earring"}
+    sets.VIT_earring = {}
     -- Earrings to use with all other weaponskills when TP is 3000
-    sets.STR_earring = {ear1="Kokou's Earring",ear2="Brutal Earring"}
+    sets.STR_earring = {}
     -- Mantle to use with Upheaval on Darksday
-    sets.Upheaval_shadow = {back="Shadow Mantle"}
+    sets.Upheaval_shadow = {}
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -549,4 +564,8 @@ function update_combat_form()
         state.CombatForm:set('DW')
         state.WeaponskillMode:set('DW')
     end
+end
+
+function lockstyleset()
+    send_command('wait 5;input /lockstyleset 6')
 end
