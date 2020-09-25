@@ -32,6 +32,8 @@ sets.midcast = {} -- Casting Set
 
 sets.defense.PDT = {}  -- Defense set, Press F10 to equip, Alt-F12 to unequip
 
+-- sets.idle = {} -- Gear to stand around in.  Regen and\or Refresh sets work well here.  Ignore if uneeded, remove the first "--" to activate.
+
 sets.engaged = {} -- TP Set
 
 end
