@@ -690,7 +690,7 @@ function handle_bpwc()
         elseif pet.name == "Diabolos" then
             send_command('@input /pet "Noctoshield" <me>')
         else
-            add_to_chat(122, "No Blood Pact: Rage set for this summon")
+            add_to_chat(122, "No Blood Pact: Ward set for this summon")
         end
     else
         add_to_chat(122, 'No pet summoned.')

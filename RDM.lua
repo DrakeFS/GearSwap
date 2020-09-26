@@ -612,6 +612,11 @@ function update_combat_form()
     end
 end
 
+--------------------------------------------------------------------------------------------
+-- Utility functions specific to this job.
+-------------------------------------------------------------------------------------------------------------------
+
+-- If the nuke casted is on cooldwon, cast the nest tier down of the same nuke.
 function downgradenuke(spell)
 
     local element = state.NukeElement.value
@@ -630,9 +635,6 @@ function downgradenuke(spell)
     end
 
 end
---------------------------------------------------------------------------------------------
--- Utility functions specific to this job.
--------------------------------------------------------------------------------------------------------------------
 
 -- Select default macro book on initial load or subjob change.
 function select_default_macro_book()

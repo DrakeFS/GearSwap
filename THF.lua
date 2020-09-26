@@ -74,9 +74,9 @@ function init_gear_sets()
     -- sets.ExtraRegen = {head="Ocelomeh Headpiece +1"}
     sets.Kiting = {feet="Jute Boots",}
 
-    sets.buff['Sneak Attack'] = {}
+    sets.buff['Sneak Attack'] = {ammo="C. Palug Stone",}
 
-    sets.buff['Trick Attack'] = {}
+    sets.buff['Trick Attack'] = {ammo="C. Palug Stone",}
 
     -- Actions we want to use to tag TH.
     sets.precast.Step = sets.TreasureHunter
