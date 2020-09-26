@@ -14,6 +14,18 @@ end
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     --state.Buff.Saboteur = buffactive.saboteur or false
+    nukes = {}
+    nukes.t1 = {['Stone']="Stone",      ['Water']="Water",      ['Aero']="Aero",     ['Fire']="Fire",    ['Blizzard']="Blizzard",     ['Thunder']="Thunder", ['Light']="Thunder", ['Dark']="Blizzard"}
+    nukes.t2 = {['Stone']="Stone II",   ['Water']="Water II",   ['Aero']="Aero II",  ['Fire']="Fire II", ['Blizzard']="Blizzard II",  ['Thunder']="Thunder II", ['Light']="Thunder II", ['Dark']="Blizzard II"}
+    nukes.t3 = {['Stone']="Stone III",  ['Water']="Water III",  ['Aero']="Aero III", ['Fire']="Fire III",['Blizzard']="Blizzard III", ['Thunder']="Thunder III", ['Light']="Thunder III", ['Dark']="Blizzard III"}
+    nukes.t4 = {['Stone']="Stone IV",   ['Water']="Water IV",   ['Aero']="Aero IV",  ['Fire']="Fire IV", ['Blizzard']="Blizzard IV",  ['Thunder']="Thunder IV", ['Light']="Thunder IV", ['Dark']="Blizzard IV"}
+    nukes.t5 = {['Stone']="Stone V",    ['Water']="Water V",    ['Aero']="Aero V",   ['Fire']="Fire V",  ['Blizzard']="Blizzard V",   ['Thunder']="Thunder V", ['Light']="Thunder V", ['Dark']="Blizzard V"}
+
+    state.NukeElement = M{['description'] = 'Nuke Element'}
+    state.MACC = M(false, 'MACC')
+    state.MagicBurst = M(false, 'Magic Burst')
+
+
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -26,18 +38,15 @@ function user_setup()
     state.HybridMode:options('Normal')
     state.CastingMode:options('Normal', 'ConserveMP')
     state.IdleMode:options('Normal', 'Leveling')
-    state.MACC = M(false, 'MACC')
-    lockstyleset()
-    state.MagicBurst = M(false, 'Magic Burst')
-    
-    -- send_command('bind != gs c toggle CapacityMode')
+    state.NukeElement:options('Fire', 'Blizzard', 'Aero', 'Stone', 'Thunder', 'Water')
     
     send_command('bind ^q gs c cycle CastingMode')
     send_command('bind !q gs c toggle MagicBurst')
     send_command('bind !- gs c toggle MACC')
+    send_command('bind ^` gs c cycle NukeElement')
 
     update_combat_form()
-    
+    lockstyleset()
     --select_default_macro_book(1, 4)
 end
 
@@ -126,7 +135,7 @@ function init_gear_sets()
     
     sets.precast.WS['Sanguine Blade'] ={
     ammo="Pemphredo Tathlum",
-    head="Pixie Hairpin +1",
+    head="Pixie HAeropin +1",
     body="Atrophy Tabard +3",
     hands="Jhakri Cuffs +2",
     legs="Jhakri Slops +2",
@@ -248,7 +257,7 @@ function init_gear_sets()
     sets.midcast["Haste II"] = sets.midcast.Haste
     sets.midcast["Flurry II"] = sets.midcast.Haste
     sets.midcast['Shock Spikes'] = sets.midcast.Haste
-    sets.midcast['Ice Spikes'] = sets.midcast.Haste
+    sets.midcast['Blizzard Spikes'] = sets.midcast.Haste
     sets.midcast['Blaze Spikes'] = sets.midcast.Haste
     
     sets.midcast['Enfire'] = sets.midcast['Temper II']
@@ -486,8 +495,32 @@ function init_gear_sets()
 end
 
 -------------------------------------------------------------------------------------------------------------------
+-- Job-specific Gerswap command
+-------------------------------------------------------------------------------------------------------------------
+
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'nukeit' then
+        handle_nuking()
+    end
+end
+
+function handle_nuking()
+    send_command('@input /ma "'..nukes.t4[state.NukeElement.value]..'" <t>')
+end
+-------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
+function job_post_precast(spell, action, spellMap, eventArgs)
+
+    local spell_recasts = windower.ffxi.get_spell_recasts()
+
+    if spell.action_type  == 'Magic' and spell_recasts[spell.recast_id] > 0 then
+        cancel_spell()
+        downgradenuke(spell)
+        add_to_chat(8, '****** ['..spell.name..' CANCELED - Spell on Cooldown, Downgrading spell] ******')
+        return
+    end
+end
 
 -- Run after the default midcast() is done.
 -- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
@@ -503,7 +536,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         equip(sets.midcast.CureSelf)
     end
     if spell.action_type == 'Magic' then
-        if spell.element == "Earth" and spell.skill == 'Elemental Magic' and (state.CastingMode.value == "Normal" or state.CastingMode.value == "ConserveMP")  then
+        if spell.element == "Stone" and spell.skill == 'Elemental Magic' and (state.CastingMode.value == "Normal" or state.CastingMode.value == "ConserveMP")  then
             equip({ neck="Quanpur Necklace" })
         end
         if spellMap == 'Cure' and spell.target.type == 'SELF' then
@@ -579,6 +612,24 @@ function update_combat_form()
     end
 end
 
+function downgradenuke(spell)
+
+    local element = state.NukeElement.value
+
+    if spell.name:match(nukes.t1[element]) then   
+        if spell.name == nukes.t5[element] then
+            newspell = nukes.t4[element]
+        elseif spell.name == nukes.t4[element] then
+            newspell = nukes.t3[element]
+        elseif spell.name == nukes.t3[element] then
+            newspell = nukes.t2[element]
+        elseif spell.name == nukes.t2[element] then
+            newspell = nukes.t1[element]
+        end
+        send_command('@input /ma "'..newspell..'" <t>')
+    end
+
+end
 --------------------------------------------------------------------------------------------
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
