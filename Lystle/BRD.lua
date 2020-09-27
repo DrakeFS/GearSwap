@@ -125,10 +125,11 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-    ammo="Impatiens",
     head="Nahtirah Hat",
     body="Inyanga Jubbah +2",
+    hands={ name="Leyline Gloves", augments={'Accuracy+7','Mag. Acc.+5',}},
     legs="Aya. Cosciales +1",
+    feet="Navon Crackows",
     left_ring="Lebeche Ring",
     waist="Embla Sash",
     back = gear.BrdCFC,
@@ -138,13 +139,21 @@ function init_gear_sets()
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC, {legs = "Doyen Pants",})
 
-    sets.precast.FC.BardSong = {
-    range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
-    head="Nahtirah Hat",
+    sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
+    range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
     head="Fili Calot +1",
     legs = "Doyen Pants",
+    feet = "Bihu Slippers +1",
     waist="Embla Sash",
-    back = gear.BrdCFC,}
+    })
+
+    sets.precast.FC['Honor March'] = set_combine(sets.precast.FC, {
+    range="Marsyas",
+    head="Fili Calot +1",
+    legs = "Doyen Pants",
+    feet = "Bihu Slippers +1",
+    waist="Embla Sash",
+    })
 
     --sets.precast.FC.SongPlaceholder = set_combine(sets.precast.FC.BardSong, {range=info.ExtraSongInstrument})
 
@@ -152,7 +161,7 @@ function init_gear_sets()
 
     -- Precast sets to enhance JAs
 
-    --sets.precast.JA.Nightingale = {feet="Bihu Slippers +3"}
+    sets.precast.JA.Nightingale = {feet="Bihu Slippers +1"}
     --sets.precast.JA.Troubadour = {body="Bihu Jstcorps. +3"}
     --sets.precast.JA['Soul Voice'] = {legs="Bihu Cannions +3"}
 
@@ -213,7 +222,7 @@ function init_gear_sets()
     --sets.midcast.Ballad = {legs="Fili Rhingrave +1"}
     --sets.midcast.Carol = {hands="Mousai Gages +1"}
     --sets.midcast.Etude = {head="Mousai Turban +1"}
-    --sets.midcast.HonorMarch = {range="Marsyas", hands="Fili Manchettes +1 +1"}
+    sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +1"})
     --sets.midcast.Lullaby = {body="Fili Hongreline +1", hands="Brioso Cuffs +3"}
     sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +1"})
     --sets.midcast.Mambo = {feet="Mousai Crackows"}
