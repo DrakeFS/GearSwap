@@ -284,7 +284,7 @@ function init_gear_sets()
     hands="Meg. Gloves +1",
     legs="Meg. Chausses +1",
     feet="Aya. Gambieras +2",
-    neck="Thunder Gorget",
+    neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Odr Earring",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},

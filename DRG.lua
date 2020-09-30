@@ -127,7 +127,7 @@ function init_gear_sets()
     
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Stardiver'] = set_combine(sets.precast.WS, {
-        neck="Soil Gorget",
+        neck="Fotia Gorget",
         waist="Fotia Belt",
     })
     
@@ -136,7 +136,7 @@ function init_gear_sets()
     sets.precast.WS['Stardiver'].Acc = set_combine(sets.precast.WS.Acc, {})
 
     sets.precast.WS["Camlann's Torment"] = set_combine(sets.precast.WS, {
-    neck="Light Gorget",
+    neck="Fotia Gorget",
     waist="Fotia Belt"
     })
     
@@ -151,7 +151,7 @@ function init_gear_sets()
     sets.precast.WS['Drakesbane'].Acc = set_combine(sets.precast.WS['Drakesbane'].Mid, {})
     
     sets.precast.WS['Impulse Drive'] = set_combine(sets.precast.WS, {
-    neck="Soil Gorget",
+    neck="Fotia Gorget",
     waist="Fotia Belt"
     })
     

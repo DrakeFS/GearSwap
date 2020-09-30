@@ -278,7 +278,7 @@ function init_gear_sets()
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Requiescat'] = set_combine(sets.precast.WS, {
-    neck="Soil Gorget",
+    neck="Fotia Gorget",
     waist="Fotia Belt",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     })
@@ -303,7 +303,7 @@ function init_gear_sets()
     head="Jhakri Coronal +2",
     hands="Jhakri Cuffs +2",
     feet="Jhakri Pigaches +2",
-    neck="Thunder Gorget",
+    neck="Fotia Gorget",
     waist="Sailfi Belt +1",
     left_ear="Odr Earring",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -335,7 +335,7 @@ function init_gear_sets()
     hands="Aya. Manopolas +2",
     legs="Aya. Cosciales +2",
     feet="Aya. Gambieras +2",
-    neck="Light Gorget",
+    neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Cessance Earring",
     right_ear="Odr Earring",
