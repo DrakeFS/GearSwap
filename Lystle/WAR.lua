@@ -111,6 +111,22 @@ function init_gear_sets()
         right_ring="Begrudging Ring",
         back=gear.WarCTP,
     }
+
+    sets.precast.WS['Savage Blade'] = {
+        ammo="Seething Bomblet",
+        head="Sulevia's Mask +2",
+        body="Sulevia's Plate. +2",
+        hands="Sulev. Gauntlets +2",
+        legs="Sulev. Cuisses +2",
+        feet="Sulev. Leggings +2",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Sulevia's Ring",
+        right_ring="Begrudging Ring",
+        back={ name="Cichol's Mantle", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
     --sets.precast.WS['Decimation'].DW = {}
     
     -- Specific weaponskill sets.

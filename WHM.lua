@@ -42,16 +42,14 @@ function init_gear_sets()
     main="Daybreak",
     sub="Sors Shield",
     ammo="Impatiens",
-    head="Theo. Cap +1",
+    head="Nahtirah Hat",
     body="Ebers Bliaud",
     hands="Gende. Gages +1",
-    legs="Ebers Pantaloons",
+    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
     feet="Theo. Duckbills +1",
     neck={ name="Cleric's Torque", augments={'Path: A',}},
     waist="Embla Sash",
-    left_ear="Glorious Earring",
-    right_ear="Nourish. Earring",
-    left_ring="Vocane Ring",
+    left_ring="Kishar Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
     }
@@ -60,17 +58,20 @@ function init_gear_sets()
 
     sets.precast.FC.Stoneskin = set_combine(sets.precast.FC['Enhancing Magic'],{})
 
-    sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC,{})
+    sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC,{legs="Ebers Pantaloons",})
 
     sets.precast.FC.StatusRemoval = sets.precast.FC['Healing Magic']
 
-    sets.precast.FC.Cure = set_combine(sets.precast.FC['Healing Magic'],{})
+    sets.precast.FC.Cure = set_combine(sets.precast.FC['Healing Magic'],{
+        left_ear="Glorious Earring",
+        right_ear="Nourish. Earring",
+    })
     sets.precast.FC.Curaga = sets.precast.FC.Cure
     sets.precast.FC.CureSolace = sets.precast.FC.Cure
     -- CureMelee spell map should default back to Healing Magic.
     
     -- Precast sets to enhance JAs
-    sets.precast.JA.Benediction = {body="Piety Briault"}
+    sets.precast.JA.Benediction = {}
 
     -- Waltz set (chr and vit)
     sets.precast.Waltz = {}
@@ -222,10 +223,25 @@ function init_gear_sets()
     
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
+        hands="Aya. Manopolas +2",
+        legs="Aya. Cosciales +2",
+        feet="Aya. Gambieras +2",
+        neck="Clotharius Torque",
+        waist="Windbuffet Belt +1",
+        left_ear="Steelfash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Apate Ring",
+        right_ring="Pernicious Ring",
+        back="Solemnity Cape",
+    }
+    
+    sets.engaged.DW = {
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
     hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +1",
+    legs="Aya. Cosciales +2",
     feet="Aya. Gambieras +2",
     neck="Clotharius Torque",
     waist="Windbuffet Belt +1",
@@ -244,7 +260,18 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
+function job_update(cmdParams, eventArgs)
+    update_combat_form()
+end
 
+function update_combat_form()
+    -- Check for H2H or single-wielding
+    if player.equipment.sub == "Sors Shield" or player.equipment.sub == 'empty' then
+        state.CombatForm:reset()
+    else
+        state.CombatForm:set('DW')
+    end
+end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 --[[function job_precast(spell, action, spellMap, eventArgs)

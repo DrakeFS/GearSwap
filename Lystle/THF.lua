@@ -42,7 +42,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('Normal', 'Acc', 'Subtle')
+    state.OffenseMode:options('Normal', 'Crit')
     state.HybridMode:options('Normal', 'Evasion', 'PDT')
     state.RangedMode:options('Normal', 'Acc')
     state.WeaponskillMode:options('Normal', 'Acc')
@@ -273,7 +273,19 @@ function init_gear_sets()
     
     sets.engaged.Acc = set_combine(sets.engaged,{neck="Sanctity Necklace",})
 
-    sets.engaged.Subtle = set_combine(sets.engaged,{})
+    sets.engaged.Crit = set_combine(sets.engaged,{    
+    ammo="Seething Bomblet",
+    head="Mummu Bonnet +2",
+    body="Mummu Jacket +2",
+    hands="Mummu Wrists +2",
+    legs="Mummu Kecks +2",
+    feet="Mummu Gamash. +2",
+    neck="Clotharius Torque",
+    waist="Dynamic Belt",
+    left_ear="Steelflash Earring",
+    right_ear="Suppanomimi",
+    left_ring="Mummu Ring",
+    right_ring="Begrudging Ring",})
     -- Mod set for trivial mobs (Skadi+1)
     -- sets.engaged.Mod = {}
 

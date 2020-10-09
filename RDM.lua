@@ -64,14 +64,14 @@ function init_gear_sets()
     -- Precast Sets
     
     -- Precast sets to enhance JAs
-    sets.precast.JA['Chainspell'] = {body= {name="Viti. Tabard +1", augments={'Enhances "Chainspell" effect',}}}
+    sets.precast.JA['Chainspell'] = {body= {name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}}}
     
     -- Spells Fastcast 
     
     sets.precast.FC = {
     ammo="Impatiens",
     head="Atrophy Chapeau +1",
-    body={ name="Viti. Tabard +1", augments={'Enhances "Chainspell" effect',}},
+    body={ name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}},
     hands="Aya. Manopolas +2",
     legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
     feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+18','DEX+2','Accuracy+15 Attack+15','Mag. Acc.+15 "Mag.Atk.Bns."+15',}},
@@ -135,7 +135,7 @@ function init_gear_sets()
     
     sets.precast.WS['Sanguine Blade'] ={
     ammo="Pemphredo Tathlum",
-    head="Pixie HAeropin +1",
+    head="Pixie Hairpin +1",
     body="Atrophy Tabard +3",
     hands="Jhakri Cuffs +2",
     legs="Jhakri Slops +2",
@@ -202,7 +202,7 @@ function init_gear_sets()
 
     sets.midcast.Cure = {
     head="Vitiation Chapeau +2",
-    body= {name="Viti. Tabard +1", augments={'Enhances "Chainspell" effect',}},
+    body= {name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}},
     hands="Jhakri Cuffs +2",
     legs="Atrophy Tights +1",
     feet="Leth. Houseaux +1",
@@ -216,7 +216,7 @@ function init_gear_sets()
 
     sets.midcast['Enhancing Magic'] = {
     neck= {name="Duelist's Torque", augments={'Path: A',}},
-    body= {name="Viti. Tabard +1", augments={'Enhances "Chainspell" effect',}},
+    body= {name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}},
     hands="Atrophy Gloves +2",
     legs="Atrophy Tights +1",
     feet="Leth. Houseaux +1",
@@ -229,7 +229,7 @@ function init_gear_sets()
     sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'], {})
 
     sets.midcast['Temper II']= set_combine(sets.midcast['Enhancing Magic'], {
-    body={ name="Viti. Tabard +1", augments={'Enhances "Chainspell" effect',}},
+    body={ name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}},
     hands={ name="Viti. Gloves +1", augments={'Enhancing Magic duration',}},
     legs="Atrophy Tights +1",
     back = gear.RdmCES,
@@ -397,7 +397,6 @@ function init_gear_sets()
     
     -- Idle sets
     sets.idle = {
-    ammo="Ginsen",
     head="Vitiation Chapeau +2",
     body="Jhakri Robe +2",
     hands="Aya. Manopolas +2",
@@ -478,25 +477,28 @@ function init_gear_sets()
     }
 
     sets.engaged.DW.Enspell = {
-        ammo="Regal Gem",
-        head={ name="Vitiation Chapeau +2", augments={'Enfeebling Magic duration','Magic Accuracy',}},
-        body="Atrophy Tabard +3",
-        hands="Leth. Gantherots +1",
-        legs="Jhakri Slops +2",
-        feet={ name="Vitiation Boots +1", augments={'Immunobreak Chance',}},
-        neck={ name="Duelist's Torque", augments={'Path: A',}},
+        range="Kaja Bow",
+        head="Malignance Chapeau",
+        body="Ayanmo Corazza +2",
+        hands="Aya. Manopolas +2",
+        legs={ name="Viti. Tights +1", augments={'Enspell Damage','Accuracy',}},
+        feet="Aya. Gambieras +2",
+        neck="Sanctity Necklace",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
-        left_ear="Malignance Earring",
-        right_ear="Hermetic Earring",
-        left_ring="Kishar Ring",
+        left_ear="Eabani Earring",
+        right_ear="Suppanomimi",
+        left_ring="Ayanmo Ring",
         right_ring="Jhakri Ring",
-        back = gear.RdmCMB,
+        back=gear.RdmCES
     }
 end
 
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific Gerswap command
 -------------------------------------------------------------------------------------------------------------------
+function job_update(cmdParams, eventArgs)
+    update_combat_form()
+end
 
 function job_self_command(cmdParams, eventArgs)
     if cmdParams[1]:lower() == 'nukeit' then
@@ -574,7 +576,7 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 -- Handle notifications of general user state change.
-function job_state_change(stateField, newValue, oldValue)
+--[[function job_state_change(stateField, newValue, oldValue)
     if stateField == 'Offense Mode' then
         if newValue == 'None' then
             enable('main','sub','range')
@@ -582,7 +584,7 @@ function job_state_change(stateField, newValue, oldValue)
             disable('main','sub','range')
         end
     end
-end
+end]]
 
 -------------------------------------------------------------------------------------------------------------------
 -- User code that supplements standard library decisions.
