@@ -222,12 +222,12 @@ function init_gear_sets()
         body="Flamma Korazin +2",
         hands="Sulev. Gauntlets +2",
         legs="Flamma Dirs +2",
-        feet="Flam. Gambieras +2",
-        neck="Clotharius Torque",
+        feet="Ostro Greaves",
+        neck="Shulmanu Collar",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Pernicious Ring",
+        left_ear="Sherida Earring",
+        right_ear="Cessance Earring",
+        left_ring="Dreki Ring",
         right_ring="Petrov Ring",
         back=gear.DrgCTP,
         }
@@ -240,7 +240,6 @@ function init_gear_sets()
     hands="Sulev. Gauntlets +1",
     legs="Carmine Cuisses +1",
     feet="Sulev. Leggings +1",
-    neck="Sanctity Necklace",
     left_ring="Sulevia's Ring",
     })
 

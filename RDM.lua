@@ -64,14 +64,14 @@ function init_gear_sets()
     -- Precast Sets
     
     -- Precast sets to enhance JAs
-    sets.precast.JA['Chainspell'] = {body= {name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}}}
+    sets.precast.JA['Chainspell'] = {body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}}}
     
     -- Spells Fastcast 
     
     sets.precast.FC = {
     ammo="Impatiens",
     head="Atrophy Chapeau +1",
-    body={ name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}},
+    body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
     hands="Aya. Manopolas +2",
     legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
     feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+18','DEX+2','Accuracy+15 Attack+15','Mag. Acc.+15 "Mag.Atk.Bns."+15',}},
@@ -202,7 +202,7 @@ function init_gear_sets()
 
     sets.midcast.Cure = {
     head="Vitiation Chapeau +2",
-    body= {name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}},
+    body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
     hands="Jhakri Cuffs +2",
     legs="Atrophy Tights +1",
     feet="Leth. Houseaux +1",
@@ -216,7 +216,7 @@ function init_gear_sets()
 
     sets.midcast['Enhancing Magic'] = {
     neck= {name="Duelist's Torque", augments={'Path: A',}},
-    body= {name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}},
+    body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
     hands="Atrophy Gloves +2",
     legs="Atrophy Tights +1",
     feet="Leth. Houseaux +1",
@@ -229,7 +229,7 @@ function init_gear_sets()
     sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'], {})
 
     sets.midcast['Temper II']= set_combine(sets.midcast['Enhancing Magic'], {
-    body={ name="Viti. Tabard +2", augments={'Enhances "Chainspell" effect',}},
+    body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
     hands={ name="Viti. Gloves +1", augments={'Enhancing Magic duration',}},
     legs="Atrophy Tights +1",
     back = gear.RdmCES,
@@ -463,7 +463,7 @@ function init_gear_sets()
     sets.engaged.DW = {
     ammo="Ginsen",
     head="Malignance Chapeau",
-    body="Ayanmo Corazza +2",
+    body="Malignance Tabard",
     hands="Aya. Manopolas +2",
     legs="Aya. Cosciales +2",
     feet="Battlecast Gaiters",
@@ -515,8 +515,9 @@ end
 function job_post_precast(spell, action, spellMap, eventArgs)
 
     local spell_recasts = windower.ffxi.get_spell_recasts()
+    local element = state.NukeElement.value
 
-    if spell.action_type  == 'Magic' and spell_recasts[spell.recast_id] > 0 then
+    if spell.name:match(nukes.t1[element]) and spell_recasts[spell.recast_id] > 0 then
         cancel_spell()
         downgradenuke(spell)
         add_to_chat(8, '****** ['..spell.name..' CANCELED - Spell on Cooldown, Downgrading spell] ******')

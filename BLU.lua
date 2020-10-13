@@ -331,7 +331,7 @@ function init_gear_sets()
     sets.precast.WS['Chant du Cygne'] = {
     ammo="Falcon Eye",
     head="Malignance Chapeau",
-    body="Ayanmo Corazza +2",
+    body="Abnoba Kaftan",
     hands="Aya. Manopolas +2",
     legs="Aya. Cosciales +2",
     feet="Aya. Gambieras +2",
