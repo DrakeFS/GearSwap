@@ -42,6 +42,8 @@ function user_setup()
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Refresh')
 
+    lockstyleset()
+
     --gear.RAbullet = "Adlivun Bullet"
     --gear.WSbullet = "Adlivun Bullet"
     --gear.MAbullet = "Bronze Bullet"
@@ -78,7 +80,14 @@ function init_gear_sets()
     sets.precast.JA['Random Deal'] = {}
 
     
-    sets.precast.CorsairRoll = {}
+    sets.precast.CorsairRoll = {
+        range="Compensator",
+        head={ name="Lanun Tricorne", augments={'Enhances "Winning Streak" effect',}},
+        hands="Chasseur's Gants +1",
+        left_ring="Luzaf's Ring",
+        right_ring="Barataria Ring",
+        back="Camulus's Mantle",
+    }
     
     sets.precast.CorsairRoll["Caster's Roll"] = set_combine(sets.precast.CorsairRoll, {})
     sets.precast.CorsairRoll["Courser's Roll"] = set_combine(sets.precast.CorsairRoll, {})
@@ -150,14 +159,21 @@ function init_gear_sets()
 
     -- Sets to return to when not performing an action.
     
-    -- Resting sets
-    sets.resting = {}
-    
-
     -- Idle sets
-    sets.idle = {}
+    sets.idle = {
+        head="Meghanada Visor +1",
+        body="Meg. Cuirie +2",
+        hands="Meg. Gloves +2",
+        legs="Mummu Kecks +2",
+        feet="Meg. Jam. +1",
+        neck="Loricate Torque",
+        right_ring="Defending Ring",
+    }
 
-    sets.idle.Town = {}
+    sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
+    
+    -- Resting sets
+    sets.resting = set_combine(sets.idle, {})
     
     -- Defense sets
     sets.defense.PDT = {}
@@ -398,3 +414,7 @@ end
 --[[function select_default_macro_book()
     set_macro_page(1, 19)
 end]]
+
+function lockstyleset()
+    send_command('wait 5;input /lockstyleset 7')
+end
