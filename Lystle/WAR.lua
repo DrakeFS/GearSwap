@@ -569,7 +569,7 @@ function is_sc_element_today(spell)
 end
 
 function update_combat_form()
-    -- Check for HTD or single-wielding
+    -- Check for DW, THD or single-wielding
     if player.equipment.sub == 'Round Shield' or player.equipment.sub == 'empty' then
         state.CombatForm:reset()
         state.WeaponskillMode:set('normal')

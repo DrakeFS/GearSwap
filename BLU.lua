@@ -278,9 +278,19 @@ function init_gear_sets()
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Requiescat'] = set_combine(sets.precast.WS, {
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Assim. Jubbah +3",
+        hands="Jhakri Cuffs +2",
+        legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
+        feet="Aya. Gambieras +2",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Odr Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Ayanmo Ring",
+        right_ring="Ilabrat Ring",
+        back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
     })
 
     sets.precast.WS['Sanguine Blade'] = {
@@ -303,11 +313,11 @@ function init_gear_sets()
     head="Jhakri Coronal +2",
     hands="Jhakri Cuffs +2",
     feet="Jhakri Pigaches +2",
-    neck="Fotia Gorget",
+    neck="Mirage Stole +2",
     waist="Sailfi Belt +1",
     left_ear="Odr Earring",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Rajas Ring",
+    left_ring="Ilabrat Ring",
     right_ring="Apate Ring",
     back=gear.BluCSTR,
     })
@@ -328,6 +338,8 @@ function init_gear_sets()
     back=gear.BluCDEX,
     }
     
+    sets.precast.WS['Expiacion'] = sets.precast.WS['Savage Blade']
+
     sets.precast.WS['Chant du Cygne'] = {
     ammo="Falcon Eye",
     head="Malignance Chapeau",

@@ -117,7 +117,13 @@ sets.midcast["Geomancy Magic"] = {
 
 sets.defense.PDT = {}  -- Defense set, Press F10 to equip, Alt-F12 to unequip
 
--- sets.idle = {} -- Gear to stand around in.  Regen and\or Refresh sets work well here.  Ignore if uneeded, remove the first "--" to activate.
+sets.idle = {
+    neck="Sanctity Necklace",
+    body="Jhakri Robe +1",
+    feet="Geomancy Sandals"
+}
+
+sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
 sets.engaged = {
     range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
