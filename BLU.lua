@@ -20,7 +20,7 @@ function job_setup()
     state.Buff.Convergence = buffactive.Convergence or false
     state.Buff.Diffusion = buffactive.Diffusion or false
     state.Buff.Efflux = buffactive.Efflux or false
-    state.Buff['Unbridled Learning'] = buffactive['Unbridled Learning'] or false
+    --state.Buff['Unbridled Learning'] = buffactive['Unbridled Learning'] or false
 
     state.delayMod = M{'none', 'Samba'}
     state.delayMod:set('none')
@@ -263,15 +263,16 @@ function init_gear_sets()
     ammo="Ginsen",
     head="Malignance Chapeau",
     body="Assim. Jubbah +3",
-    hands="Assim. Bazu. +2",
+    hands="Jhakri Cuffs +2",
     legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
     feet="Aya. Gambieras +2",
     neck="Mirage Stole +2",
+    waist="Fotia Belt",
     left_ear="Steelflash Earring",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     left_ring="Ayanmo Ring",
     right_ring="Jhakri Ring",
-    back=gear.BluCDEX,
+    back=gear.BluCSTR,
     }
     
     sets.precast.WS.acc = set_combine(sets.precast.WS, {})
@@ -293,20 +294,21 @@ function init_gear_sets()
         back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
     })
 
-    sets.precast.WS['Sanguine Blade'] = {
-    ammo="Ginsen",
-    head = "Pixie Hairpin +1",
-    body="Jhakri Robe +2",
-    hands=gear.HercMB,
-    legs="Jhakri Slops +2",
-    feet="Jhakri Pigaches +2",
-    neck="Mirage Stole +2",
-    left_ear="Novio Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Jhakri Ring",
-    right_ring="Ayanmo Ring",
-    back="Cornflower Cape",
-    }
+    sets.precast.WS['Sanguine Blade'] = set_combine(sets.precast.WS, {
+        ammo="Pemphredo Tathlum",
+        head = "Pixie Hairpin +1",
+        --body="Jhakri Robe +2",
+        hands=gear.HercGMB,
+        --legs="Jhakri Slops +2",
+        feet="Jhakri Pigaches +2",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Novio Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Jhakri Ring",
+        right_ring="Ayanmo Ring",
+        back="Cornflower Cape",
+    })
     
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
     ammo="Ginsen",
@@ -371,6 +373,17 @@ function init_gear_sets()
     right_ring="Ayanmo Ring",
     back=gear.BluDEX,
     }
+
+    sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS['Sanguine Blade'], {
+        ammo="Ginsen",
+        head="Jhakri Coronal +2",
+        hands="Jhakri Cuffs +2",
+        waist="Windbuffet Belt +1",
+        left_ear="Cessance Earring",
+        left_ring="Pernicious Ring",
+        right_ring="Petrov Ring",
+        back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+    })
 
     -- Midcast Sets
     sets.midcast.FastRecast = {}
