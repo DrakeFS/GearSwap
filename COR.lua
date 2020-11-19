@@ -36,7 +36,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('Ranged', 'Melee', 'Acc')
+    state.OffenseMode:options('None','Ranged', 'Melee', 'Acc')
     state.RangedMode:options('Normal', 'Acc')
     state.WeaponskillMode:options('Normal', 'Acc', 'Att', 'Mod')
     state.CastingMode:options('Normal', 'Resistant')
@@ -67,8 +67,12 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
+    -- Define job specific gear
     
-    -- Precast Sets
+    gear.TPAmmo = "Corsair Bullet"
+    gear.PWSAmmo = {}
+    gear.MWSAmmo = {}
+    gear.ShotAmmo = {}
 
     -- Precast sets to enhance JAs
     
@@ -105,13 +109,32 @@ function init_gear_sets()
     sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {neck="Magoraga Beads"})
 
 
-    sets.precast.RA = {}
+    sets.precast.RA = {
+        ammo=gear.TPAmmo,
+        feet="Meg. Jam. +1",
+    }
 
        
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-        ammo="Ginsen",
+        ammo=gear.TPAmmo,
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Meg. Gloves +2",
+        legs="Meg. Chausses +1",
+        feet="Meg. Jam. +1",
+        neck="Sanctity Necklace",
+        waist="Windbuffet Belt +1",
+        left_ear="Suppanomimi",
+        right_ear="Steelflash Earring",
+        left_ring="Cacoethic Ring",
+        right_ring="Ilabrat Ring",
+        back="Xucau Mantle",
+    }
+    
+    --[[sets.precast.WS = {
+        --ammo="Ginsen",
         head="Meghanada Visor +1",
         body="Meg. Cuirie +1",
         hands="Meg. Gloves +2",
@@ -124,12 +147,12 @@ function init_gear_sets()
         left_ring="Ilabrat Ring",
         right_ring="Begrudging Ring",
         back="Xucau Mantle",
-    }
+    }]]
 
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Evisceration'] = {
-        ammo="Jukukik Feather",
+        --ammo="Jukukik Feather",
         head="Mummu Bonnet +1",
         body="Abnoba Kaftan",
         hands="Mummu Wrists +1",
@@ -143,6 +166,21 @@ function init_gear_sets()
         right_ring="Ilabrat Ring",
     }
 
+    sets.precast.WS['Savage Blade'] = {
+        head={ name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}},
+        body="Laksa. Frac +2",
+        hands="Meg. Gloves +2",
+        legs="Meg. Chausses +1",
+        feet="Meg. Jam. +1",
+        neck="Fotia Gorget",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear="Bladeborn Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Ilabrat Ring",
+        right_ring="Apate Ring",
+        back="Xucau Mantle",
+    }
+
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
 
     sets.precast.WS['Requiescat'] = set_combine(sets.precast.WS, {})
@@ -151,11 +189,21 @@ function init_gear_sets()
 
     sets.precast.WS['Last Stand'].Acc = {}
 
-
-    sets.precast.WS['Wildfire'] = {}
+    sets.precast.WS['Leaden Salute'] = {
+        head="Pixie Hairpin +1",
+        body="Rawhide Vest",
+        hands={ name="Herculean Gloves", augments={'VIT+15','"Mag.Atk.Bns."+24','Accuracy+6 Attack+6','Mag. Acc.+17 "Mag.Atk.Bns."+17',}},
+        legs={ name="Herculean Trousers", augments={'Accuracy+10','Mag. Acc.+11','Accuracy+19 Attack+19','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
+        feet="Mummu Gamash. +1",
+        neck="Sanctity Necklace",
+        waist="Fotia Belt",
+        left_ear="Novio Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Ilabrat Ring",
+        right_ring="Petrov Ring",
+    }
     
-    sets.precast.WS['Leaden Salute'] = sets.precast.WS['Wildfire']
-    
+    sets.precast.WS['Wildfire'] = set_combine(sets.precast.WS['Leaden Salute'], {})
     
     -- Midcast Sets
     sets.midcast.FastRecast = {}
@@ -173,7 +221,21 @@ function init_gear_sets()
 
 
     -- Ranged gear
-    sets.midcast.RA = {}
+    sets.midcast.RA = {
+        ammo=gear.TPAmmo,
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Meg. Gloves +2",
+        legs="Meg. Chausses +1",
+        feet="Meg. Jam. +1",
+        neck="Sanctity Necklace",
+        waist="Windbuffet Belt +1",
+        left_ear="Suppanomimi",
+        right_ear="Steelflash Earring",
+        left_ring="Cacoethic Ring",
+        right_ring="Ilabrat Ring",
+        back="Xucau Mantle",
+    }
 
     sets.midcast.RA.Acc = {}
 
@@ -186,36 +248,21 @@ function init_gear_sets()
 
     -- Idle sets
     sets.idle = {
-        ammo="Ginsen",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands="Meg. Gloves +2",
         legs="Carmine Cuisses +1",
-        feet="Meg. Jam. +1",
-        neck="Loricate Torque +1",
-        waist="Flume Belt",
-        left_ear="Suppanomimi",
-        right_ear="Eabani Earring",
-        left_ring="Defending Ring",
-        right_ring="Vocane Ring",
-        back="Xucau Mantle",
+        neck="Sanctity Necklace",
     }
 
-    sets.idle.Town = {main="Surcouf's Jambiya",range="Eminent Gun",ammo=gear.RAbullet,
-        head="Laksamana's Hat",neck="Wiglen Gorget",ear1="Clearview Earring",ear2="Volley Earring",
-        body="Laksamana's Frac",hands="Iuitl Wristbands",ring1="Sheltered Ring",ring2="Paguroidea Ring",
-        back="Shadow Mantle",waist="Flume Belt",legs="Nahtirah Trousers",feet="Skadi's Jambeaux +1"}
+    sets.idle.Town = set_combine(sets.idle,{
+        body="Councilor's Garb",
+    })
     
     -- Defense sets
     sets.defense.PDT = {}
 
-    sets.defense.MDT = {
-        head="Whirlpool Mask",neck="Twilight Torque",ear1="Clearview Earring",ear2="Volley Earring",
-        body="Iuitl Vest",hands="Iuitl Wristbands",ring1="Defending Ring",ring2="Shadow Ring",
-        back="Engulfer Cape",waist="Flume Belt",legs="Nahtirah Trousers",feet="Iuitl Gaiters +1"}
+    sets.defense.MDT = {}
     
 
-    sets.Kiting = {feet="Skadi's Jambeaux +1"}
+    sets.Kiting = {legs="Carmine Cuisses +1",}
 
     -- Engaged sets
 
@@ -226,12 +273,13 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-        ammo="Ginsen",
+        range={ name="Holliday", augments={'"Snapshot"+2','INT+13','Rng.Acc.+22','Rng.Atk.+6','DMG:+23',}},
+        ammo=gear.TPAmmo,
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        legs="Meg. Chausses +1",
-        feet="Meg. Jam. +1",
+        legs=gear.SamTTP,
+        feet=gear.HercFTP,
         neck="Clotharius Torque",
         waist="Windbuffet Belt +1",
         left_ear="Suppanomimi",
@@ -289,11 +337,11 @@ end
 
 -- Return a customized weaponskill mode to use for weaponskill sets.
 -- Don't return anything if you're not overriding the default value.
-function get_custom_wsmode(spell, spellMap, default_wsmode)
+--[[function get_custom_wsmode(spell, spellMap, default_wsmode)
     if buffactive['Transcendancy'] then
         return 'Brew'
     end
-end
+end]]
 
 
 -- Called by the 'update' self-command, for common needs.
