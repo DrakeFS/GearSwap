@@ -26,7 +26,8 @@ function job_setup()
     state.LuzafRing = M(false, "Luzaf's Ring")
     -- Whether a warning has been given for low ammo
     state.warned = M(false)
-
+    state.roll1 = M{['description'] = 'Roll 1'}
+    state.roll2 = M{['description'] = 'Roll 2'}
     define_roll_values()
 end
 
@@ -41,7 +42,17 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc', 'Att', 'Mod')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Refresh')
-
+    
+    state.roll1:options("Corsair's Roll", "Ninja Roll", "Hunter's Roll", "Chaos Roll", "Magus's Roll", "Healer's Roll", "Puppet Roll",
+    "Choral Roll", "Monk's Roll", "Beast Roll", "Samurai Roll", "Evoker's Roll", "Rogue's Roll", "Warlock's Roll", "Fighter's Roll", 
+    "Drachen Roll", "Gallant's Roll", "Wizard's Roll", "Dancer's Roll", "Scholar's Roll", "Bolter's Roll", "Caster's Roll", 
+    "Courser's Roll" ,"Blitzer's Roll", "Tactician's Roll", "Allies's Roll", "Miser's Roll", "Companion's Roll", "Avenger's Roll")
+    state.roll2:options("Corsair's Roll", "Ninja Roll", "Hunter's Roll", "Chaos Roll", "Magus's Roll", "Healer's Roll", "Puppet Roll",
+    "Choral Roll", "Monk's Roll", "Beast Roll", "Samurai Roll", "Evoker's Roll", "Rogue's Roll", "Warlock's Roll", "Fighter's Roll", 
+    "Drachen Roll", "Gallant's Roll", "Wizard's Roll", "Dancer's Roll", "Scholar's Roll", "Bolter's Roll", "Caster's Roll", 
+    "Courser's Roll" ,"Blitzer's Roll", "Tactician's Roll", "Allies's Roll", "Miser's Roll", "Companion's Roll", "Avenger's Roll")
+    state.roll1:set("Fighter's Roll")
+    state.roll2:set("Samurai Roll")
     --gear.RAbullet = "Adlivun Bullet"
     --gear.WSbullet = "Adlivun Bullet"
     --gear.MAbullet = "Bronze Bullet"
@@ -51,7 +62,8 @@ function user_setup()
     -- Additional local binds
     -- send_command('bind ^` input /ja "Double-up" <me>')
     -- send_command('bind !` input /ja "Bolter\'s Roll" <me>')
-
+    send_command('bind ^` gs c cycle roll1')
+    send_command('bind !` gs c cycle roll2')
     --select_default_macro_book()
 end
 
@@ -70,9 +82,9 @@ function init_gear_sets()
     -- Define job specific gear
     
     gear.TPAmmo = "Corsair Bullet"
-    gear.PWSAmmo = {}
-    gear.MWSAmmo = {}
-    gear.ShotAmmo = {}
+    gear.PWSAmmo = ""
+    gear.MWSAmmo = "Orichalc. Bullet"
+    gear.ShotAmmo = ""
 
     -- Precast sets to enhance JAs
     
@@ -190,6 +202,7 @@ function init_gear_sets()
     sets.precast.WS['Last Stand'].Acc = {}
 
     sets.precast.WS['Leaden Salute'] = {
+        ammo = gear.MWSAmmo,
         head="Pixie Hairpin +1",
         body="Rawhide Vest",
         hands={ name="Herculean Gloves", augments={'VIT+15','"Mag.Atk.Bns."+24','Accuracy+6 Attack+6','Mag. Acc.+17 "Mag.Atk.Bns."+17',}},
@@ -229,7 +242,7 @@ function init_gear_sets()
         legs="Meg. Chausses +1",
         feet="Meg. Jam. +1",
         neck="Sanctity Necklace",
-        waist="Windbuffet Belt +1",
+        waist="Yemaya Belt",
         left_ear="Suppanomimi",
         right_ear="Steelflash Earring",
         left_ring="Cacoethic Ring",
@@ -296,6 +309,8 @@ function init_gear_sets()
     sets.engaged.Acc.DW = {}
 
     sets.engaged.Ranged = {}
+
+    sets.weatherbelt = {waist="Windbuffet Belt +1"}
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -304,14 +319,14 @@ end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
---[[function job_precast(spell, action, spellMap, eventArgs)
+function job_precast(spell, action, spellMap, eventArgs)
     -- Check that proper ammo is available if we're using ranged attacks or similar.
-    if spell.action_type == 'Ranged Attack' or spell.type == 'WeaponSkill' or spell.type == 'CorsairShot' then
+    --[[if spell.action_type == 'Ranged Attack' or spell.type == 'WeaponSkill' or spell.type == 'CorsairShot' then
         do_bullet_checks(spell, spellMap, eventArgs)
-    end
+    end]]
 
     -- gear sets
-    if (spell.type == 'CorsairRoll' or spell.english == "Double-Up") and state.LuzafRing.value then
+    --[[if (spell.type == 'CorsairRoll' or spell.english == "Double-Up") and state.LuzafRing.value then
         equip(sets.precast.LuzafRing)
     elseif spell.type == 'CorsairShot' and state.CastingMode.value == 'Resistant' then
         classes.CustomClass = 'Acc'
@@ -320,8 +335,15 @@ end
             equip(sets.precast.FoldDoubleBust)
             eventArgs.handled = true
         end
+    end]]
+end
+
+function job_post_precast(spell, action, spellMap)
+    if world.weather_element == 'Dark'and spell.name == 'Leaden Salute' then
+        equip(set_combine(sets.precast.WS["Leaden Salute"], sets.weatherbelt))
+        add_to_chat(122, "breadcrumb")
     end
-end]]
+end
 
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
@@ -342,8 +364,27 @@ end
         return 'Brew'
     end
 end]]
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'roll1' then
+        handle_roll_1()
+        eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'roll2' then
+        handle_roll_2()
+        eventArgs.handled = true
+    end
+end
 
+function handle_roll_1()
+    local roll = state.roll1.value
 
+    send_command('@input /ja "'..roll..'" <me>')
+end
+
+function handle_roll_2()
+    local roll = state.roll2.value
+
+    send_command('@input /ja "'..roll..'" <me>')
+end
 -- Called by the 'update' self-command, for common needs.
 -- Set eventArgs.handled to true if we don't want automatic equipping of gear.
 function job_update(cmdParams, eventArgs)
