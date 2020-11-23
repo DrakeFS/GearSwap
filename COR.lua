@@ -339,9 +339,10 @@ function job_precast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_precast(spell, action, spellMap)
-    if world.weather_element == 'Dark'and spell.name == 'Leaden Salute' then
-        equip(set_combine(sets.precast.WS["Leaden Salute"], sets.weatherbelt))
-        add_to_chat(122, "breadcrumb")
+    if world.weather_element == 'Dark'or world.day_element == 'Dark' then
+        if spell.name == 'Leaden Salute' then
+            equip(set_combine(sets.precast.WS["Leaden Salute"], sets.weatherbelt))
+        end
     end
 end
 
