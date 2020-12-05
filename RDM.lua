@@ -93,7 +93,7 @@ function init_gear_sets()
     feet="Battlecast Gaiters",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
+    left_ear="Sherida Earring",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     left_ring="Ayanmo Ring",
     right_ring="Rajas Ring",
@@ -162,7 +162,7 @@ function init_gear_sets()
     feet="Battlecast Gaiters",
     neck="Fotia Gorget",
     waist="Fotia Belt",
-    left_ear="Cessance Earring",
+    left_ear="Sherida Earring",
     right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     left_ring="Petrov Ring",
     right_ring="Begrudging Ring",
@@ -229,10 +229,11 @@ function init_gear_sets()
     sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'], {})
 
     sets.midcast['Temper II']= set_combine(sets.midcast['Enhancing Magic'], {
-    body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
-    hands={ name="Viti. Gloves +1", augments={'Enhancing Magic duration',}},
-    legs="Atrophy Tights +1",
-    back = gear.RdmCES,
+        neck="Incanter's Torque",
+        body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
+        hands={ name="Viti. Gloves +1", augments={'Enhancing Magic duration',}},
+        legs="Atrophy Tights +1",
+        back = gear.RdmCES,
     })
         
     sets.midcast.Blink = sets.midcast.FastRecast
@@ -555,8 +556,10 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             end 
         end
     end
-    if state.MACC.value and spell.name == 'Frazzle II' then
-        equip(set_combine(sets.MACC, {ammo="none"}))
+    if state.MACC.value then 
+        if spell.name == 'Frazzle II' or spell.name == 'Silence' then
+            equip(set_combine(sets.MACC, {ammo="none"}))
+        end
     end
 end
 

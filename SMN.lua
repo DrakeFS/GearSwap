@@ -191,6 +191,7 @@ function init_gear_sets()
     main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
     sub="Vox Grip",
     ammo="Sancus Sachet",
+    neck="Incanter's Torque",
     head="Beckoner's Horn +1",
     body="Con. Doublet +2",
     hands="Lamassu Mitts",

@@ -66,7 +66,6 @@ end
 function job_setup()
     state.SongMode = M{['description']='Song Mode', 'None', 'Placeholder'}
     state.Buff['Pianissimo'] = buffactive['pianissimo'] or false
-    lockstyleset()
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -105,7 +104,7 @@ function user_setup()
     -- How many extra songs we can keep from Daurdabla/Terpander
     info.ExtraSongs = 1
 
-    select_default_macro_book()
+    on_job_change()
 
 end
 
@@ -223,8 +222,8 @@ function init_gear_sets()
     --sets.midcast.Carol = {hands="Mousai Gages +1"}
     --sets.midcast.Etude = {head="Mousai Turban +1"}
     sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +1"})
-    --sets.midcast.Lullaby = {body="Fili Hongreline +1", hands="Brioso Cuffs +3"}
-    sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +1"})
+    --sets.midcast.Lullaby = set_combine(sets.midcast.BardSong,{hands="Brioso Cuffs +3"}
+    sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +1", back=gear.BrdCFC})
     --sets.midcast.Mambo = {feet="Mousai Crackows"}
     sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +1"})
     --sets.midcast.Minne = {legs="Mousai Seraweels"}
@@ -822,10 +821,8 @@ end]]
 end]]
 
 -- Select default macro book on initial load or subjob change.
-function select_default_macro_book()
-    set_macro_page(1, 10)
-end
 
-function lockstyleset()
+function on_job_change()
+    set_macro_page(1, 10)
     send_command('wait 5;input /lockstyleset 3')
 end

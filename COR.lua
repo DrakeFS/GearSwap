@@ -123,7 +123,12 @@ function init_gear_sets()
 
     sets.precast.RA = {
         ammo=gear.TPAmmo,
+        head="Chass. Tricorne +1",
+        body="Laksa. Frac +2",
+        hands="Carmine Fin. Ga. +1",
+        legs={ name="Adhemar Kecks", augments={'AGI+10','"Rapid Shot"+10','Enmity-5',}},
         feet="Meg. Jam. +1",
+        waist="Yemaya Belt",
     }
 
        
@@ -243,8 +248,8 @@ function init_gear_sets()
         feet="Meg. Jam. +1",
         neck="Sanctity Necklace",
         waist="Yemaya Belt",
-        left_ear="Suppanomimi",
-        right_ear="Steelflash Earring",
+        left_ear="Volley Earring",
+        right_ear="Clearview Earring",
         left_ring="Cacoethic Ring",
         right_ring="Ilabrat Ring",
         back="Xucau Mantle",
@@ -310,7 +315,7 @@ function init_gear_sets()
 
     sets.engaged.Ranged = {}
 
-    sets.weatherbelt = {waist="Windbuffet Belt +1"}
+    sets.weatherbelt = {}
 end
 
 -------------------------------------------------------------------------------------------------------------------
