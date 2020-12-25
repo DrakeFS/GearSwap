@@ -134,16 +134,16 @@ function init_gear_sets()
     }
     
     sets.precast.WS['Sanguine Blade'] ={
-    ammo="Pemphredo Tathlum",
+    ammo="Regal Gem",
     head="Pixie Hairpin +1",
     body="Jhakri Robe +2",
     hands="Jhakri Cuffs +2",
     legs="Jhakri Slops +2",
     feet="Jhakri Pigaches +2",
-    neck="Fotia Gorget",
+    neck="Sanctity Necklace",
     waist="Fotia Belt",
     left_ear="Malignance Earring",
-    right_ear="Novio Earring",
+    right_ear="Regal Earring",
     left_ring="Petrov Ring",
     right_ring="Jhakri Ring",
     back=gear.RdmCMB,

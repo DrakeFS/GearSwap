@@ -197,7 +197,6 @@ function init_gear_sets()
     hands="Lamassu Mitts",
     legs={ name="Glyphic Spats +1", augments={'Increases Sp. "Blood Pact" accuracy',}},
     feet={ name="Glyph. Pigaches +1", augments={'Inc. Sp. "Blood Pact" magic crit. dmg.',}},
-    neck="Caller's Pendant",
     waist="Lucidity Sash",
     left_ear="Lodurr Earring",
     right_ear="Andoaa Earring",

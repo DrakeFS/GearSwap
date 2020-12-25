@@ -64,12 +64,13 @@ function init_gear_sets()
     --------------------------------------
 
     sets.TreasureHunter = {
-    head = gear.HercHTH,
-    body = gear.HercBTH,
-    hands = {name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
-    legs = gear.HercLTH,
-    feet = "Skulk. Poulaines +1",
-    waist = "Chaac Belt",
+        ammo="Per. Lucky Egg",
+        head = gear.HercHTH,
+        body = gear.HercBTH,
+        hands = {name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
+        legs = gear.HercLTH,
+        feet = "Skulk. Poulaines +1",
+        waist = "Chaac Belt",
     }
     -- sets.ExtraRegen = {head="Ocelomeh Headpiece +1"}
     sets.Kiting = {feet="Jute Boots",}
@@ -206,7 +207,7 @@ function init_gear_sets()
     body="Rawhide Vest",
     hands="Meg. Gloves +1",
     legs=gear.SamTTP,
-    feet="Meg. Jam. +1",
+    feet="Meg. Jam. +2",
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Steelflash Earring",
@@ -310,7 +311,7 @@ function init_gear_sets()
     ammo="Ginsen",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands="Mummu Wrists +1",
+    hands=gear.AdhGTP,
     legs=gear.SamTTP,
     feet=gear.HercBTP,
     neck="Assassin's Gorget",

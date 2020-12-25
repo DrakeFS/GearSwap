@@ -3,11 +3,11 @@ function define_global_sets()
     gear.CPCape = { name="Mecisto. Mantle", augments={'Cap. Point+32%','MP+27','Mag. Acc.+4','DEF+4',}}
 
     -- Head
-    gear.HercHeTH = {name="Herculean Helm", augments={'Phys. dmg. taken -1%','STR+1','"Treasure Hunter"+1',}}
+    gear.HercHeTH = { name="Herculean Helm", augments={'"Mag.Atk.Bns."+21','DEX+6','"Treasure Hunter"+1','Accuracy+13 Attack+13','Mag. Acc.+17 "Mag.Atk.Bns."+17',}}
     -- Hands
     
     -- Body
-    gear.HercBTP = {name="Herculean Vest", augments={'"Store TP"+6','"Mag.Atk.Bns."+1','Quadruple Attack +2','Accuracy+8 Attack+8','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}
+    gear.HercBTH = { name="Herculean Vest", augments={'STR+3','Attack+8','"Treasure Hunter"+1','Accuracy+17 Attack+17','Mag. Acc.+1 "Mag.Atk.Bns."+1',}}
     -- Legs
     gear.HercLTH = {name="Herculean Trousers", augments={'MND+10','CHR+7','"Treasure Hunter"+2','Accuracy+6 Attack+6',}}
 
@@ -45,8 +45,6 @@ function global_on_load()
     send_command('bind ^f12 gs c cycle IdleMode')
     send_command('bind !f12 gs c reset DefenseMode')
     send_command('bind != gs c toggle CapacityMode')
-    send_command('bind ^` gs c cycle SongMode')
-
 end
 
 function global_on_unload()
@@ -64,8 +62,6 @@ function global_on_unload()
     send_command('unbind ^f12')
     send_command('unbind !f12')
     send_command('unbind !=')
-    send_command('unbind ^`')
-
 end
 
 -- Global intercept on midcast.

@@ -17,23 +17,18 @@ function job_setup()
 
     state.Buff['Burst Affinity'] = buffactive['Burst Affinity'] or false
     state.Buff['Chain Affinity'] = buffactive['Chain Affinity'] or false
-    state.Buff.Convergence = buffactive.Convergence or false
-    state.Buff.Diffusion = buffactive.Diffusion or false
+    --state.Buff.Convergence = buffactive.Convergence or false
+    --state.Buff.Diffusion = buffactive.Diffusion or false
     state.Buff.Efflux = buffactive.Efflux or false
-    --state.Buff['Unbridled Learning'] = buffactive['Unbridled Learning'] or false
-
+   
     state.delayMod = M{'none', 'Samba'}
     state.delayMod:set('none')
 
-    determine_haste_group()
-
-    blue_magic_maps = {}
-    
     -- Mappings for gear sets to use for various blue magic spells.
     -- While Str isn't listed for each, it's generally assumed as being at least
     -- moderately signficant, even for spells with other mods.
-    
-    -- Physical Spells --
+
+    blue_magic_maps = {}
     
     -- Physical spells with no particular (or known) stat mods
     blue_magic_maps.Physical = S{
@@ -175,7 +170,14 @@ function job_setup()
     unbridled_spells = S{
         'Absolute Terror','Bilgestorm','Blistering Roar','Bloodrake','Carcharian Verve',
         'Crashing Thunder','Droning Whirlwind','Gates of Hades','Harden Shell','Polar Roar',
-        'Pyric Bulwark','Thunderbolt','Tourbillion','Uproot'
+        'Pyric Bulwark','Thunderbolt','Tourbillion','Uproot','Mighty Guard'
+    }
+    blue_magic_maps.AllBuffs = S{
+        'Amplification','Animating Wail','Battery Charge','Carcharian Verve','Cocoon',
+        'Erratic Flutter','Exuviation','Fantod','Feather Barrier','Harden Shell',
+        'Memento Mori','Nat. Meditation','Occultation','Orcish Counterstance','Refueling',
+        'Regeneration','Saline Coat','Triumphant Roar','Warm-Up','Zephyr Mantle','Barrier Tusk',
+        'Diamondhide','Magic Barrier','Metallic Body','Plasma Charge','Pyric Bulwark','Reactor Cool','Mighty Guard'
     }
 end
 
@@ -189,10 +191,9 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
+        
+    on_job_change()
     
-    update_combat_form()
-    lockstyleset()
-    --select_default_macro_book()
     send_command('bind @= gs c cycle delayMod')
 end
 
@@ -225,17 +226,17 @@ function init_gear_sets()
     sets.Kiting  = {legs="Carmine Cuisses +1",}
     
     --sets.buff['Burst Affinity'] = {}
-    --sets.buff['Chain Affinity'] = {}
+    sets.buff['Chain Affinity'] = {body="Luhlaza Jubbah"}
     --sets.buff.Convergence = {}
-    sets.buff.Diffusion = {feet="Luhlaza Charuqs +3"}
+    --sets.buff.Diffusion = {feet="Luhlaza Charuqs +3"}
     sets.buff.Enchainment = {body="Luhlaza Jubbah"}
-    --sets.buff.Efflux = {}
+    sets.buff.Efflux = {legs='Hashshin Tayt'}
 
     
     -- Precast Sets
     
     -- Precast sets to enhance JAs
-    --sets.precast.JA['Azure Lore'] = {}
+    sets.precast.JA['Diffusion'] = {feet="Luhlaza Charuqs +3"}
 
 
     -- Waltz set (chr and vit)
@@ -430,19 +431,19 @@ function init_gear_sets()
     -- Magical Spells --
     
     sets.midcast['Blue Magic'].Magical = {
-    ammo="Mavi Tathlum",
-    head="Jhakri Coronal +2",
-    body="Jhakri Robe +2",
-    hands=gear.HercGMB,
-    legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-    feet="Jhakri Pigaches +2",
-    neck="Mirage Stole +2",
-    waist={ name="Acuity Belt +1", augments={'Path: A',}},
-    left_ear="Hermetic Earring",
-    right_ear="Novio Earring",
-    left_ring="Jhakri Ring",
-    right_ring="Ayanmo Ring",
-    back=gear.BluCMB,
+        ammo="Pemphredo Tathlum",
+        head="Jhakri Coronal +2",
+        body="Jhakri Robe +2",
+        hands="Jhakri Cuffs +2",
+        legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
+        feet="Jhakri Pigaches +2",
+        neck="Sanctity Necklace",
+        waist={ name="Acuity Belt +1", augments={'Path: A',}},
+        left_ear="Regal Earring",
+        right_ear="Novio Earring",
+        left_ring="Jhakri Ring",
+        right_ring="Kishar Ring",
+        back=gear.BluCMB,
     }
 
     sets.midcast['Blue Magic'].Magical.Resistant = set_combine(sets.midcast['Blue Magic'].Magical, {})
@@ -455,21 +456,20 @@ function init_gear_sets()
 
     sets.midcast['Blue Magic'].MagicalDex = set_combine(sets.midcast['Blue Magic'].Magical, {})
 
-    sets.midcast['Blue Magic'].MagicAccuracy = 
-    {
-    ammo="Pemphredo Tathlum",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands="Aya. Manopolas +2",
-    legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-    feet="Aya. Gambieras +2",
-    neck={ name="Mirage Stole +2", augments={'Path: A',}},
-    waist={ name="Acuity Belt +1", augments={'Path: A',}},
-    left_ear="Njordr Earring",
-    right_ear="Hermetic Earring",
-    left_ring="Jhakri Ring",
-    right_ring="Ayanmo Ring",
-    back=gear.BluCMAC,
+    sets.midcast['Blue Magic'].MagicAccuracy = {
+        ammo="Pemphredo Tathlum",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Aya. Manopolas +2",
+        legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
+        feet="Aya. Gambieras +2",
+        neck={ name="Mirage Stole +2", augments={'Path: A',}},
+        waist={ name="Acuity Belt +1", augments={'Path: A',}},
+        left_ear="Njordr Earring",
+        right_ear="Hermetic Earring",
+        left_ring="Jhakri Ring",
+        right_ring="Ayanmo Ring",
+        back=gear.BluCMAC,
     }
 
     -- Breath Spells --
@@ -489,13 +489,13 @@ function init_gear_sets()
     sets.midcast['Blue Magic'].Healing = {}
 
     sets.midcast['Blue Magic'].SkillBasedBuff = {
-    ammo="Mavi Tathlum",
-    --head="Luhlaza Keffiyeh",  
-    body="Assim. Jubbah +3",
-    legs="Hashishin Tayt",
-    feet="Luhlaza Charuqs +3",
-    neck="Mirage Stole +2",
-    back=gear.BluCMAC,
+        ammo="Mavi Tathlum",
+        --head="Luhlaza Keffiyeh",  
+        body="Assim. Jubbah +3",
+        legs="Hashishin Tayt",
+        feet="Luhlaza Charuqs +3",
+        neck="Mirage Stole +2",
+        back=gear.BluCMAC,
     }
 
     sets.midcast['Blue Magic'].Buff = {}
@@ -515,21 +515,21 @@ function init_gear_sets()
 
     -- Gear for learning spells: +skill and AF hands.
     sets.Learning = {
-    ammo="Mavi Tathlum",
-    --head="Luhlaza Keffiyeh",  
-    body="Assim. Jubbah +3",
-    hands="Assimilator's Bazubands +2",
-    legs="Hashishin Tayt",
-    feet="Luhlaza Charuqs +3",
-    neck="Mirage Stole +2",
-    back="Cornflower Cape"
+        ammo="Mavi Tathlum",
+        --head="Luhlaza Keffiyeh",  
+        body="Assim. Jubbah +3",
+        hands="Assimilator's Bazubands +2",
+        legs="Hashishin Tayt",
+        feet="Luhlaza Charuqs +3",
+        neck="Mirage Stole +2",
+        back="Cornflower Cape"
     }
 
     sets.Subtle = {
-    neck="Bathy Choker",
-    head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
-    left_ring="Beeline Ring",
-    right_ring="Rajas Ring",
+        neck="Bathy Choker",
+        head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
+        left_ring="Beeline Ring",
+        right_ring="Rajas Ring",
     }
 
     --[[sets.latent_refresh = {
@@ -611,7 +611,7 @@ function init_gear_sets()
     ammo="Ginsen",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+    hands=gear.AdhGTP,
     legs=gear.SamTTP,
     feet=gear.HercFTP,
     neck="Mirage Stole +2", 
@@ -627,7 +627,7 @@ function init_gear_sets()
     ammo="Honed Tathlum",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+    hands=gear.AdhGTP,
     legs="Jhakri Slops +2",
     feet="Aya. Gambieras +2",
     neck="Mirage Stole +2",
@@ -647,7 +647,7 @@ function init_gear_sets()
     ammo="Ginsen",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+    hands=gear.AdhGTP,
     legs=gear.SamTTP,
     feet=gear.HercFTP,
     neck="Mirage Stole +2",
@@ -718,6 +718,10 @@ function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
             equip(sets.self_healing)
         end
     end
+
+    if buffactive['Diffusion'] and blue_magic_maps.AllBuffs:contains(spell.english) then
+        equip(sets.precast.JA['Diffusion'])
+    end    
 
     -- If in learning mode, keep on gear intended to help with that, regardless of action.
     if state.OffenseMode.value == 'Learning' then
@@ -842,16 +846,7 @@ end
 
     -- Select default macro book on initial load or subjob change.
 
---[[function select_default_macro_book()
-    -- Default macro set/book
-    if player.sub_job == 'DNC' then
-        set_macro_page(1, 16)
-    else
-        set_macro_page(1, 16)
-    end
-end ]]
-
-    -- Set a Style Lock
-function lockstyleset()
+function on_job_change()
+    set_macro_page(1, 16)
     send_command('wait 5;input /lockstyleset 20')
 end

@@ -2,16 +2,17 @@ function define_global_sets()
     -- Head
     gear.HercHFC = {name="Herculean Helm", augments={'"Fast Cast"+4','Mag. Acc.+3',}}
     gear.HercHTH = {name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}}
-    
+    gear.HercHMWS = {name="Herculean Helm", augments={'Weapon skill damage +2%','MND+14','Accuracy+9 Attack+9','Mag. Acc.+16 "Mag.Atk.Bns."+16',}}    
     -- Hands
     gear.HercGMB = {name="Herculean Gloves", augments={'VIT+15','"Mag.Atk.Bns."+24','Accuracy+6 Attack+6','Mag. Acc.+17 "Mag.Atk.Bns."+17',}}
     gear.MerlGPBP = { name="Merlinic Dastanas", augments={'Pet: Attack+10 Pet: Rng.Atk.+10','Blood Pact Dmg.+10',}}
-    
+    gear.AdhGTP = { name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}}
     -- Body
     gear.HercBTH = { name="Herculean Vest", augments={'Pet: INT+1','Accuracy+5','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 
     -- Legs
     gear.HercLTH = {name="Herculean Trousers", augments={'Mag. Acc.+7','DEX+9','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
+    gear.HercLMB = { name="Herculean Trousers", augments={'Accuracy+10','Mag. Acc.+11','Accuracy+19 Attack+19','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
     gear.SamTTP = { name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}}
     gear.LengoFC = {name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}}
     gear.EnticeMBP = {name="Enticer's Pants", augments={'MP+50','Pet: Accuracy+15 Pet: Rng. Acc.+15','Pet: Mag. Acc.+15','Pet: Damage taken -5%',}}

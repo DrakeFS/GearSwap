@@ -70,12 +70,14 @@ function init_gear_sets()
     --------------------------------------
 
     sets.TreasureHunter = {
-    head=gear.HercHeTH,
-    hands={ name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
-    legs=gear.HercLTH,
-    feet="Skulk. Poulaines +1",
-    waist="Chaac Belt",
-    left_ring="Gorney Ring",
+        ammo="Per. Lucky Egg",
+        head=gear.HercHeTH,
+        body=gear.HercBTH,
+        hands={ name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
+        legs=gear.HercLTH,
+        feet="Skulk. Poulaines +1",
+        waist="Chaac Belt",
+        left_ring="Gorney Ring",
     }
     -- sets.ExtraRegen = {head="Ocelomeh Headpiece +1"}
     sets.Kiting = {feet="Jute Boots +1",}
