@@ -73,12 +73,12 @@ function user_setup()
     state.IdleMode:options('Normal', 'PDT', 'Refresh')
     
     -- Additional local binds
-    send_command('bind ^` gs c cycle roll1')
-    send_command('bind !` gs c cycle roll2')
+    send_command('bind ^` gs c rollcmd 1 cycle forward')
+    send_command('bind !` gs c rollcmd 2 cycle forward')
     send_command('bind @= gs c cycle delayMod')
     send_command('bind @` gs c cycle QDrawElement')
-    send_command('bind ~^` gs c cycleback roll1')
-    send_command('bind ~!` gs c cycleback roll2')
+    send_command('bind ~^` gs c rollcmd 1 cycle back')
+    send_command('bind ~!` gs c rollcmd 2 cycle back')
     send_command('bind ~@` gs c cycle QDrawElement')
 
     on_job_change()
@@ -471,37 +471,12 @@ end
     end
 end]]
 function job_self_command(cmdParams, eventArgs)
-    if cmdParams[1]:lower() == 'roll1' then
-        handle_roll_1()
-        eventArgs.handled = true
-    elseif cmdParams[1]:lower() == 'roll2' then
-        handle_roll_2()
-        eventArgs.handled = true
-    elseif cmdParams[1]:lower() == 'qdraw' then
+    if cmdParams[1]:lower() == 'qdraw' then
         handle_qdraw()
         eventArgs.handled = true
-    end
-end
-
-function handle_roll_1()
-    local roll = state.roll1.value
-    local ability_recast = windower.ffxi.get_ability_recasts()
-
-    if ability_recast[96] == 0 then
-        send_command('@input /ja "Crooked Cards" <me>;wait 1;input /ja "'..roll..'" <me>')
-    else
-        send_command('@input /ja "'..roll..'" <me>')
-    end
-end
-
-function handle_roll_2()
-    local roll = state.roll2.value
-    local ability_recast = windower.ffxi.get_ability_recasts()
-
-    if ability_recast[96] == 0 then
-        send_command('@input /ja "Crooked Cards" <me>;wait 1;input /ja "'..roll..'" <me>')
-    else
-        send_command('@input /ja "'..roll..'" <me>')
+    elseif cmdParams[1]:lower() == 'rollcmd' then
+            handle_roll(cmdParams[2],cmdParams[3],cmdParams[4])
+            eventArgs.handled = true
     end
 end
 
@@ -511,48 +486,57 @@ function handle_qdraw()
     send_command('@input /ja "'..element..' Shot" <t>')
 end
 
+function handle_roll(rollNumber, rollExecute, rollMod)
+    if rollNumber == '1' then
+        rollSelect = state.roll1
+    elseif rollNumber == '2' then
+        rollSelect = state.roll2
+    else
+        add_to_chat(167, 'Specify roll 1 or roll 2 by using "1" or "2"')
+    end
+   
+    rollState = rollSelect.value
+   
+    if rollExecute:lower() == 'cycle' then
+        if rollMod:lower() == 'back' then
+            rollSelect:cycleback()
+        elseif rollMod:lower() == 'forward' then
+            rollSelect:cycle()
+        else
+            add_to_chat(167, 'Use "back" or "forward" to cycle through rolls')
+        end
+
+        rollState = rollSelect.value
+
+        rollInfo = rolls[rollState]
+
+        add_to_chat(122, 'Roll '..rollNumber..' set to '..rollState..' - Bonus Effect: '..rollInfo.bonus..'.')
+
+    elseif rollExecute:lower() == 'roll' then
+        local ability_recast = windower.ffxi.get_ability_recasts()
+        
+        if ability_recast[96] == 0 then
+            send_command('@input /ja "Crooked Cards" <me>;wait 1;input /ja "'..rollState..'" <me>')
+        else
+            send_command('@input /ja "'..rollState..'" <me>')
+        end
+
+    --[[elseif rollExecute:lower() == 'set' then
+        rollSelect:set(rollMod)]]
+    else
+        add_to_chat(167, 'Rollcmd options are: "roll" or "cycle"')
+    end
+end
+
 function display_states()
-
-    corrolls = {
-        ["Corsair's Roll"]   = {lucky=5, unlucky=9, bonus="Experience Points"},
-        ["Ninja Roll"]       = {lucky=4, unlucky=8, bonus="Evasion"},
-        ["Hunter's Roll"]    = {lucky=4, unlucky=8, bonus="Accuracy"},
-        ["Chaos Roll"]       = {lucky=4, unlucky=8, bonus="Attack"},
-        ["Magus's Roll"]     = {lucky=2, unlucky=6, bonus="Magic Defense"},
-        ["Healer's Roll"]    = {lucky=3, unlucky=7, bonus="Cure Potency Received"},
-        ["Puppet Roll"]      = {lucky=4, unlucky=8, bonus="Pet Magic Accuracy/Attack"},
-        ["Choral Roll"]      = {lucky=2, unlucky=6, bonus="Spell Interruption Rate"},
-        ["Monk's Roll"]      = {lucky=3, unlucky=7, bonus="Subtle Blow"},
-        ["Beast Roll"]       = {lucky=4, unlucky=8, bonus="Pet Attack"},
-        ["Samurai Roll"]     = {lucky=2, unlucky=6, bonus="Store TP"},
-        ["Evoker's Roll"]    = {lucky=5, unlucky=9, bonus="Refresh"},
-        ["Rogue's Roll"]     = {lucky=5, unlucky=9, bonus="Critical Hit Rate"},
-        ["Warlock's Roll"]   = {lucky=4, unlucky=8, bonus="Magic Accuracy"},
-        ["Fighter's Roll"]   = {lucky=5, unlucky=9, bonus="Double Attack Rate"},
-        ["Drachen Roll"]     = {lucky=3, unlucky=7, bonus="Pet Accuracy"},
-        ["Gallant's Roll"]   = {lucky=3, unlucky=7, bonus="Defense"},
-        ["Wizard's Roll"]    = {lucky=5, unlucky=9, bonus="Magic Attack"},
-        ["Dancer's Roll"]    = {lucky=3, unlucky=7, bonus="Regen"},
-        ["Scholar's Roll"]   = {lucky=2, unlucky=6, bonus="Conserve MP"},
-        ["Bolter's Roll"]    = {lucky=3, unlucky=9, bonus="Movement Speed"},
-        ["Caster's Roll"]    = {lucky=2, unlucky=7, bonus="Fast Cast"},
-        ["Courser's Roll"]   = {lucky=3, unlucky=9, bonus="Snapshot"},
-        ["Blitzer's Roll"]   = {lucky=4, unlucky=9, bonus="Attack Delay"},
-        ["Tactician's Roll"] = {lucky=5, unlucky=8, bonus="Regain"},
-        ["Allies's Roll"]    = {lucky=3, unlucky=10, bonus="Skillchain Damage"},
-        ["Miser's Roll"]     = {lucky=5, unlucky=7, bonus="Save TP"},
-        ["Companion's Roll"] = {lucky=2, unlucky=10, bonus="Pet Regain and Regen"},
-        ["Avenger's Roll"]   = {lucky=4, unlucky=8, bonus="Counter Rate"},
-    }
-
     roll1 = state.roll1.value
     roll2 = state.roll2.value
 
-    rollinfo1 = corrolls[roll1]
-    rollinfo2 = corrolls[roll2]
+    rollinfo1 = rolls[roll1]
+    rollinfo2 = rolls[roll2]
 
-    add_to_chat(121, 'Roll 1 set to '..state.roll1.value..'.  Bonus is '..rollinfo1.bonus..'.')
-    add_to_chat(121, 'Roll 2 set to '..state.roll2.value..'.  Bonus is '..rollinfo2.bonus..'.')
+    add_to_chat(121, 'Roll 1 set to '..state.roll1.value..'.  Bonus effect: '..rollinfo1.bonus..'.')
+    add_to_chat(121, 'Roll 2 set to '..state.roll2.value..'.  Bonus effect: '..rollinfo2.bonus..'.')
     add_to_chat(121, 'Quick Draw element set to '..state.QDrawElement.value..'.')
 end
 -- Called by the 'update' self-command, for common needs.
