@@ -1,17 +1,3 @@
--------------------------------------------------------------------------------------------------------------------
--- Setup functions for this job.  Generally should not be modified.
--------------------------------------------------------------------------------------------------------------------
-
---[[
-    gs c toggle LuzafRing -- Toggles use of Luzaf Ring on and off
-    
-    Offense mode is melee or ranged.  Used ranged offense mode if you are engaged
-    for ranged weaponskills, but not actually meleeing.
-    
-    Weaponskill mode, if set to 'Normal', is handled separately for melee and ranged weaponskills.
---]]
-
-
 -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
