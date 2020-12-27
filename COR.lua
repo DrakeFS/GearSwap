@@ -103,16 +103,13 @@ function init_gear_sets()
     --------------------------------------
     -- Define job specific gear
     
-    gear.TPAmmo = "Corsair Bullet"
+    gear.TPAmmo = "Voluspa Bullet"
     gear.PWSAmmo = gear.TPAmmo
     gear.MWSAmmo = "Orichalc. Bullet"
     gear.QDrawAmmo = "Hauksbok Bullet"
     gear.CorAGI = {name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}}
     gear.CorRTP = {name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10','Phys. dmg. taken-10%',}}
     
-    --Ammo check
-    sets.ammo = {ammo=gear.TPAmmo}
-
     -- Precast sets to enhance JAs
     
     sets.precast.JA['Triple Shot'] = {body="Navarch's Frac +2"}
@@ -415,11 +412,16 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
-    if spell.type ~= 'CorsairShot' and player.equipment.ammo == "Hauksbok Bullet" then
+    
+    if (spell.action_type == 'Ranged Attack' and player.equipment.ammo == "Hauksbok Bullet") or (spell.skill == 'Marksmanship'and player.equipment.ammo == "Hauksbok Bullet") then
         add_to_chat(104, 'Check ammo, trying to use Quick Draw ammunition for non-Quick Draw shot.  Cancelling.')
         eventArgs.cancel = true
-        return
     end
+
+    --[[if (spell.action_type == 'Ranged Attack' and player.equipment.ammo == "Orichalc. Bullet") or (spell.skill == 'Marksmanship'and player.equipment.ammo == "Orichalc. Bullet") then
+        add_to_chat(104, 'Check ammo, trying to use Quick Draw ammunition for non-Quick Draw shot.  Cancelling.')
+        eventArgs.cancel = true
+    end]]
     -- Check that proper ammo is available if we're using ranged attacks or similar.
     --[[if spell.action_type == 'Ranged Attack' or spell.type == 'WeaponSkill' or spell.type == 'CorsairShot' then
         do_bullet_checks(spell, spellMap, eventArgs)
@@ -453,7 +455,7 @@ function job_aftercast(spell, action, spellMap, eventArgs)
         display_roll_info(spell)
     end
     if player.equipment.ammo == "Hauksbok Bullet" then
-        equip(sets.ammo)
+         equip({ammo=gear.TPAmmo})
     end    
 end
 
@@ -510,8 +512,47 @@ function handle_qdraw()
 end
 
 function display_states()
-    add_to_chat(121, 'Roll 1 set to '..state.roll1.value..'.')
-    add_to_chat(121, 'Roll 2 set to '..state.roll2.value..'.')
+
+    corrolls = {
+        ["Corsair's Roll"]   = {lucky=5, unlucky=9, bonus="Experience Points"},
+        ["Ninja Roll"]       = {lucky=4, unlucky=8, bonus="Evasion"},
+        ["Hunter's Roll"]    = {lucky=4, unlucky=8, bonus="Accuracy"},
+        ["Chaos Roll"]       = {lucky=4, unlucky=8, bonus="Attack"},
+        ["Magus's Roll"]     = {lucky=2, unlucky=6, bonus="Magic Defense"},
+        ["Healer's Roll"]    = {lucky=3, unlucky=7, bonus="Cure Potency Received"},
+        ["Puppet Roll"]      = {lucky=4, unlucky=8, bonus="Pet Magic Accuracy/Attack"},
+        ["Choral Roll"]      = {lucky=2, unlucky=6, bonus="Spell Interruption Rate"},
+        ["Monk's Roll"]      = {lucky=3, unlucky=7, bonus="Subtle Blow"},
+        ["Beast Roll"]       = {lucky=4, unlucky=8, bonus="Pet Attack"},
+        ["Samurai Roll"]     = {lucky=2, unlucky=6, bonus="Store TP"},
+        ["Evoker's Roll"]    = {lucky=5, unlucky=9, bonus="Refresh"},
+        ["Rogue's Roll"]     = {lucky=5, unlucky=9, bonus="Critical Hit Rate"},
+        ["Warlock's Roll"]   = {lucky=4, unlucky=8, bonus="Magic Accuracy"},
+        ["Fighter's Roll"]   = {lucky=5, unlucky=9, bonus="Double Attack Rate"},
+        ["Drachen Roll"]     = {lucky=3, unlucky=7, bonus="Pet Accuracy"},
+        ["Gallant's Roll"]   = {lucky=3, unlucky=7, bonus="Defense"},
+        ["Wizard's Roll"]    = {lucky=5, unlucky=9, bonus="Magic Attack"},
+        ["Dancer's Roll"]    = {lucky=3, unlucky=7, bonus="Regen"},
+        ["Scholar's Roll"]   = {lucky=2, unlucky=6, bonus="Conserve MP"},
+        ["Bolter's Roll"]    = {lucky=3, unlucky=9, bonus="Movement Speed"},
+        ["Caster's Roll"]    = {lucky=2, unlucky=7, bonus="Fast Cast"},
+        ["Courser's Roll"]   = {lucky=3, unlucky=9, bonus="Snapshot"},
+        ["Blitzer's Roll"]   = {lucky=4, unlucky=9, bonus="Attack Delay"},
+        ["Tactician's Roll"] = {lucky=5, unlucky=8, bonus="Regain"},
+        ["Allies's Roll"]    = {lucky=3, unlucky=10, bonus="Skillchain Damage"},
+        ["Miser's Roll"]     = {lucky=5, unlucky=7, bonus="Save TP"},
+        ["Companion's Roll"] = {lucky=2, unlucky=10, bonus="Pet Regain and Regen"},
+        ["Avenger's Roll"]   = {lucky=4, unlucky=8, bonus="Counter Rate"},
+    }
+
+    roll1 = state.roll1.value
+    roll2 = state.roll2.value
+
+    rollinfo1 = corrolls[roll1]
+    rollinfo2 = corrolls[roll2]
+
+    add_to_chat(121, 'Roll 1 set to '..state.roll1.value..'.  Bonus is '..rollinfo1.bonus..'.')
+    add_to_chat(121, 'Roll 2 set to '..state.roll2.value..'.  Bonus is '..rollinfo2.bonus..'.')
     add_to_chat(121, 'Quick Draw element set to '..state.QDrawElement.value..'.')
 end
 -- Called by the 'update' self-command, for common needs.

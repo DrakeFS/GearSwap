@@ -206,7 +206,7 @@ end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
---[[function job_precast(spell, action, spellMap, eventArgs)
+function job_precast(spell, action, spellMap, eventArgs)
     -- Check that proper ammo is available if we're using ranged attacks or similar.
     if spell.action_type == 'Ranged Attack' or spell.type == 'WeaponSkill' or spell.type == 'CorsairShot' then
         do_bullet_checks(spell, spellMap, eventArgs)
@@ -223,7 +223,7 @@ end
             eventArgs.handled = true
         end
     end
-end]]
+end
 
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
