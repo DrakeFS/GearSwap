@@ -1,3 +1,26 @@
+--[[
+    Lua specific commands:
+        rollcmd
+            Modifiers:
+            1 or 2
+                cycle
+                    forward or back 
+                roll
+            qdraw
+
+    Example macros:
+        /console gs c rollcmd 1 roll
+        /console gs c qdraw
+        /console gs c rollcmd 2 cycle forward - (this is also bound to a hotkey)
+
+    Lua specific binds
+        ctrl + ` = roll 1 cycle forward
+        ctrl + shift + ` = roll 1 cycle backwards
+        alt + ` = roll 2 cycle forward
+        alt + shift + ` = roll 2 cycle backwards
+        windows key + ` = cycle quickdraw element
+]]
+
 -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
