@@ -1,16 +1,25 @@
--------------------------------------------------------------------------------------------------------------------
--- Setup functions for this job.  Generally should not be modified.
--------------------------------------------------------------------------------------------------------------------
-
 --[[
-    gs c toggle LuzafRing -- Toggles use of Luzaf Ring on and off
-    
-    Offense mode is melee or ranged.  Used ranged offense mode if you are engaged
-    for ranged weaponskills, but not actually meleeing.
-    
-    Weaponskill mode, if set to 'Normal', is handled separately for melee and ranged weaponskills.
---]]
+    Lua specific commands:
+        rollcmd
+            Modifiers:
+            1 or 2
+                cycle
+                    forward or back 
+                roll
+            qdraw
 
+    Example macros:
+        /console gs c rollcmd 1 roll
+        /console gs c qdraw
+        /console gs c rollcmd 2 cycle forward - (this is also bound to a hotkey)
+
+    Lua specific binds
+        ctrl + ` = roll 1 cycle forward
+        ctrl + shift + ` = roll 1 cycle backwards
+        alt + ` = roll 2 cycle forward
+        alt + shift + ` = roll 2 cycle backwards
+        windows key + ` = cycle quickdraw element
+]]
 
 -- Initialization function for this job file.
 function get_sets()
@@ -22,11 +31,35 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    -- Whether to use Luzaf's Ring
-    state.LuzafRing = M(false, "Luzaf's Ring")
-    -- Whether a warning has been given for low ammo
-    state.warned = M(false)
+    -- Initialize roll tracking states
+    state.roll1 = M{['description'] = 'Roll 1'}
+    state.roll2 = M{['description'] = 'Roll 2'}
+    
+    -- Initialize Quick Draw state
+    state.QDrawElement = M{['description'] = 'Quick Draw Element'}
 
+    -- Add Rolls to roll tracking state
+    state.roll1:options("Corsair's Roll", "Ninja Roll", "Hunter's Roll", "Chaos Roll", "Magus's Roll", "Healer's Roll", "Puppet Roll",
+    "Choral Roll", "Monk's Roll", "Beast Roll", "Samurai Roll", "Evoker's Roll", "Rogue's Roll", "Warlock's Roll", "Fighter's Roll", 
+    "Drachen Roll", "Gallant's Roll", "Wizard's Roll", "Dancer's Roll", "Scholar's Roll", "Bolter's Roll", "Caster's Roll", 
+    "Courser's Roll" ,"Blitzer's Roll", "Tactician's Roll", "Allies's Roll", "Miser's Roll", "Companion's Roll", "Avenger's Roll")
+    state.roll2:options("Corsair's Roll", "Ninja Roll", "Hunter's Roll", "Chaos Roll", "Magus's Roll", "Healer's Roll", "Puppet Roll",
+    "Choral Roll", "Monk's Roll", "Beast Roll", "Samurai Roll", "Evoker's Roll", "Rogue's Roll", "Warlock's Roll", "Fighter's Roll", 
+    "Drachen Roll", "Gallant's Roll", "Wizard's Roll", "Dancer's Roll", "Scholar's Roll", "Bolter's Roll", "Caster's Roll", 
+    "Courser's Roll" ,"Blitzer's Roll", "Tactician's Roll", "Allies's Roll", "Miser's Roll", "Companion's Roll", "Avenger's Roll")
+        
+    -- Add Quick Draw Element
+    state.QDrawElement:options("Light", "Dark", "Fire", "Water", "Thunder", "Earth", "Wind", "Ice")
+
+    -- Sets default roll states on lua load
+    state.roll1:set("Samurai Roll")
+    state.roll2:set("Fighter's Roll")
+
+    -- set default shot
+    state.QDrawElement:set("Light")
+    
+    state.delayMod = M{'none', 'Samba'}
+    state.delayMod:set('none')
     define_roll_values()
 end
 
@@ -36,32 +69,34 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('Noraml', 'Acc')
+    state.OffenseMode:options('None', 'Acc')
     state.RangedMode:options('Normal', 'Acc')
-    state.WeaponskillMode:options('Normal', 'Acc')
+    state.WeaponskillMode:options('Normal', 'Acc', 'Att', 'Mod')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Refresh')
-
-    lockstyleset()
-
-    --gear.RAbullet = "Adlivun Bullet"
-    --gear.WSbullet = "Adlivun Bullet"
-    --gear.MAbullet = "Bronze Bullet"
-    --gear.QDbullet = "Adlivun Bullet"
-    --options.ammo_warning_limit = 15
-
+    
     -- Additional local binds
-    -- send_command('bind ^` input /ja "Double-up" <me>')
-    -- send_command('bind !` input /ja "Bolter\'s Roll" <me>')
+    send_command('bind ^` gs c rollcmd 1 cycle forward')
+    send_command('bind !` gs c rollcmd 2 cycle forward')
+    send_command('bind @= gs c cycle delayMod')
+    send_command('bind @` gs c cycle QDrawElement')
+    send_command('bind ~^` gs c rollcmd 1 cycle back')
+    send_command('bind ~!` gs c rollcmd 2 cycle back')
+    send_command('bind ~@` gs c cycle QDrawElement')
 
-    --select_default_macro_book()
+    on_job_change()
 end
 
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-    -- send_command('unbind ^`')
-    -- send_command('unbind !`')
+    send_command('unbind ^`')
+    send_command('unbind !`')
+    send_command('unbind @=')
+    send_command('unbind @`')
+    send_command('unbind ~^`')
+    send_command('unbind ~!`')
+    send_command('unbind ~@`')
 end
 
 -- Define sets and vars used by this job file.
@@ -69,15 +104,21 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
+    -- Define job specific gear
     
-    -- Precast Sets
-
+    --gear.TPAmmo = "Voluspa Bullet"
+    --gear.PWSAmmo = gear.TPAmmo
+    --gear.MWSAmmo = "Orichalc. Bullet"
+    --gear.QDrawAmmo = "Hauksbok Bullet"
+    --gear.CorAGI = {name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}}
+    --gear.CorRTP = {name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10','Phys. dmg. taken-10%',}}
+    
     -- Precast sets to enhance JAs
     
-    sets.precast.JA['Triple Shot'] = {}
-    sets.precast.JA['Snake Eye'] = {}
-    sets.precast.JA['Wild Card'] = {}
-    sets.precast.JA['Random Deal'] = {}
+    --sets.precast.JA['Triple Shot'] = {body="Navarch's Frac +2"}
+    --sets.precast.JA['Snake Eye'] = {legs="Lanun Culottes"}
+    --sets.precast.JA['Wild Card'] = {feet="Lanun Bottes +2"}
+    --sets.precast.JA['Random Deal'] = {body="Lanun Frac"}
 
     
     sets.precast.CorsairRoll = {
@@ -89,16 +130,15 @@ function init_gear_sets()
         back="Camulus's Mantle",
     }
     
-    sets.precast.CorsairRoll["Caster's Roll"] = set_combine(sets.precast.CorsairRoll, {})
-    sets.precast.CorsairRoll["Courser's Roll"] = set_combine(sets.precast.CorsairRoll, {})
-    sets.precast.CorsairRoll["Blitzer's Roll"] = set_combine(sets.precast.CorsairRoll, {})
-    sets.precast.CorsairRoll["Tactician's Roll"] = set_combine(sets.precast.CorsairRoll, {})
-    sets.precast.CorsairRoll["Allies' Roll"] = set_combine(sets.precast.CorsairRoll, {})
+    --sets.precast.CorsairRoll["Caster's Roll"] = set_combine(sets.precast.CorsairRoll, {legs="Navarch's Culottes +2"})
+    --sets.precast.CorsairRoll["Courser's Roll"] = set_combine(sets.precast.CorsairRoll, {feet="Navarch's Bottes +2"})
+    --sets.precast.CorsairRoll["Blitzer's Roll"] = set_combine(sets.precast.CorsairRoll, {head="Navarch's Tricorne +2"})
+    --sets.precast.CorsairRoll["Tactician's Roll"] = set_combine(sets.precast.CorsairRoll, {body="Navarch's Frac +2"})
+    --sets.precast.CorsairRoll["Allies' Roll"] = set_combine(sets.precast.CorsairRoll, {hands="Navarch's Gants +2"})
     
-    sets.precast.LuzafRing = {}
-    sets.precast.FoldDoubleBust = {}
+    sets.precast.FoldDoubleBust = {hands="Lanun Gants +1"}
     
-    sets.precast.CorsairShot = {}
+    --sets.precast.CorsairShot = {head="Blood Mask"}
     
 
     -- Waltz set (chr and vit)
@@ -113,7 +153,6 @@ function init_gear_sets()
 
     sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {})
 
-
     sets.precast.RA = {}
 
        
@@ -121,8 +160,24 @@ function init_gear_sets()
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {}
 
+
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
-    sets.precast.WS['Evisceration'] = sets.precast.WS
+    sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS,{})
+
+    sets.precast.WS['Savage Blade'] = {
+        ammo="Ginsen",
+        head="Meghanada Visor +1",
+        body="Meg. Cuirie +2",
+        hands="Meg. Gloves +2",
+        legs="Meg. Chausses +2",
+        feet="Meg. Jam. +1",
+        neck="Sanctity Necklace",
+        waist="Sailfi Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Begrudging Ring",
+        right_ring="Rajas Ring",
+    }
 
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
 
@@ -131,12 +186,11 @@ function init_gear_sets()
     sets.precast.WS['Last Stand'] = {}
 
     sets.precast.WS['Last Stand'].Acc = {}
-
+       
     sets.precast.WS['Wildfire'] = {}
 
-    sets.precast.WS['Leaden Salute'] = sets.precast.WS['Wildfire']
-    
-    
+sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {head="Pixie Hairpin +1"})
+
     -- Midcast Sets
     sets.midcast.FastRecast = {}
         
@@ -147,9 +201,9 @@ function init_gear_sets()
 
     sets.midcast.CorsairShot.Acc = {}
 
-    sets.midcast.CorsairShot['Light Shot'] = {}
+    sets.midcast.CorsairShot['Light Shot'] = set_combine(sets.midcast.CorsairShot, {})
 
-    sets.midcast.CorsairShot['Dark Shot'] = sets.midcast.CorsairShot['Light Shot']
+    sets.midcast.CorsairShot['Dark Shot'] = set_combine(sets.midcast.CorsairShot['Light Shot'], {head="Pixie Hairpin +1"})
 
 
     -- Ranged gear
@@ -157,6 +211,7 @@ function init_gear_sets()
 
     sets.midcast.RA.Acc = {}
 
+    
     -- Sets to return to when not performing an action.
     
     -- Idle sets
@@ -170,16 +225,22 @@ function init_gear_sets()
         right_ring="Defending Ring",
     }
 
-    sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
-    
-    -- Resting sets
-    sets.resting = set_combine(sets.idle, {})
+    sets.idle.Town = set_combine(sets.idle,{body="Councilor's Garb",})
     
     -- Defense sets
-    sets.defense.PDT = {}
+    sets.defense.PDT = {
+        head="Meghanada Visor +1",
+        body="Meg. Cuirie +2",
+        hands="Meg. Gloves +2",
+        legs="Mummu Kecks +2",
+        feet="Meg. Jam. +1",
+        neck="Loricate Torque",
+        right_ring="Defending Ring",
+    }
 
     sets.defense.MDT = {}
     
+
     sets.Kiting = {}
 
     -- Engaged sets
@@ -190,14 +251,44 @@ function init_gear_sets()
     -- EG: sets.engaged.Dagger.Accuracy.Evasion
     
     -- Normal melee group
-    sets.engaged = {}
+    sets.engaged = {
+        ammo="Ginsen",
+        head="Mummu Bonnet +2",
+        body="Mummu Jacket +2",
+        hands="Mummu Wrists +2",
+        legs="Meg. Chausses +2",
+        feet="Mummu Gamash. +2",
+        neck="Clotharius Torque",
+        waist="Kentarch Belt",
+        left_ear="Eabani Earring",
+        right_ear="Suppanomimi",
+        left_ring="Begrudging Ring",
+        right_ring="Rajas Ring",
+    }
+
+    sets.engaged.MaxHaste = set_combine(sets.engaged, {})
+
+    sets.engaged.HighHaste = set_combine(sets.engaged, {})
+
+    sets.engaged.MidHaste = set_combine(sets.engaged, {})
+
+    sets.engaged.LowHaste = set_combine(sets.engaged, {})
     
     sets.engaged.Acc = {}
 
-    sets.engaged.DW = {}
-    
-    sets.engaged.DW.Acc = {}
+    sets.engaged.DW = set_combine(sets.engaged, {}
+)
+    sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {})
 
+    sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW.MaxHaste, {})
+
+    sets.engaged.DW.MidHaste = set_combine(sets.engaged.DW.HighHaste, {})
+
+    sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
+    
+    sets.engaged.Acc.DW = {}
+    
+    sets.weatherbelt = {}
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -207,20 +298,17 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
-    -- Check that proper ammo is available if we're using ranged attacks or similar.
-    if spell.action_type == 'Ranged Attack' or spell.type == 'WeaponSkill' or spell.type == 'CorsairShot' then
-        do_bullet_checks(spell, spellMap, eventArgs)
+    
+    if (spell.action_type == 'Ranged Attack' and player.equipment.ammo == "Hauksbok Bullet") or (spell.skill == 'Marksmanship'and player.equipment.ammo == "Hauksbok Bullet") then
+        add_to_chat(104, 'Check ammo, trying to use Quick Draw ammunition for non-Quick Draw shot.  Cancelling.')
+        eventArgs.cancel = true
     end
+end
 
-    -- gear sets
-    if (spell.type == 'CorsairRoll' or spell.english == "Double-Up") and state.LuzafRing.value then
-        equip(sets.precast.LuzafRing)
-    elseif spell.type == 'CorsairShot' and state.CastingMode.value == 'Resistant' then
-        classes.CustomClass = 'Acc'
-    elseif spell.english == 'Fold' and buffactive['Bust'] == 2 then
-        if sets.precast.FoldDoubleBust then
-            equip(sets.precast.FoldDoubleBust)
-            eventArgs.handled = true
+function job_post_precast(spell, action, spellMap)
+    if world.weather_element == 'Dark'or world.day_element == 'Dark' then
+        if spell.name == 'Leaden Salute' then
+            equip(set_combine(sets.precast.WS["Leaden Salute"], sets.weatherbelt))
         end
     end
 end
@@ -231,6 +319,9 @@ function job_aftercast(spell, action, spellMap, eventArgs)
     if spell.type == 'CorsairRoll' and not spell.interrupted then
         display_roll_info(spell)
     end
+    if player.equipment.ammo == "Hauksbok Bullet" then
+         equip({ammo=gear.TPAmmo})
+    end    
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -239,22 +330,93 @@ end
 
 -- Return a customized weaponskill mode to use for weaponskill sets.
 -- Don't return anything if you're not overriding the default value.
-
-function update_combat_form()
-    -- Check for H2H or single-wielding
-    if player.equipment.sub == "Genmei Shield" or player.equipment.sub == 'empty' then
-        state.CombatForm:reset()
-    else
-        state.CombatForm:set('DW')
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'qdraw' then
+        handle_qdraw()
+        eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'rollcmd' then
+        handle_roll(cmdParams[2],cmdParams[3],cmdParams[4])
+        eventArgs.handled = true
     end
 end
 
+function handle_qdraw()
+    local element = state.QDrawElement.value
+    
+    send_command('@input /ja "'..element..' Shot" <t>')
+end
+
+function handle_roll(rollNumber, rollExecute, rollMod)
+    if rollNumber == '1' then
+        rollSelect = state.roll1
+    elseif rollNumber == '2' then
+        rollSelect = state.roll2
+    else
+        add_to_chat(167, 'Specify roll 1 or roll 2 by using "1" or "2"')
+    end
+   
+    rollState = rollSelect.value
+   
+    if rollExecute:lower() == 'cycle' then
+        if rollMod:lower() == 'back' then
+            rollSelect:cycleback()
+        elseif rollMod:lower() == 'forward' then
+            rollSelect:cycle()
+        else
+            add_to_chat(167, 'Use "back" or "forward" to cycle through rolls')
+        end
+
+        rollState = rollSelect.value
+
+        rollInfo = rolls[rollState]
+
+        add_to_chat(122, 'Roll '..rollNumber..' set to '..rollState..' - Bonus Effect: '..rollInfo.bonus..'.')
+
+    elseif rollExecute:lower() == 'roll' then
+        local ability_recast = windower.ffxi.get_ability_recasts()
+        
+        if ability_recast[96] == 0 then
+            send_command('@input /ja "Crooked Cards" <me>;wait 1;input /ja "'..rollState..'" <me>')
+        else
+            send_command('@input /ja "'..rollState..'" <me>')
+        end
+
+    --[[elseif rollExecute:lower() == 'set' then
+        rollSelect:set(rollMod)]]
+    else
+        add_to_chat(167, 'Rollcmd options are: "roll" or "cycle"')
+    end
+end
+
+function display_states()
+    roll1 = state.roll1.value
+    roll2 = state.roll2.value
+
+    rollinfo1 = rolls[roll1]
+    rollinfo2 = rolls[roll2]
+
+    add_to_chat(121, 'Roll 1 set to '..state.roll1.value..'.  Bonus effect: '..rollinfo1.bonus..'.')
+    add_to_chat(121, 'Roll 2 set to '..state.roll2.value..'.  Bonus effect: '..rollinfo2.bonus..'.')
+    add_to_chat(121, 'Quick Draw element set to '..state.QDrawElement.value..'.')
+end
 -- Called by the 'update' self-command, for common needs.
 -- Set eventArgs.handled to true if we don't want automatic equipping of gear.
 function job_update(cmdParams, eventArgs)
     update_combat_form()
+    determine_haste_group()
 end
 
+-- Called when a player gains or loses a buff.
+-- buff == buff gained or lost
+-- gain == true if the buff was gained, false if it was lost.
+function job_buff_change(buff, gain)
+    if S{'haste','march','embrava','haste samba'}:contains(buff:lower()) then
+        determine_haste_group()
+        state.Buff[buff] = gain
+    elseif state.Buff[buff] ~= nil then
+        state.Buff[buff] = gain
+    end
+end
 
 -- Set eventArgs.handled to true if we don't want the automatic display to be run.
 function display_current_job_state(eventArgs)
@@ -282,9 +444,9 @@ function display_current_job_state(eventArgs)
         msg = msg .. ', Target NPCs'
     end
 
-    msg = msg .. ', Roll Size: ' .. ((state.LuzafRing.value and 'Large') or 'Small')
-    
     add_to_chat(122, msg)
+
+    display_states()
 
     eventArgs.handled = true
 end
@@ -330,91 +492,46 @@ end
 
 function display_roll_info(spell)
     rollinfo = rolls[spell.english]
-    local rollsize = (state.LuzafRing.value and 'Large') or 'Small'
-
+    
     if rollinfo then
-        add_to_chat(104, spell.english..' provides a bonus to '..rollinfo.bonus..'.  Roll size: '..rollsize)
+        add_to_chat(104, spell.english..' provides a bonus to '..rollinfo.bonus..'.')
         add_to_chat(104, 'Lucky roll is '..tostring(rollinfo.lucky)..', Unlucky roll is '..tostring(rollinfo.unlucky)..'.')
     end
 end
 
-
--- Determine whether we have sufficient ammo for the action being attempted.
-function do_bullet_checks(spell, spellMap, eventArgs)
-    local bullet_name
-    local bullet_min_count = 1
-    
-    if spell.type == 'WeaponSkill' then
-        if spell.skill == "Marksmanship" then
-            if spell.element == 'None' then
-                -- physical weaponskills
-                bullet_name = gear.WSbullet
-            else
-                -- magical weaponskills
-                bullet_name = gear.MAbullet
-            end
-        else
-            -- Ignore non-ranged weaponskills
-            return
-        end
-    elseif spell.type == 'CorsairShot' then
-        bullet_name = gear.QDbullet
-    elseif spell.action_type == 'Ranged Attack' then
-        bullet_name = gear.RAbullet
-        if buffactive['Triple Shot'] then
-            bullet_min_count = 3
-        end
-    end
-    
-    local available_bullets = player.inventory[bullet_name] or player.wardrobe[bullet_name]
-    
-    -- If no ammo is available, give appropriate warning and end.
-    if not available_bullets then
-        if spell.type == 'CorsairShot' and player.equipment.ammo ~= 'empty' then
-            add_to_chat(104, 'No Quick Draw ammo left.  Using what\'s currently equipped ('..player.equipment.ammo..').')
-            return
-        elseif spell.type == 'WeaponSkill' and player.equipment.ammo == gear.RAbullet then
-            add_to_chat(104, 'No weaponskill ammo left.  Using what\'s currently equipped (standard ranged bullets: '..player.equipment.ammo..').')
-            return
-        else
-            add_to_chat(104, 'No ammo ('..tostring(bullet_name)..') available for that action.')
-            eventArgs.cancel = true
-            return
-        end
-    end
-    
-    -- Don't allow shooting or weaponskilling with ammo reserved for quick draw.
-    if spell.type ~= 'CorsairShot' and bullet_name == gear.QDbullet and available_bullets.count <= bullet_min_count then
-        add_to_chat(104, 'No ammo will be left for Quick Draw.  Cancelling.')
-        eventArgs.cancel = true
-        return
-    end
-    
-    -- Low ammo warning.
-    if spell.type ~= 'CorsairShot' and state.warned.value == false
-        and available_bullets.count > 1 and available_bullets.count <= options.ammo_warning_limit then
-        local msg = '*****  LOW AMMO WARNING: '..bullet_name..' *****'
-        --local border = string.repeat("*", #msg)
-        local border = ""
-        for i = 1, #msg do
-            border = border .. "*"
-        end
-        
-        add_to_chat(104, border)
-        add_to_chat(104, msg)
-        add_to_chat(104, border)
-
-        state.warned:set()
-    elseif available_bullets.count > options.ammo_warning_limit and state.warned then
-        state.warned:reset()
+function update_combat_form()
+    -- Check for H2H or single-wielding
+    if player.equipment.sub == "Nusku Shield" or player.equipment.sub == 'empty' then
+        state.CombatForm:reset()
+    else
+        state.CombatForm:set('DW')
     end
 end
 
--- Select default macro book on initial load or subjob change.
---[[function select_default_macro_book()
-    set_macro_page(1, 19)
-end]]
+function determine_haste_group()
+    if buffactive['Haste Samba'] or state.delayMod.Value ~= 'none' then
+        hasteSamba = 'Samba'
+    else
+        hasteSamba = false
+    end
 
-function lockstyleset()
-    send_command('wait 5;input /lockstyleset 7')
+    classes.CustomMeleeGroups:clear()
+    
+    if (buffactive.haste and hasteSamba == 'Samba' and buffactive.march == 1) 
+    or (buffactive.march == 2 and hasteSamba =='Samba') 
+    or (buffactive.embrava and (buffactive.haste or buffactive.march) and hasteSamba) then
+        classes.CustomMeleeGroups:append('MaxHaste')
+    elseif (buffactive.haste and buffactive.march) or (buffactive.march == 2) then
+        classes.CustomMeleeGroups:append('HighHaste')
+    elseif buffactive.haste and hasteSamba then
+        classes.CustomMeleeGroups:append('MidHaste')
+    elseif buffactive.haste then
+        classes.CustomMeleeGroups:append('LowHaste')
+    end
+end
+
+-- Select default macro book and lockstyle on initial load or subjob change.
+function on_job_change()
+    set_macro_page(1, 17)
+    send_command('wait 5;input /lockstyleset 24')
 end

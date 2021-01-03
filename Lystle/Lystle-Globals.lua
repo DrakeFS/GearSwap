@@ -7,7 +7,7 @@ function define_global_sets()
     -- Hands
     
     -- Body
-    gear.HercBTH = { name="Herculean Vest", augments={'STR+3','Attack+8','"Treasure Hunter"+1','Accuracy+17 Attack+17','Mag. Acc.+1 "Mag.Atk.Bns."+1',}}
+    gear.HercBTH = { name="Herculean Vest", augments={'DEX+9','Mag. Acc.+18','"Treasure Hunter"+2','Mag. Acc.+10 "Mag.Atk.Bns."+10',}}
     -- Legs
     gear.HercLTH = {name="Herculean Trousers", augments={'MND+10','CHR+7','"Treasure Hunter"+2','Accuracy+6 Attack+6',}}
 
