@@ -187,7 +187,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('Normal', 'Acc', 'Subtle')
+    state.OffenseMode:options('Normal', 'Acc', 'HP')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
@@ -623,6 +623,12 @@ function init_gear_sets()
     back=gear.BluCTP,
     }
 
+    sets.engaged.HP = set_combine(sets.engaged, {
+        left_ear="Odnowa Earring +1",
+        right_ear="Odnowa Earring",
+        back="Xucau Mantle",
+    })
+
     sets.engaged.Acc = set_combine(sets.engaged, {
     ammo="Honed Tathlum",
     head="Malignance Chapeau",
@@ -659,14 +665,23 @@ function init_gear_sets()
     back=gear.BluCTP,
     }
 
+    sets.engaged.DW.HP = set_combine(sets.engaged.DW, {
+        left_ear="Odnowa Earring +1",
+        right_ear="Odnowa Earring",
+        back="Xucau Mantle",
+    })
+
     sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {})
     
     sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW, {
-    left_ear="Suppanomimi",
-    right_ear="Eabani Earring",
+        waist="Reiki Yotai",
+        left_ear="Cessance Earring",
+        right_ear="Eabani Earring",
     })
     
-    sets.engaged.DW.MidHaste = set_combine(sets.engaged.DW.HighHaste, {})
+    sets.engaged.DW.MidHaste = set_combine(sets.engaged.DW.HighHaste, {
+        left_ear="Suppanomimi",
+    })
     
     sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
 

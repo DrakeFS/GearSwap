@@ -141,7 +141,7 @@ function init_gear_sets()
     neck="Clotharius Torque",
     waist="Sailfi Belt",
     left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
+    right_ear="Moonshade Earring",
     left_ring="Mummu Ring",
     right_ring="Begrudging Ring",
     back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},

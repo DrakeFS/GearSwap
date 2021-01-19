@@ -16,10 +16,10 @@
         //gs equip sets.SetName.ModName 
     for example 
         //gs equip sets.engaged
-    which will equip yout engaged set (TP set).  At which point you can make any gear changes and then export the new set to update this lua.
+    which will equip your engaged set (TP set).  At which point you can make any gear changes and then export the new set to update this lua.
 
 
-    An example gear set is provided below to show how a "melee gear set" (you do not want to swap anything that resets TP) is built, .
+    An example gear set is provided below to show how a "melee gear set" (you do not want to swap anything that resets TP) is built:
 
     sets.engaged = {
         ammo="Ginsen",
@@ -38,7 +38,7 @@
     }
 
 
-    Another example gear set is provided below to show how a "casting gear set" (where you may want to swap weapons and other gear that will reset your tp) is built.
+    Another example gear set is provided below to show how a "casting gear set" (where you may want to swap weapons and other gear that will reset your tp) is built:
     
     sets.midcast['Healing Magic'] = {
         main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
@@ -55,6 +55,16 @@
         left_ring="Lebeche Ring",
         back="Solemnity Cape",
     }
+
+    Equipment Slots matched to gearswap slots:
+    
+        main    sub     range       ammo
+        
+        head    neck    left_ear    right_ear
+        
+        body    hands   left_ring   right_ring
+        
+        back    waist   legs        feet
 ]]
 
 

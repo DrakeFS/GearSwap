@@ -274,10 +274,10 @@ sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {hea
 
     sets.engaged.LowHaste = set_combine(sets.engaged, {})
     
-    sets.engaged.Acc = {}
+    sets.engaged.Acc = set_combine(sets.engaged, {})
 
-    sets.engaged.DW = set_combine(sets.engaged, {}
-)
+    sets.engaged.DW = set_combine(sets.engaged, {})
+
     sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {})
 
     sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW.MaxHaste, {})
@@ -286,7 +286,7 @@ sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {hea
 
     sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
     
-    sets.engaged.Acc.DW = {}
+    sets.engaged.Acc.DW = set_combine(sets.engaged.DW, {})
     
     sets.weatherbelt = {}
 end
@@ -533,5 +533,5 @@ end
 -- Select default macro book and lockstyle on initial load or subjob change.
 function on_job_change()
     set_macro_page(1, 17)
-    send_command('wait 5;input /lockstyleset 24')
+    send_command('wait 5;input /lockstyleset 5')
 end

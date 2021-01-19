@@ -194,19 +194,19 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-	ammo="Ginsen",
-    head="Mummu Bonnet +1",
-    body="Rawhide Vest",
-    hands="Mummu Wrists +1",
-    legs=gear.SamTTP,
-    feet="Mummu Gamash. +1",
-    neck="Clotharius Torque",
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Pernicious Ring",
-    right_ring="Rajas Ring",
-    back="Bleating Mantle",
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands=gear.AdhGTP,
+        legs=gear.SamTTP,
+        feet="Mummu Gamash. +1",
+        neck="Clotharius Torque",
+        waist="Anguinus Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Petrov Ring",
+        right_ring="Ilabrat Ring",
+        back="Bleating Mantle",
 	}
 	
     sets.engaged.Acc = set_combine(sets.engaged, {})

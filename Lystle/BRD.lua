@@ -183,7 +183,7 @@ function init_gear_sets()
     neck="Clotharius Torque",
     waist="Shadow Belt",
     left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
+    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
     left_ring="Begrudging Ring",
     right_ring="Ayanmo Ring",
     back="Atheling Mantle",
@@ -344,18 +344,19 @@ function init_gear_sets()
     -- EG: sets.engaged.Dagger.Accuracy.Evasion
 
     sets.engaged = {
-    head="Aya. Zucchetto +1",
-    body="Ayanmo Corazza +1",
-    hands="Aya. Manopolas +1",
-    legs="Aya. Cosciales +1",
-    feet="Aya. Gambieras +1",
-    neck="Clotharius Torque",
-    waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Begrudging Ring",
-    right_ring="Ayanmo Ring",
-    back="Atheling Mantle",
+        ammo="Ginsen",
+        head="Aya. Zucchetto +1",
+        body="Ayanmo Corazza +1",
+        hands="Aya. Manopolas +1",
+        legs="Aya. Cosciales +1",
+        feet="Aya. Gambieras +1",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Begrudging Ring",
+        right_ring="Ayanmo Ring",
+        back="Atheling Mantle",
     }
 
     sets.engaged.Acc = set_combine(sets.engaged, {})
@@ -364,7 +365,10 @@ function init_gear_sets()
     -- * NIN Subjob DW Trait: +25%
 
     -- No Magic Haste (74% DW to cap)
-    sets.engaged.DW = set_combine(sets.engaged, {})
+    sets.engaged.DW = set_combine(sets.engaged, {
+        left_ear="Suppanomimi",
+        right_ear="Eabani Earring",
+    })
     --[[sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {})
 
     -- 15% Magic Haste (67% DW to cap)

@@ -194,7 +194,7 @@ function init_gear_sets()
     neck="Incanter's Torque",
     head="Beckoner's Horn +1",
     body="Con. Doublet +2",
-    hands="Lamassu Mitts",
+    hands="Lamassu Mitts +1",
     legs={ name="Glyphic Spats +1", augments={'Increases Sp. "Blood Pact" accuracy',}},
     feet={ name="Glyph. Pigaches +1", augments={'Inc. Sp. "Blood Pact" magic crit. dmg.',}},
     waist="Lucidity Sash",
@@ -308,7 +308,7 @@ function init_gear_sets()
     ammo="Sancus Sachet",
     head="Con. Horn +1",
     body="Con. Doublet +2",
-    hands="Lamassu Mitts",
+    hands="Lamassu Mitts +1",
     legs=gear.EnticeMBP,
     feet="Con. Pigaches +1",
     neck="Adad Amulet",
@@ -368,7 +368,7 @@ function init_gear_sets()
     ammo="Sancus Sachet",
     head="Con. Horn +1",
     body="Con. Doublet +2",
-    hands="Lamassu Mitts",
+    hands="Lamassu Mitts +1",
     legs="Assid. Pants +1",
     feet="Apogee Pumps",
     neck="Caller's Pendant",
@@ -397,7 +397,7 @@ function init_gear_sets()
     ammo="Sancus Sachet",
     head="Con. Horn +1",
     body="Con. Doublet +2",
-    hands="Lamassu Mitts",
+    hands="Lamassu Mitts +1",
     legs="Assid. Pants +1",
     feet="Con. Pigaches +1",
     neck="Caller's Pendant",
@@ -445,7 +445,7 @@ function init_gear_sets()
     ammo="Sancus Sachet",
     head="Con. Horn +1",
     body="Con. Doublet +2",
-    hands="Lamassu Mitts",
+    hands="Lamassu Mitts +1",
     legs="Assid. Pants +1",
     feet="Con. Pigaches +1",
     neck="Caller's Pendant",
@@ -656,7 +656,7 @@ function handle_bprc()
         elseif pet.name == "Shiva" then
             send_command('@input /pet "Rush" <t>')
         elseif pet.name == "Diabolos" then
-            send_command('@input /pet "Blindside" <t>')
+            send_command('@input /pet "Night Terror" <t>')
         else
             add_to_chat(122, "No Blood Pact: Rage set for this summon")
         end
@@ -678,7 +678,7 @@ function handle_bpwc()
         elseif pet.name == "Carbuncle" then
             send_command('@input /pet "Shining Ruby" <me>')
         elseif pet.name == "Cait Sith" then
-            send_command('@input /pet "Reraise II" <me>')
+            send_command('@input /pet "Mewing Lulaby" <t>')
         elseif pet.name == "Fenrir" then
             send_command('@input /pet "Ecliptic Growl" <me>')
         elseif pet.name == "Titan" then

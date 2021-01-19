@@ -11,7 +11,7 @@
     Example macros:
         /console gs c rollcmd 1 roll
         /console gs c qdraw
-        /console gs c rollcmd 2 cycle forward - (this is also bound to a hotkey)
+        /console gs c rollcmd 2 cycle forward - (this is also bound to a hotkey, see below)
 
     Lua specific binds
         ctrl + ` = roll 1 cycle forward
@@ -130,8 +130,8 @@ function init_gear_sets()
     sets.precast.CorsairRoll = {
         head={ name="Lanun Tricorne", augments={'Enhances "Winning Streak" effect',}},
         hands="Chasseur's Gants +1",
+        neck="Regal necklace"
         left_ring="Luzaf's Ring",
-        right_ring="Barataria Ring",
         back=gear.CorRTP,
     }
     
@@ -426,27 +426,6 @@ function job_precast(spell, action, spellMap, eventArgs)
         add_to_chat(104, 'Check ammo, trying to use Quick Draw ammunition for non-Quick Draw shot.  Cancelling.')
         eventArgs.cancel = true
     end
-
-    --[[if (spell.action_type == 'Ranged Attack' and player.equipment.ammo == "Orichalc. Bullet") or (spell.skill == 'Marksmanship'and player.equipment.ammo == "Orichalc. Bullet") then
-        add_to_chat(104, 'Check ammo, trying to use Quick Draw ammunition for non-Quick Draw shot.  Cancelling.')
-        eventArgs.cancel = true
-    end]]
-    -- Check that proper ammo is available if we're using ranged attacks or similar.
-    --[[if spell.action_type == 'Ranged Attack' or spell.type == 'WeaponSkill' or spell.type == 'CorsairShot' then
-        do_bullet_checks(spell, spellMap, eventArgs)
-    end]]
-
-    -- gear sets
-    --[[if (spell.type == 'CorsairRoll' or spell.english == "Double-Up") and state.LuzafRing.value then
-        equip(sets.precast.LuzafRing)
-    elseif spell.type == 'CorsairShot' and state.CastingMode.value == 'Resistant' then
-        classes.CustomClass = 'Acc'
-    elseif spell.english == 'Fold' and buffactive['Bust'] == 2 then
-        if sets.precast.FoldDoubleBust then
-            equip(sets.precast.FoldDoubleBust)
-            eventArgs.handled = true
-        end
-    end]]
 end
 
 function job_post_precast(spell, action, spellMap)
@@ -474,11 +453,6 @@ end
 
 -- Return a customized weaponskill mode to use for weaponskill sets.
 -- Don't return anything if you're not overriding the default value.
---[[function get_custom_wsmode(spell, spellMap, default_wsmode)
-    if buffactive['Transcendancy'] then
-        return 'Brew'
-    end
-end]]
 function job_self_command(cmdParams, eventArgs)
     if cmdParams[1]:lower() == 'qdraw' then
         handle_qdraw()
@@ -649,78 +623,6 @@ function display_roll_info(spell)
         add_to_chat(104, spell.english..' provides a bonus to '..rollinfo.bonus..'.  Roll size: '..rollsize)
         add_to_chat(104, 'Lucky roll is '..tostring(rollinfo.lucky)..', Unlucky roll is '..tostring(rollinfo.unlucky)..'.')
     end
-end
-
-
--- Determine whether we have sufficient ammo for the action being attempted.
-function do_bullet_checks(spell, spellMap, eventArgs)
-    --[[local bullet_name
-    local bullet_min_count = 1
-    
-    if spell.type == 'WeaponSkill' then
-        if spell.skill == "Marksmanship" then
-            if spell.element == 'None' then
-                -- physical weaponskills
-                bullet_name = gear.WSbullet
-            else
-                -- magical weaponskills
-                bullet_name = gear.MAbullet
-            end
-        else
-            -- Ignore non-ranged weaponskills
-            return
-        end
-    elseif spell.type == 'CorsairShot' then
-        bullet_name = gear.QDbullet
-    elseif spell.action_type == 'Ranged Attack' then
-        bullet_name = gear.RAbullet
-        if buffactive['Triple Shot'] then
-            bullet_min_count = 3
-        end
-    end
-    
-    local available_bullets = player.inventory[bullet_name] or player.wardrobe[bullet_name]
-    
-    -- If no ammo is available, give appropriate warning and end.
-    if not available_bullets then
-        if spell.type == 'CorsairShot' and player.equipment.ammo ~= 'empty' then
-            add_to_chat(104, 'No Quick Draw ammo left.  Using what\'s currently equipped ('..player.equipment.ammo..').')
-            return
-        elseif spell.type == 'WeaponSkill' and player.equipment.ammo == gear.RAbullet then
-            add_to_chat(104, 'No weaponskill ammo left.  Using what\'s currently equipped (standard ranged bullets: '..player.equipment.ammo..').')
-            return
-        else
-            add_to_chat(104, 'No ammo ('..tostring(bullet_name)..') available for that action.')
-            eventArgs.cancel = true
-            return
-        end
-    end
-    
-    -- Don't allow shooting or weaponskilling with ammo reserved for quick draw.
-    if spell.type ~= 'CorsairShot' and bullet_name == gear.QDbullet and available_bullets.count <= bullet_min_count then
-        add_to_chat(104, 'No ammo will be left for Quick Draw.  Cancelling.')
-        eventArgs.cancel = true
-        return
-    end
-    
-    -- Low ammo warning.
-    if spell.type ~= 'CorsairShot' and state.warned.value == false
-        and available_bullets.count > 1 and available_bullets.count <= options.ammo_warning_limit then
-        local msg = '*****  LOW AMMO WARNING: '..bullet_name..' *****'
-        --local border = string.repeat("*", #msg)
-        local border = ""
-        for i = 1, #msg do
-            border = border .. "*"
-        end
-        
-        add_to_chat(104, border)
-        add_to_chat(104, msg)
-        add_to_chat(104, border)
-
-        state.warned:set()
-    elseif available_bullets.count > options.ammo_warning_limit and state.warned then
-        state.warned:reset()
-    end]]
 end
 
 function update_combat_form()
