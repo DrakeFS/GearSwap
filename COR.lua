@@ -173,7 +173,6 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-        ammo=gear.TPAmmo,
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Meg. Gloves +2",
@@ -251,7 +250,7 @@ function init_gear_sets()
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         right_ear="Clearview Earring",
         left_ring="Ilabrat Ring",
-        right_ring="Apate Ring",
+        right_ring="Dingir Ring",
         back=gear.CorAGI,
     }
 
@@ -269,11 +268,14 @@ function init_gear_sets()
         left_ear="Friomisi Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Ilabrat Ring",
-        right_ring="Apate Ring",
+        right_ring="Dingir Ring",
         back=gear.CorAGI,
     }
 
-sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {head="Pixie Hairpin +1"})
+    sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {
+        head="Pixie Hairpin +1",
+        back=gear.CorWSD,
+    })
 
     -- Midcast Sets
     sets.midcast.FastRecast = {}

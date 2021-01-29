@@ -14,6 +14,8 @@ function init_gear_sets()
 sets.precast.FC = {
     ammo="Impatiens",
     head="Nahtirah Hat",
+    hands="Acad. Bracers +2",
+    legs="Kaykaus Tights",
     feet="Navon Crackows",
     waist="Embla Sash",
     left_ring="Kishar Ring",
@@ -30,17 +32,24 @@ sets.precast.FC.Cure = set_combine(sets.precast.FC['Healing Magic'], {
 sets.precast.WS = {}
 
 sets.midcast.Cure = {
-    main="Iridal Staff",
+    main="Chatoyant Staff",
     head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
-    body="Annoint. Kalasiris",
+    body="Kaykaus Bliaut",
     hands="Kaykaus Cuffs",
     legs="Kaykaus Tights",
     feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}}, 
+    waist="Korin Obi",
     left_ring="Lebeche Ring",
     back="Solemnity Cape",
 } 
 
-sets.idle = {}
+sets.idle = {
+    head="Acad. Mortar. +2",
+    body="Annoint. Kalasiris",
+    neck="Sanctity Necklace",
+    waist="Embla Sash",
+    left_ring="Defending Ring",
+}
 
 sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
@@ -48,6 +57,12 @@ sets.defense.PDT = {}
 
 sets.engaged = {} 
 
+end
+
+function job_post_precast(spell, action, spellMap, eventArgs)
+    if ((buffactive['Addendum: White'] and spell.type == "WhiteMagic") or (buffactive['Addendum: Black'] and spell.type == "BlackMagic")) and not spell.name:contains("Cure") then
+        equip({feet="Acad. Loafers +2",})
+    end
 end
 
 function lockstyleset()

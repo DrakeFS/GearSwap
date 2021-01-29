@@ -39,19 +39,14 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-    main="Daybreak",
-    sub="Sors Shield",
-    ammo="Impatiens",
-    head="Nahtirah Hat",
-    body="Ebers Bliaud",
-    hands="Gende. Gages +1",
-    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
-    feet="Theo. Duckbills +1",
-    neck={ name="Cleric's Torque", augments={'Path: A',}},
-    waist="Embla Sash",
-    left_ring="Kishar Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
+        ammo="Impatiens",
+        head="Nahtirah Hat",
+        hands="Gende. Gages +1",
+        legs="Shedir Seraweels",
+        neck={ name="Cleric's Torque", augments={'Path: A',}},
+        waist="Embla Sash",
+        left_ear="Malignance Earring",
+        left_ring="Kishar Ring",
     }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC,{})
@@ -63,8 +58,7 @@ function init_gear_sets()
     sets.precast.FC.StatusRemoval = sets.precast.FC['Healing Magic']
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC['Healing Magic'],{
-        left_ear="Glorious Earring",
-        right_ear="Nourish. Earring",
+        right_ear="Mendi. Earring",
     })
     sets.precast.FC.Curaga = sets.precast.FC.Cure
     sets.precast.FC.CureSolace = sets.precast.FC.Cure

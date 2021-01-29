@@ -151,7 +151,9 @@ function job_setup()
     -- Flags for code to get around the issue of slow skill updates.
     wards.flag = false
     wards.spell = ''
-    
+
+    on_job_change()
+        
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -911,11 +913,7 @@ end
 
 
 -- Select default macro book on initial load or subjob change.
-function select_default_macro_book(reset)
-    if reset == 'reset' then
-        -- lost pet, or tried to use pact when pet is gone
-    end
-    
-    -- Default macro set/book
-    set_macro_page(4, 16)
+function on_job_change()
+    set_macro_page(1, 15)
+    send_command('wait 5;input /lockstyleset 98')
 end

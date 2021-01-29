@@ -307,16 +307,22 @@ function init_gear_sets()
     head="Aya. Zucchetto +1",
     body="Annoint. Kalasiris",
     hands="Aya. Manopolas +1",
-    legs="Aya. Cosciales +1",
+    legs="Inyanga Shalwar +2",
     feet="Fili Cothurnes +1",
     neck="Loricate Torque",
-    left_ring="Ayanmo Ring",
+    left_ring="Defending Ring",
     right_ring="Inyanga Ring",
     waist="Fucho-no-obi",
     back="Solemnity Cape",
     }
 
-    sets.idle.DT = {}
+    sets.idle.DT = {
+        head="Aya. Zucchetto +1",
+        hands="Aya. Manopolas +1",
+        neck="Loricate Torque",
+        left_ring="Defending Ring",
+        back="Solemnity Cape",
+    }
 
     sets.idle.MEva = {}
 

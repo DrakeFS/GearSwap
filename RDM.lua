@@ -25,6 +25,7 @@ function job_setup()
     state.MACC = M(false, 'MACC')
     state.MagicBurst = M(false, 'Magic Burst')
 
+    on_job_change()
 
 end
 
@@ -46,8 +47,6 @@ function user_setup()
     send_command('bind ^` gs c cycle NukeElement')
 
     update_combat_form()
-    lockstyleset()
-    --select_default_macro_book(1, 4)
 end
 
 
@@ -60,7 +59,7 @@ function init_gear_sets()
     gear.RdmCMB = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10','Mag. Evasion+15',}}
     gear.RdmCES = {name="Ghostfyre Cape", augments={'Enfb.mag. skill +6','Enha.mag. skill +10',}}
     
-    sets.MACC = {range = "Kaja Bow"}
+    sets.MACC = {range = "Ullr Bow"}
     -- Precast Sets
     
     -- Precast sets to enhance JAs
@@ -314,7 +313,7 @@ function init_gear_sets()
     neck={ name="Duelist's Torque", augments={'Path: A',}},
     waist={ name="Acuity Belt +1", augments={'Path: A',}},
     left_ear="Malignance Earring",
-    right_ear="Hermetic Earring",
+    right_ear="Snotra Earring",
     left_ring="Kishar Ring",
     right_ring="Jhakri Ring",
     back = gear.RdmCMB,
@@ -478,18 +477,18 @@ function init_gear_sets()
     }
 
     sets.engaged.DW.Enspell = {
-        range="Kaja Bow",
+        ammo="Paeapua",
         head="Malignance Chapeau",
-        body="Ayanmo Corazza +2",
+        body="Malignance Tabard",
         hands="Aya. Manopolas +2",
-        legs={ name="Viti. Tights +1", augments={'Enspell Damage','Accuracy',}},
+        legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
         feet="Aya. Gambieras +2",
-        neck="Sanctity Necklace",
-        waist={ name="Acuity Belt +1", augments={'Path: A',}},
-        left_ear="Eabani Earring",
-        right_ear="Suppanomimi",
-        left_ring="Ayanmo Ring",
-        right_ring="Jhakri Ring",
+        neck="Clotharius Torque",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear="Suppanomimi",
+        right_ear="Cessance Earring",
+        left_ring="Pernicious Ring",
+        right_ring="Petrov Ring",
         back=gear.RdmCES
     }
 end
@@ -643,19 +642,7 @@ function downgradenuke(spell)
 end
 
 -- Select default macro book on initial load or subjob change.
-function select_default_macro_book()
-    -- Default macro set/book
-    if player.sub_job == 'DNC' then
-        set_macro_page(1, 5)
-    elseif player.sub_job == 'NIN' then
-        set_macro_page(1, 5)
-    elseif player.sub_job == 'THF' then
-        set_macro_page(1, 5)
-    else
-        set_macro_page(1, 5)
-    end
-end
-
-function lockstyleset()
+function on_job_change()
+    set_macro_page(1, 5)
     send_command('wait 5;input /lockstyleset 17')
 end

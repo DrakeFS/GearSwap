@@ -458,7 +458,7 @@ function init_gear_sets()
 
     sets.midcast['Blue Magic'].MagicAccuracy = {
         ammo="Pemphredo Tathlum",
-        head="Malignance Chapeau",
+        head="Assim. Keffiyeh +3",
         body="Malignance Tabard",
         hands="Aya. Manopolas +2",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
@@ -466,7 +466,7 @@ function init_gear_sets()
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Njordr Earring",
-        right_ear="Hermetic Earring",
+        right_ear="Regal Earring",
         left_ring="Jhakri Ring",
         right_ring="Ayanmo Ring",
         back=gear.BluCMAC,
