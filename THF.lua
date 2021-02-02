@@ -247,7 +247,7 @@ function init_gear_sets()
     body="Malignance Tabard",
     hands="Mummu Wrists +1",
     legs="Mummu Kecks +1",
-    feet="Jute Boots",
+    feet="Jute Boots +1",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt +1",
     left_ear="Steelflash Earring",

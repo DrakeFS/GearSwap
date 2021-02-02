@@ -217,10 +217,11 @@ function init_gear_sets()
     gear.BluCMAC = {name="Cornflower Cape", augments={'MP+22','DEX+5','Blue Magic skill +10',}}
 
     sets.TreasureHunter = {
-    head = gear.HercHTH,
-    body = gear.HercBTH, 
-    legs = gear.HercLTH,
-    waist = "Chaac Belt",
+        ammo="Per. Lucky Egg",
+        head = gear.HercHTH,
+        body = gear.HercBTH, 
+        --legs = gear.HercLTH,
+        waist = "Chaac Belt",
     }
     
     sets.Kiting  = {legs="Carmine Cuisses +1",}
@@ -248,35 +249,35 @@ function init_gear_sets()
     -- Fast cast sets for spells
     
     sets.precast.FC = {
-    ammo="Impatiens",
-    head="Herculean Helm",
-    body="Hashishin Mintan",
-    hands="Jhakri Cuffs +2",
-    legs=gear.LengoFC,
-    feet="Jhakri Pigaches +2",
-    left_ring="Jhakri Ring",
-    right_ring="Kishar Ring",
+        ammo="Impatiens",
+        head = gear.HercHTH,
+        body="Hashishin Mintan",
+        hands="Jhakri Cuffs +2",
+        legs=gear.LengoFC,
+        feet="Jhakri Pigaches +2",
+        left_ring="Jhakri Ring",
+        right_ring="Kishar Ring",
     }
 
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-    ammo="Ginsen",
-    head="Malignance Chapeau",
-    body="Assim. Jubbah +3",
-    hands="Jhakri Cuffs +2",
-    legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-    feet="Aya. Gambieras +2",
-    neck="Mirage Stole +2",
-    waist="Fotia Belt",
-    left_ear="Steelflash Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Ayanmo Ring",
-    right_ring="Jhakri Ring",
-    back=gear.BluCSTR,
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Assim. Jubbah +3",
+        hands="Jhakri Cuffs +2",
+        legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
+        feet="Aya. Gambieras +2",
+        neck="Mirage Stole +2",
+        waist="Fotia Belt",
+        left_ear="Steelflash Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Ayanmo Ring",
+        right_ring="Jhakri Ring",
+        back=gear.BluCSTR,
     }
     
-    sets.precast.WS.acc = set_combine(sets.precast.WS, {})
+   -- sets.precast.WS.acc = set_combine(sets.precast.WS, {})
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Requiescat'] = set_combine(sets.precast.WS, {
@@ -304,76 +305,76 @@ function init_gear_sets()
         feet="Jhakri Pigaches +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        left_ear="Novio Earring",
-        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ear="Regal Earring",
+        right_ear="Friomisi Earring", 
         left_ring="Jhakri Ring",
         right_ring="Ayanmo Ring",
         back="Cornflower Cape",
     })
     
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
-    ammo="Ginsen",
-    head="Jhakri Coronal +2",
-    hands="Jhakri Cuffs +2",
-    feet="Jhakri Pigaches +2",
-    neck="Mirage Stole +2",
-    waist="Sailfi Belt +1",
-    left_ear="Odr Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Ilabrat Ring",
-    right_ring="Apate Ring",
-    back=gear.BluCSTR,
+        ammo="Ginsen",
+        head="Jhakri Coronal +2",
+        hands="Jhakri Cuffs +2",
+        feet="Jhakri Pigaches +2",
+        neck="Mirage Stole +2",
+        waist="Sailfi Belt +1",
+        left_ear="Odr Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Ilabrat Ring",
+        right_ring="Apate Ring",
+        back=gear.BluCSTR,
     })
     
-    sets.precast.WS['Savage Blade'].Acc = {
-    ammo="Honed Tathlum",
-    head="Malignance Chapeau",
-    body="Ayanmo Corazza +2",
-    hands="Assim. Bazu. +2",
-    legs="Jhakri Slops +2",
-    feet="Aya. Gambieras +2",
-    neck="Mirage Stole +2",
-    waist="Anguinus Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Ayanmo Ring",
-    right_ring="Beeline Ring",
-    back=gear.BluCDEX,
-    }
+    --[[sets.precast.WS['Savage Blade'].Acc = {
+        ammo="Honed Tathlum",
+        head="Malignance Chapeau",
+        body="Ayanmo Corazza +2",
+        hands="Assim. Bazu. +2",
+        legs="Jhakri Slops +2",
+        feet="Aya. Gambieras +2",
+        neck="Mirage Stole +2",
+        waist="Anguinus Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Ayanmo Ring",
+        right_ring="Beeline Ring",
+        back=gear.BluCDEX,
+    }]]
     
     sets.precast.WS['Expiacion'] = sets.precast.WS['Savage Blade']
 
     sets.precast.WS['Chant du Cygne'] = {
-    ammo="Falcon Eye",
-    head="Malignance Chapeau",
-    body="Abnoba Kaftan",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
-    left_ear="Cessance Earring",
-    right_ear="Odr Earring",
-    left_ring="Ilabrat ring",
-    right_ring="Begrudging Ring",
-    back=gear.BluCDEX,
+        ammo="Falcon Eye",
+        head="Malignance Chapeau",
+        body="Abnoba Kaftan",
+        hands="Aya. Manopolas +2",
+        legs="Aya. Cosciales +2",
+        feet="Aya. Gambieras +2",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Cessance Earring",
+        right_ear="Odr Earring",
+        left_ring="Ilabrat ring",
+        right_ring="Begrudging Ring",
+        back=gear.BluCDEX,
     }
     
-    sets.precast.WS['Chant du Cygne'].Acc = {
-    ammo="Falcon Eye",
-    head="Malignance Chapeau",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Mirage Stole +2",
-    waist="Fotia Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Odr Earring",
-    left_ring="Jhakri Ring",
-    right_ring="Ayanmo Ring",
-    back=gear.BluDEX,
-    }
+    --[[sets.precast.WS['Chant du Cygne'].Acc = {
+        ammo="Falcon Eye",
+        head="Malignance Chapeau",
+        body="Ayanmo Corazza +2",
+        hands="Aya. Manopolas +2",
+        legs="Aya. Cosciales +2",
+        feet="Aya. Gambieras +2",
+        neck="Mirage Stole +2",
+        waist="Fotia Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Odr Earring",
+        left_ring="Jhakri Ring",
+        right_ring="Ayanmo Ring",
+        back=gear.BluDEX,
+    }]]
 
     sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS['Sanguine Blade'], {
         ammo="Ginsen",
@@ -394,19 +395,19 @@ function init_gear_sets()
     -- Physical Spells --
     
     sets.midcast['Blue Magic'].Physical = {
-    ammo="Ginsen",
-    head="Jhakri Coronal +2",
-    body="Jhakri Robe +2",
-    hands="Jhakri Cuffs +2",
-    legs="Jhakri Slops +2",
-    feet={ name="Luhlaza Charuqs +3", augments={'Enhances "Diffusion" effect',}},
-    neck={ name="Mirage Stole +2", augments={'Path: A',}},
-    waist="Anguinus Belt",
-    left_ear="Njordr Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Rajas Ring",
-    right_ring="Apate Ring",
-    back=gear.BluCSTR,
+        ammo="Ginsen",
+        head="Jhakri Coronal +2",
+        body="Jhakri Robe +2",
+        hands="Jhakri Cuffs +2",
+        legs="Jhakri Slops +2",
+        feet={ name="Luhlaza Charuqs +3", augments={'Enhances "Diffusion" effect',}},
+        neck={ name="Mirage Stole +2", augments={'Path: A',}},
+        waist="Anguinus Belt",
+        left_ear="Njordr Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Rajas Ring",
+        right_ring="Apate Ring",
+        back=gear.BluCSTR,
     }
 
     sets.midcast['Blue Magic'].PhysicalAcc = set_combine(sets.midcast['Blue Magic'].Physical, {})
@@ -440,7 +441,7 @@ function init_gear_sets()
         neck="Sanctity Necklace",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Regal Earring",
-        right_ear="Novio Earring",
+        right_ear="Friomisi Earring",
         left_ring="Jhakri Ring",
         right_ring="Kishar Ring",
         back=gear.BluCMB,
@@ -514,7 +515,7 @@ function init_gear_sets()
     -- Sets to return to when not performing an action.
 
     -- Gear for learning spells: +skill and AF hands.
-    sets.Learning = {
+    --[[sets.Learning = {
         ammo="Mavi Tathlum",
         --head="Luhlaza Keffiyeh",  
         body="Assim. Jubbah +3",
@@ -523,7 +524,7 @@ function init_gear_sets()
         feet="Luhlaza Charuqs +3",
         neck="Mirage Stole +2",
         back="Cornflower Cape"
-    }
+    }]]
 
     sets.Subtle = {
         neck="Bathy Choker",
@@ -542,19 +543,19 @@ function init_gear_sets()
     
     -- Idle sets
     sets.idle = {
-    ammo="Ginsen",
-    head="Malignance Chapeau",
-    body="Jhakri Robe +2",
-    hands="Assim. Bazu. +2",
-    legs="Carmine Cuisses +1",
-    feet="Aya. Gambieras +2",
-    neck="Sanctity Necklace",
-    waist="Windbuffet belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Defending Ring",
-    right_ring="Vocane Ring",
-    back=gear.BluCTP,
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Jhakri Robe +2",
+        hands="Assim. Bazu. +2",
+        legs="Carmine Cuisses +1",
+        feet="Aya. Gambieras +2",
+        neck="Sanctity Necklace",
+        waist="Windbuffet belt +1",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
+        back=gear.BluCTP,
     }
 
     --[[sets.idle.PDT = {
@@ -574,30 +575,28 @@ function init_gear_sets()
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
-    sets.idle.Learning = set_combine(sets.idle, sets.Learning)
+    --sets.idle.Learning = set_combine(sets.idle, sets.Learning)
     
     -- Defense sets
     sets.defense.PDT = {    
-    ammo="Ginsen",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands="Assim. Bazu. +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Loricate Torque +1",
-    waist="Windbuffet belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Defending Ring",
-    right_ring="Vocane Ring",
-    back=gear.BluCTP,
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Assim. Bazu. +2",
+        legs="Aya. Cosciales +2",
+        feet="Aya. Gambieras +2",
+        neck="Loricate Torque +1",
+        waist="Windbuffet belt +1",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
+        back=gear.BluCTP,
     }
 
     sets.defense.MDT = set_combine(sets.defense.PDT, {})
 
-    sets.Kiting = {
-    legs="Carmine Cuisses +1",
-    }
+    sets.Kiting = {legs="Carmine Cuisses +1",}
 
     -- Engaged sets
 
@@ -608,19 +607,19 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-    ammo="Ginsen",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands=gear.AdhGTP,
-    legs=gear.SamTTP,
-    feet=gear.HercFTP,
-    neck="Mirage Stole +2", 
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Pernicious Ring",
-    right_ring="Petrov Ring",
-    back=gear.BluCTP,
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands=gear.AdhGTP,
+        legs=gear.SamTTP,
+        feet=gear.HercFTP,
+        neck="Mirage Stole +2", 
+        waist="Windbuffet Belt +1",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Pernicious Ring",
+        right_ring="Petrov Ring",
+        back=gear.BluCTP,
     }
 
     sets.engaged.HP = set_combine(sets.engaged, {
@@ -630,19 +629,19 @@ function init_gear_sets()
     })
 
     sets.engaged.Acc = set_combine(sets.engaged, {
-    ammo="Honed Tathlum",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands=gear.AdhGTP,
-    legs="Jhakri Slops +2",
-    feet="Aya. Gambieras +2",
-    neck="Mirage Stole +2",
-    waist="Anguinus Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Ayanmo Ring",
-    right_ring="Beeline Ring",
-    back=gear.BluCTP,
+        ammo="Honed Tathlum",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands=gear.AdhGTP,
+        legs="Jhakri Slops +2",
+        feet="Aya. Gambieras +2",
+        neck="Mirage Stole +2",
+        waist="Anguinus Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Ayanmo Ring",
+        right_ring="Beeline Ring",
+        back=gear.BluCTP,
     })
 
     sets.engaged.Subtle = set_combine(sets.engaged, sets.Subtle)
@@ -650,19 +649,19 @@ function init_gear_sets()
     sets.engaged.Learning = set_combine(sets.engaged, sets.Learning)
     
     sets.engaged.DW = {
-    ammo="Ginsen",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands=gear.AdhGTP,
-    legs=gear.SamTTP,
-    feet=gear.HercFTP,
-    neck="Mirage Stole +2",
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Pernicious Ring",
-    right_ring="Petrov Ring",
-    back=gear.BluCTP,
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands=gear.AdhGTP,
+        legs=gear.SamTTP,
+        feet=gear.HercFTP,
+        neck="Mirage Stole +2",
+        waist="Windbuffet Belt +1",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Pernicious Ring",
+        right_ring="Petrov Ring",
+        back=gear.BluCTP,
     }
 
     sets.engaged.DW.HP = set_combine(sets.engaged.DW, {
@@ -686,19 +685,19 @@ function init_gear_sets()
     sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
 
     sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {
-    ammo="Falcon Eye",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands="Aya. Manopolas +2",
-    legs="Jhakri Slops +2",
-    feet="Aya. Gambieras +2",
-    neck={ name="Mirage Stole +2", augments={'Path: A',}},
-    waist="Anguinus Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Odr Earring",
-    left_ring="Ayanmo Ring",
-    right_ring="Beeline Ring",
-    back=gear.BluCTP,
+        ammo="Falcon Eye",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands=gear.AdhGTP,
+        legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
+        feet="Aya. Gambieras +2",
+        neck={ name="Mirage Stole +2", augments={'Path: A',}},
+        waist="Reiki Yotai",
+        left_ear="Steelflash Earring",
+        right_ear="Odr Earring",
+        left_ring="Begrudging Ring",
+        right_ring="Ilabrat Ring",
+        back=gear.BluCTP,
     })
     
     sets.engaged.DW.Subtle = set_combine(sets.engaged.DW, sets.Subtle)

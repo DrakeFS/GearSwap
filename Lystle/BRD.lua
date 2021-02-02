@@ -124,34 +124,36 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-    head="Nahtirah Hat",
-    body="Inyanga Jubbah +2",
-    hands={ name="Leyline Gloves", augments={'Accuracy+7','Mag. Acc.+5',}},
-    legs="Aya. Cosciales +1",
-    feet="Navon Crackows",
-    left_ring="Lebeche Ring",
-    waist="Embla Sash",
-    back = gear.BrdCFC,
+        head="Nahtirah Hat",
+        body="Inyanga Jubbah +2",
+        hands={ name="Leyline Gloves", augments={'Accuracy+7','Mag. Acc.+5',}},
+        legs="Kaykaus Tights",
+        feet="Navon Crackows",
+        waist="Embla Sash",
+        left_ring="Lebeche Ring",
+        right_ring="Kishar Ring",
+        back = gear.BrdCFC,
     }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {})
 
-    sets.precast.FC.Cure = set_combine(sets.precast.FC, {legs = "Doyen Pants",})
+    sets.precast.FC.Cure = set_combine(sets.precast.FC, {
+        legs = "Doyen Pants",
+        feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+    })
 
     sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
-    range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
-    head="Fili Calot +1",
-    legs = "Doyen Pants",
-    feet = "Bihu Slippers +1",
-    waist="Embla Sash",
+        range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
+        head="Fili Calot +1",
+        legs = "Doyen Pants",
+        feet = "Bihu Slippers +1",
     })
 
     sets.precast.FC['Honor March'] = set_combine(sets.precast.FC, {
-    range="Marsyas",
-    head="Fili Calot +1",
-    legs = "Doyen Pants",
-    feet = "Bihu Slippers +1",
-    waist="Embla Sash",
+        range="Marsyas",
+        head="Fili Calot +1",
+        legs = "Doyen Pants",
+        feet = "Bihu Slippers +1",
     })
 
     --sets.precast.FC.SongPlaceholder = set_combine(sets.precast.FC.BardSong, {range=info.ExtraSongInstrument})
@@ -255,11 +257,12 @@ function init_gear_sets()
 
     -- Other general spells and classes.
     sets.midcast.Cure = {
-    head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
-    body="Annoint. Kalasiris",
-    hands="Inyanga Dastanas +1",
-    legs="Chironic Hose",
-    left_ring="Lebeche Ring",
+        head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
+        body="Annoint. Kalasiris",
+        hands="Kaykaus Cuffs",
+        legs="Kaykaus Tights",
+        feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        left_ring="Lebeche Ring",
     }
 
     sets.midcast.Curaga = sets.midcast.Cure
@@ -268,7 +271,9 @@ function init_gear_sets()
 
     sets.midcast.Cursna = set_combine(sets.midcast.StatusRemoval, {})
 
-    sets.midcast['Enhancing Magic'] = {}
+    sets.midcast['Enhancing Magic'] = {
+        waist="Embla Sash",
+    }
     
     sets.midcast['Enfeebling Magic'] = {
     head="Aya. Zucchetto +1",

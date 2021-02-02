@@ -11,7 +11,7 @@ function define_global_sets()
     gear.HercBTH = { name="Herculean Vest", augments={'Pet: INT+1','Accuracy+5','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 
     -- Legs
-    gear.HercLTH = {name="Herculean Trousers", augments={'Mag. Acc.+7','DEX+9','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
+    --gear.HercLTH = {name="Herculean Trousers", augments={'Mag. Acc.+7','DEX+9','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
     gear.HercLMB = { name="Herculean Trousers", augments={'Accuracy+10','Mag. Acc.+11','Accuracy+19 Attack+19','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
     gear.SamTTP = { name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}}
     gear.LengoFC = {name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}}
@@ -22,7 +22,7 @@ function define_global_sets()
     gear.MerlFFC = {name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+18','DEX+2','Accuracy+15 Attack+15','Mag. Acc.+15 "Mag.Atk.Bns."+15',}}
 
     -- Capes
-    gear.CPCape = {name="Mecisto. Mantle", augments={'Cap. Point+44%','INT+1','"Mag.Atk.Bns."+1','DEF+2',}}
+    gear.CPCape = { name="Mecisto. Mantle", augments={'Cap. Point+45%','"Mag.Atk.Bns."+2','DEF+1',}}
     
     -- Override sets
     sets.reive = {neck="Ygnas's Resolve +1"}

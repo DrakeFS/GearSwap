@@ -112,7 +112,7 @@ function init_gear_sets()
     --------------------------------------
     -- Define job specific gear
     
-    gear.TPAmmo = "Voluspa Bullet"
+    gear.TPAmmo = "Chrono Bullet"
     gear.PWSAmmo = gear.TPAmmo
     gear.MWSAmmo = "Orichalc. Bullet"
     gear.QDrawAmmo = "Hauksbok Bullet"
@@ -128,9 +128,9 @@ function init_gear_sets()
 
     
     sets.precast.CorsairRoll = {
-        head={ name="Lanun Tricorne", augments={'Enhances "Winning Streak" effect',}},
+        head={ name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}},
         hands="Chasseur's Gants +1",
-        neck="Regal necklace"
+        neck="Regal necklace",
         left_ring="Luzaf's Ring",
         back=gear.CorRTP,
     }

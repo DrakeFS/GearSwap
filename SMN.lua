@@ -59,12 +59,12 @@ function job_setup()
     bp_magical = S{'Inferno','Earthen Fury','Tidal Wave','Aerial Blast','Diamond Dust','Judgment Bolt','Searing Light','Howling Moon',
         'Ruinous Omen','Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II','Thunderspark','Somnolence','Meteorite',
         'Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV','Nether Blast','Meteor Strike','Geocrush','Grand Fall',
-        'Wind Blade','Heavenly Strike','Thunderstorm','Level ? Holy','Holy Mist','Lunar Bay','Night Terror','Conflag Strike'
+        'Wind Blade','Heavenly Strike','Thunderstorm','Level ? Holy','Holy Mist','Lunar Bay','Night Terror','Conflag Strike','Sonic Buffet','Tornado II'
     }
     
     bp_physical=S{'Punch','Rock Throw','Barracuda Dive','Claw','Axe Kick','Shock Strike','Camisado','Regal Scratch','Poison Nails',
         'Moonlit Charge','Crescent Fang','Rock Buster','Tail Whip','Double Punch','Megalith Throw','Double Slap','Eclipse Bite','Mountain Buster',
-        'Spinning Dive','Predator Claws','Rush','Chaotic Strike','Crag Throw','Volt Strike'
+        'Spinning Dive','Predator Claws','Rush','Chaotic Strike','Crag Throw','Volt Strike','Hysteric Assault','Welt','Roundhouse'
     }
     
     bp_hybrid=S{'Burning Strike','Flaming Crush'}
@@ -674,7 +674,7 @@ function handle_bpwc()
         elseif pet.name == "Ramuh" then
             send_command('@input /pet "Lightning Armor" <me>')
         elseif pet.name == "Siren" then
-            send_command('@input /pet "Wind’s Blessing" <me>')
+            send_command('@input /pet "Wind\'s Blessing" <me>')
         elseif pet.name == "Garuda" then
             send_command('@input /pet "Hastega II" <me>')
         elseif pet.name == "Carbuncle" then
