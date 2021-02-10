@@ -14,12 +14,15 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
+    include('Mote-TreasureHunter')
+    
     state.Buff.Footwork = buffactive.Footwork or false
     state.Buff.Impetus = buffactive.Impetus or false
 
     state.FootworkWS = M(false, 'Footwork on WS')
 
     info.impetus_hit_count = 0
+
     windower.raw_register_event('action', on_action_for_impetus)
 end
 
@@ -80,11 +83,15 @@ function init_gear_sets()
 
     sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {})
 
+    sets.TreasureHunter = {
+        body=gear.HercBTH,
+        legs=gear.HercLTH,
+    }
        
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {}
-    
+
     -- Specific weaponskill sets.
     
     -- legs={name="Quiahuiz Trousers", augments={'Phys. dmg. taken -2%','Magic dmg. taken -2%','STR+8'}}}
@@ -147,10 +154,10 @@ function init_gear_sets()
     hands="Mummu Wrists +2",
     legs="Mummu Kecks +2",
     feet="Mummu Gamash. +2",
-    neck="Sanctity Necklace",
+    neck="Clotharius Torque",
     waist="Famine Sash",
     left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
+    right_ear="Sherida Earring",
     left_ring="Mummu Ring",
     right_ring="Begrudging Ring",
     back="Atheling Mantle",

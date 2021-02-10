@@ -211,14 +211,14 @@ function init_gear_sets()
     -- Fast cast sets for spells
     
     sets.precast.FC = {
-    main={ name="Malevolence", augments={'INT+10','Mag. Acc.+10','"Mag.Atk.Bns."+10','"Fast Cast"+5',}},
-    ammo="Sancus Sachet",
-    head="Nahtirah Hat",
-    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
-    feet=gear.MerlFFC,
-    waist="Embla Sash",
-    left_ear="Malignance Earring",
-    left_ring="Kishar Ring",
+        main={ name="Malevolence", augments={'INT+10','Mag. Acc.+10','"Mag.Atk.Bns."+10','"Fast Cast"+5',}},
+        ammo="Sancus Sachet",
+        head="Nahtirah Hat",
+        legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
+        feet=gear.MerlFFC,
+        waist="Embla Sash",
+        left_ear="Malignance Earring",
+        left_ring="Kishar Ring",
     }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {})
@@ -227,14 +227,14 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-    legs="Tali'ah Seraweels",
-    feet="Battlecast Gaiters",
-    neck="Sanctity Necklace",
-    waist="Life Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Apate Ring",
-    right_ring="Beeline Ring",
+        legs="Tali'ah Seraweels",
+        feet="Battlecast Gaiters",
+        neck="Sanctity Necklace",
+        waist="Life Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Apate Ring",
+        right_ring="Beeline Ring",
     }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
@@ -265,61 +265,61 @@ function init_gear_sets()
     sets.midcast.Pet.DebuffBloodPactWard.Acc = set_combine(sets.midcast.Pet.DebuffBloodPactWard, {})
 
     sets.midcast.Pet.PhysicalBP = {
-    main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
-    sub="Elan Strap",
-    ammo="Sancus Sachet",
-    head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
-    body="Con. Doublet +2",
-    hands=gear.MerlGPBP,
-    legs={ name="Apogee Slacks", augments={'Pet: STR+15','Blood Pact Dmg.+13','Pet: "Dbl. Atk."+3',}},
-    feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
-    neck="Adad Amulet",
-    waist="Incarnation Sash",
-    left_ear="Esper Earring",
-    right_ear="Lugalbanda Earring",
-    left_ring="Varar Ring",
-    right_ring="Varar Ring",
-    back=gear.SmnCPHY,
+        main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
+        sub="Elan Strap",
+        ammo="Sancus Sachet",
+        head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+        body="Con. Doublet +2",
+        hands=gear.MerlGPBP,
+        legs={ name="Apogee Slacks", augments={'Pet: STR+15','Blood Pact Dmg.+13','Pet: "Dbl. Atk."+3',}},
+        feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+        neck="Adad Amulet",
+        waist="Incarnation Sash",
+        left_ear="Esper Earring",
+        right_ear="Lugalbanda Earring",
+        left_ring="Varar Ring",
+        right_ring="Varar Ring",
+        back=gear.SmnCPHY,
     }
 
     sets.midcast.Pet.PhysicalBP.Acc = sets.midcast.Pet.PhysicalBP
 
     sets.midcast.Pet.HybridBP = {
-    main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
-    sub="Elan Strap",
-    ammo="Sancus Sachet",
-    head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
-    body="Con. Doublet +2",
-    hands=gear.MerlGPBP,
-    legs={ name="Apogee Slacks", augments={'Pet: STR+15','Blood Pact Dmg.+13','Pet: "Dbl. Atk."+3',}},
-    feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
-    neck="Adad Amulet",
-    waist="Regal Belt",
-    left_ear="Esper Earring",
-    right_ear="Lugalbanda Earring",
-    left_ring="Varar Ring",
-    right_ring="Varar Ring",
-    back=gear.SmnCPHY,
+        main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
+        sub="Elan Strap",
+        ammo="Sancus Sachet",
+        head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+        body="Con. Doublet +2",
+        hands=gear.MerlGPBP,
+        legs={ name="Apogee Slacks", augments={'Pet: STR+15','Blood Pact Dmg.+13','Pet: "Dbl. Atk."+3',}},
+        feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+        neck="Adad Amulet",
+        waist="Regal Belt",
+        left_ear="Gelos Earring",
+        right_ear="Lugalbanda Earring",
+        left_ring="Varar Ring",
+        right_ring="Varar Ring",
+        back=gear.SmnCPHY,
     }
     
     sets.midcast.Pet.HybridBP.Acc = sets.midcast.Pet.HybridBP
     
     sets.midcast.Pet.MagicalBP = {
-    main={name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
-    sub="Elan Strap",
-    ammo="Sancus Sachet",
-    head="Con. Horn +1",
-    body="Con. Doublet +2",
-    hands="Lamassu Mitts +1",
-    legs=gear.EnticeMBP,
-    feet="Con. Pigaches +1",
-    neck="Adad Amulet",
-    waist="Regal Belt",
-    left_ear="Esper Earring",
-    right_ear="Lugalbanda Earring",
-    left_ring="Varar Ring",
-    right_ring="Varar Ring",
-    back=gear.SmnCPHY,
+        main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
+        sub="Elan Strap",
+        ammo="Sancus Sachet",
+        head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+        body="Con. Doublet +2",
+        hands=gear.MerlGPBP,
+        legs={ name="Enticer's Pants", augments={'MP+50','Pet: Accuracy+15 Pet: Rng. Acc.+15','Pet: Mag. Acc.+15','Pet: Damage taken -5%',}},
+        feet={ name="Apogee Pumps", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
+        neck="Adad Amulet",
+        waist="Regal Belt",
+        left_ear="Gelos Earring",
+        right_ear="Lugalbanda Earring",
+        left_ring="Varar Ring",
+        right_ring="Varar Ring",
+        back=gear.SmnCPHY,
     }
 
     sets.midcast.Pet.MagicalBP.Acc = sets.midcast.Pet.MagicalBP
@@ -619,6 +619,9 @@ function job_self_command(cmdParams, eventArgs)
     elseif cmdParams[1]:lower() == 'bprc' then
         handle_bprc()
         eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'bprc2' then
+        handle_bprc2()
+        eventArgs.handled = true
     elseif cmdParams[1]:lower() == 'bpwc' then
         handle_bpwc()
         eventArgs.handled = true
@@ -663,6 +666,38 @@ function handle_bprc()
             add_to_chat(122, "No Blood Pact: Rage set for this summon")
         end
     else
+        add_to_chat(122, 'No Avatar summoned.')
+    end
+end
+
+function handle_bprc2()
+    if pet.isvalid and avatars:contains(pet.name) then
+        if pet.name == "Ifrit" then
+            send_command('@input /pet "Flaming Crush" <t>')
+        elseif pet.name == "Ramuh" then
+            send_command('@input /pet "Thunderspark" <t>')
+        elseif pet.name == "Siren" then
+            send_command('@input /pet "Hysteric Assault" <t>')
+        elseif pet.name == "Garuda" then
+            send_command('@input /pet "Predator Claws" <t>')
+        elseif pet.name == "Carbuncle" then
+            send_command('@input /pet "Meteorite" <t>')
+        elseif pet.name == "Cait Sith" then
+            send_command('@input /pet "Regal Scratch" <t>')
+        elseif pet.name == "Fenrir" then
+            send_command('@input /pet "Eclipse Bite" <t>')
+        elseif pet.name == "Titan" then
+            send_command('@input /pet "Mountain Buster" <t>')
+        elseif pet.name == "Leviathan" then
+            send_command('@input /pet "Spinning Dive" <t>')
+        elseif pet.name == "Shiva" then
+            send_command('@input /pet "Rush" <t>')
+        elseif pet.name == "Diabolos" then
+            send_command('@input /pet "Night Terror" <t>')
+        else
+            add_to_chat(122, "No Blood Pact: Rage set for this summon")
+        end
+    else
         add_to_chat(122, 'No pet summoned.')
     end
 end
@@ -672,7 +707,7 @@ function handle_bpwc()
         if pet.name == "Ifrit" then
             send_command('@input /pet "Crimson Howl" <me>')
         elseif pet.name == "Ramuh" then
-            send_command('@input /pet "Lightning Armor" <me>')
+            send_command('@input /pet "Shock Squall" <t>')
         elseif pet.name == "Siren" then
             send_command('@input /pet "Wind\'s Blessing" <me>')
         elseif pet.name == "Garuda" then
@@ -699,6 +734,37 @@ function handle_bpwc()
     end
 end
 
+--[[function handle_bpwc2()
+    if pet.isvalid and avatars:contains(pet.name) then
+        if pet.name == "Ifrit" then
+            send_command('@input /pet "Crimson Howl" <me>')
+        elseif pet.name == "Ramuh" then
+            send_command('@input /pet "Shock Squall" <t>')
+        elseif pet.name == "Siren" then
+            send_command('@input /pet "Wind\'s Blessing" <me>')
+        elseif pet.name == "Garuda" then
+            send_command('@input /pet "Hastega II" <me>')
+        elseif pet.name == "Carbuncle" then
+            send_command('@input /pet "Shining Ruby" <me>')
+        elseif pet.name == "Cait Sith" then
+            send_command('@input /pet "Mewing Lulaby" <t>')
+        elseif pet.name == "Fenrir" then
+            send_command('@input /pet "Ecliptic Growl" <me>')
+        elseif pet.name == "Titan" then
+            send_command('@input /pet "Earthen Armor" <me>')
+        elseif pet.name == "Leviathan" then
+            send_command('@input /pet "Soothing Current" <me>')
+        elseif pet.name == "Shiva" then
+            send_command('@input /pet "Crystal Blessing" <me>')
+        elseif pet.name == "Diabolos" then
+            send_command('@input /pet "Noctoshield" <me>')
+        else
+            add_to_chat(122, "No Blood Pact: Ward set for this summon")
+        end
+    else
+        add_to_chat(122, 'No pet summoned.')
+    end
+end]]
 -- Cast the appopriate storm for the currently summoned avatar, if possible.
 function handle_petweather()
     if player.sub_job ~= 'SCH' then

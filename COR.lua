@@ -274,6 +274,7 @@ function init_gear_sets()
 
     sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {
         head="Pixie Hairpin +1",
+        left_ring="Archon Ring",
         back=gear.CorWSD,
     })
 
@@ -294,7 +295,7 @@ function init_gear_sets()
         left_ear="Novio Earring",
         right_ear="Friomisi Earring",
         left_ring="Ilabrat Ring",
-        right_ring="Apate Ring",
+        right_ring="Dingir Ring",
         back=gear.CorAGI,
     }
 
@@ -302,7 +303,10 @@ function init_gear_sets()
 
     sets.midcast.CorsairShot['Light Shot'] = set_combine(sets.midcast.CorsairShot, {})
 
-    sets.midcast.CorsairShot['Dark Shot'] = set_combine(sets.midcast.CorsairShot['Light Shot'], {head="Pixie Hairpin +1"})
+    sets.midcast.CorsairShot['Dark Shot'] = set_combine(sets.midcast.CorsairShot['Light Shot'], {
+        head="Pixie Hairpin +1",
+        left_ring="Archon Ring",
+    })
 
 
     -- Ranged gear

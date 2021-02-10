@@ -308,7 +308,7 @@ function init_gear_sets()
         left_ear="Regal Earring",
         right_ear="Friomisi Earring", 
         left_ring="Jhakri Ring",
-        right_ring="Ayanmo Ring",
+        right_ring="Archon Ring",
         back="Cornflower Cape",
     })
     
@@ -501,7 +501,10 @@ function init_gear_sets()
 
     sets.midcast['Blue Magic'].Buff = {}
     
-    sets.midcast['Tenebral Crush'] = set_combine(sets.midcast['Blue Magic'].Magical,{head = "Pixie Hairpin +1"})
+    sets.midcast['Tenebral Crush'] = set_combine(sets.midcast['Blue Magic'].Magical,{
+        head = "Pixie Hairpin +1",
+        right_ring="Archon Ring",
+    })
     
     sets.midcast.Protect = {}
     sets.midcast.Protectra = {}
@@ -711,6 +714,27 @@ end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'ws' then
+        handle_WS()
+        eventArgs.handled = true
+    end
+end
+
+function handle_WS()
+    if player.equipment.main == "Tizona" then
+        send_command('@input /ws "Expiacion" <t>')
+    elseif player.equipment.main == "Naegling" then
+        send_command('@input /ws "Savage Blade" <t>')
+    elseif player.equipment.main == "Maxentius" then
+        send_command('@input /ws "Black Halo" <t>')
+    elseif player.equipment.main == "Almace" then
+        send_command('@input /ws "Chant du Cygne" <t>')
+    else
+        add_to_chat(122, "No WS set for this weapon")
+    end    
+end 
+
 --[[function job_precast(spell, action, spellMap, eventArgs)
     if unbridled_spells:contains(spell.english) and not state.Buff['Unbridled Learning'] then
         eventArgs.cancel = true
@@ -743,7 +767,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
     end
     
     if state.TreasureMode.value == 'Tag' then
-        if spell.english == 'Entomb' or spell.english == 'Whirl of Rage' or spell.english == 'Embalming Earth' then
+        if spell.english == 'Sound Blast' or spell.english == 'Whirl of Rage' or spell.english == 'Embalming Earth' then
             equip(sets.TreasureHunter)
         end
     end

@@ -1,57 +1,3 @@
--- Original: Motenten / Modified: Arislan
-
--------------------------------------------------------------------------------------------------------------------
---  Keybinds
--------------------------------------------------------------------------------------------------------------------
-
---  Modes:      [ F9 ]              Cycle Offense Mode
---              [ CTRL+F9 ]         Cycle Hybrid Modes
---              [ WIN+F9 ]          Cycle Weapon Skill Modes
---              [ F10 ]             Emergency -PDT Mode
---              [ ALT+F10 ]         Toggle Kiting Mode
---              [ F11 ]             Emergency -MDT Mode
---              [ CTRL+F11 ]        Cycle Casting Modes
---              [ F12 ]             Update Current Gear / Report Current Status
---              [ CTRL+F12 ]        Cycle Idle Modes
---              [ ALT+F12 ]         Cancel Emergency -PDT/-MDT Mode
---              [ WIN+C ]           Toggle Capacity Points Mode
---
---  Abilities:  [ CTRL+` ]          Cycle SongMode
---
---  Songs:      [ ALT+` ]           Chocobo Mazurka
---              [ WIN+, ]           Utsusemi: Ichi
---              [ WIN+. ]           Utsusemi: Ni
---
---  Weapons:    [ CTRL+W ]          Toggles Weapon Lock
---
---  WS:         [ CTRL+Numpad7 ]    Mordant Rime
---              [ CTRL+Numpad4 ]    Evisceration
---              [ CTRL+Numpad5 ]    Rudra's Storm
---              [ CTRL+Numpad1 ]    Aeolian Edge
---
---
---              (Global-Binds.lua contains additional non-job-related keybinds)
-
-
--------------------------------------------------------------------------------------------------------------------
--- Setup functions for this job.  Generally should not be modified.
--------------------------------------------------------------------------------------------------------------------
-
---[[
-    Custom commands:
-    SongMode may take one of three values: None, Placeholder, FullLength
-    You can set these via the standard 'set' and 'cycle' self-commands.  EG:
-    gs c cycle SongMode
-    gs c set SongMode Placeholder
-    The Placeholder state will equip the bonus song instrument and ensure non-duration gear is equipped.
-    The FullLength state will simply equip the bonus song instrument on top of standard gear.
-    Simple macro to cast a placeholder Daurdabla song:
-    /console gs c set SongMode Placeholder
-    /ma "Shining Fantasia" <me>
-    To use a Terpander rather than Daurdabla, set the info.ExtraSongInstrument variable to
-    'Terpander', and info.ExtraSongs to 1.
---]]
-
 -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
@@ -66,6 +12,7 @@ end
 function job_setup()
     state.SongMode = M{['description']='Song Mode', 'None', 'Placeholder'}
     state.Buff['Pianissimo'] = buffactive['pianissimo'] or false
+
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -176,19 +123,19 @@ function init_gear_sets()
 
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-    ammo="Ginsen",
-    head="Aya. Zucchetto +1",
-    body="Ayanmo Corazza +1",
-    hands="Aya. Manopolas +1",
-    legs="Aya. Cosciales +1",
-    feet="Aya. Gambieras +1",
-    neck="Clotharius Torque",
-    waist="Shadow Belt",
-    left_ear="Steelflash Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Begrudging Ring",
-    right_ring="Ayanmo Ring",
-    back="Atheling Mantle",
+        ammo="Ginsen",
+        head="Aya. Zucchetto +1",
+        body="Ayanmo Corazza +1",
+        hands="Aya. Manopolas +1",
+        legs="Aya. Cosciales +1",
+        feet="Aya. Gambieras +1",
+        neck="Clotharius Torque",
+        waist="Shadow Belt",
+        left_ear="Steelflash Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Begrudging Ring",
+        right_ring="Ayanmo Ring",
+        back="Atheling Mantle",
     }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
@@ -215,7 +162,7 @@ function init_gear_sets()
     range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
     body="Fili Hongreline",
     legs="Inyanga Shalwar +2",
-    feet="Brioso Slippers +1",
+    feet="Brioso Slippers +2",
     neck="Moonbow Whistle",
     }
 
@@ -224,19 +171,20 @@ function init_gear_sets()
     --sets.midcast.Carol = {hands="Mousai Gages +1"}
     --sets.midcast.Etude = {head="Mousai Turban +1"}
     sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +1"})
-    --sets.midcast.Lullaby = set_combine(sets.midcast.BardSong,{hands="Brioso Cuffs +3"}
+    sets.midcast.Lullaby = set_combine(sets.midcast.SongDebuff,{hands="Brioso Cuffs +2",body="Fili Hongreline"})
     sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +1", back=gear.BrdCFC})
     --sets.midcast.Mambo = {feet="Mousai Crackows"}
     sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +1"})
     --sets.midcast.Minne = {legs="Mousai Seraweels"}
     sets.midcast.Minuet = set_combine(sets.midcast.BardSong,{body="Fili Hongreline"})
     --sets.midcast.Paeon = {head="Brioso Roundlet +3"}
-    --sets.midcast.Threnody = {body="Mou. Manteel +1"}
+    --sets.midcast.Threnody = sets.midcast.SongDebuff  --, {}) --{body="Mou. Manteel +1"}) -- GS does not see this set?
+
     --sets.midcast['Adventurer\'s Dirge'] = {hands="Bihu Cuffs +3"}
     --sets.midcast['Foe Sirvente'] = {head="Bihu Roundlet +3"}
     --sets.midcast['Magic Finale'] = {legs="Fili Rhingrave +1"}
-    sets.midcast["Sentinel's Scherzo"] = {feet="Fili Cothurnes +1"}
-
+    sets.midcast['Sentinel\'s Scherzo'] = {feet="Fili Cothurnes +1"}
+    
     --3rd/4th song sets
     
     sets.midcast['Army\'s Paeon'] = {range="Terpander",}
@@ -247,8 +195,21 @@ function init_gear_sets()
     --sets.midcast['Advancing March'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
     
     -- For song defbuffs (duration primary, accuracy secondary)
-    sets.midcast.SongEnfeeble = {}
-
+    sets.midcast.SongDebuff = {
+        main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
+        range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
+        head="Brioso Roundlet +2",
+        body="Brioso Justau. +2",
+        hands="Brioso Cuffs +2",
+        legs="Brioso Cannions +2",
+        feet="Brioso Slippers +2",
+        neck="Moonbow Whistle",
+        waist="Famine Sash",
+        left_ear="Hermetic Earring",
+        left_ring="Kishar Ring",
+        right_ring="Inyanga Ring",
+        back = gear.BrdCFC,
+    }
     -- For song defbuffs (accuracy primary, duration secondary)
     --sets.midcast.SongEnfeebleAcc = set_combine(sets.midcast.SongEnfeeble, {})
 
@@ -500,14 +461,14 @@ function job_precast(spell, action, spellMap, eventArgs)
 end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
-function job_midcast(spell, action, spellMap, eventArgs)
-    --[[if spell.type == 'BardSong' then
+function job_post_midcast(spell, action, spellMap, eventArgs)
+    if spell.type == 'BardSong' then
         -- layer general gear on first, then let default handler add song-specific gear.
         local generalClass = get_song_class(spell)
-        if generalClass and sets.midcast[generalClass] then
+        if generalClass and sets.midcast[generalClass] and not spell.name:contains("Lullaby") then
             equip(sets.midcast[generalClass])
         end
-        if spell.name == 'Honor March' then
+        --[[if spell.name == 'Honor March' then
             equip({range="Marsyas"})
         end
         if string.find(spell.name,'Lullaby') then
@@ -518,8 +479,8 @@ function job_midcast(spell, action, spellMap, eventArgs)
             else
                 equip({range="Gjallarhorn"})
             end
-        end
-    end]]
+        end]]
+    end
 end
 
 --[[function job_post_midcast(spell, action, spellMap, eventArgs)
@@ -666,20 +627,18 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 -- Determine the custom class to use for the given song.
---[[function get_song_class(spell)
+function get_song_class(spell)
     -- Can't use spell.targets:contains() because this is being pulled from resources
     if set.contains(spell.targets, 'Enemy') then
         if state.CastingMode.value == 'Resistant' then
             return 'SongEnfeebleAcc'
         else
-            return 'SongEnfeeble'
+            return 'SongDebuff'
         end
-    elseif state.SongMode.value == 'Placeholder' then
-        return 'SongPlaceholder'
     else
         return 'SongEnhancing'
     end
-end]]
+end
 
 --[[function get_lullaby_duration(spell)
     local self = windower.ffxi.get_player()

@@ -143,7 +143,7 @@ function init_gear_sets()
     waist="Fotia Belt",
     left_ear="Malignance Earring",
     right_ear="Regal Earring",
-    left_ring="Petrov Ring",
+    left_ring="Archon Ring",
     right_ring="Jhakri Ring",
     back=gear.RdmCMB,
     }
