@@ -610,11 +610,7 @@ end
 
 function update_combat_form()
     -- Check for H2H or single-wielding
-    if player.equipment.sub == "Genmei Shield" or player.equipment.sub == "Ammurapi Shield" or player.equipment.sub == 'empty' then
-        state.CombatForm:reset()
-    else
-        state.CombatForm:set('DW')
-    end
+    dw_check() -- function is defined in the Dagna-Globals.lua
 end
 
 --------------------------------------------------------------------------------------------

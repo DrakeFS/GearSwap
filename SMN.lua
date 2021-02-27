@@ -190,20 +190,20 @@ function init_gear_sets()
 
     -- Pact delay reduction gear
     sets.precast.BloodPactWard = {
-    main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
-    sub="Vox Grip",
-    ammo="Sancus Sachet",
-    neck="Incanter's Torque",
-    head="Beckoner's Horn +1",
-    body="Con. Doublet +2",
-    hands="Lamassu Mitts +1",
-    legs={ name="Glyphic Spats +1", augments={'Increases Sp. "Blood Pact" accuracy',}},
-    feet={ name="Glyph. Pigaches +1", augments={'Inc. Sp. "Blood Pact" magic crit. dmg.',}},
-    waist="Lucidity Sash",
-    left_ear="Lodurr Earring",
-    right_ear="Andoaa Earring",
-    left_ring="Evoker's Ring",
-    back=gear.SmnBPD,
+        main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
+        sub="Vox Grip",
+        ammo="Epitaph",
+        neck="Incanter's Torque",
+        head="Beckoner's Horn +1",
+        body="Con. Doublet +2",
+        hands="Lamassu Mitts +1",
+        legs={ name="Glyphic Spats +1", augments={'Increases Sp. "Blood Pact" accuracy',}},
+        feet={ name="Glyph. Pigaches +1", augments={'Inc. Sp. "Blood Pact" magic crit. dmg.',}},
+        waist="Lucidity Sash",
+        left_ear="Lodurr Earring",
+        right_ear="Andoaa Earring",
+        left_ring="Evoker's Ring",
+        back=gear.SmnBPD,
     }
 
     sets.precast.BloodPactRage = sets.precast.BloodPactWard
@@ -212,7 +212,7 @@ function init_gear_sets()
     
     sets.precast.FC = {
         main={ name="Malevolence", augments={'INT+10','Mag. Acc.+10','"Mag.Atk.Bns."+10','"Fast Cast"+5',}},
-        ammo="Sancus Sachet",
+        ammo="Epitaph",
         head="Nahtirah Hat",
         legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
         feet=gear.MerlFFC,
@@ -267,7 +267,7 @@ function init_gear_sets()
     sets.midcast.Pet.PhysicalBP = {
         main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
         sub="Elan Strap",
-        ammo="Sancus Sachet",
+        ammo="Epitaph",
         head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
         body="Con. Doublet +2",
         hands=gear.MerlGPBP,
@@ -287,7 +287,7 @@ function init_gear_sets()
     sets.midcast.Pet.HybridBP = {
         main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
         sub="Elan Strap",
-        ammo="Sancus Sachet",
+        ammo="Epitaph",
         head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
         body="Con. Doublet +2",
         hands=gear.MerlGPBP,
@@ -307,7 +307,7 @@ function init_gear_sets()
     sets.midcast.Pet.MagicalBP = {
         main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
         sub="Elan Strap",
-        ammo="Sancus Sachet",
+        ammo="Epitaph",
         head={ name="Apogee Crown", augments={'MP+60','Pet: Attack+30','Blood Pact Dmg.+7',}},
         body="Con. Doublet +2",
         hands=gear.MerlGPBP,
@@ -366,20 +366,20 @@ function init_gear_sets()
     -- Can make due without either the head or the body, and use +refresh items in those slots.
     
     sets.idle.Avatar = {
-    main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
-    ammo="Sancus Sachet",
-    head="Con. Horn +1",
-    body="Con. Doublet +2",
-    hands="Lamassu Mitts +1",
-    legs="Assid. Pants +1",
-    feet="Apogee Pumps",
-    neck="Caller's Pendant",
-    waist="Lucidity Sash",
-    left_ear="Evans Earring",
-    right_ear="Lugalbanda Earring",
-    left_ring="Evoker's Ring",
-    right_ring="Kishar Ring",
-    back=gear.SmnCPHY,
+        main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
+        ammo="Epitaph",
+        head="Con. Horn +1",
+        body="Con. Doublet +2",
+        hands="Lamassu Mitts +1",
+        legs="Assid. Pants +1",
+        feet="Apogee Pumps",
+        neck="Caller's Pendant",
+        waist="Lucidity Sash",
+        left_ear="Evans Earring",
+        right_ear="Lugalbanda Earring",
+        left_ring="Evoker's Ring",
+        right_ring="Kishar Ring",
+        back=gear.SmnCPHY,
     }
     
     sets.idle.AvatarCP = set_combine(sets.idle.Avatar, {back=gear.CPCape,})
@@ -395,20 +395,20 @@ function init_gear_sets()
     sets.idle.Avatar.Favor = set_combine(sets.idle.Avatar, {})
     
     sets.idle.Avatar.Melee = {
-    main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
-    ammo="Sancus Sachet",
-    head="Con. Horn +1",
-    body="Con. Doublet +2",
-    hands="Lamassu Mitts +1",
-    legs="Assid. Pants +1",
-    feet="Con. Pigaches +1",
-    neck="Caller's Pendant",
-    waist="Lucidity Sash",
-    left_ear="Evans Earring",
-    right_ear="Lugalbanda Earring",
-    left_ring="Evoker's Ring",
-    right_ring="Kishar Ring",
-    back=gear.SmnCPHY,
+        main={ name="Gridarvor", augments={'Pet: Accuracy+70','Pet: Attack+70','Pet: "Dbl. Atk."+15',}},
+        ammo="Epitaph",
+        head="Con. Horn +1",
+        body="Con. Doublet +2",
+        hands="Lamassu Mitts +1",
+        legs="Assid. Pants +1",
+        feet="Con. Pigaches +1",
+        neck="Caller's Pendant",
+        waist="Lucidity Sash",
+        left_ear="Evans Earring",
+        right_ear="Lugalbanda Earring",
+        left_ring="Evoker's Ring",
+        right_ring="Kishar Ring",
+        back=gear.SmnCPHY,
     }
     
     sets.idle.Avatar.MeleeCP = set_combine(sets.idle.Avatar.Melee, {back=gear.CPCape,})
@@ -444,19 +444,19 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-    ammo="Sancus Sachet",
-    head="Con. Horn +1",
-    body="Con. Doublet +2",
-    hands="Lamassu Mitts +1",
-    legs="Assid. Pants +1",
-    feet="Con. Pigaches +1",
-    neck="Caller's Pendant",
-    waist="Lucidity Sash",
-    left_ear="Evans Earring",
-    right_ear="Lugalbanda Earring",
-    left_ring="Evoker's Ring",
-    right_ring="Kishar Ring",
-    back=gear.SmnCPHY,
+        ammo="Epitaph",
+        head="Con. Horn +1",
+        body="Con. Doublet +2",
+        hands="Lamassu Mitts +1",
+        legs="Assid. Pants +1",
+        feet="Con. Pigaches +1",
+        neck="Caller's Pendant",
+        waist="Lucidity Sash",
+        left_ear="Evans Earring",
+        right_ear="Lugalbanda Earring",
+        left_ring="Evoker's Ring",
+        right_ring="Kishar Ring",
+        back=gear.SmnCPHY,
     }
 end
 

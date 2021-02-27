@@ -500,12 +500,8 @@ function display_roll_info(spell)
 end
 
 function update_combat_form()
-    -- Check for H2H or single-wielding
-    if player.equipment.sub == "Nusku Shield" or player.equipment.sub == 'empty' then
-        state.CombatForm:reset()
-    else
-        state.CombatForm:set('DW')
-    end
+    --checks for Single, Two Handed or Dual Weilding
+    dw_check() -- function is defined in the Lystle-Globals.lua
 end
 
 function determine_haste_group()

@@ -1,48 +1,46 @@
-------------------------------------------------    Warrior = WAR     Monk = MNK      White Mage = WHM    Black Mage = BLM   Red Mage = RDM
--- Rename JOB.lua to the job you wish to use  --    Theif = THF       Paladin = PLD   Dark Knight = DRK   Beastmaster = BST  Bard = BRD
--- this lua on.  ie. rename to BLU.lua to     --    Ranger = RNG      Samurai = SAM   Ninja = NIN         Dragoon = DRG      Summoner = SMN
--- load it for Blue Mage                      --    Blue Mage = BLU   Corsair = COR   Puppetmaster = PUP  Dancer = DNC       Scholar = SCH
-------------------------------------------------    Geomancer = GEO   Rune Fencer = RUN
-
 function get_sets()
     mote_include_version = 2
     include('Mote-Include.lua')
 end
 
 function job_setup()
+    
 end
 
 function user_setup()
+    on_job_change()
 end
 
 function init_gear_sets()
 sets.precast.FC = {}  -- Fast Cast Set
 
 sets.precast.WS = {
-    ammo="Falcon Eye",
-    head="Mummu Bonnet +2",
-    body="Mummu Jacket +2",
+    ammo="Ginsen",
+    head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
+    body="Meg. Cuirie +2",
     hands="Meg. Gloves +2",
-    legs="Mummu Kecks +2",
+    legs="Meg. Chausses +2",
     feet="Mummu Gamash. +2",
     neck="Clotharius Torque",
-    waist="Shadow Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
+    waist="Dynamic Belt",
+    left_ear="Sherida Earring",
+    right_ear="Steelflash Earring",
     left_ring="Begrudging Ring",
     right_ring="Mummu Ring",
     back="Atheling Mantle",
-}  -- General Weapon Skill Set
+} 
 
--- sets.precast.WS['WS_Name'] = set_combine(sets.precast.WS, {gear goes here}) -- Specific Weapon Skill Set.  Ignore if uneeded, remove the first "--" to activate.
+sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
+    ammo="Falcon Eye",
+    hands="Mummu Wrists +2",
+    legs="Mummu Kecks +2",
+    waist="Soil Belt",
+})
 
-sets.midcast = {} -- Casting Set
-
--- sets.midcast['Spell Name or Magic Type'] = set_combine(sets.midcast,{gear goes here}) -- Specific casting set for a spell or magic type (ie. Enhancing Magic).  Ignore if uneeded, remove the first "--" to activate.
-
-sets.idle = set_combine(sets.defense.PDT, {neck="Sanctity Necklace",})
-
-sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
+sets.precast.WS['Rudra\'s Storm'] = set_combine(sets.precast.WS, {
+    waist = "Shadow Belt",
+    right_ear = "Moonshade Earring",
+})
 
 sets.defense.PDT = {
     head="Meghanada Visor +1",
@@ -56,22 +54,33 @@ sets.defense.PDT = {
     left_ring="Defending Ring",
     right_ring="Meghanada Ring",
     back="Solemnity Cape",
-}  
+}
+
+sets.idle = set_combine(sets.defense.PDT, {neck="Sanctity Necklace",})
+
+sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
 sets.engaged = {
     ammo="Ginsen",
     head="Mummu Bonnet +2",
-    body=gear.HercBTP,
+    body="Mummu Jacket +2",
     hands="Mummu Wrists +2",
     legs="Meg. Chausses +2",
     feet="Mummu Gamash. +2",
     neck="Clotharius Torque",
     waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
+    left_ear="Sherida Earring",
+    right_ear="Steelflash Earring",
     left_ring="Begrudging Ring",
-    right_ring="Meghanada Ring",
+    right_ring="Mummu Ring",
     back="Atheling Mantle",
 }
 
+end
+
+-- Job Specific Functions
+
+function on_job_change()
+    set_macro_page(1,19)
+    send_command('wait 5;input /lockstyleset 4')
 end

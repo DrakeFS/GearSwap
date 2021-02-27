@@ -32,6 +32,8 @@ function define_global_sets()
 end
 
 function global_on_load()
+    dw_skill_list = S{2,3,5,11}
+    thand_skill_list = S{4,6,7,8,10}
     send_command('bind f9 gs c cycle OffenseMode')
     send_command('bind ^f9 gs c cycle HybridMode')
     send_command('bind !f9 gs c cycle RangedMode')
@@ -98,4 +100,16 @@ function user_customize_melee_set(meleeSet)
         meleeSet = set_combine(meleeSet,sets.defense.PDT)
     end
     return meleeSet
+end
+
+function dw_check()
+    local item_sub_id = player.equipment.sub ~= 'empty' and gearswap.items[gearswap.to_windower_bag_api(gearswap.res.bags[gearswap.items.equipment.sub.bag_id].en)][gearswap.items.equipment.sub.slot].id
+    local item_main_id = player.equipment.main ~= 'empty' and gearswap.items[gearswap.to_windower_bag_api(gearswap.res.bags[gearswap.items.equipment.main.bag_id].en)][gearswap.items.equipment.main.slot].id
+    if item_sub_id and dw_skill_list:contains(gearswap.res.items[item_sub_id].skill or 0) then
+        state.CombatForm:set('DW')
+    elseif item_main_id and thand_skill_list:contains(gearswap.res.items[item_main_id].skill) then
+        state.CombatForm:set('THand')
+    else
+        state.CombatForm:reset()
+    end
 end

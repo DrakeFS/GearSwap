@@ -9,7 +9,7 @@
     You can use 
         //gs export 
     in game (or just "gs export" from the Windower Console) to export your currently equiped gear to the \Windower\addons\GearSwap\data\export folder, in a file named
-        YourCharactername CurrentDate-CurrentTime.lua
+        YourCharactername CurrentDate CurrentTime.lua
     from which you can copy into the sets in this lua.  
     
     If you want to make changes to existing sets, you can use

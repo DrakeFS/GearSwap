@@ -196,7 +196,17 @@ function init_gear_sets()
     sets.precast.WS['Mandalic Stab'].TA = {}
     sets.precast.WS['Mandalic Stab'].SATA = {}
     
-    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {})
+    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {
+        ammo="Seething Bomblet",
+        head=gear.HercHeTH,
+        body=gear.HercBTH,
+        hands={ name="Leyline Gloves", augments={'Accuracy+7','Mag. Acc.+5',}},
+        legs=gear.HercLTH,
+        feet="Jute Boots +1",
+        neck="Sanctity Necklace",
+        left_ear="Hermetic Earring",
+    })
+    
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
 
 

@@ -15,7 +15,9 @@ end
 
 -- Setup vars that are user-independent.
 function job_setup()
-    get_combat_form()
+    dw_skill_list = S{2,3,5,11}
+
+    update_combat_form()
     
     
     -- list of weaponskills that make better use of Gavialis helm
@@ -36,7 +38,7 @@ function user_setup()
     
     war_sj = player.sub_job == 'WAR' or false
 
-    lockstyleset()
+    on_job_change()
     --select_default_macro_book(1, 14)
     --send_command('bind != gs c toggle CapacityMode')
     send_command('bind ^= gs c cycle treasuremode')
@@ -47,10 +49,7 @@ end
 
 -- Called when this job file is unloaded (eg: job change)
 function file_unload()
-    -- send_command('unbind ^[')
-    -- send_command('unbind ![')
-    -- send_command('unbind ^=')
-    -- send_command('unbind !=')
+
 end
 
 
@@ -108,13 +107,13 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-        ammo="Ginsen",
+        ammo="Knobkierrie",
         head="Sulevia's Mask +2",
         body="Sulevia's Plate. +1",
         hands="Sulev. Gauntlets +2",
         legs="Vishap Brais +2",
-        feet="Flam. Gambieras +2",
-        neck="Clotharius Torque",
+        feet="Sulev. Leggings +2",
+        neck="Shulmanu Collar",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         left_ear="Cessance Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -231,15 +230,30 @@ function init_gear_sets()
         right_ring="Petrov Ring",
         back=gear.DrgCTP,
         }
-
+        
+        sets.engaged.DW = {
+            ammo="Ginsen",
+            head="Sulevia's Mask +2",
+            body="Flamma Korazin +2",
+            hands="Sulev. Gauntlets +2",
+            legs="Flamma Dirs +2",
+            feet="Ostro Greaves",
+            neck="Shulmanu Collar",
+            waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+            left_ear="Sherida Earring",
+            right_ear="Cessance Earring",
+            left_ring="Dreki Ring",
+            right_ring="Petrov Ring",
+            back=gear.DrgCTP,
+        }
     sets.engaged.Mid = set_combine(sets.engaged, {})
 
     sets.engaged.Acc = set_combine(sets.engaged.Mid, {
-    head="Sulevia's Mask +1",
+    head="Sulevia's Mask +2",
     body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
+    hands="Sulev. Gauntlets +2",
     legs="Carmine Cuisses +1",
-    feet="Sulev. Leggings +1",
+    feet="Sulev. Leggings +2",
     left_ring="Sulevia's Ring",
     })
 
@@ -416,7 +430,7 @@ end
 
 function job_update(cmdParams, eventArgs)
     classes.CustomMeleeGroups:clear()
-    get_combat_form()
+    update_combat_form()
 end
 -------------------------------------------------------------------------------------------------------------------
 -- User code that supplements self-commands.
@@ -427,8 +441,9 @@ function job_self_command(cmdParams, eventArgs)
 
 end
 
-function get_combat_form()
-    state.CombatForm:reset()
+function update_combat_form()
+    -- Check for H2H or single-wielding
+    dw_check() -- function is defined in the Dagna-Globals.lua
 end
 
 
@@ -472,19 +487,8 @@ function th_action_check(category, param)
         then return true
     end
 end
--- Select default macro book on initial load or subjob change.
---[[function select_default_macro_book()
-    -- Default macro set/book
-    if player.sub_job == 'WAR' then
-        set_macro_page(1, 14)
-    elseif player.sub_job == 'WHM' then
-        set_macro_page(1, 14)
-    else
-        set_macro_page(1, 14)
-    end
-end]]
 
--- Set a Style Lock
-function lockstyleset()
+function on_job_change()
+    set_macro_page(1, 14)
     send_command('wait 5;input /lockstyleset 41')
 end

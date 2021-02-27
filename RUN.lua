@@ -380,11 +380,13 @@ function init_gear_sets()
     feet="Aya. Gambieras +2",
     neck="Clotharius Torque",
     waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
+    left_ear="Sherida Earring",
+    right_ear="Cessance Earring",
     left_ring="Pernicious Ring",
     right_ring="Petrov Ring",
     }
+    
+    sets.engaged.THand = sets.enganged
     
     sets.engaged.DW = {
     ammo="Ginsen",
@@ -758,12 +760,8 @@ end
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
 function update_combat_form()
-    -- Check for H2H or single-wielding
-    if player.equipment.sub == "Kaja Grip" or player.equipment.sub == 'empty' then
-        state.CombatForm:reset()
-    else
-        state.CombatForm:set('DW')
-    end
+    --checks for Single, Two Handed or Dual Weilding
+    dw_check() -- function is defined in the Lystle-Globals.lua
 end
 
 -- Select default macro book on initial load or subjob change.

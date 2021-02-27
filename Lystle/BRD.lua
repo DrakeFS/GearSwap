@@ -547,11 +547,8 @@ function job_update(cmdParams, eventArgs)
 end
 
 function update_combat_form()
-    if player.equipment.sub == "Genmei Shield" or player.equipment.sub == 'empty' then
-        state.CombatForm:reset()
-    else
-        state.CombatForm:set('DW')
-    end
+    --checks for Single, Two Handed or Dual Weilding
+    dw_check() -- function is defined in the Lystle-Globals.lua
 end
 
 -- Called for direct player commands.

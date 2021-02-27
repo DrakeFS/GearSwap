@@ -267,13 +267,13 @@ function init_gear_sets()
         body="Assim. Jubbah +3",
         hands="Jhakri Cuffs +2",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-        feet="Aya. Gambieras +2",
+        feet="Jhakri Pigaches +2",
         neck="Mirage Stole +2",
         waist="Fotia Belt",
-        left_ear="Steelflash Earring",
+        left_ear="Ishvara Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Ayanmo Ring",
-        right_ring="Jhakri Ring",
+        left_ring="Ilabrat Ring",
+        right_ring="Begrudging Ring",
         back=gear.BluCSTR,
     }
     
@@ -309,7 +309,7 @@ function init_gear_sets()
         right_ear="Friomisi Earring", 
         left_ring="Jhakri Ring",
         right_ring="Archon Ring",
-        back="Cornflower Cape",
+        back=gear.BluCMB,
     })
     
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
@@ -319,7 +319,7 @@ function init_gear_sets()
         feet="Jhakri Pigaches +2",
         neck="Mirage Stole +2",
         waist="Sailfi Belt +1",
-        left_ear="Odr Earring",
+        left_ear="Ishvara Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Ilabrat Ring",
         right_ring="Apate Ring",
@@ -376,7 +376,7 @@ function init_gear_sets()
         back=gear.BluDEX,
     }]]
 
-    sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS['Sanguine Blade'], {
+    --[[sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS['Sanguine Blade'], {
         ammo="Ginsen",
         head="Jhakri Coronal +2",
         hands="Jhakri Cuffs +2",
@@ -385,6 +385,16 @@ function init_gear_sets()
         left_ring="Pernicious Ring",
         right_ring="Petrov Ring",
         back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+    })]]
+
+    sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS['Savage Blade'], {
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+    })
+
+    sets.precast.WS['Flash Nova'] = set_combine(sets.precast.WS['Sanguine Blade'], {
+        head="Jhakri Coronal +2",
+        right_ring="Jhakri Ring",
     })
 
     -- Midcast Sets
@@ -828,12 +838,7 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 function update_combat_form()
-    -- Check for H2H or single-wielding
-    if player.equipment.sub == "Genmei Shield" or player.equipment.sub == 'empty' then
-        state.CombatForm:reset()
-    else
-        state.CombatForm:set('DW')
-    end
+    dw_check() -- function is defined in the Dagna-Globals.lua
 end
 
 -- Set a Haste Group

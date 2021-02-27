@@ -74,23 +74,7 @@ function init_gear_sets()
     -- Weaponskill sets
 
     -- Default set for any weaponskill that isn't any more specifically defined
-    sets.precast.WS = {
-    --main="Daybreak",
-    --sub="Sors Shield",
-    ammo="Impatiens",
-    head="Theo. Cap +1",
-    body="Ebers Bliaud",
-    hands="Gende. Gages +1",
-    legs="Ebers Pantaloons",
-    feet="Theo. Duckbills +1",
-    neck={ name="Cleric's Torque", augments={'Path: A',}},
-    waist="Windbuffet Belt +1",
-    left_ear="Glorious Earring",
-    right_ear="Nourish. Earring",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
-    }
+    sets.precast.WS = {}
 
     sets.precast.WS['Flash Nova'] = {}
 
@@ -100,37 +84,37 @@ function init_gear_sets()
     
     -- Cure sets
     sets.midcast.CureSolace = {
-    main="Daybreak",
-    sub="Sors Shield",
-    ammo="Impatiens",
-    head="Theo. Cap +1",
-    body="Ebers Bliaud",
-    hands="Theo. Mitts +1",
-    legs="Ebers Pantaloons",
-    feet="Theo. Duckbills +1",
-    neck="Cleric's Torque",
-    left_ear="Glorious Earring",
-    right_ear="Nourish. Earring",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
+        main="Daybreak",
+        sub="Sors Shield",
+        ammo="Impatiens",
+        head="Theo. Cap +1",
+        body="Ebers Bliaud",
+        hands="Theo. Mitts +1",
+        legs="Ebers Pantaloons",
+        feet="Theo. Duckbills +1",
+        neck="Cleric's Torque",
+        left_ear="Glorious Earring",
+        right_ear="Nourish. Earring",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Solemnity Cape",
     }
 
     sets.midcast.Cure = {
-    main="Daybreak",
-    sub="Sors Shield",
-    ammo="Impatiens",
-    head="Theo. Cap +1",
-    body="Ebers Bliaud",
-    hands="Theo. Mitts +1",
-    legs="Ebers Pantaloons",
-    feet="Theo. Duckbills +1",
-    neck="Cleric's Torque",
-    left_ear="Glorious Earring",
-    right_ear="Nourish. Earring",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
+        main="Daybreak",
+        sub="Sors Shield",
+        ammo="Impatiens",
+        head="Theo. Cap +1",
+        body="Ebers Bliaud",
+        hands="Theo. Mitts +1",
+        legs="Ebers Pantaloons",
+        feet="Theo. Duckbills +1",
+        neck="Cleric's Torque",
+        left_ear="Glorious Earring",
+        right_ear="Nourish. Earring",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Solemnity Cape",
     }
 
     sets.midcast.Curaga = set_combine(sets.midcast.CureSolace, {})
@@ -175,21 +159,21 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-    main="Daybreak",
-    sub="Sors Shield",
-    ammo="Impatiens",
-    head="Aya. Zucchetto +2",
-    body="Ebers Bliaud",
-    hands="Aya. Manopolas +2",
-    legs="Assid. Pants +1",
-    feet="Aya. Gambieras +2",
-    neck="Loricate Torque +1",
-    waist="Embla Sash",
-    left_ear="Glorious Earring",
-    right_ear="Nourish. Earring",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
+        main="Daybreak",
+        sub="Sors Shield",
+        ammo="Impatiens",
+        head="Aya. Zucchetto +2",
+        body="Ebers Bliaud",
+        hands="Aya. Manopolas +2",
+        legs="Assid. Pants +1",
+        feet="Aya. Gambieras +2",
+        neck="Loricate Torque +1",
+        waist="Embla Sash",
+        left_ear="Glorious Earring",
+        right_ear="Nourish. Earring",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Solemnity Cape",
     }
 
     sets.idle.PDT = {}
@@ -232,18 +216,18 @@ function init_gear_sets()
     }
     
     sets.engaged.DW = {
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Clotharius Torque",
-    waist="Windbuffet Belt +1",
-    left_ear="Suppanomimi",
-    right_ear="Eabani Earring",
-    left_ring="Apate Ring",
-    right_ring="Pernicious Ring",
-    back="Solemnity Cape",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
+        hands="Aya. Manopolas +2",
+        legs="Aya. Cosciales +2",
+        feet="Aya. Gambieras +2",
+        neck="Clotharius Torque",
+        waist="Windbuffet Belt +1",
+        left_ear="Suppanomimi",
+        right_ear="Eabani Earring",
+        left_ring="Apate Ring",
+        right_ring="Pernicious Ring",
+        back="Solemnity Cape",
     }
 
 

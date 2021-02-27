@@ -89,19 +89,19 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-	ammo="Jukukik Feather",
-    head="Mummu Bonnet +1",
-    body="Mummu Jacket +1",
-    hands="Mummu Wrists +1",
-    legs=gear.SamTTP,
-    feet="Mummu Gamash. +1",
-    neck="Sanctity Necklace",
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Pernicious Ring",
-    right_ring="Mummu Ring",
-    back="Bleating Mantle",
+        ammo="C. Palug Stone",
+        head="Mummu Bonnet +1",
+        body="Abnoba Kaftan",
+        hands="Mummu Wrists +1",
+        legs={ name="Ta'lab Trousers", augments={'Accuracy+14','Mag. Evasion+13','Enmity-6','Crit.hit rate+3',}},
+        feet="Mummu Gamash. +1",
+        neck="Clotharius Torque",
+        waist="Anguinus Belt",
+        left_ear="Cessance Earring",
+        right_ear="Odr Earring",
+        left_ring="Mummu Ring",
+        right_ring="Ilabrat Ring",
+        back="Sacro Mantle",
 	}
 	
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
@@ -199,14 +199,14 @@ function init_gear_sets()
         body="Malignance Tabard",
         hands=gear.AdhGTP,
         legs=gear.SamTTP,
-        feet="Mummu Gamash. +1",
+        feet=gear.HercFTP,
         neck="Clotharius Torque",
         waist="Anguinus Belt",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
+        left_ear="Cessance Earring",
+        right_ear="Odr Earring",
         left_ring="Petrov Ring",
         right_ring="Ilabrat Ring",
-        back="Bleating Mantle",
+        back="Sacro Mantle",
 	}
 	
     sets.engaged.Acc = set_combine(sets.engaged, {})

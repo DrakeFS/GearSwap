@@ -40,13 +40,13 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-    ammo="Impatiens",
-    body="Inyanga Jubbah +2",
-    neck={ name="Cleric's Torque", augments={'Path: A',}},
-    hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
-    waist="Embla Sash",
-    left_ring="Lebeche Ring",
-    back=gear.WhmCFC,
+        ammo="Impatiens",
+        body="Inyanga Jubbah +2",
+        neck={ name="Cleric's Torque", augments={'Path: A',}},
+        hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
+        waist="Embla Sash",
+        left_ring="Lebeche Ring",
+        back=gear.WhmCFC,
     }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC,{})
@@ -58,11 +58,11 @@ function init_gear_sets()
     sets.precast.FC.StatusRemoval = sets.precast.FC['Healing Magic']
 
     sets.precast.FC.Cure = set_combine(sets.precast.FC['Healing Magic'],{
-    main="Ababinili",
-    ammo="Impatiens",
-    head="Theo. Cap +1",
-    left_ear="Nourish. Earring",
-    right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
+        main="Ababinili",
+        ammo="Impatiens",
+        head="Theo. Cap +1",
+        left_ear="Nourish. Earring",
+        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
     })
     
     sets.precast.FC.Curaga = sets.precast.FC.Cure
@@ -91,19 +91,19 @@ function init_gear_sets()
     sets.midcast.CureSolace = {}
 
     sets.midcast.Cure = {
-    main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
-    sub="Sors Shield",
-    head="Theo. Cap +1",
-    body="Theo. Briault +1",
-    hands="Theophany Mitts",
-    legs="Ebers Pantaloons",
-    feet={ name="Piety Duckbills +1", augments={'Enhances "Afflatus Solace" effect',}},
-    neck={ name="Cleric's Torque", augments={'Path: A',}},
-    waist="Friar's Rope",
-    left_ear="Glorious Earring",
-    right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
-    left_ring="Lebeche Ring",
-    back="Solemnity Cape",
+        main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
+        sub="Sors Shield",
+        head="Theo. Cap +1",
+        body="Theo. Briault +1",
+        hands="Theophany Mitts",
+        legs="Ebers Pantaloons",
+        feet={ name="Piety Duckbills +1", augments={'Enhances "Afflatus Solace" effect',}},
+        neck={ name="Cleric's Torque", augments={'Path: A',}},
+        waist="Friar's Rope",
+        left_ear="Glorious Earring",
+        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
+        left_ring="Lebeche Ring",
+        back="Solemnity Cape",
     }
 
     sets.midcast.Curaga = {}
@@ -115,7 +115,13 @@ function init_gear_sets()
     sets.midcast.StatusRemoval = {}
 
     -- 110 total Enhancing Magic Skill; caps even without Light Arts
-    sets.midcast['Enhancing Magic'] = {}
+    sets.midcast['Enhancing Magic'] = {
+        main="Ababinili",
+        hands="Inyan. Dastanas +1",
+        feet={ name="Piety Duckbills +1", augments={'Enhances "Afflatus Solace" effect',}},
+        neck="Sanctity Necklace",
+        waist="Embla Sash",
+    }
 
     sets.midcast.Stoneskin = {}
 
@@ -148,31 +154,31 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-    main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
-    sub="Sors Shield",
-    head="Aya. Zucchetto +1",
-    body="Annoint. Kalasiris",
-    hands="Aya. Manopolas +1",
-    legs="Aya. Cosciales +1",
-    feet="Aya. Gambieras +1",
-    neck="Sanctity Necklace",
-    waist="Fucho-no-Obi",
-    left_ear="Glorious Earring",
-    right_ear="Nourish. Earring +1",
-    left_ring="Inyanga Ring",
-    right_ring="Ayanmo Ring",
-    back=gear.WhmCFC,
+        main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
+        sub="Sors Shield",
+        head="Aya. Zucchetto +1",
+        body="Annoint. Kalasiris",
+        hands="Aya. Manopolas +1",
+        legs="Aya. Cosciales +1",
+        feet="Aya. Gambieras +1",
+        neck="Sanctity Necklace",
+        waist="Fucho-no-Obi",
+        left_ear="Glorious Earring",
+        right_ear="Nourish. Earring +1",
+        left_ring="Inyanga Ring",
+        right_ring="Ayanmo Ring",
+        back=gear.WhmCFC,
     }
 
     sets.idle.PDT = {
-    head="Aya. Zucchetto +1",
-    body="Ayanmo Corazza +1",
-    hands="Aya. Manopolas +1",
-    legs="Aya. Cosciales +1",
-    feet="Aya. Gambieras +1",
-    left_ring="Inyanga Ring",
-    right_ring="Ayanmo Ring",
-    back=gear.WhmCFC
+        head="Aya. Zucchetto +1",
+        body="Ayanmo Corazza +1",
+        hands="Aya. Manopolas +1",
+        legs="Aya. Cosciales +1",
+        feet="Aya. Gambieras +1",
+        left_ring="Inyanga Ring",
+        right_ring="Ayanmo Ring",
+        back=gear.WhmCFC
     }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
@@ -182,14 +188,14 @@ function init_gear_sets()
     -- Defense sets
 
     sets.defense.PDT = {
-    head="Aya. Zucchetto +1",
-    body="Ayanmo Corazza +1",
-    hands="Aya. Manopolas +1",
-    legs="Aya. Cosciales +1",
-    feet="Aya. Gambieras +1",
-    left_ring="Inyanga Ring",
-    right_ring="Ayanmo Ring",
-    back=gear.WhmCFC
+        head="Aya. Zucchetto +1",
+        body="Ayanmo Corazza +1",
+        hands="Aya. Manopolas +1",
+        legs="Aya. Cosciales +1",
+        feet="Aya. Gambieras +1",
+        left_ring="Inyanga Ring",
+        right_ring="Ayanmo Ring",
+        back=gear.WhmCFC
     }
 
     sets.defense.MDT = {}
@@ -207,17 +213,17 @@ function init_gear_sets()
     
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
-    head="Aya. Zucchetto +1",
-    hands="Aya. Manopolas +1",
-    body="Ayanmo Corazza +1",
-    legs="Aya. Cosciales +1",
-    feet="Aya. Gambieras +1",
-    neck="Sanctity Necklace",
-    waist="Life Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Begrudging Ring",
-    right_ring="Ayanmo Ring",
+        head="Aya. Zucchetto +1",
+        hands="Aya. Manopolas +1",
+        body="Ayanmo Corazza +1",
+        legs="Aya. Cosciales +1",
+        feet="Aya. Gambieras +1",
+        neck="Sanctity Necklace",
+        waist="Life Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Begrudging Ring",
+        right_ring="Ayanmo Ring",
     }
 
 

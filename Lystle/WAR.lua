@@ -291,9 +291,9 @@ function init_gear_sets()
     sets.engaged.Ragnarok.AccHigh.PDT = set_combine(sets.engaged.Ragnarok.AccLow.PDT, {})
     ]]
     --------------------------------------
-    -- Twohanded sets
+    -- Two Handed sets
     --------------------------------------  
-    sets.engaged.TD = {
+    sets.engaged.THand = {
         ammo="Seething Bomblet",
         head="Flam. Zucchetto +2",
         body="Flamma Korazin +2",
@@ -309,11 +309,11 @@ function init_gear_sets()
         back=gear.WarCTP,
     }
     
-    sets.engaged.TD.AccLow = set_combine(sets.engaged.TD, {})
-    sets.engaged.TD.AccHigh = set_combine(sets.engaged.TD.AccLow, {})
-    sets.engaged.TD.PDT = set_combine(sets.engaged.TD, {})
-    sets.engaged.TD.AccLow.PDT = set_combine(sets.engaged.PDT, {})
-    sets.engaged.TD.AccHigh.PDT = set_combine(sets.engaged.AccLow.PDT, {})
+    sets.engaged.THand.AccLow = set_combine(sets.engaged.THand, {})
+    sets.engaged.THand.AccHigh = set_combine(sets.engaged.THand.AccLow, {})
+    sets.engaged.THand.PDT = set_combine(sets.engaged.THand, {})
+    sets.engaged.THand.AccLow.PDT = set_combine(sets.engaged.PDT, {})
+    sets.engaged.THand.AccHigh.PDT = set_combine(sets.engaged.AccLow.PDT, {})
     --------------------------------------
     -- DW sets
     --------------------------------------
@@ -569,17 +569,8 @@ function is_sc_element_today(spell)
 end
 
 function update_combat_form()
-    -- Check for DW, THD or single-wielding
-    if player.equipment.sub == 'Round Shield' or player.equipment.sub == 'empty' then
-        state.CombatForm:reset()
-        state.WeaponskillMode:set('normal')
-    elseif player.equipment.sub == 'Tzacab Grip' then
-        state.CombatForm:set('TD')
-        state.WeaponskillMode:set('normal')
-    else
-        state.CombatForm:set('DW')
-        state.WeaponskillMode:set('DW')
-    end
+    --checks for Single, Two Handed or Dual Weilding
+    dw_check() -- function is defined in the Lystle-Globals.lua
 end
 
 function lockstyleset()
