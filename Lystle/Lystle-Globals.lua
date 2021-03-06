@@ -3,7 +3,7 @@ function define_global_sets()
     gear.CPCape = { name="Mecisto. Mantle", augments={'Cap. Point+37%','"Mag.Atk.Bns."+1','DEF+2',}}
 
     -- Head
-    gear.HercHeTH = { name="Herculean Helm", augments={'"Mag.Atk.Bns."+21','DEX+6','"Treasure Hunter"+1','Accuracy+13 Attack+13','Mag. Acc.+17 "Mag.Atk.Bns."+17',}}
+    gear.HercHeTH = { name="Herculean Helm", augments={'Pet: STR+10','INT+14','"Treasure Hunter"+2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
     -- Hands
     
     -- Body

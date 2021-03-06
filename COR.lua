@@ -313,7 +313,7 @@ function init_gear_sets()
         ammo=gear.TPAmmo,
         head="Malignance Chapeau",
         body="Malignance Tabard",
-        hands="Meg. Gloves +2",
+        hands="Malignance Gloves",
         legs="Meg. Chausses +1",
         feet="Meg. Jam. +2",
         neck="Sanctity Necklace",
@@ -348,7 +348,7 @@ function init_gear_sets()
     sets.defense.PDT = {
         head="Malignance Chapeau",
         body="Malignance Tabard",
-        hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands="Malignance Gloves",
         legs="Mummu Kecks +1",
         feet={ name="Herculean Boots", augments={'DEX+9','"Triple Atk."+3','Accuracy+11 Attack+11',}},
         neck="Loricate Torque +1",

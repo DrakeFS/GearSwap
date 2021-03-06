@@ -229,44 +229,25 @@ function init_gear_sets()
         left_ring="Dreki Ring",
         right_ring="Petrov Ring",
         back=gear.DrgCTP,
-        }
-        
-        sets.engaged.DW = {
-            ammo="Ginsen",
-            head="Sulevia's Mask +2",
-            body="Flamma Korazin +2",
-            hands="Sulev. Gauntlets +2",
-            legs="Flamma Dirs +2",
-            feet="Ostro Greaves",
-            neck="Shulmanu Collar",
-            waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-            left_ear="Sherida Earring",
-            right_ear="Cessance Earring",
-            left_ring="Dreki Ring",
-            right_ring="Petrov Ring",
-            back=gear.DrgCTP,
-        }
-    sets.engaged.Mid = set_combine(sets.engaged, {})
+    }
 
-    sets.engaged.Acc = set_combine(sets.engaged.Mid, {
-    head="Sulevia's Mask +2",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +2",
-    legs="Carmine Cuisses +1",
-    feet="Sulev. Leggings +2",
-    left_ring="Sulevia's Ring",
-    })
+    sets.engaged.THand = sets.engaged
 
-    sets.engaged.PDT = set_combine(sets.engaged, {})
-    sets.engaged.Mid.PDT = set_combine(sets.engaged.Mid, {})
-    sets.engaged.Acc.PDT = set_combine(sets.engaged.Acc, {})
-
-    sets.engaged.War = set_combine(sets.engaged, {})
-    sets.engaged.War.Mid = set_combine(sets.engaged.Mid, {})
-
-    sets.engaged.Reraise = set_combine(sets.engaged, {})
-
-    sets.engaged.Acc.Reraise = sets.engaged.Reraise
+    sets.engaged.DW = {
+        ammo="Ginsen",
+        head="Sulevia's Mask +2",
+        body="Flamma Korazin +2",
+        hands="Sulev. Gauntlets +2",
+        legs="Flamma Dirs +2",
+        feet="Ostro Greaves",
+        neck="Shulmanu Collar",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear="Sherida Earring",
+        right_ear="Cessance Earring",
+        left_ring="Dreki Ring",
+        right_ring="Petrov Ring",
+        back=gear.DrgCTP,
+    }        
 
 end
 
@@ -442,7 +423,7 @@ function job_self_command(cmdParams, eventArgs)
 end
 
 function update_combat_form()
-    -- Check for H2H or single-wielding
+    -- Check for 2H, Single or Duel Wield 
     dw_check() -- function is defined in the Dagna-Globals.lua
 end
 

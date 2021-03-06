@@ -10,8 +10,8 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
-    state.SongMode = M{['description']='Song Mode', 'None', 'Placeholder'}
-    state.Buff['Pianissimo'] = buffactive['pianissimo'] or false
+    --state.SongMode = M{['description']='Song Mode', 'None', 'Placeholder'}
+    --state.Buff['Pianissimo'] = buffactive['pianissimo'] or false
 
 end
 
@@ -27,7 +27,7 @@ function user_setup()
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'DT', 'MEva')
 
-    state.LullabyMode = M{['description']='Lullaby Instrument', 'Harp', 'Horn'}
+    --state.LullabyMode = M{['description']='Lullaby Instrument', 'Harp', 'Horn'}
 
     state.Carol = M{['description']='Carol',
         'Fire Carol', 'Fire Carol II', 'Ice Carol', 'Ice Carol II', 'Wind Carol', 'Wind Carol II',
@@ -44,12 +44,12 @@ function user_setup()
         'Quick Etude', 'Swift Etude', 'Vivacious Etude', 'Vital Etude', 'Dextrous Etude', 'Uncanny Etude',
         'Spirited Etude', 'Logical Etude', 'Enchanting Etude', 'Bewitching Etude'}
 
-    state.WeaponLock = M(false, 'Weapon Lock')
+    --state.WeaponLock = M(false, 'Weapon Lock')
 
     -- Adjust this if using the Terpander Daurdabla (new +song instrument)
-    info.ExtraSongInstrument = 'Terpander'
+    --info.ExtraSongInstrument = 'Terpander'
     -- How many extra songs we can keep from Daurdabla/Terpander
-    info.ExtraSongs = 1
+    --info.ExtraSongs = 1
 
     on_job_change()
 
@@ -159,11 +159,11 @@ function init_gear_sets()
 
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong = {
-    range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
-    body="Fili Hongreline",
-    legs="Inyanga Shalwar +2",
-    feet="Brioso Slippers +2",
-    neck="Moonbow Whistle",
+        range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
+        body="Fili Hongreline",
+        legs="Inyanga Shalwar +2",
+        feet="Brioso Slippers +2",
+        neck="Moonbow Whistle",
     }
 
     -- Gear to enhance certain classes of songs.
@@ -189,7 +189,7 @@ function init_gear_sets()
     
     sets.midcast['Army\'s Paeon'] = {range="Terpander",}
     sets.midcast['Knight\'s Minne'] = {range="Terpander",}
-    --sets.midcast['Valor Minuet IV'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
+    sets.midcast['Valor Minuet'] = {range="Terpander",}
     --sets.midcast['Mage\'s Ballad III'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
     --sets.midcast['Adventurer\'s Dirge'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
     --sets.midcast['Advancing March'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
@@ -270,16 +270,16 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.idle = {
-    head="Aya. Zucchetto +1",
-    body="Annoint. Kalasiris",
-    hands="Aya. Manopolas +1",
-    legs="Inyanga Shalwar +2",
-    feet="Fili Cothurnes +1",
-    neck="Loricate Torque",
-    left_ring="Defending Ring",
-    right_ring="Inyanga Ring",
-    waist="Fucho-no-obi",
-    back="Solemnity Cape",
+        head="Aya. Zucchetto +1",
+        body="Annoint. Kalasiris",
+        hands="Aya. Manopolas +1",
+        legs="Inyanga Shalwar +2",
+        feet="Fili Cothurnes +1",
+        neck="Loricate Torque",
+        left_ring="Defending Ring",
+        right_ring="Inyanga Ring",
+        waist="Fucho-no-obi",
+        back="Solemnity Cape",
     }
 
     sets.idle.DT = {

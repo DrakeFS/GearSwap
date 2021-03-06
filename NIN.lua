@@ -113,6 +113,7 @@ function init_gear_sets()
 
     sets.precast.WS['Blade: Shun'] = set_combine(sets.precast.WS, {})
 
+    sets.precast.WS['Blade: Ten'] = set_combine(sets.precast.WS, {})
 
     sets.precast.WS['Aeolian Edge'] = {}
 
@@ -168,14 +169,15 @@ function init_gear_sets()
     sets.defense.Evasion = {}
 
     sets.defense.PDT = {
-	head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
-    hands=gear.HercGMB,
-    legs="Mummu Kecks +1",
-    feet=gear.HercBTP,
-    neck="Loricate Torque +1",
-    left_ring="Defending Ring",
-    right_ring="Vocane Ring",
-    back="Solemnity Cape",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Mummu Kecks +1",
+        feet=gear.HercBTP,
+        neck="Loricate Torque +1",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
+        back="Solemnity Cape",
 	}
 
     sets.defense.MDT = {}

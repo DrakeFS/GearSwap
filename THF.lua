@@ -245,7 +245,7 @@ function init_gear_sets()
     ammo="Ginsen",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands="Mummu Wrists +1",
+    hands="Malignance Gloves",
     legs="Mummu Kecks +1",
     feet="Jute Boots +1",
     neck="Sanctity Necklace",
@@ -264,8 +264,8 @@ function init_gear_sets()
     sets.idle.HP = {
     ammo="Aqreqaq Bomblet",
     head="Malignance Chapeau",
-    body="Mummu Jacket +1",
-    hands="Mummu Wrists +1",
+    body="Malignance Tabard",
+    hands="Malignance Gloves",
     legs="Mummu Kecks +1",
     feet="Mummu Gamash. +1",
     neck="Sanctity Necklace",
@@ -279,27 +279,17 @@ function init_gear_sets()
 
     sets.defense.Evasion = {
     head="Malignance Chapeau",
+    body="Malignance Tabard",
+    hands="Malignance Gloves",
     neck="Loricate Torque +1",
     left_ring="Vocane Ring",
     right_ring="Defending Ring",
     back="Solemnity Cape",
     }
 
-    sets.defense.PDT = {    
-    head="Malignance Chapeau",
-    neck="Loricate Torque +1",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
-    }
+    sets.defense.PDT = sets.defense.Evasion
 
-    sets.defense.MDT = {
-    head="Malignance Chapeau",
-    neck="Loricate Torque +1",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
-    }
+    sets.defense.MDT = sets.defense.Evasion
 
 
     --------------------------------------
@@ -327,7 +317,7 @@ function init_gear_sets()
     ammo="C. Palug Stone",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands="Mummu Wrists +1",
+    hands="Malignance Gloves",
     legs="Mummu Kecks +1",
     feet="Jute Boots",
     neck="Assassin's Gorget",
@@ -376,7 +366,7 @@ function init_gear_sets()
     ammo="Aqreqaq Bomblet",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands="Mummu Wrists +1",
+    hands="Malignance Gloves",
     legs="Mummu Kecks +1",
     feet="Mummu Gamash. +1",
     neck="Sanctity Necklace",
