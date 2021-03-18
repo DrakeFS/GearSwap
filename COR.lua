@@ -5,20 +5,26 @@
             1 or 2
                 cycle
                     forward or back 
+                set
+                    first part of the roll's name    
                 roll
-            qdraw
+
+        qdraw
 
     Example macros:
         /console gs c rollcmd 1 roll
         /console gs c qdraw
         /console gs c rollcmd 2 cycle forward - (this is also bound to a hotkey, see below)
+        /console gs c rollcmd 2 set Fighter's
+        /console gs c rollcmd 1 set Puppet
 
     Lua specific binds
         ctrl + ` = roll 1 cycle forward
         ctrl + shift + ` = roll 1 cycle backwards
         alt + ` = roll 2 cycle forward
         alt + shift + ` = roll 2 cycle backwards
-        windows key + ` = cycle quickdraw element
+        windows key + ` = cycle quickdraw element forwards
+        windows key + shift + ` = cycle quickdraw element backwards
 ]]
 
 -- Initialization function for this job file.
@@ -88,7 +94,7 @@ function user_setup()
     send_command('bind @` gs c cycle QDrawElement')
     send_command('bind ~^` gs c rollcmd 1 cycle back')
     send_command('bind ~!` gs c rollcmd 2 cycle back')
-    send_command('bind ~@` gs c cycle QDrawElement')
+    send_command('bind ~@` gs c cycleback QDrawElement')
 
     on_job_change()
 end
@@ -398,8 +404,8 @@ function init_gear_sets()
     
     sets.engaged.Acc = {}
 
-    sets.engaged.DW = set_combine(sets.engaged, {}
-)
+    sets.engaged.DW = set_combine(sets.engaged, {})
+    
     sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {
         left_ear="Odr Earring",
         right_ear="Cessance Earring",
@@ -463,8 +469,8 @@ function job_self_command(cmdParams, eventArgs)
         handle_qdraw()
         eventArgs.handled = true
     elseif cmdParams[1]:lower() == 'rollcmd' then
-            handle_roll(cmdParams[2],cmdParams[3],cmdParams[4])
-            eventArgs.handled = true
+        handle_roll(cmdParams[2],cmdParams[3],cmdParams[4])
+        eventArgs.handled = true
     end
 end
 
@@ -509,10 +515,20 @@ function handle_roll(rollNumber, rollExecute, rollMod)
             send_command('@input /ja "'..rollState..'" <me>')
         end
 
-    --[[elseif rollExecute:lower() == 'set' then
-        rollSelect:set(rollMod)]]
+    elseif rollExecute:lower() == 'set' then
+        if rollSelect:contains(''..rollMod..' Roll') then
+            rollSelect:set(''..rollMod..' Roll')
+            
+            rollState = rollSelect.value
+
+            rollInfo = rolls[rollState]
+            
+            add_to_chat(122, 'Roll '..rollNumber..' set to '..rollState..' - Bonus Effect: '..rollInfo.bonus..'.')
+        else 
+            add_to_chat(167, '"'..rollMod..' Roll" is an unkown roll')
+        end
     else
-        add_to_chat(167, 'Rollcmd options are: "roll" or "cycle"')
+        add_to_chat(167, 'Rollcmd options are: "roll", "cycle" or "set"')
     end
 end
 

@@ -20,6 +20,8 @@ function job_setup()
     --state.Buff.Convergence = buffactive.Convergence or false
     --state.Buff.Diffusion = buffactive.Diffusion or false
     state.Buff.Efflux = buffactive.Efflux or false
+
+    state.EvasionMode = M{'Normal', 'Evasive'}
    
     state.delayMod = M{'none', 'Samba'}
     state.delayMod:set('none')
@@ -94,8 +96,7 @@ function job_setup()
         'Blastbomb','Blazing Bound','Bomb Toss','Cursed Sphere','Dark Orb','Death Ray',
         'Diffusion Ray','Droning Whirlwind','Embalming Earth','Firespit','Foul Waters',
         'Ice Break','Leafstorm','Maelstrom','Rail Cannon','Regurgitation','Rending Deluge',
-        'Retinal Glare','Subduction','Spectral Floe','Tem. Upheaval','Water Bomb','Entomb',
-        'Tenebral Crush',
+        'Retinal Glare','Subduction','Spectral Floe','Tem. Upheaval','Water Bomb','Tenebral Crush'
     }
 
     -- Magical spells with a primary Mnd mod
@@ -128,7 +129,7 @@ function job_setup()
         'Geist Wall','Hecatomb Wave','Infrasonics','Jettatura','Light of Penance',
         'Lowing','Mind Blast','Mortal Ray','MP Drainkiss','Osmosis','Reaving Wind',
         'Sandspin','Sandspray','Sheep Song','Soporific','Sound Blast','Stinking Gas',
-        'Sub-zero Smash','Venom Shell','Voracious Trunk','Yawn'
+        'Sub-zero Smash','Venom Shell','Voracious Trunk','Yawn','Cruel Joke','Entomb'
     }
         
     -- Breath-based spells
@@ -153,7 +154,7 @@ function job_setup()
     -- Buffs that depend on blue magic skill
     blue_magic_maps.SkillBasedBuff = S{
         'Barrier Tusk','Diamondhide','Magic Barrier','Metallic Body','Plasma Charge',
-        'Pyric Bulwark','Reactor Cool',
+        'Pyric Bulwark','Reactor Cool'
     }
 
     -- Other general buffs
@@ -170,7 +171,7 @@ function job_setup()
     unbridled_spells = S{
         'Absolute Terror','Bilgestorm','Blistering Roar','Bloodrake','Carcharian Verve',
         'Crashing Thunder','Droning Whirlwind','Gates of Hades','Harden Shell','Polar Roar',
-        'Pyric Bulwark','Thunderbolt','Tourbillion','Uproot','Mighty Guard'
+        'Pyric Bulwark','Thunderbolt','Tourbillion','Uproot','Mighty Guard','Cruel Joke'
     }
     blue_magic_maps.AllBuffs = S{
         'Amplification','Animating Wail','Battery Charge','Carcharian Verve','Cocoon',
@@ -191,17 +192,18 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
-        
+            
     on_job_change()
     
     send_command('bind @= gs c cycle delayMod')
+    send_command('bind !` gs c cycle EvasionMode')
 end
 
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
     send_command('unbind @= gs c cycle delayMod')
-    
+    send_command('unbind !` gs c cycle EvasionMode')
 end
 
 
@@ -215,6 +217,7 @@ function init_gear_sets()
     gear.BluCSTR = {name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
     gear.BluCMB = {name="Rosmerta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}}
     gear.BluCMAC = {name="Cornflower Cape", augments={'MP+22','DEX+5','Blue Magic skill +10',}}
+    gear.BluEVA = {name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}}
 
     sets.TreasureHunter = {
         ammo="Per. Lucky Egg",
@@ -299,9 +302,7 @@ function init_gear_sets()
     sets.precast.WS['Sanguine Blade'] = set_combine(sets.precast.WS, {
         ammo="Pemphredo Tathlum",
         head = "Pixie Hairpin +1",
-        --body="Jhakri Robe +2",
         hands=gear.HercGMB,
-        --legs="Jhakri Slops +2",
         feet="Jhakri Pigaches +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
@@ -326,22 +327,6 @@ function init_gear_sets()
         back=gear.BluCSTR,
     })
     
-    --[[sets.precast.WS['Savage Blade'].Acc = {
-        ammo="Honed Tathlum",
-        head="Malignance Chapeau",
-        body="Ayanmo Corazza +2",
-        hands="Assim. Bazu. +2",
-        legs="Jhakri Slops +2",
-        feet="Aya. Gambieras +2",
-        neck="Mirage Stole +2",
-        waist="Anguinus Belt",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Ayanmo Ring",
-        right_ring="Beeline Ring",
-        back=gear.BluCDEX,
-    }]]
-    
     sets.precast.WS['Expiacion'] = sets.precast.WS['Savage Blade']
 
     sets.precast.WS['Chant du Cygne'] = {
@@ -359,33 +344,6 @@ function init_gear_sets()
         right_ring="Begrudging Ring",
         back=gear.BluCDEX,
     }
-    
-    --[[sets.precast.WS['Chant du Cygne'].Acc = {
-        ammo="Falcon Eye",
-        head="Malignance Chapeau",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +2",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
-        neck="Mirage Stole +2",
-        waist="Fotia Belt",
-        left_ear="Steelflash Earring",
-        right_ear="Odr Earring",
-        left_ring="Jhakri Ring",
-        right_ring="Ayanmo Ring",
-        back=gear.BluDEX,
-    }]]
-
-    --[[sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS['Sanguine Blade'], {
-        ammo="Ginsen",
-        head="Jhakri Coronal +2",
-        hands="Jhakri Cuffs +2",
-        waist="Windbuffet Belt +1",
-        left_ear="Cessance Earring",
-        left_ring="Pernicious Ring",
-        right_ring="Petrov Ring",
-        back={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
-    })]]
 
     sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS['Savage Blade'], {
         neck="Fotia Gorget",
@@ -471,9 +429,9 @@ function init_gear_sets()
         ammo="Pemphredo Tathlum",
         head="Assim. Keffiyeh +3",
         body="Malignance Tabard",
-        hands="Aya. Manopolas +2",
+        hands="Malignance Gloves",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-        feet="Aya. Gambieras +2",
+        feet="Jhakri Pigaches +2",
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Njordr Earring",
@@ -611,6 +569,20 @@ function init_gear_sets()
 
     sets.Kiting = {legs="Carmine Cuisses +1",}
 
+    sets.Evasion = {
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Bathy Choker",
+        left_ear="Eabani Earring",
+        right_ear="Ethereal Earring",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
+        back=gear.BluEVA,
+    }
+
     -- Engaged sets
 
     -- Variations for TP weapon and (optional) offense/defense modes.  Code will fall back on previous
@@ -659,7 +631,7 @@ function init_gear_sets()
 
     sets.engaged.Subtle = set_combine(sets.engaged, sets.Subtle)
 
-    sets.engaged.Learning = set_combine(sets.engaged, sets.Learning)
+    --sets.engaged.Learning = set_combine(sets.engaged, sets.Learning)
     
     sets.engaged.DW = {
         ammo="Ginsen",
@@ -715,7 +687,7 @@ function init_gear_sets()
     
     sets.engaged.DW.Subtle = set_combine(sets.engaged.DW, sets.Subtle)
 
-    sets.engaged.DW.Learning = set_combine(sets.engaged.DW, sets.Learning)
+    --sets.engaged.DW.Learning = set_combine(sets.engaged.DW, sets.Learning)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -745,12 +717,11 @@ function handle_WS()
     end    
 end 
 
---[[function job_precast(spell, action, spellMap, eventArgs)
-    if unbridled_spells:contains(spell.english) and not state.Buff['Unbridled Learning'] then
-        eventArgs.cancel = true
-        windower.send_command('@input /ja "Unbridled Learning" <me>; wait 1.5; input /ma "'..spell.name..'" '..spell.target.name)
+function job_post_precast(spell, action, spellMap, eventArgs)
+    if state.EvasionMode.value == 'Evasive' then
+        equip(sets.Evasion)
     end
-end]]
+end
 
 -- Run after the default midcast() is done.
 -- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
@@ -780,6 +751,10 @@ function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
         if spell.english == 'Sound Blast' or spell.english == 'Whirl of Rage' or spell.english == 'Embalming Earth' then
             equip(sets.TreasureHunter)
         end
+    end
+
+    if state.EvasionMode.value == 'Evasive' then
+        equip(sets.Evasion)
     end
 end
 
@@ -819,12 +794,24 @@ end
 
 -- Modify the default idle set after it was constructed.
 function customize_idle_set(idleSet)
-    if player.mpp < 51 then
+    --[[if player.mpp < 51 then
         set_combine(idleSet, sets.latent_refresh)
+    end]]
+
+    if state.EvasionMode.value == 'Evasive' then
+        idleSet = set_combine(ildeSet, sets.Evasion)
     end
+
     return idleSet
 end
 
+function customize_melee_set(meleeSet)
+    if state.EvasionMode.value == 'Evasive' then
+        meleeSet = set_combine(meleeSet, sets.Evasion)
+    end
+
+    return meleeSet
+end
 -- Called by the 'update' self-command, for common needs.
 -- Set eventArgs.handled to true if we don't want automatic equipping of gear.
 function job_update(cmdParams, eventArgs)

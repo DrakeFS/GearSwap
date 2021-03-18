@@ -209,6 +209,22 @@ function init_gear_sets()
     
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
 
+    sets.precast.WS["Savage Blade"] = {
+        ammo="Seething Bomblet",
+        head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
+        body="Meg. Cuirie +2",
+        hands="Meg. Gloves +2",
+        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet="Meg. Jam. +1",
+        neck="Sanctity Necklace",
+        waist="Dynamic Belt",
+        left_ear="Sherida Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Meghanada Ring",
+        right_ring="Begrudging Ring",
+        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
+    }
+
 
     --------------------------------------
     -- Midcast sets
@@ -236,8 +252,8 @@ function init_gear_sets()
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 
     sets.idle = {
-    feet="Jute Boots +1",
-    neck="Sanctity Necklace",    
+        feet="Jute Boots +1",
+        neck="Sanctity Necklace",    
     }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
@@ -248,13 +264,13 @@ function init_gear_sets()
     -- Defense sets
 
     sets.defense.Evasion = {
-    head="Meghanada Visor +1",
-    body="Meghanada Cuirie +2",
-    hands="Meg. Gloves +2",
-    legs="Mummu kecks +2",
-    feet="Meg. Jam. +1",
-    right_ring="Meghanada Ring",
-    back="Solemnity Cape",
+        head="Meghanada Visor +1",
+        body="Meghanada Cuirie +2",
+        hands="Meg. Gloves +2",
+        legs="Mummu kecks +2",
+        feet="Meg. Jam. +1",
+        right_ring="Meghanada Ring",
+        back="Solemnity Cape",
     }
 
     sets.defense.PDT = set_combine(sets.defense.Evasion, {})
@@ -268,36 +284,37 @@ function init_gear_sets()
 
     -- Normal melee group
     sets.engaged = {    
-    ammo="Seething Bomblet",
-    head="Mummu Bonnet +2",
-    body="Meghanada Cuirie +2",
-    hands="Mummu Wrists +2",
-    legs="Meg. Chausses +2",
-    feet="Mummu Gamash. +2",
-    neck="Clotharius Torque",
-    waist="Dynamic Belt",
-    left_ear="Eabani Earring",
-    right_ear="Suppanomimi",
-    left_ring="Mummu Ring",
-    right_ring="Begrudging Ring",
-    back = gear.ThfCTP,
+        ammo="Seething Bomblet",
+        head="Mummu Bonnet +2",
+        body="Meghanada Cuirie +2",
+        hands="Mummu Wrists +2",
+        legs="Meg. Chausses +2",
+        feet="Mummu Gamash. +2",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Eabani Earring",
+        right_ear="Suppanomimi",
+        left_ring="Mummu Ring",
+        right_ring="Begrudging Ring",
+        back = gear.ThfCTP,
     }
     
     sets.engaged.Acc = set_combine(sets.engaged,{neck="Sanctity Necklace",})
 
     sets.engaged.Crit = set_combine(sets.engaged,{    
-    ammo="Seething Bomblet",
-    head="Mummu Bonnet +2",
-    body="Mummu Jacket +2",
-    hands="Mummu Wrists +2",
-    legs="Mummu Kecks +2",
-    feet="Mummu Gamash. +2",
-    neck="Clotharius Torque",
-    waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Suppanomimi",
-    left_ring="Mummu Ring",
-    right_ring="Begrudging Ring",})
+        ammo="Seething Bomblet",
+        head="Mummu Bonnet +2",
+        body="Mummu Jacket +2",
+        hands="Mummu Wrists +2",
+        legs="Mummu Kecks +2",
+        feet="Mummu Gamash. +2",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Suppanomimi",
+        left_ring="Mummu Ring",
+        right_ring="Begrudging Ring",
+    })
     -- Mod set for trivial mobs (Skadi+1)
     -- sets.engaged.Mod = {}
 

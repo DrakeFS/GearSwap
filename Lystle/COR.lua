@@ -5,20 +5,26 @@
             1 or 2
                 cycle
                     forward or back 
+                set
+                    first part of the roll's name    
                 roll
-            qdraw
+
+        qdraw
 
     Example macros:
         /console gs c rollcmd 1 roll
         /console gs c qdraw
-        /console gs c rollcmd 2 cycle forward - (this is also bound to a hotkey)
+        /console gs c rollcmd 2 cycle forward - (this is also bound to a hotkey, see below)
+        /console gs c rollcmd 2 set Fighter's
+        /console gs c rollcmd 1 set Puppet
 
     Lua specific binds
         ctrl + ` = roll 1 cycle forward
         ctrl + shift + ` = roll 1 cycle backwards
         alt + ` = roll 2 cycle forward
         alt + shift + ` = roll 2 cycle backwards
-        windows key + ` = cycle quickdraw element
+        windows key + ` = cycle quickdraw element forwards
+        windows key + shift + ` = cycle quickdraw element backwards
 ]]
 
 -- Initialization function for this job file.
@@ -82,7 +88,7 @@ function user_setup()
     send_command('bind @` gs c cycle QDrawElement')
     send_command('bind ~^` gs c rollcmd 1 cycle back')
     send_command('bind ~!` gs c rollcmd 2 cycle back')
-    send_command('bind ~@` gs c cycle QDrawElement')
+    send_command('bind ~@` gs c cycleback QDrawElement')
 
     on_job_change()
 end
@@ -189,7 +195,7 @@ function init_gear_sets()
        
     sets.precast.WS['Wildfire'] = {}
 
-sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {head="Pixie Hairpin +1"})
+    sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {head="Pixie Hairpin +1"})
 
     -- Midcast Sets
     sets.midcast.FastRecast = {}
@@ -381,10 +387,20 @@ function handle_roll(rollNumber, rollExecute, rollMod)
             send_command('@input /ja "'..rollState..'" <me>')
         end
 
-    --[[elseif rollExecute:lower() == 'set' then
-        rollSelect:set(rollMod)]]
+    elseif rollExecute:lower() == 'set' then
+        if rollSelect:contains(''..rollMod..' Roll') then
+            rollSelect:set(''..rollMod..' Roll')
+            
+            rollState = rollSelect.value
+
+            rollInfo = rolls[rollState]
+            
+            add_to_chat(122, 'Roll '..rollNumber..' set to '..rollState..' - Bonus Effect: '..rollInfo.bonus..'.')
+        else 
+            add_to_chat(167, '"'..rollMod..' Roll" is an unkown roll')
+        end
     else
-        add_to_chat(167, 'Rollcmd options are: "roll" or "cycle"')
+        add_to_chat(167, 'Rollcmd options are: "roll", "cycle" or "set"')
     end
 end
 

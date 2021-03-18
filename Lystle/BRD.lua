@@ -190,9 +190,6 @@ function init_gear_sets()
     sets.midcast['Army\'s Paeon'] = {range="Terpander",}
     sets.midcast['Knight\'s Minne'] = {range="Terpander",}
     sets.midcast['Valor Minuet'] = {range="Terpander",}
-    --sets.midcast['Mage\'s Ballad III'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-    --sets.midcast['Adventurer\'s Dirge'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
-    --sets.midcast['Advancing March'] = set_combine(sets.midcast.BardSong,{range="Terpander",})
     
     -- For song defbuffs (duration primary, accuracy secondary)
     sets.midcast.SongDebuff = {
@@ -237,18 +234,18 @@ function init_gear_sets()
     }
     
     sets.midcast['Enfeebling Magic'] = {
-    head="Aya. Zucchetto +1",
-    body="Ayanmo Corazza +1",
-    hands="Aya. Manopolas +1",
-    legs="Aya. Cosciales +1",
-    feet="Aya. Gambieras +1",
-    neck="Sanctity Necklace",
-    waist="Famine Sash",
-    left_ear="Hermetic Earring",
-    right_ear="Gwati Earring",
-    left_ring="Ayanmo Ring",
-    right_ring="Inyanga Ring",
-    back="Solemnity Cape",
+        head="Aya. Zucchetto +1",
+        body="Ayanmo Corazza +1",
+        hands="Aya. Manopolas +1",
+        legs="Aya. Cosciales +1",
+        feet="Aya. Gambieras +1",
+        neck="Sanctity Necklace",
+        waist="Famine Sash",
+        left_ear="Hermetic Earring",
+        right_ear="Gwati Earring",
+        left_ring="Ayanmo Ring",
+        right_ring="Inyanga Ring",
+        back="Solemnity Cape",
     }
 
     --[[sets.midcast.Regen = set_combine(sets.midcast['Enhancing Magic'], {head="Inyanga Tiara"})
@@ -331,88 +328,15 @@ function init_gear_sets()
         back="Atheling Mantle",
     }
 
-    sets.engaged.Acc = set_combine(sets.engaged, {})
+    --sets.engaged.Acc = set_combine(sets.engaged, {})
 
-    -- * DNC Subjob DW Trait: +15%
-    -- * NIN Subjob DW Trait: +25%
-
-    -- No Magic Haste (74% DW to cap)
     sets.engaged.DW = set_combine(sets.engaged, {
         left_ear="Suppanomimi",
         right_ear="Eabani Earring",
     })
-    --[[sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {})
 
-    -- 15% Magic Haste (67% DW to cap)
-    sets.engaged.DW.LowHaste = sets.engaged.DW
-    sets.engaged.DW.Acc.LowHaste = sets.engaged.DW.Acc
-
-    -- 30% Magic Haste (56% DW to cap)
-    sets.engaged.DW.MidHaste = sets.engaged.DW
-    sets.engaged.DW.Acc.MidHaste = sets.engaged.DW.Acc
-
-    -- 35% Magic Haste (51% DW to cap)
-    sets.engaged.DW.HighHaste = sets.engaged.DW
-    sets.engaged.DW.Acc.HighHaste = sets.engaged.DW.Acc
-
-    -- 45% Magic Haste (36% DW to cap)
-    sets.engaged.DW.MaxHaste = {}
-
-    sets.engaged.DW.MaxHaste.Acc = set_combine(sets.engaged.DW, {})
-
-    sets.engaged.DW.MaxHastePlus = set_combine(sets.engaged.DW.MaxHaste, {ear1="Cessance Earring", back=gear.BRD_DW_Cape})
-    sets.engaged.DW.Acc.MaxHastePlus = set_combine(sets.engaged.DW.Acc.MaxHaste, {ear1="Cessance Earring", back=gear.BRD_DW_Cape})
-
-    sets.engaged.Aftermath = {
-        head="Aya. Zucchetto +2",
-        body="Ashera Harness",
-        hands=gear.Telchine_STP_hands,
-        feet="Battlecast Gaiters",
-        ring1={name="Chirich Ring +1", bag="wardrobe3"},
-        ring2={name="Chirich Ring +1", bag="wardrobe4"},
-        back=gear.BRD_STP_Cape,
-        }
-
-    ------------------------------------------------------------------------------------------------
-    ---------------------------------------- Hybrid Sets -------------------------------------------
-    ------------------------------------------------------------------------------------------------
-
-    sets.engaged.Hybrid = {
-        neck="Loricate Torque +1", --6/6
-        ring1="Moonlight Ring", --5/5
-        ring2="Defending Ring", --10/10
-        }
-
-    sets.engaged.DT = set_combine(sets.engaged, sets.engaged.Hybrid)
-    sets.engaged.Acc.DT = set_combine(sets.engaged.Acc, sets.engaged.Hybrid)
-
-    sets.engaged.DW.DT = set_combine(sets.engaged.DW, sets.engaged.Hybrid)
-    sets.engaged.DW.Acc.DT = set_combine(sets.engaged.DW.Acc, sets.engaged.Hybrid)
-
-    sets.engaged.DW.DT.LowHaste = set_combine(sets.engaged.DW.LowHaste, sets.engaged.Hybrid)
-    sets.engaged.DW.Acc.DT.LowHaste = set_combine(sets.engaged.DW.Acc.LowHaste, sets.engaged.Hybrid)
-
-    sets.engaged.DW.DT.MidHaste = set_combine(sets.engaged.DW.MidHaste, sets.engaged.Hybrid)
-    sets.engaged.DW.Acc.DT.MidHaste = set_combine(sets.engaged.DW.Acc.MidHaste, sets.engaged.Hybrid)
-
-    sets.engaged.DW.DT.HighHaste = set_combine(sets.engaged.DW.HighHaste, sets.engaged.Hybrid)
-    sets.engaged.DW.Acc.DT.HighHaste = set_combine(sets.engaged.DW.Acc.HighHaste, sets.engaged.Hybrid)
-
-    sets.engaged.DW.DT.MaxHaste = set_combine(sets.engaged.DW.MaxHaste, sets.engaged.Hybrid)
-    sets.engaged.DW.Acc.DT.MaxHaste = set_combine(sets.engaged.DW.Acc.MaxHaste, sets.engaged.Hybrid)
-
-    sets.engaged.DW.DT.MaxHastePlus = set_combine(sets.engaged.DW.MaxHastePlus, sets.engaged.Hybrid)
-    sets.engaged.DW.Acc.DT.MaxHastePlus = set_combine(sets.engaged.DW.Acc.MaxHastePlus, sets.engaged.Hybrid)
-
-
-    ------------------------------------------------------------------------------------------------
-    ---------------------------------------- Special Sets ------------------------------------------
-    ------------------------------------------------------------------------------------------------
-
-    --sets.SongDWDuration = {main="Carnwenhan", sub="Kali"}
-
-    sets.buff.Doom = {}
-    sets.Obi = {}]]
+    --sets.buff.Doom = {}
+    --sets.Obi = {}
 
 end
 
@@ -424,40 +348,7 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
-    --[[if spell.type == 'BardSong' then
-        Auto-Pianissimo
-        if ((spell.target.type == 'PLAYER' and not spell.target.charmed) or (spell.target.type == 'NPC' and spell.target.in_party)) and
-            not state.Buff['Pianissimo'] then
-            local spell_recasts = windower.ffxi.get_spell_recasts()
-            if spell_recasts[spell.recast_id] < 2 then
-                send_command('@input /ja "Pianissimo" <me>; wait 1.5; input /ma "'..spell.name..'" '..spell.target.name)
-                eventArgs.cancel = true
-                return
-            end
-        end
-        if spell.name == 'Honor March' then
-            equip({range="Marsyas"})
-        end
-        if string.find(spell.name,'Lullaby') then
-            if buffactive.Troubadour then
-                equip({range="Marsyas"})
-            elseif state.LullabyMode.value == 'Harp' and spell.english:contains('Horde') then
-                equip({range="Blurred Harp +1"})
-            else
-                equip({range="Gjallarhorn"})
-            end
-        end
-    end
-    if spellMap == 'Utsusemi' then
-        if buffactive['Copy Image (3)'] or buffactive['Copy Image (4+)'] then
-            cancel_spell()
-            add_to_chat(123, '**!! '..spell.english..' Canceled: [3+ IMAGES] !!**')
-            eventArgs.handled = true
-            return
-        elseif buffactive['Copy Image'] or buffactive['Copy Image (2)'] then
-            send_command('cancel 66; cancel 444; cancel Copy Image; cancel Copy Image (2)')
-        end
-    end]]
+    
 end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
@@ -468,56 +359,18 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if generalClass and sets.midcast[generalClass] and not spell.name:contains("Lullaby") then
             equip(sets.midcast[generalClass])
         end
-        --[[if spell.name == 'Honor March' then
-            equip({range="Marsyas"})
-        end
-        if string.find(spell.name,'Lullaby') then
-            if buffactive.Troubadour then
-                equip({range="Marsyas"})
-            elseif state.LullabyMode.value == 'Harp' and spell.english:contains('Horde') then
-                equip({range="Blurred Harp +1"})
-            else
-                equip({range="Gjallarhorn"})
-            end
-        end]]
     end
 end
 
 --[[function job_post_midcast(spell, action, spellMap, eventArgs)
-    if spell.type == 'BardSong' then
-        if state.CombatForm.current == 'DW' then
-            equip(sets.SongDWDuration)
-        end
-    end
+    
 end
 
 function job_aftercast(spell, action, spellMap, eventArgs)
-    if spell.english:contains('Lullaby') and not spell.interrupted then
-        get_lullaby_duration(spell)
-    end
-end]]
+    
+end
 
---[[function job_buff_change(buff,gain)
-
---    if buffactive['Reive Mark'] then
---        if gain then
---            equip(sets.Reive)
---            disable('neck')
---        else
---            enable('neck')
---        end
---    end
-
-    if buff == "doom" then
-        if gain then
-            equip(sets.buff.Doom)
-            send_command('@input /p Doomed.')
-            disable('ring1','ring2','waist')
-        else
-            enable('ring1','ring2','waist')
-            handle_equipping_gear(player.status)
-        end
-    end
+function job_buff_change(buff,gain)
 
 end]]
 
@@ -538,12 +391,10 @@ end
 -- Set eventArgs.handled to true if we don't want automatic equipping of gear.
 function job_handle_equipping_gear(playerStatus, eventArgs)
     update_combat_form()
-    --determine_haste_group()
-    --check_moving()
 end
 
 function job_update(cmdParams, eventArgs)
-    --handle_equipping_gear(player.status)
+    
 end
 
 function update_combat_form()
@@ -559,9 +410,7 @@ end
         send_command('@input /ma '..state.Carol.value..' <stpc>')
     elseif cmdParams[1]:lower() == 'threnody' then
         send_command('@input /ma '..state.Threnody.value..' <stnpc>')
-    end
-
-    gearinfo(cmdParams, eventArgs)
+    end    
 end]]
 
 -- Modify the default melee set after it was constructed.
@@ -582,7 +431,7 @@ end]]
 end]]
 
 -- Set eventArgs.handled to true if we don't want the automatic display to be run.
-function display_current_job_state(eventArgs)
+--[[function display_current_job_state(eventArgs)
     local cf_msg = ''
     if state.CombatForm.has_value then
         cf_msg = ' (' ..state.CombatForm.value.. ')'
@@ -617,7 +466,7 @@ function display_current_job_state(eventArgs)
         ..string.char(31,002)..msg)
 
     eventArgs.handled = true
-end
+end]]
 
 -------------------------------------------------------------------------------------------------------------------
 -- Utility functions specific to this job.
@@ -723,76 +572,7 @@ end
     end
 end]]
 
---[[function determine_haste_group()
-    classes.CustomMeleeGroups:clear()
-    if DW == true then
-        if DW_needed <= 12 then
-            classes.CustomMeleeGroups:append('MaxHaste')
-        elseif DW_needed > 12 and DW_needed <= 21 then
-            classes.CustomMeleeGroups:append('MaxHastePlus')
-        elseif DW_needed > 21 and DW_needed <= 27 then
-            classes.CustomMeleeGroups:append('HighHaste')
-        elseif DW_needed > 27 and DW_needed <= 31 then
-            classes.CustomMeleeGroups:append('MidHaste')
-        elseif DW_needed > 31 and DW_needed <= 42 then
-            classes.CustomMeleeGroups:append('LowHaste')
-        elseif DW_needed > 42 then
-            classes.CustomMeleeGroups:append('')
-        end
-    end
-end]]
-
---[[function gearinfo(cmdParams, eventArgs)
-    if cmdParams[1] == 'gearinfo' then
-        if type(tonumber(cmdParams[2])) == 'number' then
-            if tonumber(cmdParams[2]) ~= DW_needed then
-            DW_needed = tonumber(cmdParams[2])
-            DW = true
-            end
-        elseif type(cmdParams[2]) == 'string' then
-            if cmdParams[2] == 'false' then
-                DW_needed = 0
-                DW = false
-            end
-        end
-        if type(tonumber(cmdParams[3])) == 'number' then
-            if tonumber(cmdParams[3]) ~= Haste then
-                Haste = tonumber(cmdParams[3])
-            end
-        end
-        if type(cmdParams[4]) == 'string' then
-            if cmdParams[4] == 'true' then
-                moving = true
-            elseif cmdParams[4] == 'false' then
-                moving = false
-            end
-        end
-        if not midaction() then
-            job_update()
-        end
-    end
-end]]
-
---[[windower.register_event('zone change',
-    function()
-        if player.sub_job == 'NIN' or player.sub_job == 'DNC' then
-            send_command('gi ugs true')
-        end
-    end
-)]]
-
---[[function check_moving()
-    if state.DefenseMode.value == 'None'  and state.Kiting.value == false then
-        if state.Auto_Kite.value == false and moving then
-            state.Auto_Kite:set(true)
-        elseif state.Auto_Kite.value == true and moving == false then
-            state.Auto_Kite:set(false)
-        end
-    end
-end]]
-
--- Select default macro book on initial load or subjob change.
-
+-- Select default macro book and lockstyle on initial load or subjob change.
 function on_job_change()
     set_macro_page(1, 10)
     send_command('wait 5;input /lockstyleset 3')
