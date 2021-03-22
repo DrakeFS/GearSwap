@@ -610,7 +610,7 @@ end
 
 function update_combat_form()
     -- Check for H2H or single-wielding
-    dw_check() -- function is defined in the Dagna-Globals.lua
+    cf_check() -- function is defined in the Dagna-Globals.lua
 end
 
 --------------------------------------------------------------------------------------------

@@ -761,7 +761,7 @@ end
 -------------------------------------------------------------------------------------------------------------------
 function update_combat_form()
     --checks for Single, Two Handed or Dual Weilding
-    dw_check() -- function is defined in the Lystle-Globals.lua
+    cf_check() -- function is defined in the Lystle-Globals.lua
 end
 
 -- Select default macro book on initial load or subjob change.

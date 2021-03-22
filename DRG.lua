@@ -15,11 +15,9 @@ end
 
 -- Setup vars that are user-independent.
 function job_setup()
-    dw_skill_list = S{2,3,5,11}
-
+    include('Mote-TreasureHunter')
     update_combat_form()
-    
-    
+      
     -- list of weaponskills that make better use of Gavialis helm
     wsList = S{}
     state.Buff = {}
@@ -61,6 +59,11 @@ function init_gear_sets()
     
     gear.DrgCTP = {name="Brigantia's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}}
     
+    sets.TreasureHunter = {
+        ammo="Per. Lucky Egg",
+        head="Wh. Rarab Cap +1",
+        waist="Chaac Belt",
+    }
     -- Precast Sets
     -- Precast sets to enhance JAs
     sets.precast.JA['Angon'] = {ammo = "Angon"}
@@ -73,7 +76,6 @@ function init_gear_sets()
     }
 
     sets.precast.JA['Ancient Circle'] = {}
-    sets.TreasureHunter = {}
 
     sets.precast.JA['High Jump'] = set_combine(sets.precast.JA.Jump, {})
     sets.precast.JA['Soul Jump'] = set_combine(sets.precast.JA.Jump, {})
@@ -190,8 +192,8 @@ function init_gear_sets()
         head="Sulevia's Mask +2",
         body="Flamma Korazin +2",
         hands="Sulev. Gauntlets +2",
-        legs="Sulevi. Cuisses +1",
-        feet="Flam. Gambieras +2",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
         neck="Loricate Torque +1",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         left_ear="Steelflash Earring",
@@ -273,83 +275,71 @@ end]]
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
-function job_precast(spell, action, spellMap, eventArgs)
-end
+--[[function job_precast(spell, action, spellMap, eventArgs)
+end]]
 
 -- Run after the default precast() is done.
 -- eventArgs is the same one used in job_precast, in case information needs to be persisted.
-function job_post_precast(spell, action, spellMap, eventArgs)
-    if player.hpp < 51 then
-        classes.CustomClass = "Breath" 
-    end
-    if spell.type == 'WeaponSkill' then
-        if state.CapacityMode.value then
-            equip(sets.CapacityMantle)
-        end
-        --[[if is_sc_element_today(spell) then
-            if wsList:contains(spell.english) then
-                equip(sets.WSDayBonus)
-            end
-        end]]
-    end
-end
+--[[function job_post_precast(spell, action, spellMap, eventArgs)
+
+end]]
 
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
-function job_midcast(spell, action, spellMap, eventArgs)
+--[[function job_midcast(spell, action, spellMap, eventArgs)
     if spell.action_type == 'Magic' then
         equip(sets.midcast.FastRecast)
         if player.hpp < 51 then
             classes.CustomClass = "Breath" 
         end
     end
-end
+end]]
 
 -- Run after the default midcast() is done.
 -- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
-function job_post_midcast(spell, action, spellMap, eventArgs)
-end
+--[[function job_post_midcast(spell, action, spellMap, eventArgs)
+end]]
 
-function job_pet_precast(spell, action, spellMap, eventArgs)
-end
+--[[function job_pet_precast(spell, action, spellMap, eventArgs)
+end]]
 -- Runs when a pet initiates an action.
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
-function job_pet_midcast(spell, action, spellMap, eventArgs)
+--[[function job_pet_midcast(spell, action, spellMap, eventArgs)
     if spell.english:startswith('Healing Breath') or spell.english == 'Restoring Breath' or spell.english == 'Steady Wing' or spell.english == 'Smiting Breath' then
         equip(sets.HB)
     end
-end
+end]]
 
 -- Run after the default pet midcast() is done.
 -- eventArgs is the same one used in job_pet_midcast, in case information needs to be persisted.
-function job_pet_post_midcast(spell, action, spellMap, eventArgs)
+--[[function job_pet_post_midcast(spell, action, spellMap, eventArgs)
     
-end
+end]]
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
-function job_aftercast(spell, action, spellMap, eventArgs)
+--[[function job_aftercast(spell, action, spellMap, eventArgs)
     if state.HybridMode.value == 'Reraise' or
     (state.HybridMode.value == 'Physical' and state.PhysicalDefenseMode.value == 'Reraise') then
         equip(sets.Reraise)
     end
-end
+end]]
 
 -- Run after the default aftercast() is done.
 -- eventArgs is the same one used in job_aftercast, in case information needs to be persisted.
-function job_post_aftercast(spell, action, spellMap, eventArgs)
+--[[function job_post_aftercast(spell, action, spellMap, eventArgs)
 
-end
+end]]
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
-function job_pet_aftercast(spell, action, spellMap, eventArgs)
+--[[function job_pet_aftercast(spell, action, spellMap, eventArgs)
 
-end
+end]]
 
 -- Run after the default pet aftercast() is done.
 -- eventArgs is the same one used in job_pet_aftercast, in case information needs to be persisted.
-function job_pet_post_aftercast(spell, action, spellMap, eventArgs)
+--[[function job_pet_post_aftercast(spell, action, spellMap, eventArgs)
 
-end
+end]]
 
 
 -------------------------------------------------------------------------------------------------------------------
@@ -359,58 +349,39 @@ end
 -- Called before the Include starts constructing melee/idle/resting sets.
 -- Can customize state or custom melee class values at this point.
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
-function job_handle_equipping_gear(status, eventArgs)
+--[[function job_handle_equipping_gear(status, eventArgs)
 
-end
+end]]
 
 -- Return a customized weaponskill mode to use for weaponskill sets.
 -- Don't return anything if you're not overriding the default value.
-function get_custom_wsmode(spell, action, spellMap)
+--[[function get_custom_wsmode(spell, action, spellMap)
 
-end
+end]]
 
 -- Modify the default idle set after it was constructed.
-function customize_idle_set(idleSet)
+--[[function customize_idle_set(idleSet)
     if player.hpp < 90 then
         idleSet = set_combine(idleSet, sets.idle.Regen)
     end
     return idleSet
-end
+end]]
 
 -------------------------------------------------------------------------------------------------------------------
 -- General hooks for other events.
 -------------------------------------------------------------------------------------------------------------------
 
 -- Called when the player's status changes.
-function job_status_change(newStatus, oldStatus, eventArgs)
+--[[function job_status_change(newStatus, oldStatus, eventArgs)
 
-end
+end]]
 
 -- Called when the player's pet's status changes.
-function job_pet_status_change(newStatus, oldStatus, eventArgs)
+--[[function job_pet_status_change(newStatus, oldStatus, eventArgs)
 
-end
-
--- Called when a player gains or loses a buff.
--- buff == buff gained or lost
--- gain == true if the buff was gained, false if it was lost.
-function job_buff_change(buff, gain)
-    if S{'madrigal'}:contains(buff:lower()) then
-        if buffactive.madrigal and state.OffenseMode.value == 'Acc' then
-            equip(sets.MadrigalBonus)
-        end
-    end
-    if string.lower(buff) == "sleep" and gain and player.hp > 200 then
-        equip(sets.Berserker)
-    else
-        if not midaction() then
-            handle_equipping_gear(player.status)
-        end
-    end
-end
+end]]
 
 function job_update(cmdParams, eventArgs)
-    classes.CustomMeleeGroups:clear()
     update_combat_form()
 end
 -------------------------------------------------------------------------------------------------------------------
@@ -418,13 +389,13 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 -- Called for custom player commands.
-function job_self_command(cmdParams, eventArgs)
+--[[function job_self_command(cmdParams, eventArgs)
 
-end
+end]]
 
 function update_combat_form()
     -- Check for 2H, Single or Duel Wield 
-    dw_check() -- function is defined in the Dagna-Globals.lua
+    cf_check() -- function is defined in the Dagna-Globals.lua
 end
 
 
@@ -447,27 +418,6 @@ end
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
 -- State buff checks that will equip buff gear and mark the event as handled.
-function check_buff(buff_name, eventArgs)
-    if state.Buff[buff_name] then
-            equip(sets.buff[buff_name] or {})
-        if state.TreasureMode.value == 'SATA' or state.TreasureMode.value == 'Fulltime' then
-            equip(sets.TreasureHunter)
-        end
-        eventArgs.handled = true
-    end
-end
--- Check for various actions that we've specified in user code as being used with TH gear.
--- This will only ever be called if TreasureMode is not 'None'.
--- Category and Param are as specified in the action event packet.
-function th_action_check(category, param)
-    if category == 2 or -- any ranged attack
-        --category == 4 or -- any magic action
-        (category == 3 and param == 30) or -- Aeolian Edge
-        (category == 6 and info.default_ja_ids:contains(param)) or -- Provoke, Animated Flourish
-        (category == 14 and info.default_u_ja_ids:contains(param)) -- Quick/Box/Stutter Step, Desperate/Violent Flourish
-        then return true
-    end
-end
 
 function on_job_change()
     set_macro_page(1, 14)

@@ -154,16 +154,16 @@ function job_setup()
     -- Buffs that depend on blue magic skill
     blue_magic_maps.SkillBasedBuff = S{
         'Barrier Tusk','Diamondhide','Magic Barrier','Metallic Body','Plasma Charge',
-        'Pyric Bulwark','Reactor Cool'
+        'Pyric Bulwark','Reactor Cool','Occultation'
     }
 
     -- Other general buffs
     blue_magic_maps.Buff = S{
         'Amplification','Animating Wail','Battery Charge','Carcharian Verve','Cocoon',
-        'Erratic Flutter','Exuviation','Fantod','Feather Barrier','Harden Shell',
-        'Memento Mori','Nat. Meditation','Occultation','Orcish Counterstance','Refueling',
-        'Regeneration','Saline Coat','Triumphant Roar','Warm-Up','Winds of Promyvion',
-        'Zephyr Mantle'
+        'Erratic Flutter','Exuviation','Fantod','Harden Shell',
+        'Memento Mori','Nat. Meditation','Orcish Counterstance','Refueling',
+        'Regeneration','Saline Coat','Triumphant Roar','Winds of Promyvion',
+        'Zephyr Mantle','Feather Barrier','Warm-Up'
     }
     
     
@@ -196,14 +196,14 @@ function user_setup()
     on_job_change()
     
     send_command('bind @= gs c cycle delayMod')
-    send_command('bind !` gs c cycle EvasionMode')
+    send_command('bind @` gs c cycle EvasionMode')
 end
 
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
     send_command('unbind @= gs c cycle delayMod')
-    send_command('unbind !` gs c cycle EvasionMode')
+    send_command('unbind @` gs c cycle EvasionMode')
 end
 
 
@@ -217,7 +217,7 @@ function init_gear_sets()
     gear.BluCSTR = {name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
     gear.BluCMB = {name="Rosmerta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}}
     gear.BluCMAC = {name="Cornflower Cape", augments={'MP+22','DEX+5','Blue Magic skill +10',}}
-    gear.BluEVA = {name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}}
+    gear.BluEVA = {name="Rosmerta's Cape", augments={'AGI+20','Eva.+20 /Mag. Eva.+20','Evasion+10','Enmity+10','Evasion+15',}}
 
     sets.TreasureHunter = {
         ammo="Per. Lucky Egg",
@@ -255,7 +255,7 @@ function init_gear_sets()
         ammo="Impatiens",
         head = gear.HercHTH,
         body="Hashishin Mintan",
-        hands="Jhakri Cuffs +2",
+        hands={ name="Leyline Gloves", augments={'Accuracy+7','"Mag.Atk.Bns."+10',}},
         legs=gear.LengoFC,
         feet="Jhakri Pigaches +2",
         left_ring="Jhakri Ring",
@@ -723,6 +723,11 @@ function job_post_precast(spell, action, spellMap, eventArgs)
     end
 end
 
+function job_midcast(spell, action, spellMap, eventArgs, midcastSet)
+    if blue_magic_maps.SkillBasedBuff:contains(spell.name) then
+        equip(sets.midcast['Blue Magic'].SkillBasedBuff)
+    end
+end
 -- Run after the default midcast() is done.
 -- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
 function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
@@ -817,6 +822,7 @@ end
 function job_update(cmdParams, eventArgs)
     update_combat_form()
     determine_haste_group()
+    handle_equipping_gear()
 end
 
 
@@ -825,7 +831,7 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 function update_combat_form()
-    dw_check() -- function is defined in the Dagna-Globals.lua
+    cf_check() -- function is defined in the Dagna-Globals.lua
 end
 
 -- Set a Haste Group

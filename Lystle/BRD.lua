@@ -163,7 +163,7 @@ function init_gear_sets()
         body="Fili Hongreline",
         legs="Inyanga Shalwar +2",
         feet="Brioso Slippers +2",
-        neck="Moonbow Whistle",
+        neck="Mnbw. Whistle +1",
     }
 
     -- Gear to enhance certain classes of songs.
@@ -173,7 +173,7 @@ function init_gear_sets()
     sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +1"})
     sets.midcast.Lullaby = set_combine(sets.midcast.SongDebuff,{hands="Brioso Cuffs +2",body="Fili Hongreline"})
     sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +1", back=gear.BrdCFC})
-    --sets.midcast.Mambo = {feet="Mousai Crackows"}
+    sets.midcast.Mambo = set_combine(sets.midcast.BardSong,{feet="Mousai Crackows +1"})
     sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +1"})
     --sets.midcast.Minne = {legs="Mousai Seraweels"}
     sets.midcast.Minuet = set_combine(sets.midcast.BardSong,{body="Fili Hongreline"})
@@ -200,7 +200,7 @@ function init_gear_sets()
         hands="Brioso Cuffs +2",
         legs="Brioso Cannions +2",
         feet="Brioso Slippers +2",
-        neck="Moonbow Whistle",
+        neck="Mnbw. Whistle +1",
         waist="Famine Sash",
         left_ear="Hermetic Earring",
         left_ring="Kishar Ring",
@@ -239,7 +239,7 @@ function init_gear_sets()
         hands="Aya. Manopolas +1",
         legs="Aya. Cosciales +1",
         feet="Aya. Gambieras +1",
-        neck="Sanctity Necklace",
+        neck="Mnbw. Whistle +1",
         waist="Famine Sash",
         left_ear="Hermetic Earring",
         right_ear="Gwati Earring",
@@ -399,7 +399,7 @@ end
 
 function update_combat_form()
     --checks for Single, Two Handed or Dual Weilding
-    dw_check() -- function is defined in the Lystle-Globals.lua
+    cf_check() -- function is defined in the Lystle-Globals.lua
 end
 
 -- Called for direct player commands.
