@@ -10,6 +10,7 @@ end
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
+    include('Mote-TreasureHunter')
     --state.SongMode = M{['description']='Song Mode', 'None', 'Placeholder'}
     --state.Buff['Pianissimo'] = buffactive['pianissimo'] or false
 
@@ -44,7 +45,7 @@ function user_setup()
         'Quick Etude', 'Swift Etude', 'Vivacious Etude', 'Vital Etude', 'Dextrous Etude', 'Uncanny Etude',
         'Spirited Etude', 'Logical Etude', 'Enchanting Etude', 'Bewitching Etude'}
 
-    --state.WeaponLock = M(false, 'Weapon Lock')
+    state.WeaponLock = M(false, 'Weapon Lock')
 
     -- Adjust this if using the Terpander Daurdabla (new +song instrument)
     --info.ExtraSongInstrument = 'Terpander'
@@ -64,13 +65,21 @@ end
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
-
+    
+    sets.TreasureHunter = {
+        ammo="Per. Lucky Egg",
+        --head = gear.HercHTH,
+        --body = gear.HercBTH, 
+        --legs = gear.HercLTH,
+        waist = "Chaac Belt",
+    }
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Precast Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
 
     -- Fast cast sets for spells
     sets.precast.FC = {
+        main='Kali',
         head="Nahtirah Hat",
         body="Inyanga Jubbah +2",
         hands={ name="Leyline Gloves", augments={'Accuracy+7','Mag. Acc.+5',}},
@@ -84,13 +93,15 @@ function init_gear_sets()
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {})
 
+    sets.precast.FC['Dispelga'] = set_combine(sets.precast.FC, {main="Daybreak"})
+
     sets.precast.FC.Cure = set_combine(sets.precast.FC, {
         legs = "Doyen Pants",
         feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
     })
 
     sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
-        range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
+        --range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
         head="Fili Calot +1",
         legs = "Doyen Pants",
         feet = "Bihu Slippers +1",
@@ -104,8 +115,6 @@ function init_gear_sets()
     })
 
     --sets.precast.FC.SongPlaceholder = set_combine(sets.precast.FC.BardSong, {range=info.ExtraSongInstrument})
-
-    --sets.precast.FC.Dispelga = set_combine(sets.precast.FC, {main="Daybreak", sub="Ammurapi Shield"})
 
     -- Precast sets to enhance JAs
 
@@ -159,7 +168,8 @@ function init_gear_sets()
 
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong = {
-        range="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',},
+        main='Kali',
+        range="Gjallarhorn",
         body="Fili Hongreline",
         legs="Inyanga Shalwar +2",
         feet="Brioso Slippers +2",
@@ -177,7 +187,7 @@ function init_gear_sets()
     sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +1"})
     --sets.midcast.Minne = {legs="Mousai Seraweels"}
     sets.midcast.Minuet = set_combine(sets.midcast.BardSong,{body="Fili Hongreline"})
-    --sets.midcast.Paeon = {head="Brioso Roundlet +3"}
+    sets.midcast.Paeon = set_combine(sets.midcast.BardSong,{head="Brioso Roundlet +2"})
     --sets.midcast.Threnody = sets.midcast.SongDebuff  --, {}) --{body="Mou. Manteel +1"}) -- GS does not see this set?
 
     --sets.midcast['Adventurer\'s Dirge'] = {hands="Bihu Cuffs +3"}
@@ -185,7 +195,7 @@ function init_gear_sets()
     --sets.midcast['Magic Finale'] = {legs="Fili Rhingrave +1"}
     sets.midcast['Sentinel\'s Scherzo'] = {feet="Fili Cothurnes +1"}
     
-    --3rd/4th song sets
+    --3rd/4th/5th dummy song sets
     
     sets.midcast['Army\'s Paeon'] = {range="Terpander",}
     sets.midcast['Knight\'s Minne'] = {range="Terpander",}
@@ -194,7 +204,7 @@ function init_gear_sets()
     -- For song defbuffs (duration primary, accuracy secondary)
     sets.midcast.SongDebuff = {
         main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
-        range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
+        range="Gjallarhorn",
         head="Brioso Roundlet +2",
         body="Brioso Justau. +2",
         hands="Brioso Cuffs +2",
@@ -215,38 +225,50 @@ function init_gear_sets()
 
     -- Other general spells and classes.
     sets.midcast.Cure = {
+        main="Daybreak",
+        sub="Genmei Shield",
         head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
-        body="Annoint. Kalasiris",
-        hands="Kaykaus Cuffs",
-        legs="Kaykaus Tights",
+        body="Kaykaus Bliaut",
+        hands="Inyan. Dastanas +1",
+        legs="Brioso Cannions +2",
         feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        neck="Loricate Torque",
+        waist="Korin Obi",
         left_ring="Lebeche Ring",
+        right_ring="Menelaus's Ring",
+        back="Solemnity Cape",
     }
 
     sets.midcast.Curaga = sets.midcast.Cure
 
     sets.midcast.StatusRemoval = {}
 
-    sets.midcast.Cursna = set_combine(sets.midcast.StatusRemoval, {})
+    sets.midcast.Cursna = set_combine(sets.midcast.StatusRemoval, {
+        hands="Inyan. Dastanas +1",
+        feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        right_ring="Menelaus's Ring",
+    })
 
     sets.midcast['Enhancing Magic'] = {
         waist="Embla Sash",
     }
     
     sets.midcast['Enfeebling Magic'] = {
-        head="Aya. Zucchetto +1",
-        body="Ayanmo Corazza +1",
-        hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +1",
-        feet="Aya. Gambieras +1",
+        main="Daybreak",
+        head="Brioso Roundlet +2",
+        body="Brioso Justau. +2",
+        hands="Inyan. Dastanas +1",
+        legs="Inyanga Shalwar +2",
+        feet="Inyan. Crackows +1",
         neck="Mnbw. Whistle +1",
         waist="Famine Sash",
         left_ear="Hermetic Earring",
-        right_ear="Gwati Earring",
         left_ring="Ayanmo Ring",
-        right_ring="Inyanga Ring",
-        back="Solemnity Cape",
+        right_ring="Kishar Ring",
+        back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
     }
+
+    sets.midcast['Displega'] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
 
     --[[sets.midcast.Regen = set_combine(sets.midcast['Enhancing Magic'], {head="Inyanga Tiara"})
     sets.midcast.Haste = sets.midcast['Enhancing Magic']
@@ -256,11 +278,9 @@ function init_gear_sets()
     sets.midcast.Protect = set_combine(sets.midcast['Enhancing Magic'], {ring2="Sheltered Ring"})
     sets.midcast.Protectra = sets.midcast.Protect
     sets.midcast.Shell = sets.midcast.Protect
-    sets.midcast.Shellra = sets.midcast.Shell
+    sets.midcast.Shellra = sets.midcast.Shell]]
 
     sets.midcast['Enfeebling Magic'] = {}
-
-    sets.midcast.Dispelga = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak", sub="Ammurapi Shield"})]]
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Idle Sets --------------------------------------------

@@ -18,6 +18,8 @@ function job_setup()
     state.Buff.Yonin = buffactive.Yonin or false
     state.Buff.Innin = buffactive.Innin or false
     state.Buff.Futae = buffactive.Futae or false
+    state.Buff.Shadows = buffactive.shadows or false
+    ShadowType = 'None'
 
     determine_haste_group()
 	
@@ -50,10 +52,14 @@ end
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
+    
     sets.TreasureHunter = {
-	head = "Wh. Rarab Cap +1",
-    legs = gear.HercLTH,
-	}
+        ammo="Per. Lucky Egg",
+        head = gear.HercHTH,
+        body = gear.HercBTH, 
+        --legs = gear.HercLTH,
+        waist = "Chaac Belt",
+    }
 	
 	--------------------------------------
     -- Precast sets
@@ -172,8 +178,8 @@ function init_gear_sets()
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
-        legs="Mummu Kecks +1",
-        feet=gear.HercBTP,
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
         neck="Loricate Torque +1",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
@@ -269,6 +275,35 @@ function init_gear_sets()
     sets.buff.Yonin = {}
     sets.buff.Innin = {}
 end
+-------------------------------------------------------------------------------------------------------------------
+-- Job-specific commands
+-------------------------------------------------------------------------------------------------------------------
+
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'shadow' then
+        handle_Shadows()
+        eventArgs.handled = true
+    end
+end
+
+function handle_Shadows()
+    
+    local spell_recasts = windower.ffxi.get_spell_recasts()
+
+    if spell_recasts[340] > 0 then
+        if spell_recasts[339] > 0 then
+            if spell_recasts[338] > 0 then
+                add_to_chat(8, 'All Shadows on CD, proceed to panic!')
+            else
+                send_command('@input /ma "Utsusemi: Ichi" <me>')
+            end
+        else
+            send_command('@input /ma "Utsusemi: Ni" <me>')
+        end
+    else
+        send_command('@input /ma "Utsusemi: San" <me>')
+    end
+end
 
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
@@ -276,17 +311,45 @@ end
 
 -- Run after the general midcast() is done.
 -- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
+
+function job_precast(spell, action, spellMap, eventArgs)
+    if spell.name == 'Utsusemi: Ichi' and ShadowType == 'Ni' and (buffactive['Copy Image (3)'] or buffactive['Copy Image (4+)']) then
+        cancel_spell()
+    elseif spell.name == 'Utsusemi: Ni' and ShadowType == 'San' and buffactive['Copy Image (4+)'] then
+        cancel_spell()
+    end
+end
+
+function job_midcast(spell, action, spellMap, eventArgs)
+    if spell.name == 'Utsusemi: Ichi' and (ShadowType == 'Ni' or ShadowType == 'San') and (buffactive['Copy Image'] or buffactive['Copy Image (2)']) then
+        send_command('cancel copy image')
+        send_command('cancel copy image (2)')
+    elseif spell.name == 'Utsusemi: Ni' and ShadowType == 'San' and (buffactive['Copy Image'] or buffactive['Copy Image (2)'] or buffactive['Copy Image (3)']) then
+        send_command('cancel copy image')
+        send_command('cancel copy image (2)')
+        send_command('cancel copy image (3)')
+    end
+end
+
+
 function job_post_midcast(spell, action, spellMap, eventArgs)
     if state.Buff.Doom then
         equip(sets.buff.Doom)
     end
 end
 
-
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 function job_aftercast(spell, action, spellMap, eventArgs)
     if not spell.interrupted and spell.english == "Migawari: Ichi" then
         state.Buff.Migawari = true
+    end
+
+    if spell.name == 'Utsusemi: San' and spell.interrupted == false then
+        ShadowType = 'San'
+    elseif spell.name == 'Utsusemi: Ni' and spell.interrupted == false then
+        ShadowType = 'Ni'
+    elseif spell.name == 'Utsusemi: Ichi' and spell.interrupted == false then
+        ShadowType = 'Ichi'
     end
 end
 
@@ -339,6 +402,7 @@ function customize_idle_set(idleSet)
     if state.Buff.Doom then
         idleSet = set_combine(idleSet, sets.buff.Doom)
     end
+    
     return idleSet
 end
 

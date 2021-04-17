@@ -265,11 +265,13 @@ function init_gear_sets()
 
     sets.defense.Evasion = {
         head="Meghanada Visor +1",
-        body="Meghanada Cuirie +2",
-        hands="Meg. Gloves +2",
-        legs="Mummu kecks +2",
+        body="Meg. Cuirie +2",
+        hands="Malignance Gloves",
+        legs="Mummu Kecks +2",
         feet="Meg. Jam. +1",
-        right_ring="Meghanada Ring",
+        neck="Loricate Torque",
+        left_ring="Meghanada Ring",
+        right_ring="Defending Ring",
         back="Solemnity Cape",
     }
 

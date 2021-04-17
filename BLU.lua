@@ -455,7 +455,11 @@ function init_gear_sets()
     
     sets.midcast['Blue Magic']['Feather Tickle'] = set_combine(sets.midcast['Blue Magic'].Magical, sets.precast.FC)
 
-    sets.midcast['Blue Magic'].Healing = {}
+    sets.midcast['Blue Magic'].Healing = {
+        hands="Hashi. Bazu. +1",
+        left_ear="Mendi. Earring",
+        right_ear="Regal Earring",
+    }
 
     sets.midcast['Blue Magic'].SkillBasedBuff = {
         ammo="Mavi Tathlum",
@@ -554,8 +558,8 @@ function init_gear_sets()
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
         neck="Loricate Torque +1",
         waist="Windbuffet belt +1",
         left_ear="Steelflash Earring",

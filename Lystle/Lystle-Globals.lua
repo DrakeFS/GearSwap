@@ -47,6 +47,7 @@ function global_on_load()
     send_command('bind ^f12 gs c cycle IdleMode')
     send_command('bind !f12 gs c reset DefenseMode')
     send_command('bind != gs c toggle CapacityMode')
+    send_command('bind ^= gs c cycle treasuremode')
 end
 
 function global_on_unload()
@@ -64,6 +65,7 @@ function global_on_unload()
     send_command('unbind ^f12')
     send_command('unbind !f12')
     send_command('unbind !=')
+    send_command('unbind ^=')
 end
 
 -- Global intercept on midcast.

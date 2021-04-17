@@ -503,8 +503,28 @@ end
 function job_self_command(cmdParams, eventArgs)
     if cmdParams[1]:lower() == 'nukeit' then
         handle_nuking()
+    elseif cmdParams[1]:lower() == 'wsit' then
+        handle_WS()
     end
 end
+
+function handle_WS()
+    if player.equipment.main == "Vitiation Sword" then
+        if player.tp <= 1500 then
+            send_command('@input /ws "Sanguine Blade" <t>')
+        else
+            send_command('@input /ws "Seraph Blade" <t>')
+        end
+    elseif player.equipment.main == "Naegling" then
+        send_command('@input /ws "Savage Blade" <t>')
+    elseif player.equipment.main == "Maxentius" then
+        send_command('@input /ws "Black Halo" <t>')
+    elseif player.equipment.main == "Almace" then
+        send_command('@input /ws "Chant du Cygne" <t>')
+    else
+        add_to_chat(122, "No WS set for this weapon")
+    end    
+end 
 
 function handle_nuking()
     send_command('@input /ma "'..nukes.t4[state.NukeElement.value]..'" <t>')
