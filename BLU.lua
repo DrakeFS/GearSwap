@@ -188,7 +188,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('Normal', 'Acc', 'HP')
+    state.OffenseMode:options('Normal', 'Acc', 'HP', 'Eva')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
@@ -691,7 +691,7 @@ function init_gear_sets()
     
     sets.engaged.DW.Subtle = set_combine(sets.engaged.DW, sets.Subtle)
 
-    --sets.engaged.DW.Learning = set_combine(sets.engaged.DW, sets.Learning)
+    sets.engaged.DW.Eva = set_combine(sets.engaged.DW, sets.Evasion)
 end
 
 -------------------------------------------------------------------------------------------------------------------

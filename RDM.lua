@@ -21,6 +21,8 @@ function job_setup()
     nukes.t4 = {['Stone']="Stone IV",   ['Water']="Water IV",   ['Aero']="Aero IV",  ['Fire']="Fire IV", ['Blizzard']="Blizzard IV",  ['Thunder']="Thunder IV", ['Light']="Thunder IV", ['Dark']="Blizzard IV"}
     nukes.t5 = {['Stone']="Stone V",    ['Water']="Water V",    ['Aero']="Aero V",   ['Fire']="Fire V",  ['Blizzard']="Blizzard V",   ['Thunder']="Thunder V", ['Light']="Thunder V", ['Dark']="Blizzard V"}
 
+    max_enhancing_skill = {'Enfire', 'Enwater', 'Enthunder', 'Enstone', 'Enaero', 'Enblizzard', 'Temper', 'Temper II'}
+    
     state.NukeElement = M{['description'] = 'Nuke Element'}
     state.MACC = M(false, 'MACC')
     state.MagicBurst = M(false, 'Magic Burst')
@@ -37,7 +39,7 @@ end
 function user_setup()
     state.OffenseMode:options('None', 'Enspell')
     state.HybridMode:options('Normal')
-    state.CastingMode:options('Normal', 'ConserveMP')
+    state.CastingMode:options('Normal', 'Swap')
     state.IdleMode:options('Normal', 'Leveling')
     state.NukeElement:options('Fire', 'Blizzard', 'Aero', 'Stone', 'Thunder', 'Water')
     
@@ -491,6 +493,19 @@ function init_gear_sets()
         right_ring="Petrov Ring",
         back=gear.RdmCES
     }
+
+    sets.weapons = {}
+    sets.weapons.Enfeebling = {main="Daybreak", sub="Ammurapi Shield"}
+    sets.weapons.Enhancing = {main="Pukulatmuj +1", sub="Ammurapi Shield"}
+    sets.weapons.Elemental = {main="Bunzi's Rod", sub="Ammurapi Shield"}
+    sets.weapons.Cure = {main="Daybreak", sub="Sors Shield"}
+    sets.weapons.Enfeebling.DW = {main="Daybreak", sub="Bunzi's Rod"}
+    sets.weapons.Enhancing.DW = sets.weapons.Enhancing
+    sets.weapons.Enhancing.DW.Temper2 = {main="Pukulatmuj +1", sub="Pukulatmuj"}
+    sets.weapons.Elemental.DW = {main="Daybreak", sub="Bunzi's Rod"}
+    sets.weapons.Cure.DW = {main="Daybreak", sub="Bunzi's Rod"}
+
+
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -559,25 +574,55 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         equip(sets.midcast.CureSelf)
     end
     if spell.action_type == 'Magic' then
-        if spell.element == "Stone" and spell.skill == 'Elemental Magic' and (state.CastingMode.value == "Normal" or state.CastingMode.value == "ConserveMP")  then
-            equip({ neck="Quanpur Necklace" })
-        end
+
         if spellMap == 'Cure' and spell.target.type == 'SELF' then
             equip(sets.midcast.CureSelf)
         end
         if spell.skill == 'Elemental Magic' and state.MagicBurst.value then
-            if state.CastingMode.value == "ConserveMP" then
-                equip(sets.magic_burst.ConserveMP)      
-            elseif state.CastingMode.value == "MACC" then
-                equip(sets.magic_burst.MACC)        
-            else
-                equip(sets.magic_burst)
-            end 
+            equip(sets.magic_burst)
         end
     end
     if state.MACC.value then 
         if spell.name == 'Frazzle II' or spell.name == 'Silence' then
             equip(set_combine(sets.MACC, {ammo="none"}))
+        end
+    end
+
+    if state.CastingMode.value == 'Swap' then
+        
+        mainhand = player.equipment.main
+        offhand = player.equipment.sub
+
+        local spellName = spell.name
+
+        if spell.skill == 'Enhancing Magic' then
+            if state.CombatForm.value == 'DW' then
+                if spell.name:contains('En') or spell.name:contains('Temper') then
+                    equip(sets.weapons.Enhancing.DW.Temper2)
+                else
+                    equip(sets.weapons.Enhancing.DW)
+                end
+            else
+                equip(sets.weapons.Enhancing)
+            end
+        elseif spell.skill == 'Enfeebling Magic' then
+            if state.CombatForm.value == 'DW' then
+                equip(sets.weapons.Enfeebling.DW)
+            else
+                equip(sets.weapons.Enfeebling)
+            end
+        elseif spell.skill == 'Elemental Magic' then
+            if state.CombatForm.value == 'DW' then
+                equip(sets.weapons.Elemental.DW)
+            else
+                equip(sets.weapons.Elemental)
+            end
+        elseif spellMap == 'Cure' then
+            if state.CombatForm.value == 'DW' then
+                equip(sets.weapons.Cure.DW)
+            else
+                equip(sets.weapons.Cure)
+            end
         end
     end
 end
@@ -592,6 +637,9 @@ function job_aftercast(spell, action, spellMap, eventArgs)
             send_command('@timers c "'..spell.english..' ['..spell.target.name..']" 90 down spells/00220.png')
         end
         classes.CustomIdleGroups:clear()
+    end
+    if state.CastingMode.value == 'Swap' then
+        equip({main = mainhand, sub = offhand})
     end
 end
 -------------------------------------------------------------------------------------------------------------------

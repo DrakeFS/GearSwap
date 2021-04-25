@@ -168,11 +168,13 @@ function init_gear_sets()
 
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong = {
-        main='Kali',
+        main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
         range="Gjallarhorn",
+        head="Fili Calot +1",
         body="Fili Hongreline",
+        hands="Fili Manchettes +1",
         legs="Inyanga Shalwar +2",
-        feet="Brioso Slippers +2",
+        feet="Brioso Slippers +3",
         neck="Mnbw. Whistle +1",
     }
 
@@ -209,7 +211,7 @@ function init_gear_sets()
         body="Brioso Justau. +2",
         hands="Brioso Cuffs +2",
         legs="Brioso Cannions +2",
-        feet="Brioso Slippers +2",
+        feet="Brioso Slippers +3",
         neck="Mnbw. Whistle +1",
         waist="Famine Sash",
         left_ear="Hermetic Earring",
