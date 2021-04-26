@@ -212,8 +212,9 @@ function job_update(cmdParams, eventArgs)
 end
 
 function update_combat_form()
-    -- Check for 2H, Single or Duel Wield 
-    cf_check() -- function is defined in the Dagna-Globals.lua
+    if cf_check then --checks if cf_check() exists
+        cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Dagna-Globals.lua
+    end
 end
 
 -------------------------------------------------------------------------------------------------------------------

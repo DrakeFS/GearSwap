@@ -647,8 +647,9 @@ function display_roll_info(spell)
 end
 
 function update_combat_form()
-    -- Check for H2H or single-wielding
-    cf_check() -- function is defined in the Dagna-Globals.lua
+    if cf_check then --checks if cf_check() exists
+        cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Dagna-Globals.lua
+    end
 end
 
 function determine_haste_group()

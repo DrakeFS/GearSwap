@@ -21,7 +21,7 @@ function job_setup()
     nukes.t4 = {['Stone']="Stone IV",   ['Water']="Water IV",   ['Aero']="Aero IV",  ['Fire']="Fire IV", ['Blizzard']="Blizzard IV",  ['Thunder']="Thunder IV", ['Light']="Thunder IV", ['Dark']="Blizzard IV"}
     nukes.t5 = {['Stone']="Stone V",    ['Water']="Water V",    ['Aero']="Aero V",   ['Fire']="Fire V",  ['Blizzard']="Blizzard V",   ['Thunder']="Thunder V", ['Light']="Thunder V", ['Dark']="Blizzard V"}
 
-    max_enhancing_skill = {'Enfire', 'Enwater', 'Enthunder', 'Enstone', 'Enaero', 'Enblizzard', 'Temper', 'Temper II'}
+    max_enhancing_skill = S{'Enfire', 'Enwater', 'Enthunder', 'Enstone', 'Enaero', 'Enblizzard', 'Temper', 'Temper II'}
     
     state.NukeElement = M{['description'] = 'Nuke Element'}
     state.MACC = M(false, 'MACC')
@@ -560,34 +560,7 @@ function job_post_precast(spell, action, spellMap, eventArgs)
     end
 end
 
--- Run after the default midcast() is done.
--- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
-function job_post_midcast(spell, action, spellMap, eventArgs)
-    if spell.skill == 'Enfeebling Magic' and state.Buff.Saboteur then
-        equip(sets.buff.Saboteur)
-    elseif spell.skill == 'Enhancing Magic' then
-        equip(sets.midcast.EnhancingDuration)
-        if buffactive.composure and spell.target.type == 'PLAYER' then
-            equip(sets.buff.ComposureOther)
-        end
-    elseif spellMap == 'Cure' and spell.target.type == 'SELF' then
-        equip(sets.midcast.CureSelf)
-    end
-    if spell.action_type == 'Magic' then
-
-        if spellMap == 'Cure' and spell.target.type == 'SELF' then
-            equip(sets.midcast.CureSelf)
-        end
-        if spell.skill == 'Elemental Magic' and state.MagicBurst.value then
-            equip(sets.magic_burst)
-        end
-    end
-    if state.MACC.value then 
-        if spell.name == 'Frazzle II' or spell.name == 'Silence' then
-            equip(set_combine(sets.MACC, {ammo="none"}))
-        end
-    end
-
+function job_midcast(spell, action, spellMap, eventArgs)
     if state.CastingMode.value == 'Swap' then
         
         mainhand = player.equipment.main
@@ -597,7 +570,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
 
         if spell.skill == 'Enhancing Magic' then
             if state.CombatForm.value == 'DW' then
-                if spell.name:contains('En') or spell.name:contains('Temper') then
+                if max_enhancing_skill:contains(spell.name) then
                     equip(sets.weapons.Enhancing.DW.Temper2)
                 else
                     equip(sets.weapons.Enhancing.DW)
@@ -626,6 +599,35 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         end
     end
 end
+-- Run after the default midcast() is done.
+-- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
+function job_post_midcast(spell, action, spellMap, eventArgs)
+    if spell.skill == 'Enfeebling Magic' and state.Buff.Saboteur then
+        equip(sets.buff.Saboteur)
+    elseif spell.skill == 'Enhancing Magic' then
+        equip(sets.midcast.EnhancingDuration)
+        if buffactive.composure and spell.target.type == 'PLAYER' then
+            equip(sets.buff.ComposureOther)
+        end
+    elseif spellMap == 'Cure' and spell.target.type == 'SELF' then
+        equip(sets.midcast.CureSelf)
+    end
+    if spell.action_type == 'Magic' then
+
+        if spellMap == 'Cure' and spell.target.type == 'SELF' then
+            equip(sets.midcast.CureSelf)
+        end
+        if spell.skill == 'Elemental Magic' and state.MagicBurst.value then
+            equip(sets.magic_burst)
+        end
+    end
+    if state.MACC.value then 
+        if spell.name == 'Frazzle II' or spell.name == 'Silence' then
+            equip(set_combine(sets.MACC, {ammo="none"}))
+        end
+    end
+end
+   
 
 function job_aftercast(spell, action, spellMap, eventArgs)
     if not spell.interrupted then
@@ -677,8 +679,10 @@ function display_current_job_state(eventArgs)
 end
 
 function update_combat_form()
-    -- Check for H2H or single-wielding
-    cf_check() -- function is defined in the Dagna-Globals.lua
+    
+    if cf_check then --checks if cf_check() exists
+        cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Dagna-Globals.lua
+    end
 end
 
 --------------------------------------------------------------------------------------------

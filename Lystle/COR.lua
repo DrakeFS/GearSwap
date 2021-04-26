@@ -516,8 +516,9 @@ function display_roll_info(spell)
 end
 
 function update_combat_form()
-    --checks for Single, Two Handed or Dual Weilding
-    cf_check() -- function is defined in the Lystle-Globals.lua
+    if cf_check then --checks if cf_check() exists
+        cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Lystle-Globals.lua
+    end
 end
 
 function determine_haste_group()
