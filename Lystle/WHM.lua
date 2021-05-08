@@ -45,6 +45,7 @@ function init_gear_sets()
         neck={ name="Cleric's Torque", augments={'Path: A',}},
         hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
         waist="Embla Sash",
+        feet="Navon Crackows",
         left_ring="Lebeche Ring",
         back=gear.WhmCFC,
     }
@@ -88,13 +89,11 @@ function init_gear_sets()
     sets.midcast.FastRecast = {}
     
     -- Cure sets
-    sets.midcast.CureSolace = {}
-
     sets.midcast.Cure = {
         main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
         sub="Sors Shield",
         head="Theo. Cap +1",
-        body="Theo. Briault +1",
+        body="Kaykaus Bliaut",
         hands="Theophany Mitts",
         legs="Ebers Pantaloons",
         feet={ name="Piety Duckbills +1", augments={'Enhances "Afflatus Solace" effect',}},
@@ -106,9 +105,11 @@ function init_gear_sets()
         back="Solemnity Cape",
     }
 
-    sets.midcast.Curaga = {}
+    sets.midcast.CureSolace = sets.midcast.Cure
 
-    sets.midcast.CureMelee = {}
+    sets.midcast.Curaga = sets.midcast.Cure
+
+    sets.midcast.CureMelee = sets.midcast.Cure
 
     sets.midcast.Cursna = {}
 

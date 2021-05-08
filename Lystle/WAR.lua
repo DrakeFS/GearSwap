@@ -127,45 +127,6 @@ function init_gear_sets()
         right_ring="Begrudging Ring",
         back={ name="Cichol's Mantle", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%',}},
     }
-    --sets.precast.WS['Decimation'].DW = {}
-    
-    -- Specific weaponskill sets.
-    --[[sets.precast.WS['Upheaval'] = {}
-    sets.precast.WS['Upheaval'].AccLow = set_combine(sets.precast.WS['Upheaval'], {})
-    sets.precast.WS['Upheaval'].AccHigh = set_combine(sets.precast.WS['Upheaval'].AccLow, {})
-    sets.precast.WS['Upheaval'].Attack = set_combine(sets.precast.WS['Upheaval'], {})
-    sets.precast.WS['Upheaval'].MS = set_combine(sets.precast.WS['Upheaval'], {ammo="Yetshila +1",back="Cavaros Mantle",feet="Huginn Gambieras"})
-    
-    sets.precast.WS['Ukko\'s Fury'] = {}
-    sets.precast.WS['Ukko\'s Fury'].AccLow = set_combine(sets.precast.WS['Ukko\'s Fury'], {})
-    sets.precast.WS['Ukko\'s Fury'].AccHigh = set_combine(sets.precast.WS['Ukko\'s Fury'].AccLow, {})
-    sets.precast.WS['Ukko\'s Fury'].Attack = set_combine(sets.precast.WS['Ukko\'s Fury'], {})
-    sets.precast.WS['Ukko\'s Fury'].MS = set_combine(sets.precast.WS['Ukko\'s Fury'], {})
-    
-    sets.precast.WS['King\'s Justice'] = set_combine(sets.precast.WS, {})
-    sets.precast.WS['King\'s Justice'].AccLow = set_combine(sets.precast.WS['King\'s Justice'], {})
-    sets.precast.WS['King\'s Justice'].AccHigh = set_combine(sets.precast.WS['King\'s Justice'].AccLow, {})
-    sets.precast.WS['King\'s Justice'].Attack = set_combine(sets.precast.WS['King\'s Justice'], {})
-    sets.precast.WS['King\'s Justice'].MS = set_combine(sets.precast.WS['King\'s Justice'], {ammo="Yetshila +1",back="Cavaros Mantle",feet="Huginn Gambieras"})
-    
-    sets.precast.WS['Metatron Torment'] = set_combine(sets.precast.WS, {})
-    sets.precast.WS['Metatron Torment'].AccLow = set_combine(sets.precast.WS['Metatron Torment'], {})
-    sets.precast.WS['Metatron Torment'].AccHigh = set_combine(sets.precast.WS['Metatron Torment'].AccLow, {})
-    sets.precast.WS['Metatron Torment'].Attack = set_combine(sets.precast.WS['Metatron Torment'], {})
-    sets.precast.WS['Metatron Torment'].MS = set_combine(sets.precast.WS['Metatron Torment'], {ammo="Yetshila +1",back="Cavaros Mantle",feet="Huginn Gambieras"})
-    
-    sets.precast.WS['Fell Cleave'] = set_combine(sets.precast.WS, {})
-    sets.precast.WS['Fell Cleave'].AccLow = set_combine(sets.precast.WS['Fell Cleave'], {})
-    sets.precast.WS['Fell Cleave'].AccHigh = set_combine(sets.precast.WS['Fell Cleave'].AccLow, {})
-    sets.precast.WS['Fell Cleave'].Attack = set_combine(sets.precast.WS['Fell Cleave'], {})
-    sets.precast.WS['Fell Cleave'].MS = set_combine(sets.precast.WS['Fell Cleave'], {ammo="Yetshila +1",back="Cavaros Mantle",feet="Huginn Gambieras"})
-    
-    sets.precast.WS['Resolution'] = set_combine(sets.precast.WS, {})
-    sets.precast.WS['Resolution'].AccLow = set_combine(sets.precast.WS['Resolution'], {})
-    sets.precast.WS['Resolution'].AccHigh = set_combine(sets.precast.WS['Resolution'].AccLow, {})
-    sets.precast.WS['Resolution'].Attack = set_combine(sets.precast.WS['Resolution'], {})
-    sets.precast.WS['Resolution'].MS = set_combine(sets.precast.WS['Resolution'], {ammo="Yetshila +1",back="Cavaros Mantle",feet="Huginn Gambieras"})
-    ]]
 
     --------------------------------------
     -- Midcast sets
@@ -250,46 +211,7 @@ function init_gear_sets()
     sets.engaged.PDT = set_combine(sets.engaged, {})
     sets.engaged.AccLow.PDT = set_combine(sets.engaged.PDT, {})
     sets.engaged.AccHigh.PDT = set_combine(sets.engaged.AccLow.PDT, {})
-    
-    --[[sets.engaged.Conqueror = {}
-    sets.engaged.Conqueror.AccLow = set_combine(sets.engaged.Conqueror, {})
-    sets.engaged.Conqueror.AccHigh = set_combine(sets.engaged.Conqueror.AccLow, {})
-    sets.engaged.Conqueror.PDT = set_combine(sets.engaged.Conqueror, {})
-    sets.engaged.Conqueror.AccLow.PDT = set_combine(sets.engaged.Conqueror.PDT, {})
-    sets.engaged.Conqueror.AccHigh.PDT = set_combine(sets.engaged.Conqueror.AccLow.PDT, {})
-    -- Conqueror Aftermath Lv.3 sets
-    sets.engaged.Conqueror.AM3 = {}
-    sets.engaged.Conqueror.AccLow.AM3 = set_combine(sets.engaged.Conqueror.AM3, {})
-    sets.engaged.Conqueror.AccHigh.AM3 = set_combine(sets.engaged.Conqueror.AccLow.AM3, {})
-    sets.engaged.Conqueror.PDT.AM3 = set_combine(sets.engaged.Conqueror.AM3, {})
-    sets.engaged.Conqueror.AccLow.PDT.AM3 = set_combine(sets.engaged.Conqueror.PDT.AM3, {})
-    sets.engaged.Conqueror.AccHigh.PDT.AM3 = set_combine(sets.engaged.Conqueror.AccLow.PDT.AM3, {})
-    
-    sets.engaged.Ukonvasara = {}
-    sets.engaged.Ukonvasara.AccLow = set_combine(sets.engaged.Ukonvasara, {})
-    sets.engaged.Ukonvasara.AccHigh = set_combine(sets.engaged.Ukonvasara.AccLow, {})
-    sets.engaged.Ukonvasara.PDT = set_combine(sets.engaged.Ukonvasara, {})
-    sets.engaged.Ukonvasara.AccLow.PDT = set_combine(sets.engaged.Ukonvasara.PDT, {})
-    sets.engaged.Ukonvasara.AccHigh.PDT = set_combine(sets.engaged.Ukonvasara.AccLow.PDT, {})
-    
-    sets.engaged.Bravura = {}
-    sets.engaged.Bravura.AccLow = set_combine(sets.engaged.Bravura, {})
-    sets.engaged.Bravura.AccHigh = set_combine(sets.engaged.Bravura.AccLow, {})
-    sets.engaged.Bravura.PDT = set_combine(sets.engaged.Bravura, {})
-    sets.engaged.Bravura.AccLow.PDT = set_combine(sets.engaged.Bravura.PDT, {})
-    sets.engaged.Bravura.AccHigh.PDT = set_combine(sets.engaged.Bravura.AccLow.PDT, {})
-    -- Bravura Aftermath sets, will only apply if aftermath, bravura, and hybridmode are on
-    sets.engaged.Bravura.PDT.AM = set_combine(sets.engaged.Bravura, {})
-    sets.engaged.Bravura.AccLow.PDT.AM = set_combine(sets.engaged.Bravura.PDT.AM , {})
-    sets.engaged.Bravura.AccHigh.PDT.AM = set_combine(sets.engaged.Bravura.AccLow.PDT.AM , {})
-    
-    sets.engaged.Ragnarok = {}
-    sets.engaged.Ragnarok.AccLow = set_combine(sets.engaged.Ragnarok, {})
-    sets.engaged.Ragnarok.AccHigh = set_combine(sets.engaged.Ragnarok.AccLow, {})
-    sets.engaged.Ragnarok.PDT = set_combine(sets.engaged.Ragnarok, {})
-    sets.engaged.Ragnarok.AccLow.PDT = set_combine(sets.engaged.Ragnarok.PDT, {})
-    sets.engaged.Ragnarok.AccHigh.PDT = set_combine(sets.engaged.Ragnarok.AccLow.PDT, {})
-    ]]
+
     --------------------------------------
     -- Two Handed sets
     --------------------------------------  
@@ -372,7 +294,7 @@ end
 -- Run after the default precast() is done.
 -- eventArgs is the same one used in job_precast, in case information needs to be persisted.
 function job_post_precast(spell, action, spellMap, eventArgs)
-    if spell.type == 'WeaponSkill' then
+    --[[if spell.type == 'WeaponSkill' then
             if is_sc_element_today(spell) and player.inventory['Gavialis Helm'] or player.wardrobe['Gavialis Helm'] then
                 equip(sets.WSDayBonus)
             end
@@ -386,14 +308,14 @@ function job_post_precast(spell, action, spellMap, eventArgs)
             if spell.english == "Upheaval" and world.day_element == 'Dark' then
                 equip(sets.Upheaval_shadow)
             end
-    end
+    end]]
 end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 function job_aftercast(spell, action, spellMap, eventArgs)
-    if spell.english == "Tomahawk" and not spell.interrupted then 
+    --[[if spell.english == "Tomahawk" and not spell.interrupted then 
         send_command('timers create "Tomahawk" 90 down')
-    end
+    end]]
 end
 
 -- Run after the default aftercast() is done.
@@ -417,7 +339,7 @@ end
 -- buff == buff gained or lost
 -- gain == true if the buff was gained, false if it was lost.
 function job_buff_change(buff, gain)
-    if buff == "Aftermath: Lv.3" or buff == "Aftermath" then
+    --[[if buff == "Aftermath: Lv.3" or buff == "Aftermath" then
         classes.CustomMeleeGroups:clear()
         if (buff == "Aftermath: Lv.3" and gain) or buffactive["Aftermath: Lv.3"] then
             if player.equipment.main == "Conqueror" then
@@ -453,7 +375,7 @@ function job_buff_change(buff, gain)
         equip({neck="Berserker's Torque"})
         else
         handle_equipping_gear(player.status)
-    end
+    end]]
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -462,7 +384,7 @@ end
 
 -- Return a customized weaponskill mode to use for weaponskill sets.
 -- Don't return anything if you're not overriding the default value.
-function get_custom_wsmode(spell, spellMap, default_wsmode)
+--[[function get_custom_wsmode(spell, spellMap, default_wsmode)
     local wsmode = ''
     if state.Buff['Mighty Strikes'] then
         wsmode = wsmode .. 'MS'
@@ -470,15 +392,15 @@ function get_custom_wsmode(spell, spellMap, default_wsmode)
         if wsmode ~= '' then
             return wsmode
     end
-end
+end]]
 
 -- Modify the default melee set after it was constructed.
-function customize_melee_set(meleeSet)
+--[[function customize_melee_set(meleeSet)
     if buffactive["Mighty Strikes"] then
         meleeSet = set_combine(meleeSet, sets.buff.MS)
     end
     return meleeSet
-end
+end]]
 
 -- Called by the 'update' self-command, for common needs.
 -- Set eventArgs.handled to true if we don't want automatic equipping of gear.
@@ -526,7 +448,8 @@ end
 -- Select default macro book on initial load or subjob change.
 function select_default_macro_book()
     -- Default macro set/book
-    if player.sub_job == 'WAR' then
+    set_macro_page(5, 20)
+    --[[if player.sub_job == 'WAR' then
         set_macro_page(5, 20)
     elseif player.sub_job == 'NIN' then
         set_macro_page(5, 20)
@@ -534,7 +457,7 @@ function select_default_macro_book()
         set_macro_page(5, 20)
     else
         set_macro_page(5, 20)
-    end
+    end]]
 end
 
 function update_combat_weapon()
@@ -542,16 +465,16 @@ function update_combat_weapon()
 end
 
 function update_melee_groups()
-    classes.CustomMeleeGroups:clear()
+    --[[classes.CustomMeleeGroups:clear()
     if buffactive['Aftermath: Lv.3'] and player.equipment.main == "Conqueror" then
         classes.CustomMeleeGroups:append('AM3')
     end
     if buffactive.Aftermath and player.equipment.main == "Bravura" and state.HybridMode.value == 'PDT' then
         classes.CustomMeleeGroups:append('AM')
-    end
+    end]]
 end
 
-function is_sc_element_today(spell)
+--[[function is_sc_element_today(spell)
     if spell.type ~= 'WeaponSkill' then
         return
     end
@@ -566,7 +489,7 @@ function is_sc_element_today(spell)
     else
         return false
     end
-end
+end]]
 
 function update_combat_form()
     if cf_check then --checks if cf_check() exists

@@ -172,17 +172,17 @@ function init_gear_sets()
 
     sets.precast.WS['Savage Blade'] = {
         ammo="Ginsen",
-        head="Meghanada Visor +1",
+        head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
         body="Meg. Cuirie +2",
         hands="Meg. Gloves +2",
         legs="Meg. Chausses +2",
         feet="Meg. Jam. +1",
         neck="Sanctity Necklace",
-        waist="Sailfi Belt",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Begrudging Ring",
-        right_ring="Rajas Ring",
+        waist="Dynamic Belt",
+        left_ear="Bladeborn Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Meghanada Ring",
+        right_ring="Begrudging Ring",
     }
 
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})

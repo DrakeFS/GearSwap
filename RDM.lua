@@ -630,7 +630,7 @@ end
    
 
 function job_aftercast(spell, action, spellMap, eventArgs)
-    if not spell.interrupted then
+    --[[if not spell.interrupted then
         if spell.english == 'Break' or spell.english == 'Breakga' then
             send_command('@timers c "'..spell.english..' ['..spell.target.name..']" 30 down spells/00220.png')
         elseif spell.english == 'Sleep' or spell.english == 'Sleepga' then
@@ -639,7 +639,7 @@ function job_aftercast(spell, action, spellMap, eventArgs)
             send_command('@timers c "'..spell.english..' ['..spell.target.name..']" 90 down spells/00220.png')
         end
         classes.CustomIdleGroups:clear()
-    end
+    end]]
     if state.CastingMode.value == 'Swap' then
         equip({main = mainhand, sub = offhand})
     end
