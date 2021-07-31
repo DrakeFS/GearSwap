@@ -24,8 +24,9 @@ function job_setup()
     max_enhancing_skill = S{'Enfire', 'Enwater', 'Enthunder', 'Enstone', 'Enaero', 'Enblizzard', 'Temper', 'Temper II'}
     
     state.NukeElement = M{['description'] = 'Nuke Element'}
-    state.MACC = M(false, 'MACC')
+    state.MACC = M('off', 'MACC')
     state.MagicBurst = M(false, 'Magic Burst')
+    state.WeaponMode= M('Normal', 'Swap')
 
     on_job_change()
 
@@ -39,14 +40,14 @@ end
 function user_setup()
     state.OffenseMode:options('None', 'Enspell')
     state.HybridMode:options('Normal')
-    state.CastingMode:options('Normal', 'Swap')
     state.IdleMode:options('Normal', 'Leveling')
     state.NukeElement:options('Fire', 'Blizzard', 'Aero', 'Stone', 'Thunder', 'Water')
     
-    send_command('bind ^q gs c cycle CastingMode')
+    send_command('bind ^q gs c cycle WeaponMode')
     send_command('bind !q gs c toggle MagicBurst')
-    send_command('bind !- gs c toggle MACC')
+    --send_command('bind !- gs c toggle MACC')
     send_command('bind ^` gs c cycle NukeElement')
+    send_command('bind @= gs c cycle MACC')
 
     update_combat_form()
 end
@@ -60,8 +61,9 @@ function init_gear_sets()
     gear.RdmCTP = {name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20',}}
     gear.RdmCMB = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10','Mag. Evasion+15',}}
     gear.RdmCES = {name="Ghostfyre Cape", augments={'Enfb.mag. skill +6','Enha.mag. skill +10',}}
-    
-    sets.MACC = {range = "Ullr Bow"}
+            
+    sets.MACC = {range="Ullr", ammo= empty,}
+
     -- Precast Sets
     
     -- Precast sets to enhance JAs
@@ -81,7 +83,7 @@ function init_gear_sets()
     left_ring="Kishar Ring",
     }
 
-    sets.precast.FC['Impact'] = set_combine(sets.precast.FC, {head="empty", body="Twilight Cloak"})
+    sets.precast.FC['Impact'] = set_combine(sets.precast.FC, {head=empty, body="Twilight Cloak"})
 
     -- Weaponskill sets
     
@@ -352,8 +354,8 @@ function init_gear_sets()
     feet="Jhakri Pigaches +2",
     neck="Sanctity Necklace",
     waist={ name="Acuity Belt +1", augments={'Path: A',}},
-    left_ear="Novio Earring",
-    right_ear="Malignance Earring",
+    left_ear="Malignance Earring",
+    right_ear="Hermitic Earring",
     left_ring="Ayanmo Ring",
     right_ring="Jhakri Ring",
     back = gear.RdmCMB,
@@ -561,12 +563,12 @@ function job_post_precast(spell, action, spellMap, eventArgs)
 end
 
 function job_midcast(spell, action, spellMap, eventArgs)
-    if state.CastingMode.value == 'Swap' then
+    if state.WeaponMode.value == 'Swap' then
         
         mainhand = player.equipment.main
         offhand = player.equipment.sub
 
-        local spellName = spell.name
+        --local spellName = spell.name
 
         if spell.skill == 'Enhancing Magic' then
             if state.CombatForm.value == 'DW' then
@@ -621,9 +623,9 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             equip(sets.magic_burst)
         end
     end
-    if state.MACC.value then 
-        if spell.name == 'Frazzle II' or spell.name == 'Silence' then
-            equip(set_combine(sets.MACC, {ammo="none"}))
+    if state.MACC.value == 'MACC' then 
+        if spell.name == 'Frazzle II' or spell.name == 'Silence' or spell.name:contains('Sleep')then
+            equip(set_combine(sets.midcast.Enfeebling, sets.MACC))
         end
     end
 end
@@ -640,7 +642,7 @@ function job_aftercast(spell, action, spellMap, eventArgs)
         end
         classes.CustomIdleGroups:clear()
     end]]
-    if state.CastingMode.value == 'Swap' then
+    if state.WeaponMode.value == 'Swap' then
         equip({main = mainhand, sub = offhand})
     end
 end

@@ -199,9 +199,9 @@ function init_gear_sets()
     
     --3rd/4th/5th dummy song sets
     
-    sets.midcast['Army\'s Paeon'] = {range="Terpander",}
-    sets.midcast['Knight\'s Minne'] = {range="Terpander",}
-    sets.midcast['Valor Minuet'] = {range="Terpander",}
+    sets.midcast['Army\'s Paeon'] = {range="Daurdabla",}
+    sets.midcast['Knight\'s Minne'] = {range="Daurdabla",}
+    sets.midcast['Valor Minuet'] = {range="Daurdabla",}
     
     -- For song defbuffs (duration primary, accuracy secondary)
     sets.midcast.SongDebuff = {
@@ -398,11 +398,11 @@ end]]
 
 -- Handle notifications of general user state change.
 function job_state_change(stateField, newValue, oldValue)
-    if state.WeaponLock.value == true then
+    --[[if state.WeaponLock.value == true then
         disable('main','sub')
     else
         enable('main','sub')
-    end
+    end]]
 end
 
 -------------------------------------------------------------------------------------------------------------------

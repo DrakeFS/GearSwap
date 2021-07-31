@@ -43,9 +43,22 @@ sets.midcast.Cure = {
     back="Solemnity Cape",
 } 
 
+sets.midcast.Regen = {
+    main="Bolelabunga",
+    head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
+    body="Kaykaus Bliaut",
+    hands="Kaykaus Cuffs",
+    legs="Kaykaus Tights",
+    feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}}, 
+    waist="Korin Obi",
+    left_ring="Lebeche Ring",
+    back="Solemnity Cape",
+} 
+
 sets.idle = {
+    main="Bolelabunga",
     head="Acad. Mortar. +2",
-    body="Annoint. Kalasiris",
+    body="Jhakri Robe +1",
     neck="Sanctity Necklace",
     waist="Embla Sash",
     left_ring="Defending Ring",
