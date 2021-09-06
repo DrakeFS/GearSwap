@@ -63,8 +63,8 @@ function init_gear_sets()
         waist = "Chaac Belt",
     }
 	
-    sets.enmity =  {}
-    
+    sets.Enmity =  {}
+
 	--------------------------------------
     -- Precast sets
     --------------------------------------
@@ -322,7 +322,7 @@ function job_precast(spell, action, spellMap, eventArgs)
         cancel_spell()
     end
 
-    if state.DefenseMode == "Physical" or state.DefenseMode == "Magical" then
+    if state.DefenseMode.current ~= "None" then
         if spell.action_type == 'Ability' then
             equip(sets.Enmity)
             equip(sets.precast.JA[spell])
