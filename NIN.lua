@@ -2,6 +2,8 @@
 -- Setup functions for this job.  Generally should not be modified.
 -------------------------------------------------------------------------------------------------------------------
 
+-- To use this LUAs shadow casting logic create a macro
+
 -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
@@ -92,6 +94,8 @@ function init_gear_sets()
     -- Snapshot for ranged
     sets.precast.RA = {}
 	
+    sets.precast.enmity =  {}
+    
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
@@ -141,8 +145,7 @@ function init_gear_sets()
     sets.midcast.NinjutsuBuff = {}
 
     sets.midcast.RA = {}
-    -- Hachiya Hakama/Thurandaut Tights +1
-
+    
     --------------------------------------
     -- Idle/resting/defense/etc sets
     --------------------------------------
@@ -287,7 +290,7 @@ function job_self_command(cmdParams, eventArgs)
 end
 
 function handle_Shadows()
-    
+    -- Always trys to cast San > Ni > Ichi
     local spell_recasts = windower.ffxi.get_spell_recasts()
 
     if spell_recasts[340] > 0 then
@@ -317,6 +320,13 @@ function job_precast(spell, action, spellMap, eventArgs)
         cancel_spell()
     elseif spell.name == 'Utsusemi: Ni' and ShadowType == 'San' and buffactive['Copy Image (4+)'] then
         cancel_spell()
+    end
+
+    if state.DefenseMode == "Physical" or state.DefenseMode == "Magical" then
+        if spell.action_type == 'Ability' then
+            equip(sets.Enmity)
+            equip(sets.precast.JA[spell])
+        end
     end
 end
 
