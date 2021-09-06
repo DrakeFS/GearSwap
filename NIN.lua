@@ -2,7 +2,8 @@
 -- Setup functions for this job.  Generally should not be modified.
 -------------------------------------------------------------------------------------------------------------------
 
--- To use this LUAs shadow casting logic create a macro
+-- To use this LUAs shadow casting logic create a macro as such
+-- /con gs c shadow
 
 -- Initialization function for this job file.
 function get_sets()
@@ -132,13 +133,13 @@ function init_gear_sets()
     -- Midcast sets
     --------------------------------------
 
-    sets.midcast.FastRecast = {}
+    sets.midcast.FastRecast = setcombine(sets.precast.FC, {})
 	
-    sets.midcast.Utsusemi = set_combine(sets.midcast.SelfNinjutsu, {})
+    sets.midcast.Utsusemi = set_combine(sets.precast.FC.Utsusemi, {})
 
     sets.midcast.ElementalNinjutsu = {}
 
-    sets.midcast.ElementalNinjutsu.Resistant = set_combine(sets.midcast.Ninjutsu, {})
+    sets.midcast.ElementalNinjutsu.Resistant = set_combine(sets.midcast.ElementalNinjutsu, {})
 
     sets.midcast.NinjutsuDebuff = {}
 
