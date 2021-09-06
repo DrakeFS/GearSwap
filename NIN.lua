@@ -63,6 +63,8 @@ function init_gear_sets()
         waist = "Chaac Belt",
     }
 	
+    sets.enmity =  {}
+    
 	--------------------------------------
     -- Precast sets
     --------------------------------------
@@ -94,8 +96,6 @@ function init_gear_sets()
     -- Snapshot for ranged
     sets.precast.RA = {}
 	
-    sets.precast.enmity =  {}
-    
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
