@@ -44,6 +44,7 @@ end
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
+    gear.DrgCTP = {name="Brigantia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+6','"Dbl.Atk."+10',}}
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
@@ -94,19 +95,19 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-    ammo="Ginsen",
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
-    neck="Sanctity Necklace",
-    waist="Sailfi Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Begrudging Ring",
-    right_ring="Sulevia's Ring",
-    back="Atheling Mantle",
+        ammo="Oshasha's Treatise",
+        head="Sulevia's Mask +2",
+        body="Sulevia's Plate. +2",
+        hands="Sulev. Gauntlets +2",
+        legs="Sulevi. Cuisses +2",
+        feet="Sulev. Leggings +2",
+        neck="Rep. Plat. Medal",
+        waist="Sailfi Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Begrudging Ring",
+        right_ring="Sulevia's Ring",
+        back=gear.DrgCTP,
     }
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
     
@@ -168,18 +169,18 @@ function init_gear_sets()
     
     -- Defense sets
     sets.defense.PDT = {
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
-    neck="Loricate Torque",
-    waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Defending Ring",
-    right_ring="Sulevia's Ring",
-    back="Solemnity Cape",
+        head="Sulevia's Mask +2",
+        body="Sulevia's Plate. +2",
+        hands="Sulev. Gauntlets +2",
+        legs="Sulevi. Cuisses +2",
+        feet="Sulev. Leggings +2",
+        neck="Loricate Torque",
+        waist="Dynamic Belt",
+        left_ear="Steelflash Earring",
+        right_ear="Bladeborn Earring",
+        left_ring="Defending Ring",
+        right_ring="Sulevia's Ring",
+        back="Solemnity Cape",
     }
 
     sets.defense.Reraise = set_combine(sets.defense.PDT, {})
@@ -199,19 +200,19 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-    ammo="Ginsen",
-    head={ name="Founder's Corona", augments={'DEX+3',}},
-    body={ name="Found. Breastplate", augments={'Accuracy+5','Attack+3','"Mag.Atk.Bns."+1',}},
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet={ name="Founder's Greaves", augments={'VIT+10','Accuracy+15','"Mag.Atk.Bns."+15','Mag. Evasion+15',}},
-    neck="Clotharius Torque",
-    waist="Sailfi Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Begrudging Ring",
-    right_ring="Sulevia's Ring",
-    back="Atheling Mantle",
+        ammo="Ginsen",
+        head={ name="Founder's Corona", augments={'DEX+3',}},
+        body="Flamma Korazin +2",
+        hands="Flam. Manopolas +2",
+        legs="Flamma Dirs +2",
+        feet="Flam. Gambieras +2",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Sherida Earring",
+        right_ear="Steelflash Earring",
+        left_ring="Begrudging Ring",
+        right_ring="Sulevia's Ring",
+        back= gear.DrgCTP,
     }
 
     sets.engaged.Mid = set_combine(sets.engaged, {})

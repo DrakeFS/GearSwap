@@ -335,6 +335,7 @@ function init_gear_sets()
     -- EG: sets.engaged.Dagger.Accuracy.Evasion
 
     sets.engaged = {
+        main = "Aeneas",
         ammo="Ginsen",
         head="Aya. Zucchetto +1",
         body="Ayanmo Corazza +1",

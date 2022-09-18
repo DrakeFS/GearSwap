@@ -133,7 +133,7 @@ function init_gear_sets()
     -- Midcast sets
     --------------------------------------
 
-    sets.midcast.FastRecast = setcombine(sets.precast.FC, {})
+    sets.midcast.FastRecast = set_combine(sets.precast.FC, {})
 	
     sets.midcast.Utsusemi = set_combine(sets.precast.FC.Utsusemi, {})
 

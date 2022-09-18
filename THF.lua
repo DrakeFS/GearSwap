@@ -69,7 +69,7 @@ function init_gear_sets()
         body = gear.HercBTH,
         hands = {name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
         legs = gear.HercLTH,
-        feet = "Skulk. Poulaines +1",
+        feet = "Skulk. Poulaines +2",
         waist = "Chaac Belt",
     }
     -- sets.ExtraRegen = {head="Ocelomeh Headpiece +1"}
