@@ -195,7 +195,7 @@ function init_gear_sets()
     --sets.midcast['Adventurer\'s Dirge'] = {hands="Bihu Cuffs +3"}
     --sets.midcast['Foe Sirvente'] = {head="Bihu Roundlet +3"}
     --sets.midcast['Magic Finale'] = {legs="Fili Rhingrave +1"}
-    sets.midcast['Sentinel\'s Scherzo'] = {feet="Fili Cothurnes +1"}
+    sets.midcast['Sentinel\'s Scherzo'] = {feet="Fili Cothurnes +2"}
     
     --3rd/4th/5th dummy song sets
     
@@ -293,7 +293,7 @@ function init_gear_sets()
         body="Annoint. Kalasiris",
         hands="Aya. Manopolas +1",
         legs="Inyanga Shalwar +2",
-        feet="Fili Cothurnes +1",
+        feet="Fili Cothurnes +2",
         neck="Loricate Torque",
         left_ring="Defending Ring",
         right_ring="Inyanga Ring",

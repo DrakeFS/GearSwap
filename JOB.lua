@@ -4,7 +4,7 @@
 -- load it for Blue Mage                      --    Blue Mage = BLU   Corsair = COR   Puppetmaster = PUP  Dancer = DNC       Scholar = SCH
 ------------------------------------------------    Geomancer = GEO   Rune Fencer = RUN
 --[[
-    Microsoft Visual Studio Code or Notepad++ are the recommended editors for editing LUA files.
+    Microsoft Visual Studio Code or Notepad++ are my recommended editors for editing LUA files.
 
     You can use 
         //gs export 
@@ -92,7 +92,7 @@ sets.midcast = {} -- Casting Set
 
 -- sets.midcast.RA = {} -- Ranged TP Set.  Ignore if uneeded, remove the first "--" to activate.
 
--- sets.midcast['Spell Name or Magic Type'] = set_combine(sets.midcast,{gear goes here}) -- Specific casting set for a spell or magic type (ie. Enhancing Magic).  Ignore if uneeded, remove the first "--" to activate.
+-- sets.midcast['Spell Name or Magic Type'] = set_combine(sets.midcast, {gear goes here}) -- Specific casting set for a spell or magic type (ie. Enhancing Magic).  Ignore if uneeded, remove the first "--" to activate.
 
 sets.defense.PDT = {}  -- Defense set, Press F10 to equip, Alt-F12 to unequip
 

@@ -48,7 +48,8 @@ function init_gear_sets()
     --------------------------------------
     
     --JSE Gear definitions
-    gear.DrgCTP = {name="Brigantia's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}}
+    gear.DrgCTP = {name="Brigantia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}}
+    gear.DrgCWS = {name="Brigantia's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}}
     
     --TH Tag set
     sets.TreasureHunter = {
@@ -102,7 +103,7 @@ function init_gear_sets()
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Pernicious Ring",
         right_ring="Petrov Ring",
-        back=gear.DrgCTP,
+        back=gear.DrgCWS,
     }
            
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
@@ -172,13 +173,13 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-        ammo="Ginsen",
-        head="Sulevia's Mask +2",
+        ammo="Coiste Bodhar",
+        head="Flam. Zucchetto +2",
         body="Flamma Korazin +2",
-        hands="Sulev. Gauntlets +2",
+        hands="Flam. Manopolas +2",
         legs="Flamma Dirs +2",
-        feet="Ostro Greaves",
-        neck="Shulmanu Collar",
+        feet="Flam. Gambieras +2",
+        neck="Lissome Necklace",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         left_ear="Sherida Earring",
         right_ear="Cessance Earring",
@@ -187,23 +188,9 @@ function init_gear_sets()
         back=gear.DrgCTP,
     }
 
-    sets.engaged.THand = sets.engaged
+    sets.engaged.THand = set_combine(sets.engaged, {})
 
-    sets.engaged.DW = {
-        ammo="Ginsen",
-        head="Sulevia's Mask +2",
-        body="Flamma Korazin +2",
-        hands="Sulev. Gauntlets +2",
-        legs="Flamma Dirs +2",
-        feet="Ostro Greaves",
-        neck="Shulmanu Collar",
-        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Sherida Earring",
-        right_ear="Cessance Earring",
-        left_ring="Dreki Ring",
-        right_ring="Petrov Ring",
-        back=gear.DrgCTP,
-    }        
+    sets.engaged.DW = set_combine(sets.engaged, {})
 
 end
 

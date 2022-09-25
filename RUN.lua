@@ -278,19 +278,19 @@ function init_gear_sets()
     sets.precast.WS['Upheaval'] = sets.precast.WS['Resolution']
     sets.precast.WS['Full Break'] = sets.precast.WS['Shockwave']
     sets.precast.WS['Savage Blade'] = {
-    ammo="Aqreqaq Bomblet",
-    head={ name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}},
-    body="Ayanmo Corazza +2",
-    hands="Meg. Gloves +1",
-    legs="Meg. Chausses +1",
-    feet="Aya. Gambieras +2",
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
-    left_ear="Odr Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Petrov Ring",
-    right_ring="Apate Ring",
-    back="Xucau Mantle",
+        ammo="Aqreqaq Bomblet",
+        head={ name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}},
+        body="Ayanmo Corazza +2",
+        hands="Meg. Gloves +1",
+        legs="Meg. Chausses +1",
+        feet="Aya. Gambieras +2",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Ishvara Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Petrov Ring",
+        right_ring="Apate Ring",
+        back="Xucau Mantle",
     }
 
     ------------------------------------------------------------------------------------------------
@@ -350,15 +350,15 @@ function init_gear_sets()
     sets.defense.Knockback = {}
 
     sets.defense.PDT = {
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Loricate Torque +1",
-    waist="Flume Belt",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
+        hands="Aya. Manopolas +2",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Loricate Torque +1",
+        waist="Flume Belt",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
     }
 
     sets.defense.MDT = {}
@@ -372,35 +372,35 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.engaged = {
-    ammo="Ginsen",
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Clotharius Torque",
-    waist="Windbuffet Belt +1",
-    left_ear="Sherida Earring",
-    right_ear="Cessance Earring",
-    left_ring="Pernicious Ring",
-    right_ring="Petrov Ring",
+        ammo="Ginsen",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
+        hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs="Aya. Cosciales +2",
+        feet="Aya. Gambieras +2",
+        neck="Clotharius Torque",
+        waist="Windbuffet Belt +1",
+        left_ear="Sherida Earring",
+        right_ear="Cessance Earring",
+        left_ring="Pernicious Ring",
+        right_ring="Petrov Ring",
     }
     
     sets.engaged.THand = sets.enganged
     
     sets.engaged.DW = {
-    ammo="Ginsen",
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Clotharius Torque",
-    waist="Windbuffet Belt +1",
-    left_ear="Suppanomimi",
-    right_ear="Eabani Earring",
-    left_ring="Pernicious Ring",
-    right_ring="Petrov Ring",
+        ammo="Ginsen",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
+        hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs="Aya. Cosciales +2",
+        feet="Aya. Gambieras +2",
+        neck="Clotharius Torque",
+        waist="Windbuffet Belt +1",
+        left_ear="Suppanomimi",
+        right_ear="Eabani Earring",
+        left_ring="Pernicious Ring",
+        right_ring="Petrov Ring",
     }
 
     sets.engaged.LowAcc = set_combine(sets.engaged, {})
@@ -419,14 +419,14 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.Hybrid = {
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Loricate Torque +1",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
+        hands="Aya. Manopolas +2",
+        legs="Aya. Cosciales +2",
+        feet="Aya. Gambieras +2",
+        neck="Loricate Torque +1",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
     }
 
     sets.engaged.DT = set_combine(sets.engaged, sets.Hybrid)

@@ -88,7 +88,7 @@ function init_gear_sets()
         sub="Sors Shield",
         ammo="Impatiens",
         head="Theo. Cap +1",
-        body="Ebers Bliaud",
+        body="Ebers Bliaut",
         hands="Theo. Mitts +1",
         legs="Ebers Pantaloons",
         feet="Theo. Duckbills +1",
@@ -105,7 +105,7 @@ function init_gear_sets()
         sub="Sors Shield",
         ammo="Impatiens",
         head="Theo. Cap +1",
-        body="Ebers Bliaud",
+        body="Ebers Bliaut",
         hands="Theo. Mitts +1",
         legs="Ebers Pantaloons",
         feet="Theo. Duckbills +1",
@@ -163,7 +163,7 @@ function init_gear_sets()
         sub="Sors Shield",
         ammo="Impatiens",
         head="Aya. Zucchetto +2",
-        body="Ebers Bliaud",
+        body="Ebers Bliaut",
         hands="Aya. Manopolas +2",
         legs="Assid. Pants +1",
         feet="Aya. Gambieras +2",
@@ -201,6 +201,7 @@ function init_gear_sets()
     
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
+        ammo="Jukukik Feather",
         head="Aya. Zucchetto +2",
         body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +2",
@@ -208,9 +209,9 @@ function init_gear_sets()
         feet="Aya. Gambieras +2",
         neck="Clotharius Torque",
         waist="Windbuffet Belt +1",
-        left_ear="Steelfash Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Apate Ring",
+        left_ear="Crep. Earring",
+        right_ear="Cessance Earring",
+        left_ring="Petrov Ring",
         right_ring="Pernicious Ring",
         back="Solemnity Cape",
     }
@@ -239,17 +240,11 @@ end
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
 function job_update(cmdParams, eventArgs)
-    update_combat_form()
+    if cf_check then --checks if cf_check() exists
+        cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Dagna-Globals.lua
+    end 
 end
 
-function update_combat_form()
-    -- Check for H2H or single-wielding
-    if player.equipment.sub == "Sors Shield" or player.equipment.sub == 'empty' then
-        state.CombatForm:reset()
-    else
-        state.CombatForm:set('DW')
-    end
-end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 --[[function job_precast(spell, action, spellMap, eventArgs)

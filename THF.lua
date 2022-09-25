@@ -125,19 +125,19 @@ function init_gear_sets()
 
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-    ammo="Jukukik Feather",
-    head="Malignance Chapeau",
-    body="Mummu Jacket +1",
-    hands="Mummu Wrists +1",
-    legs=gear.SamTTP,
-    feet=gear.HercBTP,
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Rajas Ring",
-    right_ring="Mummu Ring",
-    back="Sacro Mantle",
+        ammo="Jukukik Feather",
+        head="Malignance Chapeau",
+        body="Mummu Jacket +1",
+        hands="Mummu Wrists +1",
+        legs=gear.SamTTP,
+        feet=gear.HercBTP,
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Ishvara Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Rajas Ring",
+        right_ring="Mummu Ring",
+        back="Sacro Mantle",
     }
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {ammo="Honed Tathlum"})
 
@@ -158,18 +158,14 @@ function init_gear_sets()
     sets.precast.WS['Dancing Edge'].SATA = set_combine(sets.precast.WS['Dancing Edge'], {})
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
-    ammo="C. Palug Stone",
-    head="Mummu Bonnet +1",
-    body="Meg. Cuirie +1",
-    legs="Mummu Kecks +1",
-    feet="Mummu Gamash. +1",
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
-    left_ear="Odr Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Mummu Ring",
-    right_ring="Apate Ring",
-    back="Sacro Mantle",
+        ammo="C. Palug Stone",
+        ead="Mummu Bonnet +1",
+        body="Meg. Cuirie +1",
+        legs="Mummu Kecks +1",
+        feet="Mummu Gamash. +1",
+        right_ear="Odr Earring",
+        left_ring="Apate Ring",
+        back="Sacro Mantle",
     })
     sets.precast.WS['Evisceration'].Acc = set_combine(sets.precast.WS['Evisceration'], {})
     -- sets.precast.WS['Evisceration'].Mod = set_combine(sets.precast.WS['Evisceration'], {})
@@ -202,18 +198,12 @@ function init_gear_sets()
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
     
     sets.precast.WS['Savage Blade'] = {
-    ammo="Aqreqaq Bomblet",
-    head="Meghanada Visor +1",
-    body="Rawhide Vest",
-    hands="Meg. Gloves +1",
-    legs=gear.SamTTP,
-    feet="Meg. Jam. +2",
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
-    left_ear="Steelflash Earring",
-    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-    left_ring="Rajas Ring",
-    right_ring="Apate Ring",
+        ammo="Aqreqaq Bomblet",
+        head="Meghanada Visor +1",
+        body="Rawhide Vest",
+        hands="Meg. Gloves +1",
+        feet="Meg. Jam. +2",
+        right_ring="Apate Ring",
     }
     
     --------------------------------------
@@ -242,19 +232,17 @@ function init_gear_sets()
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 
     sets.idle = {
-    ammo="Ginsen",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands="Malignance Gloves",
-    legs="Mummu Kecks +1",
-    feet="Jute Boots +1",
-    neck="Sanctity Necklace",
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Sanctity Necklace",
+        waist="Windbuffet Belt +1",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Solemnity Cape",
     }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
@@ -262,29 +250,31 @@ function init_gear_sets()
     sets.idle.Weak = {}
     
     sets.idle.HP = {
-    ammo="Aqreqaq Bomblet",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands="Malignance Gloves",
-    legs="Mummu Kecks +1",
-    feet="Mummu Gamash. +1",
-    neck="Sanctity Necklace",
-    left_ear="Eabani Earring",
-    right_ear="Upsurge Earring",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Xucau Mantle",
+        ammo="Aqreqaq Bomblet",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Mummu Kecks +1",
+        feet="Mummu Gamash. +1",
+        neck="Sanctity Necklace",
+        left_ear="Eabani Earring",
+        right_ear="Upsurge Earring",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Xucau Mantle",
     }
     -- Defense sets
 
     sets.defense.Evasion = {
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands="Malignance Gloves",
-    neck="Loricate Torque +1",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
+        neck="Loricate Torque +1",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Solemnity Cape",
     }
 
     sets.defense.PDT = sets.defense.Evasion
@@ -298,44 +288,42 @@ function init_gear_sets()
 
     -- Normal melee group
     sets.engaged = {    
-    ammo="Ginsen",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands=gear.AdhGTP,
-    legs=gear.SamTTP,
-    feet=gear.HercBTP,
-    neck="Assassin's Gorget",
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Rajas Ring",
-    right_ring="Pernicious Ring",
-    back="Sacro Mantle",
+        ammo="Ginsen",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands=gear.AdhGTP,
+        legs=gear.SamTTP,
+        feet=gear.HercBTP,
+        neck="Assassin's Gorget",
+        waist="Windbuffet Belt +1",
+        left_ear="Cessance Earring",
+        right_ear="Crep. Earring",
+        left_ring="Rajas Ring",
+        right_ring="Pernicious Ring",
+        back="Sacro Mantle",
     }
     
     sets.engaged.Acc = set_combine(sets.engaged,{
-    ammo="C. Palug Stone",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands="Malignance Gloves",
-    legs="Mummu Kecks +1",
-    feet="Jute Boots",
-    neck="Assassin's Gorget",
-    waist="Anguinus Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Mummu Ring",
-    right_ring="Beeline Ring",
-    back="Canny Cape",
+        ammo="C. Palug Stone",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Mummu Kecks +1",
+        feet="Jute Boots",
+        neck="Assassin's Gorget",
+        waist="Anguinus Belt",
+        left_ring="Mummu Ring",
+        right_ring="Beeline Ring",
+        back="Canny Cape",
     })
 
     sets.engaged.Subtle = set_combine(sets.engaged,{
-    neck="Bathy Choker",
-    head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
-    hands=gear.HercGMB,
-    feet=gear.HercBTP,
-    left_ring="Beeline Ring",
-    right_ring="Rajas Ring",
+        neck="Bathy Choker",
+        head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
+        hands=gear.HercGMB,
+        feet=gear.HercBTP,
+        left_ring="Beeline Ring",
+        right_ring="Rajas Ring",
     })
     -- Mod set for trivial mobs (Skadi+1)
     -- sets.engaged.Mod = {}
@@ -344,38 +332,38 @@ function init_gear_sets()
     -- sets.engaged.Mod2 = {}
 
     sets.engaged.Evasion = set_combine(sets.engaged,{
-    head="Malignance Chapeau",
-    neck="Loricate Torque +1",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
+        head="Malignance Chapeau",
+        neck="Loricate Torque +1",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Solemnity Cape",
     })
     sets.engaged.Acc.Evasion = set_combine(sets.engaged,{})
 
     sets.engaged.PDT = set_combine(sets.engaged,{
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    neck="Loricate Torque +1",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        neck="Loricate Torque +1",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Solemnity Cape",
     })
     sets.engaged.Acc.PDT = set_combine(sets.engaged,{})
     
     sets.engaged.HP = {
-    ammo="Aqreqaq Bomblet",
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands="Malignance Gloves",
-    legs="Mummu Kecks +1",
-    feet="Mummu Gamash. +1",
-    neck="Sanctity Necklace",
-    waist="Windbuffet Belt +1",
-    left_ear="Eabani Earring",
-    right_ear="Upsurge Earring",
-    left_ring="Vocane Ring",
-    right_ring="Defending Ring",
-    back="Xucau Mantle",
+        ammo="Aqreqaq Bomblet",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Mummu Kecks +1",
+        feet="Mummu Gamash. +1",
+        neck="Sanctity Necklace",
+        waist="Windbuffet Belt +1",
+        left_ear="Eabani Earring",
+        right_ear="Upsurge Earring",
+        left_ring="Vocane Ring",
+        right_ring="Defending Ring",
+        back="Xucau Mantle",
     }
 
 end

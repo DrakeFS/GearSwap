@@ -81,7 +81,7 @@ function init_gear_sets()
     --sets.buff.Convergence = {}
     --sets.buff.Diffusion = {feet="Luhlaza Charuqs +3"}
     sets.buff.Enchainment = {body="Luhlaza Jubbah"}
-    sets.buff.Efflux = {legs='Hashshin Tayt'}
+    sets.buff.Efflux = {legs='Hashishin Tayt +2'}
 
     
     -- Precast Sets
@@ -101,9 +101,9 @@ function init_gear_sets()
     sets.precast.FC = {
         ammo="Impatiens",
         head = gear.HercHTH,
-        body="Hashishin Mintan",
+        body="Hashishin Mintan +2",
         hands={ name="Leyline Gloves", augments={'Accuracy+7','"Mag.Atk.Bns."+10',}},
-        legs=gear.LengoFC,
+        legs="Aya. Cosciales +2",
         feet="Jhakri Pigaches +2",
         left_ring="Jhakri Ring",
         right_ring="Kishar Ring",
@@ -316,7 +316,7 @@ function init_gear_sets()
         --head="Luhlaza Keffiyeh",  
         body="Assim. Jubbah +3",
         hands="Assimilator's Bazubands +2",
-        legs="Hashishin Tayt",
+        legs="Hashishin Tayt +2",
         feet="Luhlaza Charuqs +3",
         neck="Mirage Stole +2",
         back="Cornflower Cape"
@@ -346,9 +346,6 @@ function init_gear_sets()
         legs="Carmine Cuisses +1",
         feet="Aya. Gambieras +2",
         neck="Sanctity Necklace",
-        waist="Windbuffet belt +1",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
         back=gear.BluCTP,
@@ -375,16 +372,12 @@ function init_gear_sets()
     
     -- Defense sets
     sets.defense.PDT = {    
-        ammo="Ginsen",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
-        waist="Windbuffet belt +1",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
         back=gear.BluCTP,
@@ -395,6 +388,7 @@ function init_gear_sets()
     sets.Kiting = {legs="Carmine Cuisses +1",}
 
     sets.Evasion = {
+        ammo="Amar Cluster",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
@@ -425,9 +419,8 @@ function init_gear_sets()
         feet=gear.HercFTP,
         neck="Mirage Stole +2", 
         waist="Windbuffet Belt +1",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Pernicious Ring",
+        left_ear="Cessance Earring",
+        right_ear="Crep. Earring",
         right_ring="Petrov Ring",
         back=gear.BluCTP,
     }
@@ -447,8 +440,8 @@ function init_gear_sets()
         feet="Aya. Gambieras +2",
         neck="Mirage Stole +2",
         waist="Anguinus Belt",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
+        left_ear="Cessance Earring",
+        right_ear="Crep. Earring",
         left_ring="Ayanmo Ring",
         right_ring="Beeline Ring",
         back=gear.BluCTP,
@@ -467,8 +460,8 @@ function init_gear_sets()
         feet=gear.HercFTP,
         neck="Mirage Stole +2",
         waist="Windbuffet Belt +1",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
+        left_ear="Cessance Earring",
+        right_ear="Crep. Earring",
         left_ring="Pernicious Ring",
         right_ring="Petrov Ring",
         back=gear.BluCTP,
@@ -503,7 +496,7 @@ function init_gear_sets()
         feet="Aya. Gambieras +2",
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist="Reiki Yotai",
-        left_ear="Steelflash Earring",
+        left_ear="Crep. Earring",
         right_ear="Odr Earring",
         left_ring="Begrudging Ring",
         right_ring="Ilabrat Ring",

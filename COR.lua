@@ -128,7 +128,7 @@ function init_gear_sets()
     -- Precast sets to enhance JAs
     
     sets.precast.JA['Triple Shot'] = {body="Navarch's Frac +2"}
-    sets.precast.JA['Snake Eye'] = {legs="Lanun Culottes"}
+    sets.precast.JA['Snake Eye'] = {legs="Lanun Trews"}
     sets.precast.JA['Wild Card'] = {feet="Lanun Bottes +2"}
     sets.precast.JA['Random Deal'] = {body="Lanun Frac"}
 
@@ -355,12 +355,9 @@ function init_gear_sets()
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
-        legs="Mummu Kecks +1",
-        feet={ name="Herculean Boots", augments={'DEX+9','"Triple Atk."+3','Accuracy+11 Attack+11',}},
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets",
         neck="Loricate Torque +1",
-        waist="Windbuffet Belt +1",
-        left_ear="Odr Earring",
-        right_ear="Cessance Earring",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
         back="Solemnity Cape",
@@ -387,8 +384,8 @@ function init_gear_sets()
         feet=gear.HercFTP,
         neck="Lissome Necklace",
         waist="Windbuffet Belt +1",
-        left_ear="Odr Earring",
-        right_ear="Cessance Earring",
+        left_ear="Cessance Earring",
+        right_ear="Crep. Earring",
         left_ring="Ilabrat Ring",
         right_ring="Petrov Ring",
         back=gear.CorRTP,

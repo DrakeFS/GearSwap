@@ -282,7 +282,7 @@ function init_gear_sets()
         back=gear.SmnCPHY,
     }
 
-    sets.midcast.Pet.PhysicalBP.Acc = sets.midcast.Pet.PhysicalBP
+    sets.midcast.Pet.PhysicalBP.Acc = set_combine(sets.midcast.Pet.PhysicalBP, {})
 
     sets.midcast.Pet.HybridBP = {
         main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
@@ -302,7 +302,7 @@ function init_gear_sets()
         back=gear.SmnCPHY,
     }
     
-    sets.midcast.Pet.HybridBP.Acc = sets.midcast.Pet.HybridBP
+    sets.midcast.Pet.HybridBP.Acc = set_combine(sets.midcast.Pet.HybridBP, {})
     
     sets.midcast.Pet.MagicalBP = {
         main={ name="Espiritus", augments={'Summoning magic skill +15','Pet: Mag. Acc.+30','Pet: Damage taken -4%',}},
@@ -322,7 +322,7 @@ function init_gear_sets()
         back=gear.SmnCPHY,
     }
 
-    sets.midcast.Pet.MagicalBP.Acc = sets.midcast.Pet.MagicalBP
+    sets.midcast.Pet.MagicalBP.Acc = set_combine(sets.midcast.Pet.MagicalBP, {})
 
     -- Spirits cast magic spells, which can be identified in standard ways.
     

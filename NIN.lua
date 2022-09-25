@@ -156,19 +156,15 @@ function init_gear_sets()
     
     -- Idle sets
     sets.idle = {
-	ammo="Ginsen",
-    head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
-    body="Mummu Jacket +1",
-    hands=gear.HercGMB,
-    legs="Mummu Kecks +1",
-    feet="Danzo Sune-Ate",
-    neck="Loricate Torque +1",
-    waist="Windbuffet Belt +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Defending Ring",
-    right_ring="Vocane Ring",
-    back="Solemnity Cape",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Nyame Flanchard",
+        feet="Danzo Sune-Ate",
+        neck="Loricate Torque +1",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
+        back="Solemnity Cape",
 	}
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb"})
@@ -215,7 +211,7 @@ function init_gear_sets()
         neck="Clotharius Torque",
         waist="Anguinus Belt",
         left_ear="Cessance Earring",
-        right_ear="Odr Earring",
+        right_ear="Crep. Earring",
         left_ring="Petrov Ring",
         right_ring="Ilabrat Ring",
         back="Sacro Mantle",

@@ -220,12 +220,12 @@ function init_gear_sets()
     sets.midcast['Enhancing Magic'] = {
     neck= {name="Duelist's Torque", augments={'Path: A',}},
     body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
-    hands="Atrophy Gloves +2",
+    hands="Atrophy Gloves +3",
     legs="Atrophy Tights +1",
     feet="Leth. Houseaux +2",
     waist="Embla Sash",
     left_ear="Mimir Earring",
-    right_ear="Andoaa Earring",
+    right_ear={ name="Lethargy Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
     back = gear.RdmCMB,
     }
 
@@ -234,7 +234,7 @@ function init_gear_sets()
     sets.midcast['Temper II']= set_combine(sets.midcast['Enhancing Magic'], {
         neck="Incanter's Torque",
         body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
-        hands={ name="Viti. Gloves +1", augments={'Enhancing Magic duration',}},
+        hands={ name="Viti. Gloves +3", augments={'Enhancing Magic duration',}},
         legs="Atrophy Tights +1",
         back = gear.RdmCES,
     })
@@ -299,19 +299,19 @@ function init_gear_sets()
     sets.midcast.Barsilence = sets.midcast.Barfire
     sets.midcast.Baramnesia = sets.midcast.Barfire
     sets.midcast.Phalanx = sets.midcast.Barfire
-    sets.midcast['Gain-STR'] = sets.midcast.Haste
-    sets.midcast['Gain-DEX'] = sets.midcast.Haste
-    sets.midcast['Gain-VIT'] = sets.midcast.Haste
-    sets.midcast['Gain-AGI'] = sets.midcast.Haste
-    sets.midcast['Gain-MND'] = sets.midcast.Haste
-    sets.midcast['Gain-CHR'] = sets.midcast.Haste
-    sets.midcast['Gain-INT'] = sets.midcast.Haste
+    sets.midcast['Gain-STR'] = set_combine(sets.midcast['Enhancing Magic'], {hands={name="Viti. Gloves +3", augments={'Enhancing Magic duration',}}})
+    sets.midcast['Gain-DEX'] = sets.midcast['Gain-STR']
+    sets.midcast['Gain-VIT'] = sets.midcast['Gain-STR']
+    sets.midcast['Gain-AGI'] = sets.midcast['Gain-STR']
+    sets.midcast['Gain-MND'] = sets.midcast['Gain-STR']
+    sets.midcast['Gain-CHR'] = sets.midcast['Gain-STR']
+    sets.midcast['Gain-INT'] = sets.midcast['Gain-STR']
         
     sets.midcast['Enfeebling Magic'] = {
     ammo="Regal Gem",
     head={ name="Vitiation Chapeau +2", augments={'Enfeebling Magic duration','Magic Accuracy',}},
     body="Atrophy Tabard +3",
-    hands="Leth. Gantherots +1",
+    hands="Leth. Ganth. +2",
     legs="Jhakri Slops +2",
     feet={ name="Vitiation Boots +1", augments={'Immunobreak Chance',}},
     neck={ name="Duelist's Torque", augments={'Path: A',}},
@@ -327,7 +327,7 @@ function init_gear_sets()
     ammo="Regal Gem",
     head={ name="Vitiation Chapeau +2", augments={'Enfeebling Magic duration','Magic Accuracy',}},
     body="Lethargy Sayon +1",
-    hands="Leth. Gantherots +1",
+    hands="Leth. Ganth. +2",
     legs="Jhakri Slops +2",
     feet={ name="Vitiation Boots +1", augments={'Immunobreak Chance',}},
     neck={ name="Duelist's Torque", augments={'Path: A',}},
@@ -355,7 +355,7 @@ function init_gear_sets()
     neck="Sanctity Necklace",
     waist={ name="Acuity Belt +1", augments={'Path: A',}},
     left_ear="Malignance Earring",
-    right_ear="Hermitic Earring",
+    right_ear="Hermetic Earring",
     left_ring="Ayanmo Ring",
     right_ring="Jhakri Ring",
     back = gear.RdmCMB,
@@ -385,15 +385,12 @@ function init_gear_sets()
     -- Sets for special buff conditions on spells.
 
     
-    sets.buff.ComposureOther = {
-    head="Lethargy Chappel",
-    body="Lethargy Sayon +1",
-    hands="Leth. Gantherots +1",
-    legs="Lethargy Fuseau +1",
-    feet="Lethargy Houseaux +1"
-    }
+    sets.buff.ComposureOther = set_combine(sets.midcast['Enhancing Magic'], {
+        head="Leth. Chappel +2",
+        legs="Leth. Fuseau +2",
+    })
 
-    sets.buff.Saboteur = {hands="Leth. Gantherots +1"}
+    sets.buff.Saboteur = {hands="Leth. Ganth. +2"}
     
     -- Sets to return to when not performing an action.
     
@@ -502,7 +499,7 @@ function init_gear_sets()
     sets.weapons.Elemental = {main="Bunzi's Rod", sub="Ammurapi Shield"}
     sets.weapons.Cure = {main="Daybreak", sub="Sors Shield"}
     sets.weapons.Enfeebling.DW = {main="Daybreak", sub="Bunzi's Rod"}
-    sets.weapons.Enhancing.DW = sets.weapons.Enhancing
+    sets.weapons.Enhancing.DW = {main="Pukulatmuj +1", sub="Ammurapi Shield"}
     sets.weapons.Enhancing.DW.Temper2 = {main="Pukulatmuj +1", sub="Pukulatmuj"}
     sets.weapons.Elemental.DW = {main="Daybreak", sub="Bunzi's Rod"}
     sets.weapons.Cure.DW = {main="Daybreak", sub="Bunzi's Rod"}
