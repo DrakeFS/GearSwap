@@ -65,7 +65,7 @@ function job_setup()
 
     -- Sets default roll states on lua load
     state.roll1:set("Samurai Roll")
-    state.roll2:set("Fighter's Roll")
+    state.roll2:set("Chaos Roll")
 
     -- set default shot
     state.QDrawElement:set("Light")

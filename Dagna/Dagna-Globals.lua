@@ -106,7 +106,7 @@ function user_customize_melee_set(meleeSet)
         meleeSet = set_combine(meleeSet, sets.DI)
     end
     if  player.hpp <= 50 then
-        meleeSet = set_combine(meleeSet,sets.defense.PDT)
+        meleeSet = set_combine(meleeSet, sets.defense.PDT)
     end
     return meleeSet
 end

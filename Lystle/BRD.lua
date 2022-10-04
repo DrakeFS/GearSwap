@@ -102,14 +102,14 @@ function init_gear_sets()
 
     sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
         --range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
-        head="Fili Calot +1",
+        head="Fili Calot +2",
         legs = "Doyen Pants",
         feet = "Bihu Slippers +1",
     })
 
     sets.precast.FC['Honor March'] = set_combine(sets.precast.FC, {
         range="Marsyas",
-        head="Fili Calot +1",
+        head="Fili Calot +2",
         legs = "Doyen Pants",
         feet = "Bihu Slippers +1",
     })
@@ -170,9 +170,9 @@ function init_gear_sets()
     sets.midcast.BardSong = {
         main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
         range="Gjallarhorn",
-        head="Fili Calot +1",
-        body="Fili Hongreline",
-        hands="Fili Manchettes +1",
+        head="Fili Calot +2",
+        body="Fili Hongreline +2",
+        hands="Fili Manchettes +2",
         legs="Inyanga Shalwar +2",
         feet="Brioso Slippers +3",
         neck="Mnbw. Whistle +1",
@@ -182,13 +182,29 @@ function init_gear_sets()
     --sets.midcast.Ballad = {legs="Fili Rhingrave +1"}
     --sets.midcast.Carol = {hands="Mousai Gages +1"}
     --sets.midcast.Etude = {head="Mousai Turban +1"}
-    sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +1"})
-    sets.midcast.Lullaby = set_combine(sets.midcast.SongDebuff,{hands="Brioso Cuffs +2",body="Fili Hongreline"})
-    sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +1", back=gear.BrdCFC})
+    sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +2"})
+    sets.midcast['Horde Lullaby'] = set_combine(sets.midcast.SongDebuff,{range="Daurdabla", hands="Brioso Cuffs +2", body="Fili Hongreline +2"})
+    sets.midcast['Horde Lullaby II'] = {
+        main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
+        range="Daurdabla",
+        head="Brioso Roundlet +2",
+        body="Brioso Justau. +2",
+        hands="Inyan. Dastanas +1",
+        legs="Inyanga Shalwar +2",
+        feet={ name="Bihu Slippers +1", augments={'Enhances "Nightingale" effect',}},
+        neck="Mnbw. Whistle +1",
+        waist="Famine Sash",
+        left_ear="Gersemi Earring",
+        right_ear="Crep. Earring",
+        left_ring="Ayanmo Ring",
+        right_ring="Kishar Ring",
+        back = gear.BrdCFC,
+    }
+    sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +2", back=gear.BrdCFC})
     sets.midcast.Mambo = set_combine(sets.midcast.BardSong,{feet="Mousai Crackows +1"})
-    sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +1"})
+    sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +2"})
     --sets.midcast.Minne = {legs="Mousai Seraweels"}
-    sets.midcast.Minuet = set_combine(sets.midcast.BardSong,{body="Fili Hongreline"})
+    sets.midcast.Minuet = set_combine(sets.midcast.BardSong,{body="Fili Hongreline +2"})
     sets.midcast.Paeon = set_combine(sets.midcast.BardSong,{head="Brioso Roundlet +2"})
     --sets.midcast.Threnody = sets.midcast.SongDebuff  --, {}) --{body="Mou. Manteel +1"}) -- GS does not see this set?
 
@@ -267,7 +283,7 @@ function init_gear_sets()
         left_ear="Hermetic Earring",
         left_ring="Ayanmo Ring",
         right_ring="Kishar Ring",
-        back={ name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
+        back = gear.BrdCFC,
     }
 
     sets.midcast['Displega'] = set_combine(sets.midcast['Enfeebling Magic'], {main="Daybreak"})
@@ -539,7 +555,7 @@ end
     if player.equipment.neck == "Aoidos' Matinee" then mult = mult + 0.1 end
     if player.equipment.neck == "Mnbw. Whistle" then mult = mult + 0.2 end
     if player.equipment.neck == "Mnbw. Whistle +1" then mult = mult + 0.3 end
-    if player.equipment.body == "Fili Hongreline +1" then mult = mult + 0.12 end
+    if player.equipment.body == "Fili Hongreline +2 +1" then mult = mult + 0.12 end
     if player.equipment.legs == "Inyanga Shalwar +2 +1" then mult = mult + 0.15 end
     if player.equipment.legs == "Inyanga Shalwar +2 +2" then mult = mult + 0.17 end
     if player.equipment.feet == "Brioso Slippers" then mult = mult + 0.1 end

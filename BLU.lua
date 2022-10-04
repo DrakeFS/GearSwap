@@ -339,7 +339,6 @@ function init_gear_sets()
     
     -- Idle sets
     sets.idle = {
-        ammo="Ginsen",
         head="Malignance Chapeau",
         body="Jhakri Robe +2",
         hands="Assim. Bazu. +2",
@@ -411,7 +410,7 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-        ammo="Ginsen",
+        ammo="Coiste Bodhar",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands=gear.AdhGTP,
@@ -452,7 +451,7 @@ function init_gear_sets()
     --sets.engaged.Learning = set_combine(sets.engaged, sets.Learning)
     
     sets.engaged.DW = {
-        ammo="Ginsen",
+        ammo="Coiste Bodhar",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands=gear.AdhGTP,

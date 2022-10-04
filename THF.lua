@@ -232,14 +232,12 @@ function init_gear_sets()
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 
     sets.idle = {
-        ammo="Ginsen",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
         legs="Nyame Flanchard",
-        feet="Nyame Sollerets",
+        feet="Jute Boots +1",
         neck="Sanctity Necklace",
-        waist="Windbuffet Belt +1",
         left_ring="Vocane Ring",
         right_ring="Defending Ring",
         back="Solemnity Cape",

@@ -61,7 +61,11 @@ function init_gear_sets()
     -- Precast sets to enhance JAs
     sets.precast.JA['Angon'] = {ammo = "Angon"}
     
-    sets.precast.JA.Jump = {feet="Ostro Greaves",}
+    sets.precast.JA.Jump = {
+        body={ name="Ptero. Mail +3", augments={'Enhances "Spirit Surge" effect',}},
+        hands="Vis. Fng. Gaunt. +2",
+        feet="Ostro Greaves",
+    }
 
     sets.precast.JA['Ancient Circle'] = {}
 
@@ -71,9 +75,7 @@ function init_gear_sets()
     sets.precast.JA['Super Jump'] = sets.precast.JA.Jump
 
     sets.precast.JA['Spirit Link'] = {}
-    sets.precast.JA['Call Wyvern'] = {
-    body="Pteroslaver Mail",
-    }
+    sets.precast.JA['Call Wyvern'] = {body="Ptero. Mail +3",}
     sets.precast.JA['Deep Breathing'] = {}
     sets.precast.JA['Spirit Surge'] = {}
         
@@ -92,17 +94,17 @@ function init_gear_sets()
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
         ammo="Knobkierrie",
-        head="Sulevia's Mask +2",
-        body="Sulevia's Plate. +1",
-        hands="Sulev. Gauntlets +2",
+        head="Peltast's Mezail +2",
+        body={ name="Ptero. Mail +3", augments={'Enhances "Spirit Surge" effect',}},
+        hands={ name="Ptero. Fin. G. +2", augments={'Enhances "Angon" effect',}},
         legs="Vishap Brais +2",
         feet="Sulev. Leggings +2",
         neck="Shulmanu Collar",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Cessance Earring",
+        left_ear="Sherida Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Pernicious Ring",
-        right_ring="Petrov Ring",
+        left_ring="Dreki Ring",
+        right_ring="Begrudging Ring",
         back=gear.DrgCWS,
     }
            
@@ -177,9 +179,9 @@ function init_gear_sets()
         head="Flam. Zucchetto +2",
         body="Flamma Korazin +2",
         hands="Flam. Manopolas +2",
-        legs="Flamma Dirs +2",
+        legs={ name="Ptero. Brais +2", augments={'Enhances "Strafe" effect',}},
         feet="Flam. Gambieras +2",
-        neck="Lissome Necklace",
+        neck={ name="Vim Torque +1", augments={'Path: A',}},
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         left_ear="Sherida Earring",
         right_ear="Cessance Earring",
