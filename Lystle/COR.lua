@@ -164,26 +164,26 @@ function init_gear_sets()
        
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
-    sets.precast.WS = {}
+    sets.precast.WS = {
+        ammo="Oshasha's Treatise",
+        head="Mummu Bonnet +2",
+        body="Mummu Jacket +2",
+        hands="Chasseur's Gants +2",
+        legs="Meg. Chausses +2",
+        feet="Mummu Gamash. +2",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Bladeborn Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Begrudging Ring",
+        right_ring="Rajas Ring",
+    }
 
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS,{})
 
-    sets.precast.WS['Savage Blade'] = {
-        ammo="Ginsen",
-        head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
-        body="Meg. Cuirie +2",
-        hands="Meg. Gloves +2",
-        legs="Meg. Chausses +2",
-        feet="Meg. Jam. +1",
-        neck="Sanctity Necklace",
-        waist="Dynamic Belt",
-        left_ear="Bladeborn Earring",
-        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Meghanada Ring",
-        right_ring="Begrudging Ring",
-    }
+    sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS,{})
 
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
 
@@ -261,13 +261,11 @@ function init_gear_sets()
         ammo="Ginsen",
         head="Mummu Bonnet +2",
         body="Mummu Jacket +2",
-        hands="Mummu Wrists +2",
+        hands="Chasseur's Gants +2",
         legs="Meg. Chausses +2",
         feet="Mummu Gamash. +2",
         neck="Clotharius Torque",
-        waist="Kentarch Belt",
-        left_ear="Eabani Earring",
-        right_ear="Suppanomimi",
+        waist="Dynamic Belt",
         left_ring="Begrudging Ring",
         right_ring="Rajas Ring",
     }
@@ -284,7 +282,10 @@ function init_gear_sets()
 
     sets.engaged.DW = set_combine(sets.engaged, {})
 
-    sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {})
+    sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {
+        left_ear="Eabani Earring",
+        right_ear="Suppanomimi",
+    })
 
     sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW.MaxHaste, {})
 

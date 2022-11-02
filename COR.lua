@@ -267,7 +267,7 @@ function init_gear_sets()
         head = gear.HercHMWS,
         body="Laksa. Frac +2",
         hands=gear.HercGMB,
-        legs=gear.HercLMB,
+        --legs=gear.HercLMB,
         feet="Lanun Bottes +2",
         neck="Sanctity Necklace",
         waist="Yemaya Belt",

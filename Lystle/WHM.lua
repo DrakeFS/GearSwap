@@ -32,6 +32,9 @@ end
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
+    gear.WhmCFC = {name="Alaunus's Cape", augments={'MND+20','Eva.+20 /Mag. Eva.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}}
+    gear.WhmCEM = {name="Mending Cape", augments={'Healing magic skill +3','Enha.mag. skill +10',}}
+    
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
@@ -40,31 +43,29 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-        ammo="Impatiens",
+        ammo="Sapience Orb",
+        head="Nahtirah Hat",
         body="Inyanga Jubbah +2",
-        neck={ name="Cleric's Torque", augments={'Path: A',}},
         hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
-        waist="Embla Sash",
+        legs="Aya. Cosciales +2",
         feet="Navon Crackows",
-        left_ring="Lebeche Ring",
+        neck={ name="Cleric's Torque", augments={'Path: A',}},
+        waist="Embla Sash",
+        left_ear="Malignance Earring",
+        left_ring="Kishar Ring",
+        right_ring="Lebeche Ring",
         back=gear.WhmCFC,
     }
 
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC,{})
 
-    sets.precast.FC.Stoneskin = set_combine(sets.precast.FC['Enhancing Magic'],{legs="Doyen Pants",})
+    sets.precast.FC.Stoneskin = set_combine(sets.precast.FC['Enhancing Magic'], {legs="Doyen Pants",})
 
-    sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC,{legs="Ebers Pantaloons",})
+    sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC,{legs="Ebers Pant. +2",})
 
     sets.precast.FC.StatusRemoval = sets.precast.FC['Healing Magic']
 
-    sets.precast.FC.Cure = set_combine(sets.precast.FC['Healing Magic'],{
-        main="Ababinili",
-        ammo="Impatiens",
-        head="Theo. Cap +1",
-        left_ear="Nourish. Earring",
-        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
-    })
+    sets.precast.FC.Cure = set_combine(sets.precast.FC['Healing Magic'], {right_ear={ name="Nourish. Earring +1", augments={'Path: A',}}})
     
     sets.precast.FC.Curaga = sets.precast.FC.Cure
     sets.precast.FC.CureSolace = sets.precast.FC.Cure
@@ -95,14 +96,15 @@ function init_gear_sets()
         head="Theo. Cap +1",
         body="Kaykaus Bliaut",
         hands="Theophany Mitts",
-        legs="Ebers Pantaloons",
-        feet={ name="Piety Duckbills +1", augments={'Enhances "Afflatus Solace" effect',}},
+        legs="Ebers Pant. +2",
+        feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck={ name="Cleric's Torque", augments={'Path: A',}},
-        waist="Friar's Rope",
+        waist="Korin Obi",
         left_ear="Glorious Earring",
-        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
-        left_ring="Lebeche Ring",
-        back="Solemnity Cape",
+        right_ear="Malignance Earring",
+        left_ring="Menelaus's Ring",
+        right_ring="Lebeche Ring",
+        back=gear.WhmCFC,
     }
 
     sets.midcast.CureSolace = sets.midcast.Cure
@@ -117,18 +119,24 @@ function init_gear_sets()
 
     -- 110 total Enhancing Magic Skill; caps even without Light Arts
     sets.midcast['Enhancing Magic'] = {
-        main="Ababinili",
-        hands="Inyan. Dastanas +1",
-        feet={ name="Piety Duckbills +1", augments={'Enhances "Afflatus Solace" effect',}},
-        neck="Sanctity Necklace",
+        main="Beneficus",
+        hands="Inyan. Dastanas +2",
+        feet="Ebers Duckbills +2",
         waist="Embla Sash",
+        left_ear="Mimir Earring",
+        right_ear="Andoaa Earring",
+        back=gear.WhmCEM
     }
+     sets.midcast['Auspice'] = set_combine(sets.midcast['Enhancing Magic'], {feet="Ebers Duckbills +2",})
 
     sets.midcast.Stoneskin = {}
 
-    sets.midcast.Auspice = {}
-
-    sets.midcast.BarElement = {}
+    sets.midcast.BarElement = set_combine(sets.midcast['Enhancing Magic'], {
+        head="Ebers Cap",
+        body="Ebers Bliaut",
+        hands="Ebers Mitts",
+        legs="Ebers Pant. +2",
+    })
 
     sets.midcast.Regen = {}
 
@@ -157,10 +165,10 @@ function init_gear_sets()
     sets.idle = {
         main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
         sub="Sors Shield",
-        head="Aya. Zucchetto +1",
+        head="Aya. Zucchetto +2",
         body="Annoint. Kalasiris",
         hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +1",
+        legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +1",
         neck="Sanctity Necklace",
         waist="Fucho-no-Obi",
@@ -172,10 +180,10 @@ function init_gear_sets()
     }
 
     sets.idle.PDT = {
-        head="Aya. Zucchetto +1",
-        body="Ayanmo Corazza +1",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +1",
+        legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +1",
         left_ring="Inyanga Ring",
         right_ring="Ayanmo Ring",
@@ -189,10 +197,10 @@ function init_gear_sets()
     -- Defense sets
 
     sets.defense.PDT = {
-        head="Aya. Zucchetto +1",
-        body="Ayanmo Corazza +1",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +1",
+        legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +1",
         left_ring="Inyanga Ring",
         right_ring="Ayanmo Ring",
@@ -214,10 +222,10 @@ function init_gear_sets()
     
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
-        head="Aya. Zucchetto +1",
+        head="Aya. Zucchetto +2",
         hands="Aya. Manopolas +1",
-        body="Ayanmo Corazza +1",
-        legs="Aya. Cosciales +1",
+        body="Ayanmo Corazza +2",
+        legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +1",
         neck="Sanctity Necklace",
         waist="Life Belt",

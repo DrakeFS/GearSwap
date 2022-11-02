@@ -64,9 +64,10 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
-    gear.RdmCTP = {name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20',}}
+    gear.RdmCTP = {name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}}
     gear.RdmCMB = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10','Mag. Evasion+15',}}
     gear.RdmCES = {name="Ghostfyre Cape", augments={'Enfb.mag. skill +6','Enha.mag. skill +10',}}
+    gear.RdmCEnmity = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Enmity+10','Spell interruption rate down-10%',}}
             
     sets.TreasureHunter = {
         ammo="Per. Lucky Egg",
@@ -77,8 +78,21 @@ function init_gear_sets()
     sets.MACC = {
         range="Ullr",
         ammo=empty,
+        head="Atrophy Chapeau +3",
     }
 
+    sets.Enmity = {
+        ammo="Paeapua",
+        hands={ name="Merlinic Dastanas", augments={'Pet: Attack+10 Pet: Rng.Atk.+10','Blood Pact Dmg.+10',}},
+        legs="Zoar Subligar +1",
+        feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+18','DEX+2','Accuracy+15 Attack+15','Mag. Acc.+15 "Mag.Atk.Bns."+15',}},
+        neck="Unmoving Collar +1",
+        waist="Kasiri Belt",
+        left_ear="Friomisi Earring",
+        left_ring="Pernicious Ring",
+        right_ring="Begrudging Ring",
+        back=gear.RdmCEnmity,
+    }
     -- Precast Sets
     
     -- Precast sets to enhance JAs
@@ -89,27 +103,34 @@ function init_gear_sets()
     sets.precast.FC = {
         range=empty,
         ammo="Impatiens",
-        head="Atrophy Chapeau +1",
+        head="Atrophy Chapeau +3",
         body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
         hands="Aya. Manopolas +2",
         legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
         feet={ name="Merlinic Crackows", augments={'"Mag.Atk.Bns."+18','DEX+2','Accuracy+15 Attack+15','Mag. Acc.+15 "Mag.Atk.Bns."+15',}},
         waist="Embla Sash",
         left_ear="Malignance Earring",
+        right_ear={ name="Lethargy Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
         left_ring="Kishar Ring",
     }
 
     sets.precast.FC['Impact'] = set_combine(sets.precast.FC, {head=empty, body="Twilight Cloak"})
 
+    sets.precast.JA['Vallation'] = sets.Enmity
+    sets.precast.JA['Valiance'] = sets.Enmity
+    sets.precast.JA['Pflug'] = sets.Enmity
+    sets.precast.JA['Swordplay'] = sets.Enmity
+
+
     -- Weaponskill sets
     
     sets.precast.WS = {
-        ammo="Ginsen",
+        ammo="Oshasha's Treatise",
         head="Jhakri Coronal +2",
         body="Ayanmo Corazza +2",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
-        feet="Battlecast Gaiters",
+        feet="Leth. Houseaux +2",
         neck="Sanctity Necklace",
         waist="Windbuffet Belt +1",
         left_ear="Sherida Earring",
@@ -126,7 +147,6 @@ function init_gear_sets()
         body="Atrophy Tabard +3",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Malignance Earring",
@@ -142,7 +162,6 @@ function init_gear_sets()
         body="Jhakri Robe +2",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Malignance Earring",
@@ -158,7 +177,6 @@ function init_gear_sets()
         body="Jhakri Robe +2",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2",
         neck="Sanctity Necklace",
         waist="Fotia Belt",
         left_ear="Malignance Earring",
@@ -188,12 +206,10 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
-        ammo="Ginsen",
         head="Jhakri Coronal +2",
         body="Jhakri Robe +2",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -206,7 +222,6 @@ function init_gear_sets()
         body="Malignance Tabard",
         hands="Aya. Manopolas +2",
         legs="Carmine Cuisses +1",
-        feet="Aya. Gambieras +2",
         neck="Sanctity Necklace",
         waist="Fotia Belt",
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -218,6 +233,12 @@ function init_gear_sets()
     -- Midcast Sets
     
     sets.midcast.FastRecast = {}
+
+    sets.midcast['Flash'] = set_combine(sets.Enmity, {
+        head="Atrophy Chapeau +3",
+        body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
+        right_ear={ name="Lethargy Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
+    })
 
     sets.midcast.Cure = {
         head="Vitiation Chapeau +2",
@@ -441,7 +462,7 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-        ammo="Ginsen",
+        ammo="Coiste Bodhar",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
@@ -457,7 +478,7 @@ function init_gear_sets()
     }
 
     sets.engaged.DW = {
-        ammo="Ginsen",
+        ammo="Coiste Bodhar",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",

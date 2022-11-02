@@ -1,19 +1,13 @@
 -- Initialization function for this job file.
 function get_sets()
     mote_include_version = 2
-
-    -- Load and initialize the include file.
     include('Mote-Include.lua')
-    --res = require 'resources'
 end
-
 
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     include('Mote-TreasureHunter')
-    --state.SongMode = M{['description']='Song Mode', 'None', 'Placeholder'}
-    --state.Buff['Pianissimo'] = buffactive['pianissimo'] or false
-
+    state.WeaponSwapMode= M(true, false)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -23,43 +17,17 @@ end
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
     state.OffenseMode:options('Normal', 'Acc')
-    state.HybridMode:options('Normal', 'DT')
-    state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal', 'DT', 'MEva')
-
-    --state.LullabyMode = M{['description']='Lullaby Instrument', 'Harp', 'Horn'}
-
-    state.Carol = M{['description']='Carol',
-        'Fire Carol', 'Fire Carol II', 'Ice Carol', 'Ice Carol II', 'Wind Carol', 'Wind Carol II',
-        'Earth Carol', 'Earth Carol II', 'Lightning Carol', 'Lightning Carol II', 'Water Carol', 'Water Carol II',
-        'Light Carol', 'Light Carol II', 'Dark Carol', 'Dark Carol II',
-        }
-
-    state.Threnody = M{['description']='Threnody',
-        'Fire Threnody II', 'Ice Threnody II', 'Wind Threnody II', 'Earth Threnody II',
-        'Ltng. Threnody II', 'Water Threnody II', 'Light Threnody II', 'Dark Threnody II',
-        }
-
-    state.Etude = M{['description']='Etude', 'Sinewy Etude', 'Herculean Etude', 'Learned Etude', 'Sage Etude',
-        'Quick Etude', 'Swift Etude', 'Vivacious Etude', 'Vital Etude', 'Dextrous Etude', 'Uncanny Etude',
-        'Spirited Etude', 'Logical Etude', 'Enchanting Etude', 'Bewitching Etude'}
-
-    state.WeaponLock = M(false, 'Weapon Lock')
-
-    -- Adjust this if using the Terpander Daurdabla (new +song instrument)
-    --info.ExtraSongInstrument = 'Terpander'
-    -- How many extra songs we can keep from Daurdabla/Terpander
-    --info.ExtraSongs = 1
+    
+    send_command('bind ^q gs c toggle WeaponSwapMode')
 
     on_job_change()
-
 end
 
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
-
+    send_command('unbind ^q gs c toggle WeaponSwapMode')
 end
 
 
@@ -68,9 +36,6 @@ function init_gear_sets()
     
     sets.TreasureHunter = {
         ammo="Per. Lucky Egg",
-        --head = gear.HercHTH,
-        --body = gear.HercBTH, 
-        --legs = gear.HercLTH,
         waist = "Chaac Belt",
     }
     ------------------------------------------------------------------------------------------------
@@ -79,7 +44,6 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-        main='Kali',
         head="Nahtirah Hat",
         body="Inyanga Jubbah +2",
         hands={ name="Leyline Gloves", augments={'Accuracy+7','Mag. Acc.+5',}},
@@ -101,10 +65,9 @@ function init_gear_sets()
     })
 
     sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
-        --range={ name="Linos", augments={'All Songs+2','Song spellcasting time -6%','Singing skill +10',}},
         head="Fili Calot +2",
-        legs = "Doyen Pants",
-        feet = "Bihu Slippers +1",
+        legs="Doyen Pants",
+        feet="Bihu Slippers +1",
     })
 
     sets.precast.FC['Honor March'] = set_combine(sets.precast.FC, {
@@ -114,9 +77,7 @@ function init_gear_sets()
         feet = "Bihu Slippers +1",
     })
 
-    --sets.precast.FC.SongPlaceholder = set_combine(sets.precast.FC.BardSong, {range=info.ExtraSongInstrument})
-
-    -- Precast sets to enhance JAs
+    
 
     sets.precast.JA.Nightingale = {feet="Bihu Slippers +1"}
     --sets.precast.JA.Troubadour = {body="Bihu Jstcorps. +3"}
@@ -130,13 +91,13 @@ function init_gear_sets()
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    -- Default set for any weaponskill that isn't any more specifically defined
+
     sets.precast.WS = {
         ammo="Ginsen",
-        head="Aya. Zucchetto +1",
-        body="Ayanmo Corazza +1",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +1",
+        legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +1",
         neck="Clotharius Torque",
         waist="Shadow Belt",
@@ -147,7 +108,6 @@ function init_gear_sets()
         back="Atheling Mantle",
     }
 
-    -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {})
 
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
@@ -168,7 +128,6 @@ function init_gear_sets()
 
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong = {
-        main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
         range="Gjallarhorn",
         head="Fili Calot +2",
         body="Fili Hongreline +2",
@@ -185,7 +144,6 @@ function init_gear_sets()
     sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +2"})
     sets.midcast['Horde Lullaby'] = set_combine(sets.midcast.SongDebuff,{range="Daurdabla", hands="Brioso Cuffs +2", body="Fili Hongreline +2"})
     sets.midcast['Horde Lullaby II'] = {
-        main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
         range="Daurdabla",
         head="Brioso Roundlet +2",
         body="Brioso Justau. +2",
@@ -221,7 +179,6 @@ function init_gear_sets()
     
     -- For song defbuffs (duration primary, accuracy secondary)
     sets.midcast.SongDebuff = {
-        main={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
         range="Gjallarhorn",
         head="Brioso Roundlet +2",
         body="Brioso Justau. +2",
@@ -243,8 +200,6 @@ function init_gear_sets()
 
     -- Other general spells and classes.
     sets.midcast.Cure = {
-        main="Daybreak",
-        sub="Genmei Shield",
         head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
         body="Kaykaus Bliaut",
         hands="Inyan. Dastanas +1",
@@ -272,7 +227,6 @@ function init_gear_sets()
     }
     
     sets.midcast['Enfeebling Magic'] = {
-        main="Daybreak",
         head="Brioso Roundlet +2",
         body="Brioso Justau. +2",
         hands="Inyan. Dastanas +1",
@@ -305,10 +259,10 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.idle = {
-        head="Aya. Zucchetto +1",
+        head="Fili Calot +2",
         body="Annoint. Kalasiris",
-        hands="Aya. Manopolas +1",
-        legs="Inyanga Shalwar +2",
+        hands="Fili Manchettes +2",
+        legs="Aya. Cosciales +2",
         feet="Fili Cothurnes +2",
         neck="Loricate Torque",
         left_ring="Defending Ring",
@@ -318,8 +272,9 @@ function init_gear_sets()
     }
 
     sets.idle.DT = {
-        head="Aya. Zucchetto +1",
-        hands="Aya. Manopolas +1",
+        head="Fili Calot +2",
+        hands="Fili Manchettes +2",
+        legs="Aya. Cosciales +2",
         neck="Loricate Torque",
         left_ring="Defending Ring",
         back="Solemnity Cape",
@@ -339,32 +294,20 @@ function init_gear_sets()
     sets.Kiting = {}
     sets.latent_refresh = {waist="Fucho-no-obi"}
 
-    ------------------------------------------------------------------------------------------------
-    ---------------------------------------- Engaged Sets ------------------------------------------
-    ------------------------------------------------------------------------------------------------
-
-    -- Engaged sets
-
-    -- Variations for TP weapon and (optional) offense/defense modes.  Code will fall back on previous
-    -- sets if more refined versions aren't defined.
-    -- If you create a set with both offense and defense modes, the offense mode should be first.
-    -- EG: sets.engaged.Dagger.Accuracy.Evasion
-
     sets.engaged = {
-        main = "Aeneas",
-        ammo="Ginsen",
-        head="Aya. Zucchetto +1",
-        body="Ayanmo Corazza +1",
+        ammo="Coiste Bodhar",
+        head="Aya. Zucchetto +2",
+        body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +1",
+        legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +1",
         neck="Clotharius Torque",
         waist="Dynamic Belt",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Begrudging Ring",
-        right_ring="Ayanmo Ring",
-        back="Atheling Mantle",
+        left_ear="Crep. Earring",
+        right_ear="Steelflash Earring",
+        left_ring="Rajas Ring",
+        right_ring="Begrudging Ring",
+        back="Solemnity Cape",
     }
 
     --sets.engaged.Acc = set_combine(sets.engaged, {})
@@ -373,9 +316,17 @@ function init_gear_sets()
         left_ear="Suppanomimi",
         right_ear="Eabani Earring",
     })
-
-    --sets.buff.Doom = {}
-    --sets.Obi = {}
+    
+    sets.weapons = {}
+    sets.weapons.FC = {main='Kali'}
+    sets.weapons.BardSong = {main='Kali'}
+    sets.weapons.BardSong.DW = {main='Kali', offhand='Tauret'}
+    sets.weapons.Healing = {main='Daybreak'}
+    sets.weapons.Healing.DW = {main='Daybreak'}
+    sets.weapons.Enhancing = {main='Kali'}
+    sets.weapons.Enhancing.DW = {main='Kali'}
+    sets.weapons.Enfeebling = {main='Tauret'}
+    sets.weapons.Enfeebling.DW = {main='Tauret', offhand='Daybreak'}
 
 end
 
@@ -387,7 +338,50 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
-    
+    if state.WeaponSwapMode.value then
+        
+        mainhand = player.equipment.main
+        offhand = player.equipment.sub
+        --[[if state.CombatForm.value == 'DW' then
+
+        else]]
+            if spell.type == "BardSong" then
+                equip(sets.weapons.FC)
+            elseif spellMap == "Cure" then
+                equip(sets.weapons.FC)
+            elseif spell.skill == "Enhancing Magic" then
+                equip(sets.weapons.FC)
+            elseif spell.skill == "Enfeebling Magic" then
+                equip(sets.weapons.FC)
+            end
+        --end
+    end
+end
+
+function job_midcast(spell, action, spellMap, eventArgs)
+    if state.WeaponSwapMode.value then
+        if state.CombatForm.value == 'DW' then
+            if spell.type == "BardSong" then
+                equip(sets.weapons.BardSong.DW)
+            elseif spellMap == "Cure" then
+                equip(sets.weapons.Healing.DW)
+            elseif spell.skill == "Enhancing Magic" then
+                equip(sets.weapons.Enhancing.DW)
+            elseif spell.skill == "Enfeebling Magic" then
+                equip(sets.weapons.Enfeebling.DW)
+            end
+        else
+            if spell.type == "BardSong" then
+                equip(sets.weapons.BardSong)
+            elseif spellMap == "Cure" then
+                equip(sets.weapons.Healing)
+            elseif spell.skill == "Enhancing Magic" then
+                equip(sets.weapons.Enhancing)
+            elseif spell.skill == "Enfeebling Magic" then
+                equip(sets.weapons.Enfeebling)
+            end
+        end
+    end
 end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
@@ -401,118 +395,12 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     end
 end
 
---[[function job_post_midcast(spell, action, spellMap, eventArgs)
-    
-end
-
 function job_aftercast(spell, action, spellMap, eventArgs)
-    
-end
-
-function job_buff_change(buff,gain)
-
-end]]
-
--- Handle notifications of general user state change.
-function job_state_change(stateField, newValue, oldValue)
-    --[[if state.WeaponLock.value == true then
-        disable('main','sub')
-    else
-        enable('main','sub')
-    end]]
-end
-
--------------------------------------------------------------------------------------------------------------------
--- User code that supplements standard library decisions.
--------------------------------------------------------------------------------------------------------------------
-
--- Called by the 'update' self-command, for common needs.
--- Set eventArgs.handled to true if we don't want automatic equipping of gear.
-function job_handle_equipping_gear(playerStatus, eventArgs)
-    update_combat_form()
-end
-
-function job_update(cmdParams, eventArgs)
-    
-end
-
-function update_combat_form()
-    if cf_check then --checks if cf_check() exists
-        cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Lystle-Globals.lua
+    if state.WeaponSwapMode.value then
+        equip({main = mainhand, sub = offhand})
     end
 end
 
--- Called for direct player commands.
---[[function job_self_command(cmdParams, eventArgs)
-    if cmdParams[1]:lower() == 'etude' then
-        send_command('@input /ma '..state.Etude.value..' <stpc>')
-    elseif cmdParams[1]:lower() == 'carol' then
-        send_command('@input /ma '..state.Carol.value..' <stpc>')
-    elseif cmdParams[1]:lower() == 'threnody' then
-        send_command('@input /ma '..state.Threnody.value..' <stnpc>')
-    end    
-end]]
-
--- Modify the default melee set after it was constructed.
---[[function customize_melee_set(meleeSet)
-    if buffactive['Aftermath: Lv.3'] and player.equipment.main == "Carnwenhan" then
-        meleeSet = set_combine(meleeSet, sets.engaged.Aftermath)
-    end
-
-    return meleeSet
-end]]
-
--- Modify the default idle set after it was constructed.
---[[function customize_idle_set(idleSet)
-    if player.mpp < 51 then
-        idleSet = set_combine(idleSet, sets.latent_refresh)
-    end
-    return idleSet
-end]]
-
--- Set eventArgs.handled to true if we don't want the automatic display to be run.
---[[function display_current_job_state(eventArgs)
-    local cf_msg = ''
-    if state.CombatForm.has_value then
-        cf_msg = ' (' ..state.CombatForm.value.. ')'
-    end
-
-    local m_msg = state.OffenseMode.value
-    if state.HybridMode.value ~= 'Normal' then
-        m_msg = m_msg .. '/' ..state.HybridMode.value
-    end
-
-    local ws_msg = state.WeaponskillMode.value
-
-    local c_msg = state.CastingMode.value
-
-    local d_msg = 'None'
-    if state.DefenseMode.value ~= 'None' then
-        d_msg = state.DefenseMode.value .. state[state.DefenseMode.value .. 'DefenseMode'].value
-    end
-
-    local i_msg = state.IdleMode.value
-
-    local msg = ''
-    if state.Kiting.value then
-        msg = msg .. ' Kiting: On |'
-    end
-
-    add_to_chat(002, '| ' ..string.char(31,210).. 'Melee' ..cf_msg.. ': ' ..string.char(31,001)..m_msg.. string.char(31,002)..  ' |'
-        ..string.char(31,207).. ' WS: ' ..string.char(31,001)..ws_msg.. string.char(31,002)..  ' |'
-        ..string.char(31,060).. ' Magic: ' ..string.char(31,001)..c_msg.. string.char(31,002)..  ' |'
-        ..string.char(31,004).. ' Defense: ' ..string.char(31,001)..d_msg.. string.char(31,002)..  ' |'
-        ..string.char(31,008).. ' Idle: ' ..string.char(31,001)..i_msg.. string.char(31,002)..  ' |'
-        ..string.char(31,002)..msg)
-
-    eventArgs.handled = true
-end]]
-
--------------------------------------------------------------------------------------------------------------------
--- Utility functions specific to this job.
--------------------------------------------------------------------------------------------------------------------
-
--- Determine the custom class to use for the given song.
 function get_song_class(spell)
     -- Can't use spell.targets:contains() because this is being pulled from resources
     if set.contains(spell.targets, 'Enemy') then
@@ -526,93 +414,7 @@ function get_song_class(spell)
     end
 end
 
---[[function get_lullaby_duration(spell)
-    local self = windower.ffxi.get_player()
 
-    local troubadour = false
-    local clarioncall = false
-    local soulvoice = false
-    local marcato = false
-
-    for i,v in pairs(self.buffs) do
-        if v == 348 then troubadour = true end
-        if v == 499 then clarioncall = true end
-        if v == 52 then soulvoice = true end
-        if v == 231 then marcato = true end
-    end
-
-    local mult = 1
-
-    if player.equipment.range == 'Daurdabla' then mult = mult + 0.3 end -- change to 0.25 with 90 Daur
-    if player.equipment.range == "Gjallarhorn" then mult = mult + 0.4 end -- change to 0.3 with 95 Gjall
-    if player.equipment.range == "Marsyas" then mult = mult + 0.5 end
-
-    if player.equipment.main == "Carnwenhan" then mult = mult + 0.5 end -- 0.1 for 75, 0.4 for 95, 0.5 for 99/119
-    if player.equipment.main == "Legato Dagger" then mult = mult + 0.05 end
-    if player.equipment.main == "Kali" then mult = mult + 0.05 end
-    if player.equipment.sub == "Kali" then mult = mult + 0.05 end
-    if player.equipment.sub == "Legato Dagger" then mult = mult + 0.05 end
-    if player.equipment.neck == "Aoidos' Matinee" then mult = mult + 0.1 end
-    if player.equipment.neck == "Mnbw. Whistle" then mult = mult + 0.2 end
-    if player.equipment.neck == "Mnbw. Whistle +1" then mult = mult + 0.3 end
-    if player.equipment.body == "Fili Hongreline +2 +1" then mult = mult + 0.12 end
-    if player.equipment.legs == "Inyanga Shalwar +2 +1" then mult = mult + 0.15 end
-    if player.equipment.legs == "Inyanga Shalwar +2 +2" then mult = mult + 0.17 end
-    if player.equipment.feet == "Brioso Slippers" then mult = mult + 0.1 end
-    if player.equipment.feet == "Brioso Slippers +1" then mult = mult + 0.11 end
-    if player.equipment.feet == "Brioso Slippers +2" then mult = mult + 0.13 end
-    if player.equipment.feet == "Brioso Slippers +3" then mult = mult + 0.15 end
-    if player.equipment.hands == 'Brioso Cuffs +1' then mult = mult + 0.1 end
-    if player.equipment.hands == 'Brioso Cuffs +3' then mult = mult + 0.1 end
-    if player.equipment.hands == 'Brioso Cuffs +3' then mult = mult + 0.2 end
-
-    --JP Duration Gift
-    if self.job_points.brd.jp_spent >= 1200 then
-        mult = mult + 0.05
-    end
-
-    if troubadour then
-        mult = mult * 2
-    end
-
-    if spell.en == "Foe Lullaby II" or spell.en == "Horde Lullaby II" then
-        base = 60
-    elseif spell.en == "Foe Lullaby" or spell.en == "Horde Lullaby" then
-        base = 30
-    end
-
-    totalDuration = math.floor(mult * base)
-
-    -- Job Points Buff
-    totalDuration = totalDuration + self.job_points.brd.lullaby_duration
-    if troubadour then
-        totalDuration = totalDuration + self.job_points.brd.lullaby_duration
-        -- adding it a second time if Troubadour up
-    end
-
-    if clarioncall then
-        if troubadour then
-            totalDuration = totalDuration + (self.job_points.brd.clarion_call_effect * 2 * 2)
-            -- Clarion Call gives 2 seconds per Job Point upgrade.  * 2 again for Troubadour
-        else
-            totalDuration = totalDuration + (self.job_points.brd.clarion_call_effect * 2)
-            -- Clarion Call gives 2 seconds per Job Point upgrade.
-        end
-    end
-
-    if marcato and not soulvoice then
-        totalDuration = totalDuration + self.job_points.brd.marcato_effect
-    end
-
-    -- Create the custom timer
-    if spell.english == "Foe Lullaby II" or spell.english == "Horde Lullaby II" then
-        send_command('@timers c "Lullaby II ['..spell.target.name..']" ' ..totalDuration.. ' down spells/00377.png')
-    elseif spell.english == "Foe Lullaby" or spell.english == "Horde Lullaby" then
-        send_command('@timers c "Lullaby ['..spell.target.name..']" ' ..totalDuration.. ' down spells/00376.png')
-    end
-end]]
-
--- Select default macro book and lockstyle on initial load or subjob change.
 function on_job_change()
     set_macro_page(1, 10)
     send_command('wait 5;input /lockstyleset 3')

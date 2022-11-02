@@ -21,7 +21,7 @@ function job_setup()
     --state.Buff.Diffusion = buffactive.Diffusion or false
     state.Buff.Efflux = buffactive.Efflux or false
 
-    state.EvasionMode = M{'Normal', 'Evasive'}
+    state.EvasionMode = M(false)
    
     state.delayMod = M{'none', 'Samba'}
     state.delayMod:set('none')
@@ -35,7 +35,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('Normal', 'Acc', 'HP', 'Eva')
+    state.OffenseMode:options('Normal', 'Acc', 'HP', 'SB')
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
@@ -43,14 +43,14 @@ function user_setup()
     on_job_change()
     
     send_command('bind @= gs c cycle delayMod')
-    send_command('bind @` gs c cycle EvasionMode')
+    send_command('bind @` gs c toggle  EvasionMode')
 end
 
 
 -- Called when this job file is unloaded (eg: job change)
 function user_unload()
     send_command('unbind @= gs c cycle delayMod')
-    send_command('unbind @` gs c cycle EvasionMode')
+    send_command('unbind @` gs c toggle EvasionMode')
 end
 
 
@@ -113,7 +113,7 @@ function init_gear_sets()
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
         ammo="Oshasha's Treatise",
-        head="Hashishin Kavuk +2",
+        head="Hashishin Kavuk +3",
         body="Assim. Jubbah +3",
         hands="Jhakri Cuffs +2",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
@@ -221,7 +221,7 @@ function init_gear_sets()
     
     sets.midcast['Blue Magic'].Magical = {
         ammo="Pemphredo Tathlum",
-        head="Hashishin Kavuk +2",
+        head="Hashishin Kavuk +3",
         body="Hashishin Mintan +2",
         hands="Hashi. Bazu. +2",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
@@ -264,7 +264,7 @@ function init_gear_sets()
     -- Breath Spells --
     sets.midcast['Blue Magic']['Regurgitation']=sets.midcast['Blue Magic'].MagicAccuracy
     sets.midcast['Blue Magic'].Breath = set_combine(sets.midcast['Blue Magic'].Magical, {
-        head="Luhlaza Keffiyeh",
+        head="Luh. Keffiyeh +1",
     })
     -- Other Types --
     
@@ -284,11 +284,14 @@ function init_gear_sets()
 
     sets.midcast['Blue Magic'].SkillBasedBuff = {
         ammo="Mavi Tathlum",
-        head="Luhlaza Keffiyeh",  
+        head={ name="Luh. Keffiyeh +1", augments={'Enhances "Convergence" effect',}},
         body="Assim. Jubbah +3",
+        hands="Rawhide Gloves",
         legs="Hashishin Tayt +2",
-        feet="Luhlaza Charuqs +3",
-        neck="Mirage Stole +2",
+        feet={ name="Luhlaza Charuqs +3", augments={'Enhances "Diffusion" effect',}},
+        neck={ name="Mirage Stole +2", augments={'Path: A',}},
+        left_ear={ name="Hashishin Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+7','Mag. Acc.+7',}},
+        right_ear="Njordr Earring",
         back=gear.BluCMAC,
     }
 
@@ -313,7 +316,7 @@ function init_gear_sets()
     -- Gear for learning spells: +skill and AF hands.
     --[[sets.Learning = {
         ammo="Mavi Tathlum",
-        --head="Luhlaza Keffiyeh",  
+        --head="Luh. Keffiyeh +1",  
         body="Assim. Jubbah +3",
         hands="Assimilator's Bazubands +2",
         legs="Hashishin Tayt +2",
@@ -323,7 +326,7 @@ function init_gear_sets()
     }]]
 
     sets.Subtle = {
-        neck="Bathy Choker",
+        neck="Bathy Choker +1",
         head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
         left_ring="Beeline Ring",
         right_ring="Rajas Ring",
@@ -393,7 +396,8 @@ function init_gear_sets()
         hands="Malignance Gloves",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets",
-        neck="Bathy Choker",
+        neck="Bathy Choker +1",
+        waist="Kasiri Belt",
         left_ear="Eabani Earring",
         right_ear="Ethereal Earring",
         left_ring="Defending Ring",
@@ -502,7 +506,7 @@ function init_gear_sets()
         back=gear.BluCTP,
     })
     
-    sets.engaged.DW.Subtle = set_combine(sets.engaged.DW, sets.Subtle)
+    sets.engaged.DW.SB = set_combine(sets.engaged.DW, sets.Subtle)
 
     sets.engaged.DW.Eva = set_combine(sets.engaged.DW, sets.Evasion)
 end
@@ -535,7 +539,7 @@ function handle_WS()
 end 
 
 function job_post_precast(spell, action, spellMap, eventArgs)
-    if state.EvasionMode.value == 'Evasive' then
+    if state.EvasionMode.value then
         equip(sets.Evasion)
     end
 end
@@ -575,7 +579,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
         end
     end
 
-    if state.EvasionMode.value == 'Evasive' and (spell.name == 'Dream Flower' or spell.name == 'Sheep Song' or spell.name == 'Yawn') then
+    if state.EvasionMode.value and (spell.name == 'Dream Flower' or spell.name == 'Sheep Song' or spell.name == 'Yawn') then
         equip(sets.Evasion)
     end
 end
@@ -620,7 +624,7 @@ function customize_idle_set(idleSet)
         set_combine(idleSet, sets.latent_refresh)
     end]]
 
-    if state.EvasionMode.value == 'Evasive' then
+    if state.EvasionMode.value then
         idleSet = set_combine(ildeSet, sets.Evasion)
     end
 
@@ -628,7 +632,7 @@ function customize_idle_set(idleSet)
 end
 
 function customize_melee_set(meleeSet)
-    if state.EvasionMode.value == 'Evasive' then
+    if state.EvasionMode.value then
         meleeSet = set_combine(meleeSet, sets.Evasion)
     end
 
@@ -656,7 +660,7 @@ end
 -- Set a Haste Group
 function determine_haste_group()
     if buffactive['Haste Samba'] or state.delayMod.Value ~= 'none' then
-        hasteSamba = 'Samba'
+        hasteSamba = true
     else
         hasteSamba = false
     end
@@ -686,9 +690,10 @@ function determine_haste_group()
     
     classes.CustomMeleeGroups:clear()
     
-    if (buffactive.haste and hasteSamba == 'Samba' and buffactive.march == 1) 
-    or (buffactive.march == 2 and hasteSamba =='Samba') 
-    or (buffactive.embrava and (buffactive.haste or buffactive.march) and hasteSamba) then
+    if (buffactive.haste and hasteSamba and buffactive.march == 1) 
+    or (buffactive.march == 2 and hasteSamba) 
+    or (buffactive.embrava and (buffactive.haste or buffactive.march) and hasteSamba) 
+    or (buffactive['Mighty Guard'] and buffactive.haset and hasteSamba) then
         classes.CustomMeleeGroups:append('MaxHaste')
     elseif (buffactive.haste and buffactive.march) or (buffactive.march == 2) then
         classes.CustomMeleeGroups:append('HighHaste')
@@ -699,18 +704,24 @@ function determine_haste_group()
     end
 end
 
+function display_current_job_state(eventArgs)
+    if state.EvasionMode.value then
+        add_to_chat(121, "Evasion Mode is On")
+    end
+end
+
     -- Select default macro book on initial load or subjob change.
 
 function on_job_change()
     set_macro_page(1, 16)
     send_command('wait 5;input /lockstyleset 20')
 end
+    
+function setup_blue_magic()
 
     -- Mappings for gear sets to use for various blue magic spells.
     -- While Str isn't listed for each, it's generally assumed as being at least
     -- moderately signficant, even for spells with other mods.
-    
-function setup_blue_magic()
 
     blue_magic_maps = {}
     

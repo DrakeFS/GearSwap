@@ -316,7 +316,7 @@ function init_gear_sets()
     })
 
     sets.engaged.Subtle = set_combine(sets.engaged,{
-        neck="Bathy Choker",
+        neck="Bathy Choker +1",
         head={ name="Dampening Tam", augments={'DEX+6','Mag. Acc.+13',}},
         hands=gear.HercGMB,
         feet=gear.HercBTP,

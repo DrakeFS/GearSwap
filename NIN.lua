@@ -23,7 +23,10 @@ function job_setup()
     state.Buff.Futae = buffactive.Futae or false
     state.Buff.Shadows = buffactive.shadows or false
     ShadowType = 'None'
+    WSSelect = 0
 
+    state.ARPW = M{['description'] = "Abbysea Red Proc Weapon"}
+ 
     determine_haste_group()
 	
 	include('Mote-TreasureHunter')	
@@ -42,6 +45,7 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc', 'Mod')
     state.CastingMode:options('Normal', 'Resistant')
     state.PhysicalDefenseMode:options('PDT', 'Evasion')
+    state.ARPW:options('Norgish Dagger', 'Ibushi Shinai', 'Gassan', 'Kitty Rod', 'Lotus Katana', 'Kgd. Signet Staff', 'Lament', 'Hoe', 'Pitchfork')
 
     gear.MovementFeet = {name="Danzo Sune-ate"}
     gear.DayFeet = "Danzo Sune-ate"
@@ -283,6 +287,12 @@ function job_self_command(cmdParams, eventArgs)
     if cmdParams[1]:lower() == 'shadow' then
         handle_Shadows()
         eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'pws' then
+        handle_proc_WS()
+        eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'pequip' then
+        handle_proc_Equip()
+        eventArgs.handled = true
     end
 end
 
@@ -302,6 +312,70 @@ function handle_Shadows()
         end
     else
         send_command('@input /ma "Utsusemi: San" <me>')
+    end
+end
+
+function handle_proc_WS()
+    if player.equipment.main == 'Norgish Dagger' then
+        if WSSelect == 0 then
+            WSSelect = 1
+            send_command('@input /ws "Cyclone" <t>')
+        elseif WSSelect == 1 then
+            WSSelect = 0 
+            send_command('@input /ws "Energy Drain" <t>')
+        end
+    elseif player.equipment.main == 'Ibushi Shinai' then
+        if WSSelect == 0 then
+            WSSelect = 1
+            send_command('@input /ws "Red Lotus Blade" <t>')
+        elseif WSSelect == 1 then
+            WSSelect = 0 
+            send_command('@input /ws "Seraph Blade" <t>')
+        end
+    elseif player.equipment.main == 'Gassan' then
+        send_command('@input /ws "Blade: Ei" <t>')
+    elseif player.equipment.main == 'Kitty Rod' then
+        send_command('@input /ws "Seraph Strike" <t>')
+    elseif player.equipment.main == 'Lotus Katana' then
+        if WSSelect == 0 then
+            WSSelect = 1
+            send_command('@input /ws "Tachi: Jinpu" <t>')
+        elseif WSSelect == 1 then
+            WSSelect = 0 
+            send_command('@input /ws "Tachi: Koki" <t>')
+        end
+    elseif player.equipment.main == 'Kgd. Signet Staff' then
+        if WSSelect == 0 then
+            WSSelect = 1
+            send_command('@input /ws "Earth Crusher" <t>')
+        elseif WSSelect == 1 then
+            WSSelect = 0 
+            send_command('@input /ws "Sunburst" <t>')
+        end
+    elseif player.equipment.main == 'Lament' then
+        send_command('@input /ws "Freezebite" <t>')
+    elseif player.equipment.main == 'Hoe' then
+        send_command('@input /ws "Shadow of Death" <t>')
+    elseif player.equipment.main == 'Pitchfork' then
+        send_command('@input /ws "Raiden Thrust" <t>')
+    else
+        add_to_chat(123, 'No weapon skill defined for Proc weapon')
+    end
+end
+
+function handle_proc_Equip()
+    local DWWeapons = S{'Norgish Dagger', 'Ibushi Shinai', 'Gassan', 'Kitty Rod'}
+    if state.ARPW:contains(player.equipment.main) then
+        state.ARPW:cycle() 
+        if DWWeapons:contains(state.ARPW.value) then
+            equip({main=state.ARPW.value, sub='Qutrub Knife'})
+        else
+            equip({main=state.ARPW.value})
+        end
+        add_to_chat(120, ''..state.ARPW.value..' equiped.')
+    else 
+        equip({main='Norgish Dagger', sub='Qutrub Knife'})
+        add_to_chat(120, 'Norgish Dagger equiped.')
     end
 end
 

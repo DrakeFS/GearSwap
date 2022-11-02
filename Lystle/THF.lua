@@ -75,7 +75,7 @@ function init_gear_sets()
         body=gear.HercBTH,
         hands={ name="Plun. Armlets +1", augments={'Enhances "Perfect Dodge" effect',}},
         legs=gear.HercLTH,
-        feet="Skulk. Poulaines +2",
+        feet="Skulk. Poulaines +3",
         waist="Chaac Belt",
         left_ring="Gorney Ring",
     }
@@ -139,8 +139,8 @@ function init_gear_sets()
     legs="Mummu Kecks +2",
     feet="Herculean Boots",
     neck="Clotharius Torque",
-    waist="Sailfi Belt",
-    left_ear="Steelflash Earring",
+    waist="Dynamic Belt",
+    left_ear="Sherida Earring",
     right_ear="Moonshade Earring",
     left_ring="Mummu Ring",
     right_ring="Begrudging Ring",
@@ -166,6 +166,7 @@ function init_gear_sets()
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
     waist="Shadow Belt",
+    right_ear="Crep. Earring",
     })
     sets.precast.WS['Evisceration'].Acc = set_combine(sets.precast.WS['Evisceration'], {})
     -- sets.precast.WS['Evisceration'].Mod = set_combine(sets.precast.WS['Evisceration'], {})
@@ -209,21 +210,12 @@ function init_gear_sets()
     
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
 
-    sets.precast.WS["Savage Blade"] = {
-        ammo="Seething Bomblet",
-        head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
-        body="Meg. Cuirie +2",
-        hands="Meg. Gloves +2",
+    sets.precast.WS["Savage Blade"] = set_combine(sets.precast.WS, {
         legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet="Meg. Jam. +1",
         neck="Sanctity Necklace",
-        waist="Dynamic Belt",
-        left_ear="Sherida Earring",
-        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Meghanada Ring",
-        right_ring="Begrudging Ring",
-        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-    }
+    })
 
 
     --------------------------------------
@@ -286,17 +278,17 @@ function init_gear_sets()
 
     -- Normal melee group
     sets.engaged = {    
-        ammo="Seething Bomblet",
+        ammo="Coiste Bodhar",
         head="Mummu Bonnet +2",
-        body="Meghanada Cuirie +2",
-        hands="Mummu Wrists +2",
+        body="Meg. Cuirie +2",
+        hands="Malignance Gloves",
         legs="Meg. Chausses +2",
         feet="Mummu Gamash. +2",
         neck="Clotharius Torque",
         waist="Dynamic Belt",
-        left_ear="Eabani Earring",
+        left_ear="Sherida Earring",
         right_ear="Suppanomimi",
-        left_ring="Mummu Ring",
+        left_ring="Rajas Ring",
         right_ring="Begrudging Ring",
         back = gear.ThfCTP,
     }

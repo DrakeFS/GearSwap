@@ -84,11 +84,8 @@ function init_gear_sets()
     
     -- Fast cast sets for spells
     sets.precast.FC = {}
-    
-    -- Midcast Sets
-    sets.midcast.FastRecast = {}    
-    
-    sets.midcast.Breath = set_combine(sets.midcast.FastRecast, {})
+
+    sets.precast.RA = {range="Trollbane",}
     
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
@@ -126,6 +123,14 @@ function init_gear_sets()
     waist="Fotia Belt"
     })
     
+
+    -- Midcast Sets
+    sets.midcast.FastRecast = {}    
+    
+    sets.midcast.Breath = set_combine(sets.midcast.FastRecast, {})
+
+    sets.midcast.RA = {range="Trollbane",}
+
     -- Sets to return to when not performing an action.
     
     -- Resting sets

@@ -148,20 +148,19 @@ function init_gear_sets()
     
     -- Normal melee sets
     sets.engaged = {
-    ammo="Ginsen",
-    head="Mummu Bonnet +2",
-    body="Mummu Jacket +2",
-    hands="Mummu Wrists +2",
-    legs="Mummu Kecks +2",
-    feet="Mummu Gamash. +2",
-    neck="Clotharius Torque",
-    waist="Famine Sash",
-    left_ear="Steelflash Earring",
-    right_ear="Sherida Earring",
-    left_ring="Mummu Ring",
-    right_ring="Begrudging Ring",
-    back="Atheling Mantle",
-    }
+        head="Mummu Bonnet +2",
+        body="Mummu Jacket +2",
+        hands="Malignance Gloves",
+        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet="Mummu Gamash. +2",
+        neck="Lissome Necklace",
+        waist="Famine Sash",
+        left_ear="Crep. Earring",
+        right_ear="Sherida Earring",
+        left_ring="Rajas Ring",
+        right_ring="Begrudging Ring",
+        back="Atheling Mantle",
+        }
     
     -- Defensive melee hybrid sets
     sets.engaged.PDT = {}
