@@ -16,7 +16,6 @@ end
 -- Setup vars that are user-independent.
 function job_setup()
     include('Mote-TreasureHunter')
-    get_combat_form()
     state.Buff = {}
 end
 
@@ -30,18 +29,7 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Mid', 'Acc')
     state.PhysicalDefenseMode:options('PDT', 'Reraise')
     state.MagicalDefenseMode:options('MDT')
-    
-    war_sj = player.sub_job == 'WAR' or false
-
-    --lockstyleset()
 end
-
-
--- Called when this job file is unloaded (eg: job change)
-function file_unload()
-
-end
-
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()

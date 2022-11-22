@@ -130,7 +130,7 @@ function init_gear_sets()
         body="Ayanmo Corazza +2",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
-        feet="Leth. Houseaux +2",
+        feet="Leth. Houseaux +3",
         neck="Sanctity Necklace",
         waist="Windbuffet Belt +1",
         left_ear="Sherida Earring",
@@ -245,7 +245,7 @@ function init_gear_sets()
         body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
         hands="Jhakri Cuffs +2",
         legs="Atrophy Tights +2",
-        feet="Leth. Houseaux +2",
+        feet="Leth. Houseaux +3",
         neck="Nodens Gorget",
         right_ear="Mendi. Earring",
         back="Solemnity Cape",
@@ -259,7 +259,7 @@ function init_gear_sets()
         body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
         hands="Atrophy Gloves +3",
         legs="Atrophy Tights +2",
-        feet="Leth. Houseaux +2",
+        feet="Leth. Houseaux +3",
         waist="Embla Sash",
         left_ear="Mimir Earring",
         right_ear={ name="Lethargy Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
@@ -373,7 +373,7 @@ function init_gear_sets()
         body="Lethargy Sayon +2",
         hands="Leth. Ganth. +2",
         legs="Leth. Fuseau +2",
-        feet="Leth. Houseaux +2",
+        feet="Leth. Houseaux +3",
         neck="Sanctity Necklace",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Malignance Earring",
@@ -477,35 +477,24 @@ function init_gear_sets()
         back=gear.RdmCTP,
     }
 
-    sets.engaged.DW = {
-        ammo="Coiste Bodhar",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands="Malignance Gloves",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
-        neck="Lissome Necklace",
+    sets.engaged.DW = set_combine(sets.engaged, {
         waist="Reiki Yotai",
-        left_ear="Suppanomimi",
-        right_ear="Sherida Earring",
-        left_ring="Pernicious Ring",
-        right_ring="Petrov Ring",
-        back=gear.RdmCTP,
-    }
+        left_ear="Eabani Earring",
+    })
 
     sets.engaged.DW.Enspell = {
         ammo="Paeapua",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Aya. Manopolas +2",
-        legs={ name="Carmine Cuisses +1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
+        legs="Zoar Subligar +1",
         feet="Aya. Gambieras +2",
         neck="Clotharius Torque",
-        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Suppanomimi",
-        right_ear="Cessance Earring",
-        left_ring="Pernicious Ring",
-        right_ring="Petrov Ring",
+        waist="Reiki Yotai",
+        left_ear="Eabani Earring",
+        right_ear="Sherida Earring",
+        left_ring="Petrov Ring",
+        right_ring="Pernicious Ring",
         back=gear.RdmCES
     }
 
@@ -516,7 +505,7 @@ function init_gear_sets()
     sets.weapons.Cure = {main="Daybreak", sub="Sors Shield"}
     sets.weapons.Enfeebling.DW = {main="Daybreak", sub="Bunzi's Rod"}
     sets.weapons.Enhancing.DW = {main="Pukulatmuj +1", sub="Ammurapi Shield"}
-    sets.weapons.Enhancing.DW.Temper2 = {main="Pukulatmuj +1", sub="Pukulatmuj"}
+    sets.weapons.Enhancing.DW.Temper = {main="Pukulatmuj +1", sub="Pukulatmuj"}
     sets.weapons.Elemental.DW = {main="Daybreak", sub="Bunzi's Rod"}
     sets.weapons.Cure.DW = {main="Daybreak", sub="Bunzi's Rod"}
 
@@ -585,7 +574,7 @@ function job_midcast(spell, action, spellMap, eventArgs)
         if spell.skill == 'Enhancing Magic' then
             if state.CombatForm.value == 'DW' then
                 if max_enhancing_skill:contains(spell.name) then
-                    equip(sets.weapons.Enhancing.DW.Temper2)
+                    equip(sets.weapons.Enhancing.DW.Temper)
                 else
                     equip(sets.weapons.Enhancing.DW)
                 end

@@ -199,7 +199,7 @@ function init_gear_sets()
     
     sets.precast.WS['Savage Blade'] = {
         ammo="Aqreqaq Bomblet",
-        head="Meghanada Visor +1",
+        head="Meghanada Visor +2",
         body="Rawhide Vest",
         hands="Meg. Gloves +1",
         feet="Meg. Jam. +2",

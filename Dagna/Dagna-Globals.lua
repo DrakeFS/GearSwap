@@ -30,7 +30,7 @@ function define_global_sets()
     sets.CapacityMantle = {back=gear.CPCape}
 
     -- Global States
-    state.CapacityMode = M(false, 'Capacity Point Mantle')
+    state.CapacityMode = M(false)
     
 end
 

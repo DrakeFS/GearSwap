@@ -62,9 +62,7 @@ function init_gear_sets()
     sets.precast.JA['Footwork'] = {}
     sets.precast.JA['Formless Strikes'] = {}
     sets.precast.JA['Mantra'] = {}
-
     sets.precast.JA['Chi Blast'] = {}
-
     sets.precast.JA['Chakra'] = {}
 
     -- Waltz set (chr and vit)
@@ -79,9 +77,9 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     
-    sets.precast.FC = {}
+    --sets.precast.FC = {}
 
-    sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {})
+    --sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {})
 
     sets.TreasureHunter = {
         body=gear.HercBTH,
@@ -94,8 +92,7 @@ function init_gear_sets()
 
     -- Specific weaponskill sets.
     
-    -- legs={name="Quiahuiz Trousers", augments={'Phys. dmg. taken -2%','Magic dmg. taken -2%','STR+8'}}}
-
+    
     sets.precast.WS['Raging Fists']    = set_combine(sets.precast.WS, {})
     sets.precast.WS['Howling Fist']    = set_combine(sets.precast.WS, {})
     sets.precast.WS['Asuran Fists']    = set_combine(sets.precast.WS, {belt="Shadow Belt",})
@@ -104,19 +101,18 @@ function init_gear_sets()
     sets.precast.WS['Dragon Kick']     = set_combine(sets.precast.WS, {})
     sets.precast.WS['Tornado Kick']    = set_combine(sets.precast.WS, {})
     sets.precast.WS['Spinning Attack'] = set_combine(sets.precast.WS, {})
-    
     sets.precast.WS['Cataclysm'] = {}
     
     -- Midcast Sets
-    sets.midcast.FastRecast = {}
+    --sets.midcast.FastRecast = {}
 
     -- Specific spells
-    sets.midcast.Utsusemi = {}
+    --sets.midcast.Utsusemi = {}
 
     -- Sets to return to when not performing an action.
     
     -- Resting sets
-    sets.resting = {}
+    --sets.resting = {}
     
 
     -- Idle sets
@@ -126,18 +122,18 @@ function init_gear_sets()
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
     
-    sets.idle.Weak = {}
+    --sets.idle.Weak = {}
     
     -- Defense sets
     sets.defense.PDT = {}
 
-    sets.defense.HP = {}
+    --[[sets.defense.HP = {}
 
     sets.defense.MDT = {}
 
     sets.Kiting = {}
 
-    sets.ExtraRegen = {}
+    sets.ExtraRegen = {}]]
 
     -- Engaged sets
 
@@ -163,9 +159,9 @@ function init_gear_sets()
         }
     
     -- Defensive melee hybrid sets
-    sets.engaged.PDT = {}
+    --sets.engaged.PDT = {}
     
-    sets.engaged.Counter = {}
+    --sets.engaged.Counter = {}
 
     -- Hundred Fists/Impetus melee set mods
     --[[sets.engaged.HF = set_combine(sets.engaged)
@@ -332,18 +328,7 @@ end
 
 -- Select default macro book on initial load or subjob change.
 function select_default_macro_book()
-    -- Default macro set/book
-    if player.sub_job == 'DNC' then
-        set_macro_page(1, 2)
-    elseif player.sub_job == 'NIN' then
-        set_macro_page(1, 2)
-    elseif player.sub_job == 'THF' then
-        set_macro_page(1, 2)
-    elseif player.sub_job == 'RUN' then
-        set_macro_page(1, 2)
-    else
-        set_macro_page(1, 2)
-    end
+    set_macro_page(1, 2)
 end
 
 

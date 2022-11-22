@@ -7,7 +7,7 @@ end
 -- Setup vars that are user-independent.  state.Buff vars initialized here will automatically be tracked.
 function job_setup()
     include('Mote-TreasureHunter')
-    state.WeaponSwapMode= M(true, false)
+    state.WeaponSwapMode= M(true)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -33,6 +33,10 @@ end
 
 -- Define sets and vars used by this job file.
 function init_gear_sets()
+    
+    gear.BrdTPN = {name="Bard's Charm", augments={'Path: A',}}
+    gear.BrdCFC = {name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}}
+    gear.BrdTPC = {name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
     
     sets.TreasureHunter = {
         ammo="Per. Lucky Egg",
@@ -124,47 +128,31 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     -- General set for recast times.
-    sets.midcast.FastRecast = {}
+    sets.midcast.FastRecast = set_combine(sets.precast.FC ,{})
 
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong = {
         range="Gjallarhorn",
         head="Fili Calot +2",
         body="Fili Hongreline +2",
-        hands="Fili Manchettes +2",
+        hands="Fili Manchettes +3",
         legs="Inyanga Shalwar +2",
         feet="Brioso Slippers +3",
         neck="Mnbw. Whistle +1",
     }
 
     -- Gear to enhance certain classes of songs.
-    --sets.midcast.Ballad = {legs="Fili Rhingrave +1"}
+    sets.midcast.Ballad = set_combine(sets.midcast.BardSong, {legs="Fili Rhingrave +2"})
     --sets.midcast.Carol = {hands="Mousai Gages +1"}
     --sets.midcast.Etude = {head="Mousai Turban +1"}
-    sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +2"})
-    sets.midcast['Horde Lullaby'] = set_combine(sets.midcast.SongDebuff,{range="Daurdabla", hands="Brioso Cuffs +2", body="Fili Hongreline +2"})
-    sets.midcast['Horde Lullaby II'] = {
-        range="Daurdabla",
-        head="Brioso Roundlet +2",
-        body="Brioso Justau. +2",
-        hands="Inyan. Dastanas +1",
-        legs="Inyanga Shalwar +2",
-        feet={ name="Bihu Slippers +1", augments={'Enhances "Nightingale" effect',}},
-        neck="Mnbw. Whistle +1",
-        waist="Famine Sash",
-        left_ear="Gersemi Earring",
-        right_ear="Crep. Earring",
-        left_ring="Ayanmo Ring",
-        right_ring="Kishar Ring",
-        back = gear.BrdCFC,
-    }
+    sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +3"})
     sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +2", back=gear.BrdCFC})
     sets.midcast.Mambo = set_combine(sets.midcast.BardSong,{feet="Mousai Crackows +1"})
-    sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +2"})
+    sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +3"})
     --sets.midcast.Minne = {legs="Mousai Seraweels"}
     sets.midcast.Minuet = set_combine(sets.midcast.BardSong,{body="Fili Hongreline +2"})
     sets.midcast.Paeon = set_combine(sets.midcast.BardSong,{head="Brioso Roundlet +2"})
-    --sets.midcast.Threnody = sets.midcast.SongDebuff  --, {}) --{body="Mou. Manteel +1"}) -- GS does not see this set?
+
 
     --sets.midcast['Adventurer\'s Dirge'] = {hands="Bihu Cuffs +3"}
     --sets.midcast['Foe Sirvente'] = {head="Bihu Roundlet +3"}
@@ -188,21 +176,33 @@ function init_gear_sets()
         neck="Mnbw. Whistle +1",
         waist="Famine Sash",
         left_ear="Hermetic Earring",
+        right_ear="Crep. Earring",
         left_ring="Kishar Ring",
-        right_ring="Inyanga Ring",
+        right_ring="Ayanmo Ring",
         back = gear.BrdCFC,
     }
-    -- For song defbuffs (accuracy primary, duration secondary)
-    --sets.midcast.SongEnfeebleAcc = set_combine(sets.midcast.SongEnfeeble, {})
+    sets.midcast['Horde Lullaby'] = set_combine(sets.midcast.SongDebuff,{
+        range="Daurdabla", 
+        body="Fili Hongreline +2", 
+        legs="Inyanga Shalwar +2"
+    })
+    sets.midcast['Horde Lullaby II'] = set_combine( sets.midcast.SongDebuff ,{
+        range="Daurdabla",
+        hands="Fili Manchettes +3",
+        legs="Inyanga Shalwar +2",
+        left_ear="Gersemi Earring",
+    })
 
-    -- Placeholder song; minimize duration to make it easy to overwrite.
-    --sets.midcast.SongPlaceholder = set_combine(sets.midcast.SongEnhancing, {range=info.ExtraSongInstrument})
+    sets.midcast.Threnody = set_combine(sets.midcast.SongDebuf, {body="Mou. Manteel"}) 
+
+    -- For song defbuffs (accuracy primary, duration secondary)
+    sets.midcast.SongEnfeebleAcc = set_combine(sets.midcast.SongDebuff, {})
 
     -- Other general spells and classes.
     sets.midcast.Cure = {
         head={ name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}},
         body="Kaykaus Bliaut",
-        hands="Inyan. Dastanas +1",
+        hands="Inyan. Dastanas +2",
         legs="Brioso Cannions +2",
         feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="Loricate Torque",
@@ -214,10 +214,10 @@ function init_gear_sets()
 
     sets.midcast.Curaga = sets.midcast.Cure
 
-    sets.midcast.StatusRemoval = {}
+    --sets.midcast.StatusRemoval = {}
 
     sets.midcast.Cursna = set_combine(sets.midcast.StatusRemoval, {
-        hands="Inyan. Dastanas +1",
+        hands="Inyan. Dastanas +2",
         feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         right_ring="Menelaus's Ring",
     })
@@ -229,7 +229,7 @@ function init_gear_sets()
     sets.midcast['Enfeebling Magic'] = {
         head="Brioso Roundlet +2",
         body="Brioso Justau. +2",
-        hands="Inyan. Dastanas +1",
+        hands="Inyan. Dastanas +2",
         legs="Inyanga Shalwar +2",
         feet="Inyan. Crackows +1",
         neck="Mnbw. Whistle +1",
@@ -251,9 +251,7 @@ function init_gear_sets()
     sets.midcast.Protectra = sets.midcast.Protect
     sets.midcast.Shell = sets.midcast.Protect
     sets.midcast.Shellra = sets.midcast.Shell]]
-
-    sets.midcast['Enfeebling Magic'] = {}
-
+   
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Idle Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -261,7 +259,7 @@ function init_gear_sets()
     sets.idle = {
         head="Fili Calot +2",
         body="Annoint. Kalasiris",
-        hands="Fili Manchettes +2",
+        hands="Fili Manchettes +3",
         legs="Aya. Cosciales +2",
         feet="Fili Cothurnes +2",
         neck="Loricate Torque",
@@ -273,7 +271,7 @@ function init_gear_sets()
 
     sets.idle.DT = {
         head="Fili Calot +2",
-        hands="Fili Manchettes +2",
+        hands="Fili Manchettes +3",
         legs="Aya. Cosciales +2",
         neck="Loricate Torque",
         left_ring="Defending Ring",
@@ -298,36 +296,39 @@ function init_gear_sets()
         ammo="Coiste Bodhar",
         head="Aya. Zucchetto +2",
         body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +2",
+        hands="Bunzi's Gloves",
+        legs="Volte Tights",
         feet="Aya. Gambieras +1",
-        neck="Clotharius Torque",
+        neck=gear.BrdTPN,
         waist="Dynamic Belt",
         left_ear="Crep. Earring",
-        right_ear="Steelflash Earring",
+        right_ear="Brutal Earring",
         left_ring="Rajas Ring",
         right_ring="Begrudging Ring",
-        back="Solemnity Cape",
+        back=gear.BrdTPC,
     }
 
     --sets.engaged.Acc = set_combine(sets.engaged, {})
 
     sets.engaged.DW = set_combine(sets.engaged, {
+        waist="Shetal Stone",
         left_ear="Suppanomimi",
-        right_ear="Eabani Earring",
     })
     
     sets.weapons = {}
     sets.weapons.FC = {main='Kali'}
     sets.weapons.BardSong = {main='Kali'}
-    sets.weapons.BardSong.DW = {main='Kali', offhand='Tauret'}
+    sets.weapons.BardSong.DW = {main='Kali', sub='Tauret'}
     sets.weapons.Healing = {main='Daybreak'}
-    sets.weapons.Healing.DW = {main='Daybreak'}
+    sets.weapons.Healing.DW = {main='Daybreak', sub='Kali'}
     sets.weapons.Enhancing = {main='Kali'}
     sets.weapons.Enhancing.DW = {main='Kali'}
     sets.weapons.Enfeebling = {main='Tauret'}
-    sets.weapons.Enfeebling.DW = {main='Tauret', offhand='Daybreak'}
-
+    sets.weapons.Enfeebling.DW = {main='Tauret', sub='Daybreak'}
+    sets.weapons.Dispelga = {main='Daybreak'}
+    sets.weapons.Dispelga.DW = {main='Daybreak', sub='Tauret'}
+    sets.weapons.Dispelga.FC = {}
+    sets.weapons.Dispelga.FC.DW = {main='Daybreak', sub='Kali'}
 end
 
 
@@ -342,19 +343,31 @@ function job_precast(spell, action, spellMap, eventArgs)
         
         mainhand = player.equipment.main
         offhand = player.equipment.sub
-        --[[if state.CombatForm.value == 'DW' then
-
-        else]]
+        if state.CombatForm.value == 'DW' then
             if spell.type == "BardSong" then
                 equip(sets.weapons.FC)
             elseif spellMap == "Cure" then
                 equip(sets.weapons.FC)
             elseif spell.skill == "Enhancing Magic" then
                 equip(sets.weapons.FC)
+            elseif spell.name == 'Dispelga' then
+                equip(sets.weapons.Dispelga.FC.DW)
             elseif spell.skill == "Enfeebling Magic" then
                 equip(sets.weapons.FC)
             end
-        --end
+        else
+            if spell.type == "BardSong" then
+                equip(sets.weapons.FC)
+            elseif spellMap == "Cure" then
+                equip(sets.weapons.FC)
+            elseif spell.skill == "Enhancing Magic" then
+                equip(sets.weapons.FC)
+            elseif spell.name == 'Dispelga' then
+                equip(sets.weapons.Dispelga)
+            elseif spell.skill == "Enfeebling Magic" then
+                equip(sets.weapons.FC)
+            end
+        end
     end
 end
 
@@ -367,6 +380,8 @@ function job_midcast(spell, action, spellMap, eventArgs)
                 equip(sets.weapons.Healing.DW)
             elseif spell.skill == "Enhancing Magic" then
                 equip(sets.weapons.Enhancing.DW)
+            elseif spell.name == 'Dispelga' then
+                equip(sets.weapons.Dispelga.DW)
             elseif spell.skill == "Enfeebling Magic" then
                 equip(sets.weapons.Enfeebling.DW)
             end
@@ -377,6 +392,8 @@ function job_midcast(spell, action, spellMap, eventArgs)
                 equip(sets.weapons.Healing)
             elseif spell.skill == "Enhancing Magic" then
                 equip(sets.weapons.Enhancing)
+            elseif spell.name == 'Dispelga' then
+                equip(sets.weapons.Dispelga)
             elseif spell.skill == "Enfeebling Magic" then
                 equip(sets.weapons.Enfeebling)
             end
@@ -399,6 +416,16 @@ function job_aftercast(spell, action, spellMap, eventArgs)
     if state.WeaponSwapMode.value then
         equip({main = mainhand, sub = offhand})
     end
+end
+
+function job_update(cmdParams, eventArgs)
+    update_combat_form()
+end
+
+function update_combat_form()
+    if cf_check then --checks if cf_check() exists
+        cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Dagna-Globals.lua
+    end 
 end
 
 function get_song_class(spell)

@@ -39,7 +39,8 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Learning')
-            
+    state.TreasureMode:set('Tag')
+
     on_job_change()
     
     send_command('bind @= gs c cycle delayMod')
@@ -101,7 +102,7 @@ function init_gear_sets()
     sets.precast.FC = {
         ammo="Impatiens",
         head = gear.HercHTH,
-        body="Hashishin Mintan +2",
+        body="Hashishin Mintan +3",
         hands={ name="Leyline Gloves", augments={'Accuracy+7','"Mag.Atk.Bns."+10',}},
         legs="Aya. Cosciales +2",
         feet="Jhakri Pigaches +2",
@@ -222,7 +223,7 @@ function init_gear_sets()
     sets.midcast['Blue Magic'].Magical = {
         ammo="Pemphredo Tathlum",
         head="Hashishin Kavuk +3",
-        body="Hashishin Mintan +2",
+        body="Hashishin Mintan +3",
         hands="Hashi. Bazu. +2",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
         feet="Hashi. Basmak +2",
@@ -248,9 +249,9 @@ function init_gear_sets()
     sets.midcast['Blue Magic'].MagicAccuracy = {
         ammo="Pemphredo Tathlum",
         head="Assim. Keffiyeh +3",
-        body="Hashishin Mintan +2",
+        body="Hashishin Mintan +3",
         hands="Hashi. Bazu. +2",
-        legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
+        legs="Hashishin Tayt +2",
         feet="Hashi. Basmak +2",
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
@@ -343,10 +344,10 @@ function init_gear_sets()
     -- Idle sets
     sets.idle = {
         head="Malignance Chapeau",
-        body="Jhakri Robe +2",
-        hands="Assim. Bazu. +2",
+        body="Hashishin Mintan +3",
+        hands="Malignance Gloves",
         legs="Carmine Cuisses +1",
-        feet="Aya. Gambieras +2",
+        feet="Nyame Sollerets",
         neck="Sanctity Necklace",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
@@ -374,12 +375,14 @@ function init_gear_sets()
     
     -- Defense sets
     sets.defense.PDT = {    
+        ammo="Crepuscular Pebble",
         head="Malignance Chapeau",
-        body="Malignance Tabard",
+        body="Hashishin Mintan +3",
         hands="Malignance Gloves",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
+        waist="Kasiri Belt",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
         back=gear.BluCTP,
@@ -424,6 +427,7 @@ function init_gear_sets()
         waist="Windbuffet Belt +1",
         left_ear="Cessance Earring",
         right_ear="Crep. Earring",
+        left_ring="Pernicious Ring",
         right_ring="Petrov Ring",
         back=gear.BluCTP,
     }
@@ -435,40 +439,24 @@ function init_gear_sets()
     })
 
     sets.engaged.Acc = set_combine(sets.engaged, {
-        ammo="Honed Tathlum",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands=gear.AdhGTP,
-        legs="Jhakri Slops +2",
+        ammo="Falcon Eye",
+        legs="Hashishin Tayt +2",
         feet="Aya. Gambieras +2",
-        neck="Mirage Stole +2",
-        waist="Anguinus Belt",
-        left_ear="Cessance Earring",
+        waist="Hurch'lan Sash",
+        left_ear="Odr Earring",
         right_ear="Crep. Earring",
-        left_ring="Ayanmo Ring",
-        right_ring="Beeline Ring",
-        back=gear.BluCTP,
+        left_ring="Cacoethic Ring",
+        right_ring="Ilabrat Ring",
     })
 
-    sets.engaged.Subtle = set_combine(sets.engaged, sets.Subtle)
+    sets.engaged.SB = set_combine(sets.engaged, sets.Subtle)
 
     --sets.engaged.Learning = set_combine(sets.engaged, sets.Learning)
     
-    sets.engaged.DW = {
-        ammo="Coiste Bodhar",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands=gear.AdhGTP,
-        legs=gear.SamTTP,
-        feet=gear.HercFTP,
-        neck="Mirage Stole +2",
-        waist="Windbuffet Belt +1",
-        left_ear="Cessance Earring",
-        right_ear="Crep. Earring",
-        left_ring="Pernicious Ring",
-        right_ring="Petrov Ring",
-        back=gear.BluCTP,
-    }
+    sets.engaged.DW = set_combine(sets.engaged, {
+        waist="Reiki Yotai",
+        left_ear="Eabani Earring",
+    })
 
     sets.engaged.DW.HP = set_combine(sets.engaged.DW, {
         left_ear="Odnowa Earring +1",
@@ -478,37 +466,24 @@ function init_gear_sets()
 
     sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {})
     
-    sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW, {
-        waist="Reiki Yotai",
-        left_ear="Cessance Earring",
-        right_ear="Eabani Earring",
-    })
+    sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW, {})
     
     sets.engaged.DW.MidHaste = set_combine(sets.engaged.DW.HighHaste, {
-        left_ear="Suppanomimi",
+        right_ear="Suppanomimi",
     })
     
     sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
 
     sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {
         ammo="Falcon Eye",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands=gear.AdhGTP,
-        legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
+        legs="Hashishin Tayt +2",
         feet="Aya. Gambieras +2",
-        neck={ name="Mirage Stole +2", augments={'Path: A',}},
-        waist="Reiki Yotai",
-        left_ear="Crep. Earring",
         right_ear="Odr Earring",
-        left_ring="Begrudging Ring",
+        left_ring="Cacoethic Ring",
         right_ring="Ilabrat Ring",
-        back=gear.BluCTP,
     })
     
     sets.engaged.DW.SB = set_combine(sets.engaged.DW, sets.Subtle)
-
-    sets.engaged.DW.Eva = set_combine(sets.engaged.DW, sets.Evasion)
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -645,7 +620,6 @@ function job_update(cmdParams, eventArgs)
     determine_haste_group()
     handle_equipping_gear()
 end
-
 
 -------------------------------------------------------------------------------------------------------------------
 -- Utility functions specific to this job.

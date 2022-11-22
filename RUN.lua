@@ -282,7 +282,7 @@ function init_gear_sets()
         head={ name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}},
         body="Ayanmo Corazza +2",
         hands="Meg. Gloves +1",
-        legs="Meg. Chausses +1",
+        legs="Meg. Chausses +2",
         feet="Aya. Gambieras +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",

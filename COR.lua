@@ -122,8 +122,9 @@ function init_gear_sets()
     gear.PWSAmmo = gear.TPAmmo
     gear.MWSAmmo = "Orichalc. Bullet"
     gear.QDrawAmmo = "Hauksbok Bullet"
-    gear.CorAGI = {name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}}
-    gear.CorRTP = {name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10','Phys. dmg. taken-10%',}}
+    gear.CorRTP = {name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-10%',}}
+    gear.CorMRWSC = {name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}}
+    gear.CorPRWSC = {name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','Weapon skill damage +10%',}}
     
     -- Precast sets to enhance JAs
     
@@ -168,7 +169,7 @@ function init_gear_sets()
     sets.precast.RA = {
         ammo=gear.TPAmmo,
         head="Chass. Tricorne +1",
-        body="Laksa. Frac +2",
+        body="Laksa. Frac +3",
         hands="Carmine Fin. Ga. +1",
         legs={ name="Adhemar Kecks", augments={'AGI+10','"Rapid Shot"+10','Enmity-5',}},
         feet="Meg. Jam. +2",
@@ -179,36 +180,19 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands="Meg. Gloves +2",
-        legs="Meg. Chausses +1",
-        feet="Meg. Jam. +2",
-        neck="Sanctity Necklace",
-        waist="Windbuffet Belt +1",
-        left_ear="Suppanomimi",
-        right_ear="Steelflash Earring",
-        left_ring="Cacoethic Ring",
-        right_ring="Ilabrat Ring",
-        back=gear.CorWSD,
-    }
-    
-    --[[sets.precast.WS = {
-        --ammo="Ginsen",
-        head="Meghanada Visor +1",
-        body="Meg. Cuirie +1",
-        hands="Meg. Gloves +2",
-        legs="Meg. Chausses +1",
-        feet="Meg. Jam. +2",
+        head="Meghanada Visor +2",
+        body="Laksa. Frac +3",
+        hands="Chasseur's Gants +2",
+        legs="Meg. Chausses +2",
+        feet={ name="Lanun Bottes +2", augments={'Enhances "Wild Card" effect',}},
         neck="Fotia Gorget",
-        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Odr Earring",
-        right_ear="Bladeborn Earring",
+        waist="Fotia Belt",        
+        left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        right_ear="Ishvara Earring",
         left_ring="Ilabrat Ring",
-        right_ring="Begrudging Ring",
-        back="Xucau Mantle",
-    }]]
-
+        right_ring="Apate Ring",
+        back=gear.CorPRWSC,
+    }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS,{
@@ -225,20 +209,10 @@ function init_gear_sets()
         right_ring="Ilabrat Ring",
     })
 
-    sets.precast.WS['Savage Blade'] = {
-        head={ name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}},
-        body="Laksa. Frac +2",
-        hands="Meg. Gloves +2",
-        legs="Meg. Chausses +1",
-        feet="Lanun Bottes +2",
-        neck="Fotia Gorget",
+    sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
+        neck="Rep. Plat. Medal",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Bladeborn Earring",
-        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Ilabrat Ring",
-        right_ring="Apate Ring",
-        back=gear.CorWSD,
-    }
+    })
 
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
 
@@ -246,26 +220,26 @@ function init_gear_sets()
 
     sets.precast.WS['Last Stand'] = {
         ammo = gear.PWSAmmo,
-        head="Meghanada Visor +1",
-        body="Laksa. Frac +2",
-        hands="Meg. Gloves +2",
-        legs="Meg. Chausses +1",
+        head="Meghanada Visor +2",
+        body="Laksa. Frac +3",
+        hands="Chasseur's Gants +2",
+        legs="Meg. Chausses +2",
         feet={ name="Lanun Bottes +2", augments={'Enhances "Wild Card" effect',}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        right_ear="Clearview Earring",
+        right_ear="Ishvara Earring",
         left_ring="Ilabrat Ring",
         right_ring="Dingir Ring",
-        back=gear.CorAGI,
+        back=gear.CorPRWSC,
     }
 
-    sets.precast.WS['Last Stand'].Acc = {}
+    sets.precast.WS['Last Stand'].Acc = set_combine(sets.precast.WS['Last Stand'], {})
        
     sets.precast.WS['Wildfire'] = {        
         ammo = gear.MWSAmmo,
         head = gear.HercHMWS,
-        body="Laksa. Frac +2",
+        body="Laksa. Frac +3",
         hands=gear.HercGMB,
         --legs=gear.HercLMB,
         feet="Lanun Bottes +2",
@@ -275,7 +249,7 @@ function init_gear_sets()
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Ilabrat Ring",
         right_ring="Dingir Ring",
-        back=gear.CorAGI,
+        back=gear.CorMRWSC,
     }
 
     sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {
@@ -284,10 +258,10 @@ function init_gear_sets()
     })
 
     -- Midcast Sets
-    sets.midcast.FastRecast = {}
+    --sets.midcast.FastRecast = {}
         
     -- Specific spells
-    sets.midcast.Utsusemi = sets.midcast.FastRecast
+    --sets.midcast.Utsusemi = sets.midcast.FastRecast
 
     sets.midcast.CorsairShot = {
         ammo=gear.QDrawAmmo,
@@ -301,14 +275,14 @@ function init_gear_sets()
         right_ear="Friomisi Earring",
         left_ring="Ilabrat Ring",
         right_ring="Dingir Ring",
-        back=gear.CorAGI,
+        back=gear.CorMRWSC,
     }
 
-    sets.midcast.CorsairShot.Acc = {}
+    sets.midcast.CorsairShot.Acc = set_combine(sets.midcast.CorsairShot, {})
 
     sets.midcast.CorsairShot['Light Shot'] = set_combine(sets.midcast.CorsairShot, {})
 
-    sets.midcast.CorsairShot['Dark Shot'] = set_combine(sets.midcast.CorsairShot['Light Shot'], {
+    sets.midcast.CorsairShot['Dark Shot'] = set_combine(sets.midcast.CorsairShot, {
         head="Pixie Hairpin +1",
         left_ring="Archon Ring",
     })
@@ -320,7 +294,7 @@ function init_gear_sets()
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
-        legs="Meg. Chausses +1",
+        legs="Meg. Chausses +2",
         feet="Meg. Jam. +2",
         neck="Sanctity Necklace",
         waist="Yemaya Belt",
@@ -331,13 +305,13 @@ function init_gear_sets()
         back=gear.CorRTP,
     }
 
-    sets.midcast.RA.Acc = {}
+    sets.midcast.RA.Acc = set_combine(sets.midcast.RA, {})
 
     
     -- Sets to return to when not performing an action.
     
     -- Resting sets
-    sets.resting = {neck="Wiglen Gorget",ring1="Sheltered Ring",ring2="Paguroidea Ring"}
+    --sets.resting = {neck="Wiglen Gorget",ring1="Sheltered Ring",ring2="Paguroidea Ring"}
     
 
     -- Idle sets
@@ -363,7 +337,7 @@ function init_gear_sets()
         back="Solemnity Cape",
     }
 
-    sets.defense.MDT = {}
+    sets.defense.MDT = set_combine(sets.defense.PDT, {})
     
 
     sets.Kiting = {legs="Carmine Cuisses +1",}

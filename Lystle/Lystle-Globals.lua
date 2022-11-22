@@ -16,8 +16,7 @@ function define_global_sets()
     -- JSE Capes
     gear.ThfCTP = {name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
     gear.WarCTP = {name="Cichol's Mantle", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%',}}
-    gear.BrdCFC = {name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}}
-    
+        
     -- Override sets
     sets.CapacityMantle = {back=gear.CPCape}
     sets.PDI = {    
@@ -27,7 +26,7 @@ function define_global_sets()
     }
 
     -- Global States
-    state.CapacityMode = M(false, 'Capacity Point Mantle')
+    state.CapacityMode = M(false)
     
 end
 

@@ -61,7 +61,7 @@ function init_gear_sets()
 
     sets.precast.FC.Stoneskin = set_combine(sets.precast.FC['Enhancing Magic'], {legs="Doyen Pants",})
 
-    sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC,{legs="Ebers Pant. +2",})
+    sets.precast.FC['Healing Magic'] = set_combine(sets.precast.FC,{legs="Ebers Pant. +3",})
 
     sets.precast.FC.StatusRemoval = sets.precast.FC['Healing Magic']
 
@@ -96,7 +96,7 @@ function init_gear_sets()
         head="Theo. Cap +1",
         body="Kaykaus Bliaut",
         hands="Theophany Mitts",
-        legs="Ebers Pant. +2",
+        legs="Ebers Pant. +3",
         feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck={ name="Cleric's Torque", augments={'Path: A',}},
         waist="Korin Obi",
@@ -113,7 +113,19 @@ function init_gear_sets()
 
     sets.midcast.CureMelee = sets.midcast.Cure
 
-    sets.midcast.Cursna = {}
+    sets.midcast.Cursna = {
+        head="Ebers Cap",
+        body="Ebers Bliaut",
+        hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
+        legs="Theo. Pantaloons",
+        feet={ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        neck="Sanctity Necklace",
+        waist="Famine Sash",
+        left_ear="Hermetic Earring",
+        right_ear="Malignance Earring",
+        left_ring="Menelaus's Ring",
+        back=gear.WhmCFC,
+    }
 
     sets.midcast.StatusRemoval = {}
 
@@ -121,7 +133,8 @@ function init_gear_sets()
     sets.midcast['Enhancing Magic'] = {
         main="Beneficus",
         hands="Inyan. Dastanas +2",
-        feet="Ebers Duckbills +2",
+        feet="Theo. Duckbills +3",
+        neck="Melic Torque",
         waist="Embla Sash",
         left_ear="Mimir Earring",
         right_ear="Andoaa Earring",
@@ -129,30 +142,44 @@ function init_gear_sets()
     }
      sets.midcast['Auspice'] = set_combine(sets.midcast['Enhancing Magic'], {feet="Ebers Duckbills +2",})
 
-    sets.midcast.Stoneskin = {}
+    sets.midcast.Stoneskin = set_combine(sets.midcast['Enhancing Magic'], {})
 
     sets.midcast.BarElement = set_combine(sets.midcast['Enhancing Magic'], {
         head="Ebers Cap",
         body="Ebers Bliaut",
         hands="Ebers Mitts",
-        legs="Ebers Pant. +2",
+        legs="Ebers Pant. +3",
+        feet="Ebers Duckbills +2",
     })
 
-    sets.midcast.Regen = {}
+    sets.midcast.Regen = set_combine(sets.midcast['Enhancing Magic'], {})
 
-    sets.midcast.Protectra = {}
+    sets.midcast.Protectra = set_combine(sets.midcast['Enhancing Magic'], {})
 
-    sets.midcast.Shellra = {}
-
+    sets.midcast.Shellra = set_combine(sets.midcast['Enhancing Magic'], {})
 
     sets.midcast['Divine Magic'] = {}
+
+    sets.midcast['Enfeebling Magic'] = {
+        head="Aya. Zucchetto +2",
+        body="Theo. Bliaut +1",
+        hands="Inyan. Dastanas +2",
+        legs="Inyanga Shalwar +2",
+        feet="Theo. Duckbills +3",
+        neck="Sanctity Necklace",
+        waist="Famine Sash",
+        left_ear="Hermetic Earring",
+        right_ear="Malignance Earring",
+        left_ring="Ayanmo Ring",
+        right_ring="Kishar Ring",
+    }
 
     sets.midcast['Dark Magic'] = {}
 
     -- Custom spell classes
-    sets.midcast.MndEnfeebles = {}
+    sets.midcast.MndEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {})
 
-    sets.midcast.IntEnfeebles = {}
+    sets.midcast.IntEnfeebles = set_combine(sets.midcast['Enfeebling Magic'], {})
 
     
     -- Sets to return to when not performing an action.
