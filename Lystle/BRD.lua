@@ -69,14 +69,14 @@ function init_gear_sets()
     })
 
     sets.precast.FC.BardSong = set_combine(sets.precast.FC, {
-        head="Fili Calot +2",
+        head="Fili Calot +3",
         legs="Doyen Pants",
         feet="Bihu Slippers +1",
     })
 
     sets.precast.FC['Honor March'] = set_combine(sets.precast.FC, {
         range="Marsyas",
-        head="Fili Calot +2",
+        head="Fili Calot +3",
         legs = "Doyen Pants",
         feet = "Bihu Slippers +1",
     })
@@ -133,7 +133,7 @@ function init_gear_sets()
     -- For song buffs (duration and AF3 set bonus)
     sets.midcast.BardSong = {
         range="Gjallarhorn",
-        head="Fili Calot +2",
+        head="Fili Calot +3",
         body="Fili Hongreline +2",
         hands="Fili Manchettes +3",
         legs="Inyanga Shalwar +2",
@@ -146,7 +146,7 @@ function init_gear_sets()
     --sets.midcast.Carol = {hands="Mousai Gages +1"}
     --sets.midcast.Etude = {head="Mousai Turban +1"}
     sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +3"})
-    sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +2", back=gear.BrdCFC})
+    sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +3", back=gear.BrdCFC})
     sets.midcast.Mambo = set_combine(sets.midcast.BardSong,{feet="Mousai Crackows +1"})
     sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +3"})
     --sets.midcast.Minne = {legs="Mousai Seraweels"}
@@ -257,7 +257,7 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.idle = {
-        head="Fili Calot +2",
+        head="Fili Calot +3",
         body="Annoint. Kalasiris",
         hands="Fili Manchettes +3",
         legs="Aya. Cosciales +2",
@@ -270,7 +270,7 @@ function init_gear_sets()
     }
 
     sets.idle.DT = {
-        head="Fili Calot +2",
+        head="Fili Calot +3",
         hands="Fili Manchettes +3",
         legs="Aya. Cosciales +2",
         neck="Loricate Torque",
