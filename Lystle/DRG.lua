@@ -190,24 +190,24 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-        ammo="Ginsen",
-        head={ name="Founder's Corona", augments={'DEX+3',}},
+        ammo="Coiste Bodhar",
+        head="Flam. Zucchetto +2",
         body="Flamma Korazin +2",
-        hands="Flam. Manopolas +2",
-        legs="Flamma Dirs +2",
+        hands="Sulev. Gauntlets +2",
+        legs="Sulev. Cuisses +2",
         feet="Flam. Gambieras +2",
         neck="Clotharius Torque",
         waist="Dynamic Belt",
         left_ear="Sherida Earring",
-        right_ear="Crep. Earring",
-        left_ring="Begrudging Ring",
+        right_ear="Brutal Earring",
+        left_ring="Rajas Ring",
         right_ring="Sulevia's Ring",
         back=gear.DrgCTP,
     }
 
-    sets.engged.DW = set_combine(sets.engaged, {})
+    sets.engaged.DW = set_combine(sets.engaged, {})
 
-    sets.engged.THand = set_combine(sets.engaged, {})
+    sets.engaged.THand = set_combine(sets.engaged, {})
 
 end
 

@@ -232,7 +232,7 @@ function init_gear_sets()
 
     -- Midcast Sets
     
-    sets.midcast.FastRecast = {}
+    --sets.midcast.FastRecast = {}
 
     sets.midcast['Flash'] = set_combine(sets.Enmity, {
         head="Atrophy Chapeau +3",

@@ -16,11 +16,23 @@ sets.precast.FC = {
 }
 
 sets.precast.WS = {
-    ammo="Seething Bomblet", 
-    feet="Sulev. Leggings +1",
+    ammo="Oshasha's Treatise",
+    head="Flam. Zucchetto +2",
+    body="Flamma Korazin +2",
+    hands="Sulev. Gauntlets +2",
+    legs="Sulev. Cuisses +2",
+    feet="Sulev. Leggings +2",
+    neck="Clotharius Torque",
+    left_ear="Thrud Earring",
+    right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+    left_ring="Begrudging Ring",
+    right_ring="Sulevia's Ring",
 }
 
 sets.precast.WS['Entropy'] = set_combine(sets.precast.WS, {waist="Shadow Belt"})
+sets.precast.WS['Spiral Hell'] = set_combine(sets.precast.WS, {waist="Soil Belt"})
+
+
 
 sets.midcast['Dark Magic'] = {
     neck="Sanctity Necklace",
@@ -29,11 +41,11 @@ sets.midcast['Dark Magic'] = {
 }
 
 sets.defense.PDT = {
-    head="Sulevia's Mask +1",
-    body="Sulevia's Plate. +1",
-    hands="Sulev. Gauntlets +1",
-    legs="Sulevi. Cuisses +1",
-    feet="Sulev. Leggings +1",
+    head="Sulevia's Mask +2",
+    body="Sulevia's Plate. +2",
+    hands="Sulev. Gauntlets +2",
+    legs="Sulevi. Cuisses +2",
+    feet="Sulev. Leggings +2",
     neck="Loricate Torque",
     left_ring="Defending Ring",
     right_ring="Sulevia's Ring",
