@@ -23,9 +23,11 @@ function job_setup()
     state.Buff.Futae = buffactive.Futae or false
     state.Buff.Shadows = buffactive.shadows or false
     ShadowType = 'None'
-    WSSelect = 0
-
-    state.ARPW = M{['description'] = "Abbysea Red Proc Weapon"}
+ 
+    nukes = {}
+    nukes.t1 = {['Earth']="Doton: Ichi", ['Water']="Suiton: Ichi", ['Wind']="Huton: Ichi", ['Fire']="Katon: Ichi", ['Ice']="Hyoton: Ichi", ['Lightning']="Raiton: Ichi"}--, ['Light']="Raiton: Ichi", ['Dark']="Hyoton: Ichi"}
+    nukes.t2 = {['Earth']="Doton: Ni",   ['Water']="Suiton: Ni",   ['Wind']="Huton: Ni",   ['Fire']="Katon: Ni",   ['Ice']="Hyoton: Ni",   ['Lightning']="Raiton: Ni"}--,   ['Light']="Raiton: Ni",   ['Dark']="Hyoton: Ni"}
+    nukes.t3 = {['Earth']="Doton: San",  ['Water']="Suiton: San",  ['Wind']="Huton: San",  ['Fire']="Katon: San",  ['Ice']="Hyoton: San",  ['Lightning']="Raiton: San"}--,  ['Light']="Raiton: San",  ['Dark']="Hyoton: San"}
  
     determine_haste_group()
 	
@@ -45,7 +47,6 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc', 'Mod')
     state.CastingMode:options('Normal', 'Resistant')
     state.PhysicalDefenseMode:options('PDT', 'Evasion')
-    state.ARPW:options('Norgish Dagger', 'Ibushi Shinai', 'Gassan', 'Kitty Rod', 'Lotus Katana', 'Kgd. Signet Staff', 'Lament', 'Hoe', 'Pitchfork')
 
     gear.MovementFeet = {name="Danzo Sune-ate"}
     gear.DayFeet = "Danzo Sune-ate"
@@ -93,7 +94,9 @@ function init_gear_sets()
     -- Fast cast sets for spells
     
     sets.precast.FC = {
-	head = gear.HercHFC,
+	    head={ name="Herculean Helm", augments={'Pet: STR+11','AGI+10','"Treasure Hunter"+2','Accuracy+12 Attack+12',}},
+        hands={ name="Leyline Gloves", augments={'Accuracy+7','"Mag.Atk.Bns."+10',}},
+        left_ring="Kishar Ring",
 	}
 	
     sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {})
@@ -287,12 +290,6 @@ function job_self_command(cmdParams, eventArgs)
     if cmdParams[1]:lower() == 'shadow' then
         handle_Shadows()
         eventArgs.handled = true
-    elseif cmdParams[1]:lower() == 'pws' then
-        handle_proc_WS()
-        eventArgs.handled = true
-    elseif cmdParams[1]:lower() == 'pequip' then
-        handle_proc_Equip()
-        eventArgs.handled = true
     end
 end
 
@@ -315,70 +312,6 @@ function handle_Shadows()
     end
 end
 
-function handle_proc_WS()
-    if player.equipment.main == 'Norgish Dagger' then
-        if WSSelect == 0 then
-            WSSelect = 1
-            send_command('@input /ws "Cyclone" <t>')
-        elseif WSSelect == 1 then
-            WSSelect = 0 
-            send_command('@input /ws "Energy Drain" <t>')
-        end
-    elseif player.equipment.main == 'Ibushi Shinai' then
-        if WSSelect == 0 then
-            WSSelect = 1
-            send_command('@input /ws "Red Lotus Blade" <t>')
-        elseif WSSelect == 1 then
-            WSSelect = 0 
-            send_command('@input /ws "Seraph Blade" <t>')
-        end
-    elseif player.equipment.main == 'Gassan' then
-        send_command('@input /ws "Blade: Ei" <t>')
-    elseif player.equipment.main == 'Kitty Rod' then
-        send_command('@input /ws "Seraph Strike" <t>')
-    elseif player.equipment.main == 'Lotus Katana' then
-        if WSSelect == 0 then
-            WSSelect = 1
-            send_command('@input /ws "Tachi: Jinpu" <t>')
-        elseif WSSelect == 1 then
-            WSSelect = 0 
-            send_command('@input /ws "Tachi: Koki" <t>')
-        end
-    elseif player.equipment.main == 'Kgd. Signet Staff' then
-        if WSSelect == 0 then
-            WSSelect = 1
-            send_command('@input /ws "Earth Crusher" <t>')
-        elseif WSSelect == 1 then
-            WSSelect = 0 
-            send_command('@input /ws "Sunburst" <t>')
-        end
-    elseif player.equipment.main == 'Lament' then
-        send_command('@input /ws "Freezebite" <t>')
-    elseif player.equipment.main == 'Hoe' then
-        send_command('@input /ws "Shadow of Death" <t>')
-    elseif player.equipment.main == 'Pitchfork' then
-        send_command('@input /ws "Raiden Thrust" <t>')
-    else
-        add_to_chat(123, 'No weapon skill defined for Proc weapon')
-    end
-end
-
-function handle_proc_Equip()
-    local DWWeapons = S{'Norgish Dagger', 'Ibushi Shinai', 'Gassan', 'Kitty Rod'}
-    if state.ARPW:contains(player.equipment.main) then
-        state.ARPW:cycle() 
-        if DWWeapons:contains(state.ARPW.value) then
-            equip({main=state.ARPW.value, sub='Qutrub Knife'})
-        else
-            equip({main=state.ARPW.value})
-        end
-        add_to_chat(120, ''..state.ARPW.value..' equiped.')
-    else 
-        equip({main='Norgish Dagger', sub='Qutrub Knife'})
-        add_to_chat(120, 'Norgish Dagger equiped.')
-    end
-end
-
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
@@ -392,12 +325,16 @@ function job_precast(spell, action, spellMap, eventArgs)
     elseif spell.name == 'Utsusemi: Ni' and ShadowType == 'San' and buffactive['Copy Image (4+)'] then
         cancel_spell()
     end
-
+    
     if state.DefenseMode.current ~= "None" then
         if spell.action_type == 'Ability' then
             equip(sets.Enmity)
             equip(sets.precast.JA[spell])
         end
+    end
+
+    if spell.type == "Ninjutsu" then
+        nuke_check(spell)
     end
 end
 
@@ -553,6 +490,23 @@ function determine_haste_group()
     end
 end
 
+-- If trying to cast a nuke on cooldown, cast the next tier down of the same nuke.
+function nuke_check(spell)
+    local spell_recasts = windower.ffxi.get_spell_recasts()
+    if (spell.name:match(nukes.t1[spell.element]) or spell.name:match(nukes.t2[spell.element]) or spell.name:match(nukes.t3[spell.element])) and spell_recasts[spell.recast_id] > 0 then
+        cancel_spell()
+        if spell.name == nukes.t3[spell.element] then
+            newspell = nukes.t2[spell.element]
+        elseif spell.name == nukes.t2[spell.element] then
+            newspell = nukes.t1[spell.element]
+        elseif spell.name == nukes.t1[spell.element] then
+            newspell = nukes.t3[spell.element]
+        end
+        send_command('@input /ma "'..newspell..'" <t>')
+        add_to_chat(8, '****** ['..spell.name..' CANCELED - Spell on Cooldown, Downgrading spell] ******')
+        return
+    end
+end
 
 function select_movement_feet()
     if world.time >= 17*60 or world.time < 7*60 then
@@ -561,7 +515,6 @@ function select_movement_feet()
         gear.MovementFeet.name = gear.DayFeet
     end
 end
-
 
 -- Select default macro book on initial load or subjob change.
 function select_default_macro_book()

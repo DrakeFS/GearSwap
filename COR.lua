@@ -403,7 +403,17 @@ end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
-    
+    if spell.type == 'WeaponSkill' and player.target.distance > (3.4 + player.target.model_size) then
+        if spell.skill == 'Marksmanship' or spell.skill == 'Archery' then
+            eventArgs.cancel = false
+            return
+        else
+            add_to_chat(123, spell.name..' Canceled: []')
+            eventArgs.cancel = true
+            return
+        end
+    end
+end
     if (spell.action_type == 'Ranged Attack' and player.equipment.ammo == "Hauksbok Bullet") or (spell.skill == 'Marksmanship'and player.equipment.ammo == "Hauksbok Bullet") then
         add_to_chat(104, 'Check ammo, trying to use Quick Draw ammunition for non-Quick Draw shot.  Cancelling.')
         eventArgs.cancel = true

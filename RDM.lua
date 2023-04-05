@@ -665,7 +665,7 @@ end
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
 
--- If the nuke casted is on cooldwon, cast the nest tier down of the same nuke.
+-- If the nuke casted is on cooldown, cast the next tier down of the same nuke.
 function downgradenuke(spell)
 
     local element = state.NukeElement.value

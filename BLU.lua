@@ -44,7 +44,7 @@ function user_setup()
     on_job_change()
     
     send_command('bind @= gs c cycle delayMod')
-    send_command('bind @` gs c toggle  EvasionMode')
+    send_command('bind @` gs c toggle EvasionMode')
 end
 
 
