@@ -31,6 +31,8 @@ function job_setup()
     state.MagicBurst = M(false, 'Burst')
     state.WeaponMode= M(false, 'Swap')
 
+    barStatus = S{'Barpoison','Barparalyze','Barvirus','Barsilence','Barpetrify','Barblind','Baramnesia','Barsleep','Barpoisonra','Barparalyzra','Barvira','Barsilencera','Barpetra','Barblindra','Baramnesra','Barsleepra'}
+
     on_job_change()
 
 end
@@ -126,7 +128,7 @@ function init_gear_sets()
     
     sets.precast.WS = {
         ammo="Oshasha's Treatise",
-        head="Jhakri Coronal +2",
+        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Ayanmo Corazza +2",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
@@ -222,6 +224,7 @@ function init_gear_sets()
         body="Malignance Tabard",
         hands="Aya. Manopolas +2",
         legs="Carmine Cuisses +1",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Sanctity Necklace",
         waist="Fotia Belt",
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -265,6 +268,8 @@ function init_gear_sets()
         right_ear={ name="Lethargy Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
         back = gear.RdmCMB,
     }
+
+    sets.midcast.Barstatus = set_combine(sets.midcast['Enhancing Magic'], {})
 
     sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'], {})
 
@@ -330,11 +335,11 @@ function init_gear_sets()
         
     sets.midcast['Enfeebling Magic'] = {
         ammo="Regal Gem",
-        head={ name="Vitiation Chapeau +2", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Atrophy Tabard +3",
         hands="Leth. Ganth. +2",
-        legs="Jhakri Slops +2",
-        feet={ name="Vitiation Boots +1", augments={'Immunobreak Chance',}},
+        legs="Leth. Fuseau +2",
+        feet="Leth. Houseaux +3",
         neck={ name="Duelist's Torque", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Regal Earring",
@@ -343,6 +348,23 @@ function init_gear_sets()
         right_ring="Jhakri Ring",
         back = gear.RdmCMB,
     }
+
+    --[[sets.Midcast['Enfeebling Magic'] = {  --Enfeebling comparison m
+        ammo="Regal Gem",
+        head="Viti. Chapeau +3",
+        body="Lethargy Sayon +2",
+        hands="Regal Cuffs",
+        legs="Chironic Hose",
+        feet="Vitiation Boots +3",
+        neck="Dls. Torque +2",
+        waist="Luminary Sash",
+        ear1="Regal Earring",
+        ear2="Snotra Earring",
+        ring1="Kishar Ring",
+        ring2=Stikini_2,
+        back=Macc_cape,
+    }]]
+    
         
     sets.midcast['Dia III'] = {
         ammo="Regal Gem",
@@ -624,6 +646,10 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         end
     elseif spell.skill == 'Elemental Magic' and state.MagicBurst.value then
         equip(sets.magic_burst)
+    end
+
+    if barStatus:contains(spell.name) then
+        equip(sets.midcast.Barstatus)
     end
 end
 

@@ -112,7 +112,7 @@ function init_gear_sets()
         body="Abnoba Kaftan",
         hands="Mummu Wrists +1",
         legs={ name="Ta'lab Trousers", augments={'Accuracy+14','Mag. Evasion+13','Enmity-6','Crit.hit rate+3',}},
-        feet="Mummu Gamash. +1",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Clotharius Torque",
         waist="Anguinus Belt",
         left_ear="Cessance Earring",

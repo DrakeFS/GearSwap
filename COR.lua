@@ -42,7 +42,7 @@ function job_setup()
     
     -- Whether a warning has been given for low ammo
     state.warned = M(false)
-    
+
     -- Initialize roll tracking states
     state.roll1 = M{['description'] = 'Roll 1'}
     state.roll2 = M{['description'] = 'Roll 2'}
@@ -86,7 +86,7 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc', 'Att', 'Mod')
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT', 'Refresh')
-    
+
     -- Additional local binds
     send_command('bind ^` gs c rollcmd 1 cycle forward')
     send_command('bind !` gs c rollcmd 2 cycle forward')
@@ -184,7 +184,7 @@ function init_gear_sets()
         body="Laksa. Frac +3",
         hands="Chasseur's Gants +2",
         legs="Meg. Chausses +2",
-        feet={ name="Lanun Bottes +2", augments={'Enhances "Wild Card" effect',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Fotia Gorget",
         waist="Fotia Belt",        
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -200,7 +200,7 @@ function init_gear_sets()
         body="Abnoba Kaftan",
         hands="Mummu Wrists +1",
         legs="Mummu Kecks +1",
-        feet="Mummu Gamash. +1",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Cessance Earring",
@@ -224,7 +224,7 @@ function init_gear_sets()
         body="Laksa. Frac +3",
         hands="Chasseur's Gants +2",
         legs="Meg. Chausses +2",
-        feet={ name="Lanun Bottes +2", augments={'Enhances "Wild Card" effect',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -242,7 +242,7 @@ function init_gear_sets()
         body="Laksa. Frac +3",
         hands=gear.HercGMB,
         --legs=gear.HercLMB,
-        feet="Lanun Bottes +2",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Sanctity Necklace",
         waist="Yemaya Belt",
         left_ear="Friomisi Earring",
@@ -413,7 +413,6 @@ function job_precast(spell, action, spellMap, eventArgs)
             return
         end
     end
-end
     if (spell.action_type == 'Ranged Attack' and player.equipment.ammo == "Hauksbok Bullet") or (spell.skill == 'Marksmanship'and player.equipment.ammo == "Hauksbok Bullet") then
         add_to_chat(104, 'Check ammo, trying to use Quick Draw ammunition for non-Quick Draw shot.  Cancelling.')
         eventArgs.cancel = true

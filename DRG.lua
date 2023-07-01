@@ -95,7 +95,7 @@ function init_gear_sets()
         body={ name="Ptero. Mail +3", augments={'Enhances "Spirit Surge" effect',}},
         hands={ name="Ptero. Fin. G. +2", augments={'Enhances "Angon" effect',}},
         legs="Vishap Brais +2",
-        feet="Sulev. Leggings +2",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Shulmanu Collar",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         left_ear="Sherida Earring",

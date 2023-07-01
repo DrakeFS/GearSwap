@@ -119,13 +119,13 @@ function init_gear_sets()
         body="Assim. Jubbah +3",
         hands="Jhakri Cuffs +2",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-        feet="Jhakri Pigaches +2",
-        neck="Mirage Stole +2",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist="Fotia Belt",
         left_ear="Ishvara Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Ilabrat Ring",
-        right_ring="Begrudging Ring",
+        right_ring="Cornelia's Ring",
         back=gear.BluCSTR,
     }
     
@@ -152,7 +152,7 @@ function init_gear_sets()
     
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
         waist="Sailfi Belt +1",
-        right_ring="Apate Ring",
+        left_ring="Epaminondas's Ring",
     })
     
     sets.precast.WS['Expiacion'] = sets.precast.WS['Savage Blade']
@@ -355,25 +355,8 @@ function init_gear_sets()
         back=gear.BluCTP,
     }
 
-    --[[sets.idle.PDT = {
-    ammo="Ginsen",
-    head="Malignance Chapeau",
-    body="Ayanmo Corazza +2",
-    hands="Assim. Bazu. +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
-    neck="Loricate Torque +1",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Defending Ring",
-    right_ring="Vocane Ring",
-    back=gear.BluCTP,
-    }]]
-
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
-    --sets.idle.Learning = set_combine(sets.idle, sets.Learning)
-    
     -- Defense sets
     sets.defense.PDT = {    
         ammo="Crepuscular Pebble",
@@ -477,8 +460,10 @@ function init_gear_sets()
 
     sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {
         ammo="Falcon Eye",
+        head="Hashishin Kavuk +3",
+        hands=gear.AdhGTP,
         legs="Hashishin Tayt +2",
-        feet="Aya. Gambieras +2",
+        feet="Hashi. Basmak +2",
         right_ear="Odr Earring",
         left_ring="Cacoethic Ring",
         right_ring="Ilabrat Ring",
