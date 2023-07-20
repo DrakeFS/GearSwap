@@ -43,7 +43,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('None', 'Enspell')
+    state.OffenseMode:options('None', 'Enspell','AccEnspell')
     state.HybridMode:options('Normal')
     state.IdleMode:options('Normal', 'Leveling')
     state.NukeElement:options('Fire', 'Blizzard', 'Aero', 'Stone', 'Thunder', 'Water')
@@ -70,6 +70,8 @@ function init_gear_sets()
     gear.RdmCMB = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10','Mag. Evasion+15',}}
     gear.RdmCES = {name="Ghostfyre Cape", augments={'Enfb.mag. skill +6','Enha.mag. skill +10',}}
     gear.RdmCEnmity = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Enmity+10','Spell interruption rate down-10%',}}
+    gear.RdmStrWS = {name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
+    gear.RdmMndWS = {name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%',}}
             
     sets.TreasureHunter = {
         ammo="Per. Lucky Egg",
@@ -135,11 +137,11 @@ function init_gear_sets()
         feet="Leth. Houseaux +3",
         neck="Sanctity Necklace",
         waist="Windbuffet Belt +1",
-        left_ear="Sherida Earring",
+        left_ear="Ishvara Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Ayanmo Ring",
-        right_ring="Rajas Ring",
-        back=gear.RdmCTP,
+        left_ring="Cornelia's Ring",
+        right_ring="Epaminondas's Ring",
+        back=gear.RdmStrWS,
     }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
@@ -162,14 +164,9 @@ function init_gear_sets()
         ammo="Pemphredo Tathlum",
         head="Jhakri Coronal +2",
         body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        left_ear="Malignance Earring",
-        right_ear="Novio Earring",
-        left_ring="Ayanmo Ring",
-        right_ring="Jhakri Ring",
         back=gear.RdmCMB,
     }
     
@@ -179,17 +176,29 @@ function init_gear_sets()
         body="Jhakri Robe +2",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
-        neck="Sanctity Necklace",
+        neck="Sibyl Scarf",
         waist="Fotia Belt",
         left_ear="Malignance Earring",
         right_ear="Regal Earring",
-        left_ring="Archon Ring",
-        right_ring="Jhakri Ring",
+        right_ring="Archon Ring",
         back=gear.RdmCMB,
     }
     
     sets.precast.WS['Red Lotus Blade'] = set_combine( sets.precast.WS['Seraph Blade'],{})
-    sets.precast.WS['Black Halo'] = set_combine( sets.precast.WS['Seraph Blade'],{})
+    
+    sets.precast.WS['Black Halo'] = set_combine( sets.precast.WS, {
+        ammo="Oshasha's Treatise",
+        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+        body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
+        hands="Jhakri Cuffs +2",
+        legs="Leth. Fuseau +2",
+        feet="Leth. Houseaux +3",
+        neck={ name="Duelist's Torque", augments={'Path: A',}},
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear="Regal Earring",
+        back=gear.RdmMndWS,
+    })
+
     sets.precast.WS['Aeolian Edge'] = set_combine( sets.precast.WS['Seraph Blade'],{})
     
     sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
@@ -208,15 +217,13 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
-        head="Jhakri Coronal +2",
-        body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
-        neck="Fotia Gorget",
-        waist="Fotia Belt",
-        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Rajas Ring",
-        right_ring="Apate Ring",
+        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+        body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
+        legs="Nyame Flanchard",
+        feet="Leth. Houseaux +3",
+        neck="Rep. Plat. Medal",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+
     })
     
     sets.precast.WS['Empyreal Arrow'] = {
@@ -396,7 +403,7 @@ function init_gear_sets()
         hands="Leth. Ganth. +2",
         legs="Leth. Fuseau +2",
         feet="Leth. Houseaux +3",
-        neck="Sanctity Necklace",
+        neck="Sibyl Scarf",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Malignance Earring",
         right_ear="Hermetic Earring",
@@ -407,23 +414,23 @@ function init_gear_sets()
 
     sets.midcast['Elemental Magic'].ConserveMP = set_combine(sets.midcast['Elemental Magic'], {})
 
-    sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {})
+    sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {neck="Mizu. Kubikazari",})
 
     sets.magic_burst.ConserveMP = set_combine(sets.midcast['Elemental Magic'], {}) 
 
     sets.midcast.Impact = set_combine(sets.midcast['Enfeebling Magic'], {head=empty, body="Twilight Cloak",})
 
-    sets.midcast['Dark Magic'] = {}
+    --sets.midcast['Dark Magic'] = {}
 
     --sets.midcast.Stun = set_combine(sets.midcast['Dark Magic'], {})
 
-    sets.midcast.Drain = {}
+    --sets.midcast.Drain = {}
 
-    sets.midcast.Aspir = sets.midcast.Drain
+    --sets.midcast.Aspir = sets.midcast.Drain
     
-    sets.midcast.Klimaform = sets.midcast.FastRecast
+    --sets.midcast.Klimaform = sets.midcast.FastRecast
     
-    sets.midcast.Stone = {}
+    --sets.midcast.Stone = {}
     
 
     -- Sets for special buff conditions on spells.
@@ -518,6 +525,22 @@ function init_gear_sets()
         left_ring="Petrov Ring",
         right_ring="Pernicious Ring",
         back=gear.RdmCES
+    }
+
+    sets.engaged.DW.AccEnspell = {
+        ammo="Amar Cluster",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Leth. Fuseau +2",
+        feet="Leth. Houseaux +3",
+        neck="Clotharius Torque",
+        waist="Reiki Yotai",
+        left_ear="Eabani Earring",
+        right_ear="Crep. Earring",
+        left_ring="Varar Ring",
+        right_ring="Cacoethic Ring",
+        back=gear.RdmCTP,
     }
 
     sets.weapons = {}

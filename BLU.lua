@@ -25,6 +25,7 @@ function job_setup()
    
     state.delayMod = M{'none', 'Samba'}
     state.delayMod:set('none')
+    state.test = M(false)
 
     setup_blue_magic() --setup mappings for blue magic
 end
@@ -174,6 +175,18 @@ function init_gear_sets()
         hands="Gleti's Gauntlets",
         legs="Gleti's Breeches",
         feet="Gleti's Boots",
+        left_ear="Cessance Earring",
+        right_ear="Odr Earring",
+        back=gear.BluCDEX
+    })
+
+    sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
+        ammo="Falcon Eye",
+        body="Gleti's Cuirass",
+        hands="Gleti's Gauntlets",
+        legs="Gleti's Breeches",
+        feet="Gleti's Boots",
+        waist="Fotia Belt",
         left_ear="Cessance Earring",
         right_ear="Odr Earring",
         back=gear.BluCDEX
@@ -510,6 +523,8 @@ function job_self_command(cmdParams, eventArgs)
     if cmdParams[1]:lower() == 'ws' then
         handle_WS()
         eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'test' then
+        send_command('gs ctoggle state.test')
     end
 end
 
@@ -525,11 +540,17 @@ function handle_WS()
     else
         add_to_chat(122, "No WS set for this weapon")
     end    
-end 
+end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
     if state.EvasionMode.value then
         equip(sets.Evasion)
+    end
+    if state.test.value then
+        if spell.name == 'Chant du Cygne' then
+            equip(sets.precast.WS.test)
+            add_to_chat(123, 'test')
+        end
     end
 end
 

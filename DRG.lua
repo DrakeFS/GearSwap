@@ -100,8 +100,8 @@ function init_gear_sets()
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         left_ear="Sherida Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Dreki Ring",
-        right_ring="Begrudging Ring",
+        left_ring="Epaminondas's Ring",
+        right_ring="Cornelia's Ring",
         back=gear.DrgCWS,
     }
            
