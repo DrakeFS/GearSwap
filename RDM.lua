@@ -128,7 +128,7 @@ function init_gear_sets()
     
     sets.precast.WS = {
         ammo="Oshasha's Treatise",
-        head="Jhakri Coronal +2",
+        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Ayanmo Corazza +2",
         hands="Jhakri Cuffs +2",
         legs="Jhakri Slops +2",
@@ -224,6 +224,7 @@ function init_gear_sets()
         body="Malignance Tabard",
         hands="Aya. Manopolas +2",
         legs="Carmine Cuisses +1",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Sanctity Necklace",
         waist="Fotia Belt",
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -334,7 +335,7 @@ function init_gear_sets()
         
     sets.midcast['Enfeebling Magic'] = {
         ammo="Regal Gem",
-        head="Atrophy Chapeau +3",
+        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Atrophy Tabard +3",
         hands="Leth. Ganth. +2",
         legs="Leth. Fuseau +2",
@@ -347,6 +348,23 @@ function init_gear_sets()
         right_ring="Jhakri Ring",
         back = gear.RdmCMB,
     }
+
+    --[[sets.Midcast['Enfeebling Magic'] = {  --Enfeebling comparison m
+        ammo="Regal Gem",
+        head="Viti. Chapeau +3",
+        body="Lethargy Sayon +2",
+        hands="Regal Cuffs",
+        legs="Chironic Hose",
+        feet="Vitiation Boots +3",
+        neck="Dls. Torque +2",
+        waist="Luminary Sash",
+        ear1="Regal Earring",
+        ear2="Snotra Earring",
+        ring1="Kishar Ring",
+        ring2=Stikini_2,
+        back=Macc_cape,
+    }]]
+    
         
     sets.midcast['Dia III'] = {
         ammo="Regal Gem",
