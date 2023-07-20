@@ -130,7 +130,7 @@ function init_gear_sets()
         body="Mummu Jacket +1",
         hands="Mummu Wrists +1",
         legs=gear.SamTTP,
-        feet=gear.HercBTP,
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Ishvara Earring",

@@ -1,17 +1,18 @@
 function define_global_sets()
     -- Head
+    gear.AdhHTP = {name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}}
     gear.HercHFC = {name="Herculean Helm", augments={'"Fast Cast"+4','Mag. Acc.+3',}}
-    gear.HercHTH = {name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}}
+    --gear.HercHTH = {name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}}
     gear.HercHMWS = {name="Herculean Helm", augments={'Weapon skill damage +2%','MND+14','Accuracy+9 Attack+9','Mag. Acc.+16 "Mag.Atk.Bns."+16',}}    
     -- Hands
     gear.HercGMB = {name="Herculean Gloves", augments={'VIT+15','"Mag.Atk.Bns."+24','Accuracy+6 Attack+6','Mag. Acc.+17 "Mag.Atk.Bns."+17',}}
     gear.MerlGPBP = { name="Merlinic Dastanas", augments={'Pet: Attack+10 Pet: Rng.Atk.+10','Blood Pact Dmg.+10',}}
     gear.AdhGTP = { name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}}
     -- Body
-    gear.HercBTH = { name="Herculean Vest", augments={'Pet: INT+1','Accuracy+5','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
+    --gear.HercBTH = { name="Herculean Vest", augments={'Pet: INT+1','Accuracy+5','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 
     -- Legs
-    --gear.HercLTH = {name="Herculean Trousers", augments={'Mag. Acc.+7','DEX+9','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
+    gear.HercLTH = {name="Herculean Trousers", augments={'"Mag.Atk.Bns."+16','Magic burst dmg.+10%','"Treasure Hunter"+2','Mag. Acc.+12 "Mag.Atk.Bns."+12',}}
     --gear.HercLMB = { name="Herculean Trousers", augments={'Weapon skill damage +4%','Chance of successful block +2','Mag. Acc.+16 "Mag.Atk.Bns."+16',}}
     gear.SamTTP = { name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}}
     gear.LengoFC = {name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}}
@@ -35,8 +36,6 @@ function define_global_sets()
 end
 
 function global_on_load()
-    dw_skill_list = S{2,3,5,11}
-    thand_skill_list = S{4,6,7,8,10,12}
     send_command('bind f9 gs c cycle OffenseMode')
     send_command('bind ^f9 gs c cycle HybridMode')
     send_command('bind !f9 gs c cycle RangedMode')
@@ -112,6 +111,8 @@ function user_customize_melee_set(meleeSet)
 end
 
 function cf_check()
+    local dw_skill_list = S{2,3,5,11}
+    local thand_skill_list = S{4,6,7,8,10,12}
     local item_sub_id = player.equipment.sub ~= 'empty' and gearswap.items[gearswap.to_windower_bag_api(gearswap.res.bags[gearswap.items.equipment.sub.bag_id].en)][gearswap.items.equipment.sub.slot].id
     local item_main_id = player.equipment.main ~= 'empty' and gearswap.items[gearswap.to_windower_bag_api(gearswap.res.bags[gearswap.items.equipment.main.bag_id].en)][gearswap.items.equipment.main.slot].id
     if item_sub_id and dw_skill_list:contains(gearswap.res.items[item_sub_id].skill or 0) then

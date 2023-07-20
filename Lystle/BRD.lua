@@ -74,11 +74,8 @@ function init_gear_sets()
         feet="Bihu Slippers +1",
     })
 
-    sets.precast.FC['Honor March'] = set_combine(sets.precast.FC, {
+    sets.precast.FC['Honor March'] = set_combine(sets.precast.BardSong, {
         range="Marsyas",
-        head="Fili Calot +3",
-        legs = "Doyen Pants",
-        feet = "Bihu Slippers +1",
     })
 
     
@@ -139,6 +136,9 @@ function init_gear_sets()
         legs="Inyanga Shalwar +2",
         feet="Brioso Slippers +3",
         neck="Mnbw. Whistle +1",
+        waist="Cornelia's Belt",
+        right_ring="Lehko's Ring",
+        back = gear.BrdCFC,
     }
 
     -- Gear to enhance certain classes of songs.
@@ -269,14 +269,7 @@ function init_gear_sets()
         back="Solemnity Cape",
     }
 
-    sets.idle.DT = {
-        head="Fili Calot +3",
-        hands="Fili Manchettes +3",
-        legs="Aya. Cosciales +2",
-        neck="Loricate Torque",
-        left_ring="Defending Ring",
-        back="Solemnity Cape",
-    }
+    sets.idle.DT = set_combine(sets.idle, {})
 
     sets.idle.MEva = {}
 

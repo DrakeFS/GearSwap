@@ -31,6 +31,8 @@ function job_setup()
     state.MagicBurst = M(false, 'Burst')
     state.WeaponMode= M(false, 'Swap')
 
+    barStatus = S{'Barpoison','Barparalyze','Barvirus','Barsilence','Barpetrify','Barblind','Baramnesia','Barsleep','Barpoisonra','Barparalyzra','Barvira','Barsilencera','Barpetra','Barblindra','Baramnesra','Barsleepra'}
+
     on_job_change()
 
 end
@@ -266,6 +268,8 @@ function init_gear_sets()
         back = gear.RdmCMB,
     }
 
+    sets.midcast.Barstatus = set_combine(sets.midcast['Enhancing Magic'], {})
+
     sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'], {})
 
     sets.midcast.MaxSkill = set_combine(sets.midcast['Enhancing Magic'], {
@@ -330,11 +334,11 @@ function init_gear_sets()
         
     sets.midcast['Enfeebling Magic'] = {
         ammo="Regal Gem",
-        head={ name="Vitiation Chapeau +2", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+        head="Atrophy Chapeau +3",
         body="Atrophy Tabard +3",
         hands="Leth. Ganth. +2",
-        legs="Jhakri Slops +2",
-        feet={ name="Vitiation Boots +1", augments={'Immunobreak Chance',}},
+        legs="Leth. Fuseau +2",
+        feet="Leth. Houseaux +3",
         neck={ name="Duelist's Torque", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Regal Earring",
@@ -624,6 +628,10 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         end
     elseif spell.skill == 'Elemental Magic' and state.MagicBurst.value then
         equip(sets.magic_burst)
+    end
+
+    if barStatus:contains(spell.name) then
+        equip(sets.midcast.Barstatus)
     end
 end
 
