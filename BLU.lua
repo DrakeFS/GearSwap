@@ -123,7 +123,7 @@ function init_gear_sets()
         waist="Fotia Belt",
         left_ear="Ishvara Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Ilabrat Ring",
+        left_ring="Epaminondas's Ring"
         right_ring="Cornelia's Ring",
         back=gear.BluCSTR
     }
@@ -151,12 +151,9 @@ function init_gear_sets()
     
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
         waist="Sailfi Belt +1",
-        left_ring="Epaminondas's Ring"
     })
     
     sets.precast.WS['Savage Blade'].PDL = set_combine(sets.precast.WS, {
-        waist="Sailfi Belt +1",
-        left_ring="Epaminondas's Ring",
         hands="Gleti's Gauntlets",
         feet="Gleti's Boots"
     })
@@ -175,18 +172,6 @@ function init_gear_sets()
         hands="Gleti's Gauntlets",
         legs="Gleti's Breeches",
         feet="Gleti's Boots",
-        left_ear="Cessance Earring",
-        right_ear="Odr Earring",
-        back=gear.BluCDEX
-    })
-
-    sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
-        ammo="Falcon Eye",
-        body="Gleti's Cuirass",
-        hands="Gleti's Gauntlets",
-        legs="Gleti's Breeches",
-        feet="Gleti's Boots",
-        waist="Fotia Belt",
         left_ear="Cessance Earring",
         right_ear="Odr Earring",
         back=gear.BluCDEX
