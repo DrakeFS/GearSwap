@@ -744,12 +744,13 @@ end
 
 function burst_check (skillchain)
     local playertarget = windower.ffxi.get_mob_by_target('t')
-    -- CANCEL THE RUN BURST ID SKILLCHAIN IS SOMEHOW EMPTY
+    
     if not skillchain == nil or not playertarget == nil then 
         add_to_chat(122, Bursting)
         state.MagicBurst = 'Burst'
         autoburst = true
     end
+end
 
 -- Select default macro book on initial load or subjob change.
 function on_job_change()
