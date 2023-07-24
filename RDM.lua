@@ -30,6 +30,8 @@ function job_setup()
     state.MACC = M(false, 'MACC')
     state.MagicBurst = M(false, 'Burst')
     state.WeaponMode= M(false, 'Swap')
+    state.RangedMode = M(false)
+    state.AutoBurst = M(false)
 
     barStatus = S{'Barpoison','Barparalyze','Barvirus','Barsilence','Barpetrify','Barblind','Baramnesia','Barsleep','Barpoisonra','Barparalyzra','Barvira','Barsilencera','Barpetra','Barblindra','Baramnesra','Barsleepra'}
 
@@ -52,6 +54,7 @@ function user_setup()
     
     send_command('bind ^q gs c toggle WeaponMode')
     send_command('bind !q gs c toggle MagicBurst')
+    send_command('bind @q gs c toggle AutoBurst')
     send_command('bind ^` gs c cycle NukeElement')
     send_command('bind ~^` gs c cycleback NukeElement')
     send_command('bind !` gs c cycle NukeTier')
@@ -229,15 +232,16 @@ function init_gear_sets()
     sets.precast.WS['Empyreal Arrow'] = {
         head="Malignance Chapeau",
         body="Malignance Tabard",
-        hands="Aya. Manopolas +2",
-        legs="Carmine Cuisses +1",
+        hands="Malignance Gloves",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
-        neck="Sanctity Necklace",
-        waist="Fotia Belt",
-        left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        right_ear="Suppanomimi",
+        neck="Fotia Gorget",
+        waist="Yemaya Belt",
+        left_ear="Clearview Earring",
+        right_ear="Crep. Earring",
         left_ring="Ilabrat Ring",
-        right_ring="Beeline Ring",
+        right_ring="Cornelia's Ring",
+        back=gear.RdmStrWS
     }
 
     -- Midcast Sets
@@ -568,6 +572,11 @@ function job_self_command(cmdParams, eventArgs)
         handle_nuking()
     elseif cmdParams[1]:lower() == 'wsit' then
         handle_WS()
+    elseif cmdParams[1]:lower() == 'autotoggleburst' then  -- requires modified skillchains.lua
+        if state.AutoBurst.value then 
+            trackAutoToggle = true
+            state.MagicBurst:set(true)
+        end
     end
 end
 
@@ -595,7 +604,7 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
-function job_post_precast(spell, action, spellMap, eventArgs)
+function job_precast(spell, action, spellMap, eventArgs)
     local spell_recasts = windower.ffxi.get_spell_recasts()
     local element = state.NukeElement.value
     if spell.name:match(nukes.t1[element]) and spell_recasts[spell.recast_id] > 0 then
@@ -605,6 +614,12 @@ function job_post_precast(spell, action, spellMap, eventArgs)
         return
     end
 end
+
+function job_post_precast(spell, action, spellMap, eventArgs)
+    if state.RangedMode.value then
+        equip({range = 'Ullr', ammo = 'Platnimum arrow'})
+    end
+end        
 
 function job_midcast(spell, action, spellMap, eventArgs)
     if state.WeaponMode.value then
@@ -667,11 +682,24 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     if barStatus:contains(spell.name) then
         equip(sets.midcast.Barstatus)
     end
+    if state.RangedMode.value then
+        equip({range = 'Ullr', ammo = 'Platnimum arrow'})
+    end
 end
 
 function job_aftercast(spell, action, spellMap, eventArgs)
     if state.WeaponMode.value then
         equip({main = mainhand, sub = offhand})
+    end
+    if trackAutoToggle and spell.skill == 'Elemental Magic' then
+        state.MagicBurst:set(false)
+        trackAutoToggle = false
+    end
+end
+
+function job_post_aftercast(spell, action, spellMap, eventArgs)
+    if state.RangedMode.value then
+        equip({range = 'Ullr', ammo = 'Platnimum arrow'})
     end
 end
 
