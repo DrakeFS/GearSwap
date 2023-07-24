@@ -553,8 +553,6 @@ function init_gear_sets()
     sets.weapons.Enhancing.DW.Temper = {main="Pukulatmuj +1", sub="Pukulatmuj"}
     sets.weapons.Elemental.DW = {main="Daybreak", sub="Bunzi's Rod"}
     sets.weapons.Cure.DW = {main="Daybreak", sub="Bunzi's Rod"}
-
-
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -597,15 +595,9 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
-function job_precast ()
-    burst_check()
-end 
-
 function job_post_precast(spell, action, spellMap, eventArgs)
-
     local spell_recasts = windower.ffxi.get_spell_recasts()
     local element = state.NukeElement.value
-
     if spell.name:match(nukes.t1[element]) and spell_recasts[spell.recast_id] > 0 then
         cancel_spell()
         downgradenuke(spell)
@@ -616,10 +608,8 @@ end
 
 function job_midcast(spell, action, spellMap, eventArgs)
     if state.WeaponMode.value then
-        
         mainhand = player.equipment.main
         offhand = player.equipment.sub
-
         if spell.skill == 'Enhancing Magic' then
             if state.CombatForm.value == 'DW' then
                 if max_enhancing_skill:contains(spell.name) then
@@ -674,7 +664,6 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     elseif spell.skill == 'Elemental Magic' and state.MagicBurst.value then
         equip(sets.magic_burst)
     end
-
     if barStatus:contains(spell.name) then
         equip(sets.midcast.Barstatus)
     end
@@ -684,15 +673,10 @@ function job_aftercast(spell, action, spellMap, eventArgs)
     if state.WeaponMode.value then
         equip({main = mainhand, sub = offhand})
     end
-    if autoburst then
-        state.MagicBurst = false
-        autoburst = false
-    end
 end
 
 function display_current_job_state(eventArgs)
     display_current_caster_state()
-
     local msg = ''
     if state.MACC.value then
         msg = msg ..'Max Magic Accuracy: On, '
@@ -708,7 +692,6 @@ function display_current_job_state(eventArgs)
     end
     msg = msg ..'Current nuke element is '..state.NukeElement.value..' and initial Tier is '..state.NukeTier.index..'.'
     add_to_chat(121, msg)
-
     eventArgs.handled = true
 end
 
@@ -724,9 +707,7 @@ end
 
 -- If the nuke casted is on cooldown, cast the next tier down of the same nuke.
 function downgradenuke(spell)
-
     local element = state.NukeElement.value
-
     if spell.name:match(nukes.t1[element]) then   
         if spell.name == nukes.t5[element] then
             newspell = nukes.t4[element]
@@ -738,17 +719,6 @@ function downgradenuke(spell)
             newspell = nukes.t1[element]
         end
         send_command('@input /ma "'..newspell..'" <t>')
-    end
-
-end
-
-function burst_check (skillchain)
-    local playertarget = windower.ffxi.get_mob_by_target('t')
-    
-    if not skillchain == nil or not playertarget == nil then 
-        add_to_chat(122, Bursting)
-        state.MagicBurst = 'Burst'
-        autoburst = true
     end
 end
 
