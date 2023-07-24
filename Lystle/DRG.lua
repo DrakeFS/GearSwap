@@ -145,6 +145,8 @@ function init_gear_sets()
     sets.idle = {
     legs="Carmine Cuisses +1",
     neck="Sanctity Necklace",
+    left_ring="Defending Ring",
+    back="Solemnity Cape",
     }
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)

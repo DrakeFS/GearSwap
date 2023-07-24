@@ -112,17 +112,16 @@ function init_gear_sets()
     })
     
     sets.precast.WS["Camlann's Torment"] = set_combine(sets.precast.WS, {
-    neck="Fotia Gorget",
-    waist="Fotia Belt"
+        neck="Fotia Gorget",
+        waist="Fotia Belt"
     })
     
     sets.precast.WS['Drakesbane'] = set_combine(sets.precast.WS, {})
     
     sets.precast.WS['Impulse Drive'] = set_combine(sets.precast.WS, {
-    neck="Fotia Gorget",
-    waist="Fotia Belt"
+        neck="Fotia Gorget",
+        waist="Fotia Belt"
     })
-    
 
     -- Midcast Sets
     sets.midcast.FastRecast = {}    
@@ -131,56 +130,41 @@ function init_gear_sets()
 
     sets.midcast.RA = {range="Trollbane",}
 
-    -- Sets to return to when not performing an action.
-    
-    -- Resting sets
-    sets.resting = {}
-    
-
-    -- Idle sets
-    sets.idle = {
-    legs="Carmine Cuisses +1",
-    neck="Sanctity Necklace",
-    }
-
-    -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
-    sets.idle.Town = set_combine(sets.idle, {
-    body="Councilor's Garb",
-    })
-    
     -- Defense sets
     sets.defense.PDT = {
-        ammo="Ginsen",
-        head="Sulevia's Mask +2",
-        body="Flamma Korazin +2",
-        hands="Sulev. Gauntlets +2",
-        legs="Nyame Flanchard",
-        feet="Nyame Sollerets",
+        ammo="Crepuscular Pebble",
+        head="Nyame Helm",
+        body="Nyame Mail",
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Loricate Torque +1",
-        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
+        waist="Flume Belt",
+        left_ear="Odnowa Earring",
+        right_ear="Odnowa Earring +1",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
         back=gear.DrgCTP,
         }
 
-    sets.defense.Reraise = set_combine(sets.defense.PDT, {})
+    -- Idle sets
+    sets.idle = set_combine(sets.defense.PDT, {
+        head="Gleti's Mask",
+        body="Gleti's Cuirass",
+        hands="Gleti's Gauntlets",
+        legs="Carmine Cuisses +1",
+        feet="Gleti's Boots",
+        neck="Sanctity Necklace",
+    })
 
-    sets.defense.MDT = set_combine(sets.defense.PDT, {})
-
-    sets.Kiting = {}
-
-    sets.Reraise = {}
+    -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
+    sets.idle.Town = set_combine(sets.idle, {
+        body="Councilor's Garb",
+    })
 
     -- Engaged sets
-
-    -- Variations for TP weapon and (optional) offense/defense modes.  Code will fall back on previous
-    -- sets if more refined versions aren't defined.
-    -- If you create a set with both offense and defense modes, the offense mode should be first.
-    -- EG: sets.engaged.Dagger.Accuracy.Evasion
-    
-    -- Normal melee group
     sets.engaged = {
-        ammo="Coiste Bodhar",
+        ammo={ name="Coiste Bodhar", augments={'Path: A',}},
         head="Flam. Zucchetto +2",
         body="Flamma Korazin +2",
         hands="Flam. Manopolas +2",
@@ -190,7 +174,7 @@ function init_gear_sets()
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         left_ear="Sherida Earring",
         right_ear="Cessance Earring",
-        left_ring="Dreki Ring",
+        left_ring="Pernicious Ring",
         right_ring="Petrov Ring",
         back=gear.DrgCTP,
     }
