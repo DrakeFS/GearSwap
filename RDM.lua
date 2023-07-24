@@ -597,6 +597,10 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
+function job_precast ()
+    burst_check()
+end 
+
 function job_post_precast(spell, action, spellMap, eventArgs)
 
     local spell_recasts = windower.ffxi.get_spell_recasts()
@@ -680,6 +684,10 @@ function job_aftercast(spell, action, spellMap, eventArgs)
     if state.WeaponMode.value then
         equip({main = mainhand, sub = offhand})
     end
+    if autoburst then
+        state.MagicBurst = false
+        autoburst = false
+    end
 end
 
 function display_current_job_state(eventArgs)
@@ -732,6 +740,16 @@ function downgradenuke(spell)
         send_command('@input /ma "'..newspell..'" <t>')
     end
 
+end
+
+function burst_check (skillchain)
+    local playertarget = windower.ffxi.get_mob_by_target('t')
+    
+    if not skillchain == nil or not playertarget == nil then 
+        add_to_chat(122, Bursting)
+        state.MagicBurst = 'Burst'
+        autoburst = true
+    end
 end
 
 -- Select default macro book on initial load or subjob change.
