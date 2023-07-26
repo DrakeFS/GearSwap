@@ -31,7 +31,7 @@ function job_setup()
     state.MagicBurst = M(false, 'Burst')
     state.WeaponMode= M(false, 'Swap')
     state.RangedMode = M(false)
-    state.AutoBurst = M(false)
+    state.AutoEquipBurst = M(false)
 
     barStatus = S{'Barpoison','Barparalyze','Barvirus','Barsilence','Barpetrify','Barblind','Baramnesia','Barsleep','Barpoisonra','Barparalyzra','Barvira','Barsilencera','Barpetra','Barblindra','Baramnesra','Barsleepra'}
 
@@ -54,7 +54,7 @@ function user_setup()
     
     send_command('bind ^q gs c toggle WeaponMode')
     send_command('bind !q gs c toggle MagicBurst')
-    send_command('bind @q gs c toggle AutoBurst')
+    send_command('bind @q gs c toggle AutoEquipBurst')
     send_command('bind ^` gs c cycle NukeElement')
     send_command('bind ~^` gs c cycleback NukeElement')
     send_command('bind !` gs c cycle NukeTier')
@@ -573,7 +573,7 @@ function job_self_command(cmdParams, eventArgs)
     elseif cmdParams[1]:lower() == 'wsit' then
         handle_WS()
     elseif cmdParams[1]:lower() == 'autotoggleburst' then  -- requires modified skillchains.lua
-        if state.AutoBurst.value then 
+        if state.AutoEquipBurst.value then 
             trackAutoToggle = true
             state.MagicBurst:set(true)
         end
