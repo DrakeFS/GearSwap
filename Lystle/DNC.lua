@@ -12,7 +12,8 @@ function user_setup()
 end
 
 function init_gear_sets()
-sets.precast.FC = {}  -- Fast Cast Set
+gear.WSCape = {name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}}
+gear.TPCape = {name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
 
 sets.precast.WS = {
     ammo="Ginsen",
@@ -27,7 +28,7 @@ sets.precast.WS = {
     right_ear="Steelflash Earring",
     left_ring="Begrudging Ring",
     right_ring="Mummu Ring",
-    back="Atheling Mantle",
+    back=gear.WSCape,
 } 
 
 sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
@@ -53,7 +54,7 @@ sets.defense.PDT = {
     right_ear="Eabani Earring",
     left_ring="Defending Ring",
     right_ring="Meghanada Ring",
-    back="Solemnity Cape",
+    back=gear.TPCape,
 }
 
 sets.idle = set_combine(sets.defense.PDT, {neck="Sanctity Necklace",})
@@ -61,19 +62,19 @@ sets.idle = set_combine(sets.defense.PDT, {neck="Sanctity Necklace",})
 sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
 sets.engaged = {
-    ammo="Ginsen",
+    ammo="Coiste Bodhar",
     head="Mummu Bonnet +2",
     body="Mummu Jacket +2",
     hands="Mummu Wrists +2",
-    legs="Meg. Chausses +2",
+    legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
     feet="Mummu Gamash. +2",
     neck="Clotharius Torque",
     waist="Dynamic Belt",
     left_ear="Sherida Earring",
-    right_ear="Steelflash Earring",
-    left_ring="Begrudging Ring",
+    right_ear="Crep. Earring",
+    left_ring="Lehko's Ring",
     right_ring="Mummu Ring",
-    back="Atheling Mantle",
+    back=gear.TPCape,
 }
 
 end
