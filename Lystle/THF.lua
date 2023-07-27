@@ -132,19 +132,21 @@ function init_gear_sets()
 
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {    
-    ammo="Seething Bomblet",
-    head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
-    body="Meg. Cuirie +2",
-    hands="Meg. Gloves +2",
-    legs="Mummu Kecks +2",
-    feet="Herculean Boots",
-    neck="Clotharius Torque",
-    waist="Dynamic Belt",
-    left_ear="Sherida Earring",
-    right_ear="Moonshade Earring",
-    left_ring="Mummu Ring",
-    right_ring="Begrudging Ring",
-    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
+        main={ name="Skinflayer", augments={'"Repair" potency +1%','MND+5','"Treasure Hunter"+2','DMG:+4',}},
+        sub={ name="Taming Sari", augments={'STR+1','"Treasure Hunter"+1',}},
+        ammo="Oshasha's Treatise",
+        head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Meg. Gloves +2",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Jute Boots +1",
+        neck="Clotharius Torque",
+        waist="Dynamic Belt",
+        left_ear="Sherida Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Mummu Ring",
+        right_ring="Begrudging Ring",
+        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
     }
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
 
