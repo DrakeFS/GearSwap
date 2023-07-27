@@ -16,16 +16,16 @@ gear.WSCape = {name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20
 gear.TPCape = {name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
 
 sets.precast.WS = {
-    ammo="Ginsen",
+    ammo="Oshasha's Treatise",
     head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
-    body="Meg. Cuirie +2",
+    body={ name="Nyame Mail", augments={'Path: B',}},
     hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
+    legs={ name="Nyame Flanchard", augments={'Path: B',}},
     feet="Mummu Gamash. +2",
     neck="Clotharius Torque",
     waist="Dynamic Belt",
     left_ear="Sherida Earring",
-    right_ear="Steelflash Earring",
+    right_ear="Crep. Earring",
     left_ring="Begrudging Ring",
     right_ring="Mummu Ring",
     back=gear.WSCape,
@@ -44,11 +44,11 @@ sets.precast.WS['Rudra\'s Storm'] = set_combine(sets.precast.WS, {
 })
 
 sets.defense.PDT = {
-    head="Meghanada Visor +1",
-    body="Meg. Cuirie +2",
-    hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +1",
+    head="Nyame Helm",
+    body={ name="Nyame Mail", augments={'Path: B',}},
+    hands="Malignance Gloves",
+    legs={ name="Nyame Flanchard", augments={'Path: B',}},
+    feet="Nyame Sollerets",
     neck="Loricate Torque",
     left_ear="Odnowa Earring +1",
     right_ear="Eabani Earring",
