@@ -194,17 +194,17 @@ function init_gear_sets()
     -- Physical Spells --
     
     sets.midcast['Blue Magic'].Physical = {
-        ammo="Ginsen",
-        head="Jhakri Coronal +2",
-        body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
+        ammo="Amar Cluster",
+        head="Hashishin Kavuk +3",
+        body="Hashishin Mintan +3",
+        hands="Hashi. Bazu. +2",
+        legs="Hashishin Tayt +2",
         feet={ name="Luhlaza Charuqs +3", augments={'Enhances "Diffusion" effect',}},
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist="Anguinus Belt",
-        left_ear="Njordr Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Rajas Ring",
+        left_ear="Crep. Earring",
+        right_ear={ name="Hashishin Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+7','Mag. Acc.+7',}},
+        left_ring="Ilabrat Ring",
         right_ring="Apate Ring",
         back=gear.BluCSTR
     }

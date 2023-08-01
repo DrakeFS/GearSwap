@@ -91,7 +91,7 @@ function init_gear_sets()
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
         ammo="Knobkierrie",
-        head="Peltast's Mezail +2",
+        head="Peltast's Mezail +3",
         body={ name="Ptero. Mail +3", augments={'Enhances "Spirit Surge" effect',}},
         hands={ name="Ptero. Fin. G. +2", augments={'Enhances "Angon" effect',}},
         legs="Vishap Brais +2",
