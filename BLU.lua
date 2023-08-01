@@ -82,7 +82,7 @@ function init_gear_sets()
     --sets.buff.Convergence = {}
     --sets.buff.Diffusion = {feet="Luhlaza Charuqs +3"}
     sets.buff.Enchainment = {body="Luhlaza Jubbah"}
-    sets.buff.Efflux = {legs='Hashishin Tayt +2'}
+    sets.buff.Efflux = {legs='Hashishin Tayt +3'}
 
     
     -- Precast Sets
@@ -198,7 +198,7 @@ function init_gear_sets()
         head="Hashishin Kavuk +3",
         body="Hashishin Mintan +3",
         hands="Hashi. Bazu. +2",
-        legs="Hashishin Tayt +2",
+        legs="Hashishin Tayt +3",
         feet={ name="Luhlaza Charuqs +3", augments={'Enhances "Diffusion" effect',}},
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist="Anguinus Belt",
@@ -236,7 +236,7 @@ function init_gear_sets()
         body="Hashishin Mintan +3",
         hands="Hashi. Bazu. +2",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-        feet="Hashi. Basmak +3",
+        feet="Hashi. Basmak +2",
         neck="Sibyl Scarf",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Regal Earring",
@@ -261,8 +261,8 @@ function init_gear_sets()
         head="Assim. Keffiyeh +3",
         body="Hashishin Mintan +3",
         hands="Hashi. Bazu. +2",
-        legs="Hashishin Tayt +2",
-        feet="Hashi. Basmak +3",
+        legs="Hashishin Tayt +3",
+        feet="Hashi. Basmak +2",
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Njordr Earring",
@@ -298,7 +298,7 @@ function init_gear_sets()
         head={ name="Luh. Keffiyeh +1", augments={'Enhances "Convergence" effect',}},
         body="Assim. Jubbah +3",
         hands="Rawhide Gloves",
-        legs="Hashishin Tayt +2",
+        legs="Hashishin Tayt +3",
         feet={ name="Luhlaza Charuqs +3", augments={'Enhances "Diffusion" effect',}},
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         left_ear={ name="Hashishin Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+7','Mag. Acc.+7',}},
@@ -330,7 +330,7 @@ function init_gear_sets()
         --head="Luh. Keffiyeh +1",  
         body="Assim. Jubbah +3",
         hands="Assimilator's Bazubands +2",
-        legs="Hashishin Tayt +2",
+        legs="Hashishin Tayt +3",
         feet="Luhlaza Charuqs +3",
         neck="Mirage Stole +2",
         back="Cornflower Cape"
@@ -437,7 +437,7 @@ function init_gear_sets()
 
     sets.engaged.Acc = set_combine(sets.engaged, {
         ammo="Falcon Eye",
-        legs="Hashishin Tayt +2",
+        legs="Hashishin Tayt +3",
         feet="Aya. Gambieras +2",
         waist="Hurch'lan Sash",
         left_ear="Odr Earring",
@@ -488,8 +488,8 @@ function init_gear_sets()
         ammo="Falcon Eye",
         head="Hashishin Kavuk +3",
         hands=gear.AdhGTP,
-        legs="Hashishin Tayt +2",
-        feet="Hashi. Basmak +3",
+        legs="Hashishin Tayt +3",
+        feet="Hashi. Basmak +2",
         right_ear="Odr Earring",
         left_ring="Cacoethic Ring",
         right_ring="Ilabrat Ring"
