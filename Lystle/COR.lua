@@ -222,11 +222,11 @@ function init_gear_sets()
     
     -- Idle sets
     sets.idle = {
-        head="Meghanada Visor +1",
-        body="Meg. Cuirie +2",
-        hands="Meg. Gloves +2",
-        legs="Mummu Kecks +2",
-        feet="Meg. Jam. +1",
+        head="Nyame Helm",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Malignance Gloves",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
         neck="Loricate Torque",
         right_ring="Defending Ring",
     }
@@ -235,11 +235,11 @@ function init_gear_sets()
     
     -- Defense sets
     sets.defense.PDT = {
-        head="Meghanada Visor +1",
-        body="Meg. Cuirie +2",
-        hands="Meg. Gloves +2",
-        legs="Mummu Kecks +2",
-        feet="Meg. Jam. +1",
+        head="Nyame Helm",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Malignance Gloves",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
         neck="Loricate Torque",
         right_ring="Defending Ring",
     }
