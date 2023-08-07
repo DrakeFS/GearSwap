@@ -197,7 +197,7 @@ function init_gear_sets()
         ammo="Amar Cluster",
         head="Hashishin Kavuk +3",
         body="Hashishin Mintan +3",
-        hands="Hashi. Bazu. +2",
+        hands="Hashi. Bazu. +3",
         legs="Hashishin Tayt +3",
         feet={ name="Luhlaza Charuqs +3", augments={'Enhances "Diffusion" effect',}},
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
@@ -234,9 +234,9 @@ function init_gear_sets()
         ammo="Pemphredo Tathlum",
         head="Hashishin Kavuk +3",
         body="Hashishin Mintan +3",
-        hands="Hashi. Bazu. +2",
+        hands="Hashi. Bazu. +3",
         legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
-        feet="Hashi. Basmak +2",
+        feet="Hashi. Basmak +3",
         neck="Sibyl Scarf",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Regal Earring",
@@ -260,9 +260,9 @@ function init_gear_sets()
         ammo="Pemphredo Tathlum",
         head="Assim. Keffiyeh +3",
         body="Hashishin Mintan +3",
-        hands="Hashi. Bazu. +2",
+        hands="Hashi. Bazu. +3",
         legs="Hashishin Tayt +3",
-        feet="Hashi. Basmak +2",
+        feet="Hashi. Basmak +3",
         neck={ name="Mirage Stole +2", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Njordr Earring",
@@ -288,7 +288,7 @@ function init_gear_sets()
     sets.midcast['Blue Magic']['Feather Tickle'] = set_combine(sets.midcast['Blue Magic'].Magical, sets.precast.FC)
 
     sets.midcast['Blue Magic'].Healing = {
-        hands="Hashi. Bazu. +2",
+        hands="Hashi. Bazu. +3",
         left_ear="Mendi. Earring",
         right_ear="Regal Earring"
     }
@@ -387,12 +387,12 @@ function init_gear_sets()
 
     sets.Evasion = {
         ammo="Amar Cluster",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands="Malignance Gloves",
-        legs="Nyame Flanchard",
-        feet="Nyame Sollerets",
-        neck="Bathy Choker +1",
+        head="Nyame Helm",
+        body="Nyame Mail",
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        neck={ name="Bathy Choker +1", augments={'Path: A',}},
         waist="Kasiri Belt",
         left_ear="Eabani Earring",
         right_ear="Ethereal Earring",
@@ -489,7 +489,7 @@ function init_gear_sets()
         head="Hashishin Kavuk +3",
         hands=gear.AdhGTP,
         legs="Hashishin Tayt +3",
-        feet="Hashi. Basmak +2",
+        feet="Hashi. Basmak +3",
         right_ear="Odr Earring",
         left_ring="Cacoethic Ring",
         right_ring="Ilabrat Ring"
