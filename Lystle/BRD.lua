@@ -260,13 +260,13 @@ function init_gear_sets()
         head="Fili Calot +3",
         body="Annoint. Kalasiris",
         hands="Fili Manchettes +3",
-        legs="Aya. Cosciales +2",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Fili Cothurnes +2",
         neck="Loricate Torque",
         left_ring="Defending Ring",
         right_ring="Inyanga Ring",
         waist="Fucho-no-obi",
-        back="Solemnity Cape",
+        back=gear.BrdTPC,
     }
 
     sets.idle.DT = set_combine(sets.idle, {})
@@ -297,7 +297,7 @@ function init_gear_sets()
         left_ear="Crep. Earring",
         right_ear="Brutal Earring",
         left_ring="Rajas Ring",
-        right_ring="Begrudging Ring",
+        right_ring="Lehko's Ring",
         back=gear.BrdTPC,
     }
 
