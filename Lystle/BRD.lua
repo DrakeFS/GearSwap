@@ -18,7 +18,7 @@ end
 function user_setup()
     state.OffenseMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
-    
+
     send_command('bind ^q gs c toggle WeaponSwapMode')
 
     on_job_change()
@@ -37,6 +37,7 @@ function init_gear_sets()
     gear.BrdTPN = {name="Bard's Charm", augments={'Path: A',}}
     gear.BrdCFC = {name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}}
     gear.BrdTPC = {name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
+    gear.BrdWSC = {}
     
     sets.TreasureHunter = {
         ammo="Per. Lucky Egg",
@@ -269,7 +270,7 @@ function init_gear_sets()
         back=gear.BrdTPC,
     }
 
-    sets.idle.DT = set_combine(sets.idle, {})
+    sets.idle.DT = set_combine(sets.idle, sets.defense.PDT)
 
     sets.idle.MEva = {}
 
@@ -279,8 +280,29 @@ function init_gear_sets()
     ---------------------------------------- Defense Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    sets.defense.PDT = sets.idle.DT
-    sets.defense.MDT = sets.idle.DT
+    sets.defense.PDT = {
+        head="Nyame Helm",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Nyame Gauntlets",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
+        waist="Plat. Mog. Belt",
+        left_ring="Defending Ring",
+    }
+
+    sets.defense.MDT = set_combine(sets.defense.PDT,{})
+
+    sets.defense.EVA = {
+        ammo="Amar Cluster",
+        head="Nyame Helm",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Nyame Gauntlets",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Fili Cothurnes +2",
+        waist="Plat. Mog. Belt",
+        left_ear="Eabani Earring",
+        left_ring="Defending Ring",
+    }
 
     sets.Kiting = {}
     sets.latent_refresh = {waist="Fucho-no-obi"}
@@ -409,6 +431,13 @@ function job_aftercast(spell, action, spellMap, eventArgs)
     if state.WeaponSwapMode.value then
         equip({main = mainhand, sub = offhand})
     end
+end
+
+function customize_idle_set(idleSet)
+    if world.area == "Walk of Echoes [P1]" then
+        idleSet = set_combine(idleSet, sets.defense.EVA)
+    end
+    return idleSet
 end
 
 function job_update(cmdParams, eventArgs)

@@ -375,7 +375,7 @@ function init_gear_sets()
         legs="Nyame Flanchard",
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
-        waist="Kasiri Belt",
+        waist="Plat. Mog. Belt",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
         back=gear.BluCTP
@@ -393,7 +393,7 @@ function init_gear_sets()
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck={ name="Bathy Choker +1", augments={'Path: A',}},
-        waist="Kasiri Belt",
+        waist="Plat. Mog. Belt",
         left_ear="Eabani Earring",
         right_ear="Ethereal Earring",
         left_ring="Defending Ring",
@@ -509,8 +509,12 @@ function job_self_command(cmdParams, eventArgs)
         handle_WS()
         eventArgs.handled = true
     elseif cmdParams[1]:lower() == 'test' then
-        send_command('gs ctoggle state.test')
+        test()
     end
+end
+
+function test()
+    add_to_chat(123, ''..world.area..'')
 end
 
 function handle_WS()
@@ -530,12 +534,6 @@ end
 function job_post_precast(spell, action, spellMap, eventArgs)
     if state.EvasionMode.value then
         equip(sets.Evasion)
-    end
-    if state.test.value then
-        if spell.name == 'Chant du Cygne' then
-            equip(sets.precast.WS.test)
-            add_to_chat(123, 'test')
-        end
     end
 end
 
