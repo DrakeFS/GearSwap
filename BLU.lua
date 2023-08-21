@@ -182,6 +182,11 @@ function init_gear_sets()
         waist="Fotia Belt"
     })
 
+    sets.precast.WS['Black Halo'].PDL = set_combine(sets.precast.WS['Black Halo'], {
+        hands="Gleti's Gauntlets",
+        feet="Gleti's Boots"
+    })
+
     sets.precast.WS['Flash Nova'] = set_combine(sets.precast.WS['Sanguine Blade'], {
         right_ring="Jhakri Ring"
     })
@@ -393,7 +398,7 @@ function init_gear_sets()
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck={ name="Bathy Choker +1", augments={'Path: A',}},
-        waist="Plat. Mog. Belt",
+        waist="Kasiri Belt",
         left_ear="Eabani Earring",
         right_ear="Ethereal Earring",
         left_ring="Defending Ring",
