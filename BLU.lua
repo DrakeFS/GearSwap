@@ -643,19 +643,15 @@ end
 
 -- Modify the default idle set after it was constructed.
 function customize_idle_set(idleSet)
-    --[[if player.mpp < 51 then
-        set_combine(idleSet, sets.latent_refresh)
-    end]]
-
-    if state.EvasionMode.value then
-        idleSet = set_combine(ildeSet, sets.Evasion)
+    if state.EvasionMode.value and not (player.equipment.right_ring == "Warp ring" or player.equipment.left_ring == "Warp ring") then
+        idleSet = set_combine(idleSet, sets.Evasion)
     end
 
     return idleSet
 end
 
 function customize_melee_set(meleeSet)
-    if state.EvasionMode.value then
+    if state.EvasionMode.value and not (player.equipment.right_ring == "Warp ring" or player.equipment.left_ring == "Warp ring") then
         meleeSet = set_combine(meleeSet, sets.Evasion)
     end
 
