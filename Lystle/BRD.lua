@@ -95,19 +95,19 @@ function init_gear_sets()
 
 
     sets.precast.WS = {
-        ammo="Ginsen",
+        ammo="Oshasha's Treatise",
         head="Aya. Zucchetto +2",
-        body="Ayanmo Corazza +2",
+        body={ name="Nyame Mail", augments={'Path: B',}},
         hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +2",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Aya. Gambieras +1",
-        neck="Clotharius Torque",
-        waist="Shadow Belt",
-        left_ear="Steelflash Earring",
+        neck={ name="Bard's Charm", augments={'Path: A',}},
+        waist="Thunder Belt",
+        left_ear="Brutal Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Begrudging Ring",
         right_ring="Ayanmo Ring",
-        back="Atheling Mantle",
+        back={ name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {})
@@ -329,6 +329,11 @@ function init_gear_sets()
         waist="Shetal Stone",
         left_ear="Suppanomimi",
     })
+
+    sets.engaged.DW.Samba = set_combine(sets.engaged, {
+        left_ear="Suppanomimi",
+        right_ear="Eabani earring",
+    })
     
     sets.weapons = {}
     sets.weapons.FC = {main='Kali'}
@@ -442,6 +447,66 @@ end
 
 function job_update(cmdParams, eventArgs)
     update_combat_form()
+    determine_haste_group()
+end
+
+function job_buff_change(buff, gain)
+    if S{'haste','march','embrava','haste samba'}:contains(buff:lower()) then
+        determine_haste_group()
+        state.Buff[buff] = gain
+    elseif state.Buff[buff] ~= nil then
+        state.Buff[buff] = gain
+    end
+end
+
+function determine_haste_group()
+    if buffactive['Haste Samba'] then
+        classes.CustomMeleeGroups:append('Samba')
+    end
+    
+    --[[or state.delayMod.Value ~= 'none' then
+        hasteSamba = true
+    else
+        hasteSamba = false
+    end
+    -- Low haste DW required: 
+    -- DW6: 19%
+    -- DW5: 21%
+    -- DW4: 26%
+    -- DW3: 31%
+    
+    --Mid Haste DW required:
+    -- DW6: 13% 
+    -- DW5: 15%
+    -- DW4: 20%
+    -- DW3: 25%
+    
+    --High Haste DW required:
+    -- DW6: -1% (potential minor TP loss if barely above a TP\Delay threshold)
+    -- DW5: 1%
+    -- DW4: 6%
+    -- DW3: 11%
+    
+    -- Max haste DW Required:
+    -- DW3 -1% (potential minor TP loss if barely above a TP\Delay threshold)
+    -- DW2 9% (Sub Dancer only, no DW trait set)
+    
+    -- Sets assume DW3
+    
+    classes.CustomMeleeGroups:clear()
+    
+    if (buffactive.haste and hasteSamba and buffactive.march == 1) 
+    or (buffactive.march == 2 and hasteSamba) 
+    or (buffactive.embrava and (buffactive.haste or buffactive.march) and hasteSamba) 
+    or (buffactive['Mighty Guard'] and buffactive.haset and hasteSamba) then
+        classes.CustomMeleeGroups:append('MaxHaste')
+    elseif (buffactive.haste and buffactive.march) or (buffactive.march == 2) then
+        classes.CustomMeleeGroups:append('HighHaste')
+    elseif buffactive.haste and hasteSamba then
+        classes.CustomMeleeGroups:append('MidHaste')
+    elseif buffactive.haste then
+        classes.CustomMeleeGroups:append('LowHaste')
+    end]]
 end
 
 function update_combat_form()

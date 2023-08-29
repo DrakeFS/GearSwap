@@ -39,7 +39,6 @@ function user_setup()
     state.OffenseMode:options('Normal', 'Acc', 'HP', 'SB')
     state.WeaponskillMode:options('Normal', 'PDL')
     state.CastingMode:options('Normal', 'Resistant')
-    state.IdleMode:options('Normal', 'PDT', 'Learning')
     state.TreasureMode:set('Tag')
 
     on_job_change()
@@ -347,11 +346,6 @@ function init_gear_sets()
         left_ring="Beeline Ring",
         right_ring="Rajas Ring"
     }
-
-    --[[sets.latent_refresh = {
-    body="Jhakri Robe +2",
-    legs={ name="Lengo Pants", augments={'INT+7','Mag. Acc.+7','"Mag.Atk.Bns."+3','"Refresh"+1',}},
-    }]]
 
     -- Resting sets
     sets.resting = {}
