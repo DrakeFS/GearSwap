@@ -32,6 +32,7 @@ function job_setup()
     state.WeaponMode= M(false, 'Swap')
     state.RangedMode = M(false)
     state.AutoEquipBurst = M(false)
+    AEBurst = m(false)
 
     barStatus = S{'Barpoison','Barparalyze','Barvirus','Barsilence','Barpetrify','Barblind','Baramnesia','Barsleep','Barpoisonra','Barparalyzra','Barvira','Barsilencera','Barpetra','Barblindra','Baramnesra','Barsleepra'}
 
@@ -572,11 +573,11 @@ function job_self_command(cmdParams, eventArgs)
         handle_nuking()
     elseif cmdParams[1]:lower() == 'wsit' then
         handle_WS()
-    elseif cmdParams[1]:lower() == 'autotoggleburst' then  -- requires modified skillchains.lua
+    --[[elseif cmdParams[1]:lower() == 'autotoggleburst' then  -- requires modified skillchains.lua
         if state.AutoEquipBurst.value then 
             trackAutoToggle = true
             state.MagicBurst:set(true)
-        end
+        end]]
     end
 end
 
@@ -676,7 +677,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         else
             equip(sets.midcast.Cure)
         end
-    elseif spell.skill == 'Elemental Magic' and state.MagicBurst.value then
+    elseif spell.skill == 'Elemental Magic' and (state.MagicBurst.value or AEBurst) then
         equip(sets.magic_burst)
     end
     if barStatus:contains(spell.name) then
@@ -691,10 +692,10 @@ function job_aftercast(spell, action, spellMap, eventArgs)
     if state.WeaponMode.value then
         equip({main = mainhand, sub = offhand})
     end
-    if trackAutoToggle and spell.skill == 'Elemental Magic' then
+    --[[if trackAutoToggle and spell.skill == 'Elemental Magic' then
         state.MagicBurst:set(false)
         trackAutoToggle = false
-    end
+    end]]
 end
 
 function job_post_aftercast(spell, action, spellMap, eventArgs)
@@ -749,6 +750,57 @@ function downgradenuke(spell)
         send_command('@input /ma "'..newspell..'" <t>')
     end
 end
+
+--[[local skillchains = {
+    [288] = {id=288,english='Light',elements={'Light','Fire','Lightning','Wind'}, color=Colors[4]},
+    [289] = {id=289,english='Darkness',elements={'Dark','Earth','Water','Ice'}, color=Colors[8]},
+    [290] = {id=290,english='Gravitation',elements={'Earth', 'Dark'}, color=Colors[5]},
+    [291] = {id=291,english='Fragmentation',elements={'Lightning','Wind'}, color=Colors[7]},
+    [292] = {id=292,english='Distortion',elements={'Ice', 'Water'}, color=Colors[6]},
+    [293] = {id=293,english='Fusion',elements={'Fire', 'Light'}, color=Colors[1]},
+    [294] = {id=294,english='Compression',elements={'Dark'}, color=Colors[8]},
+    [295] = {id=295,english='Liquefaction',elements={'Fire'}, color=Colors[1]},
+    [296] = {id=296,english='Induration',elements={'Ice'}, color=Colors[6]},
+    [297] = {id=297,english='Reverberation',elements={'Water'}, color=Colors[2]},
+    [298] = {id=298,english='Transfixion', elements={'Light'}, color=Colors[4]},
+    [299] = {id=299,english='Scission',elements={'Earth'}, color=Colors[5]},
+    [300] = {id=300,english='Detonation',elements={'Wind'}, color=Colors[3]},
+    [301] = {id=301,english='Impaction',elements={'Lightning'}, color=Colors[7]}
+}]]
+
+if player and player.index and windower.ffxi.get_mob_by_index(player.index) then
+
+    windower.register_event('action', function(act)
+        for _, target in pairs(act.targets) do
+            local battle_target = windower.ffxi.get_mob_by_target("t")
+            if battle_target ~= nil and target.id == battle_target.id then
+                for _, action in pairs(target.actions) do
+                    if action.add_effect_message > 287 and action.add_effect_message < 302 then
+                        --last_skillchain = skillchains[action.add_effect_message]
+                        MB_Window = 11
+                        MB_Time = os.time()
+                    end
+                end
+            end
+        end
+    end)
+
+    windower.register_event('prerender', function()
+        --Items we want to check every second
+        if os.time() > time_start then
+            time_start = os.time()
+            if MB_Window > 0 then
+                MB_Window = 11 - (os.time() - MB_Time)
+                if state.AutoEquipBurst.value then
+                    AEBurst:set(true)
+                end
+            else
+                AEBurst:set(false)
+            end
+        end
+    end)
+end
+
 
 -- Select default macro book on initial load or subjob change.
 function on_job_change()
