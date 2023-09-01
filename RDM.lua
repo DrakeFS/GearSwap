@@ -31,9 +31,8 @@ function job_setup()
     state.MagicBurst = M(false, 'Burst')
     state.WeaponMode= M(false, 'Swap')
     state.RangedMode = M(false)
-    state.AutoEquipBurst = M(false)
-    AEBurst = m(false)
-
+    state.AutoEquipBurst = M(true)
+            
     barStatus = S{'Barpoison','Barparalyze','Barvirus','Barsilence','Barpetrify','Barblind','Baramnesia','Barsleep','Barpoisonra','Barparalyzra','Barvira','Barsilencera','Barpetra','Barblindra','Baramnesra','Barsleepra'}
 
     on_job_change()
@@ -573,11 +572,6 @@ function job_self_command(cmdParams, eventArgs)
         handle_nuking()
     elseif cmdParams[1]:lower() == 'wsit' then
         handle_WS()
-    --[[elseif cmdParams[1]:lower() == 'autotoggleburst' then  -- requires modified skillchains.lua
-        if state.AutoEquipBurst.value then 
-            trackAutoToggle = true
-            state.MagicBurst:set(true)
-        end]]
     end
 end
 
@@ -692,10 +686,6 @@ function job_aftercast(spell, action, spellMap, eventArgs)
     if state.WeaponMode.value then
         equip({main = mainhand, sub = offhand})
     end
-    --[[if trackAutoToggle and spell.skill == 'Elemental Magic' then
-        state.MagicBurst:set(false)
-        trackAutoToggle = false
-    end]]
 end
 
 function job_post_aftercast(spell, action, spellMap, eventArgs)
@@ -707,6 +697,9 @@ end
 function display_current_job_state(eventArgs)
     display_current_caster_state()
     local msg = ''
+    if state.TreasureMode.value ~= 'None' then
+        msg = msg ..'Treasure Hunter: '..state.TreasureMode.value..', '
+    end
     if state.MACC.value then
         msg = msg ..'Max Magic Accuracy: On, '
     end
@@ -716,16 +709,17 @@ function display_current_job_state(eventArgs)
     if state.MagicBurst.value then
         msg = msg ..'Magic Burst: On, '
     end
-    if state.TreasureMode.value ~= 'None' then
-        msg = msg ..'Treasure Hunter: '..state.TreasureMode.value..', '
+    if state.AutoEquipBurst.value then
+        msg = msg ..'Auto Equip Magic Burst Set: On'
     end
-    msg = msg ..'Current nuke element is '..state.NukeElement.value..' and initial Tier is '..state.NukeTier.index..'.'
     add_to_chat(121, msg)
-    eventArgs.handled = true
+    add_to_chat(120,'Current nuke element is '..state.NukeElement.value..' and initial Tier is '..state.NukeTier.index..'.')
+    
+    eventArgs.handled = false
 end
 
 function update_combat_form()    
-    if cf_check then --checks if cf_check() exists
+    if cf_check() then --checks if cf_check() exists
         cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Dagna-Globals.lua
     end
 end
@@ -751,22 +745,10 @@ function downgradenuke(spell)
     end
 end
 
---[[local skillchains = {
-    [288] = {id=288,english='Light',elements={'Light','Fire','Lightning','Wind'}, color=Colors[4]},
-    [289] = {id=289,english='Darkness',elements={'Dark','Earth','Water','Ice'}, color=Colors[8]},
-    [290] = {id=290,english='Gravitation',elements={'Earth', 'Dark'}, color=Colors[5]},
-    [291] = {id=291,english='Fragmentation',elements={'Lightning','Wind'}, color=Colors[7]},
-    [292] = {id=292,english='Distortion',elements={'Ice', 'Water'}, color=Colors[6]},
-    [293] = {id=293,english='Fusion',elements={'Fire', 'Light'}, color=Colors[1]},
-    [294] = {id=294,english='Compression',elements={'Dark'}, color=Colors[8]},
-    [295] = {id=295,english='Liquefaction',elements={'Fire'}, color=Colors[1]},
-    [296] = {id=296,english='Induration',elements={'Ice'}, color=Colors[6]},
-    [297] = {id=297,english='Reverberation',elements={'Water'}, color=Colors[2]},
-    [298] = {id=298,english='Transfixion', elements={'Light'}, color=Colors[4]},
-    [299] = {id=299,english='Scission',elements={'Earth'}, color=Colors[5]},
-    [300] = {id=300,english='Detonation',elements={'Wind'}, color=Colors[3]},
-    [301] = {id=301,english='Impaction',elements={'Lightning'}, color=Colors[7]}
-}]]
+-- Auto toggle Magic burst set.
+MB_Window = 0
+time_start = 0
+AEBurst = false
 
 if player and player.index and windower.ffxi.get_mob_by_index(player.index) then
 
@@ -792,10 +774,10 @@ if player and player.index and windower.ffxi.get_mob_by_index(player.index) then
             if MB_Window > 0 then
                 MB_Window = 11 - (os.time() - MB_Time)
                 if state.AutoEquipBurst.value then
-                    AEBurst:set(true)
+                    AEBurst = true
                 end
             else
-                AEBurst:set(false)
+                AEBurst = false
             end
         end
     end)
