@@ -194,7 +194,7 @@ function init_gear_sets()
         head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
         hands="Jhakri Cuffs +2",
-        legs="Leth. Fuseau +2",
+        legs="Leth. Fuseau +3",
         feet="Leth. Houseaux +3",
         neck={ name="Duelist's Torque", augments={'Path: A',}},
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
@@ -276,7 +276,7 @@ function init_gear_sets()
         feet="Leth. Houseaux +3",
         waist="Embla Sash",
         left_ear="Mimir Earring",
-        right_ear={ name="Lethargy Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
+        right_ear="Lethargy Earring +1",
         back = gear.RdmCMB,
     }
 
@@ -313,7 +313,7 @@ function init_gear_sets()
     sets.midcast['Blizzard Spikes'] = sets.midcast.Haste
     sets.midcast['Blaze Spikes'] = sets.midcast.Haste
     
-    sets.midcast.Refresh = set_combine(sets.midcast['Enhancing Magic'], {body="Atrophy Tabard +3", legs="Leth. Fuseau +2",})
+    sets.midcast.Refresh = set_combine(sets.midcast['Enhancing Magic'], {body="Atrophy Tabard +3", legs="Leth. Fuseau +3",})
     sets.midcast['Refresh II'] = sets.midcast.Refresh
     sets.midcast['Refresh III'] = sets.midcast.Refresh
     sets.midcast['Regen II'] = sets.midcast.Refresh
@@ -348,8 +348,8 @@ function init_gear_sets()
         ammo="Regal Gem",
         head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Atrophy Tabard +3",
-        hands="Leth. Ganth. +2",
-        legs="Leth. Fuseau +2",
+        hands="Leth. Ganth. +3",
+        legs="Leth. Fuseau +3",
         feet="Leth. Houseaux +3",
         neck={ name="Duelist's Torque", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
@@ -363,7 +363,7 @@ function init_gear_sets()
     --[[sets.Midcast['Enfeebling Magic'] = {  --Enfeebling comparison m
         ammo="Regal Gem",
         head="Viti. Chapeau +3",
-        body="Lethargy Sayon +2",
+        body="Lethargy Sayon +3",
         hands="Regal Cuffs",
         legs="Chironic Hose",
         feet="Vitiation Boots +3",
@@ -380,8 +380,8 @@ function init_gear_sets()
     sets.midcast['Dia III'] = {
         ammo="Regal Gem",
         head={ name="Vitiation Chapeau +2", augments={'Enfeebling Magic duration','Magic Accuracy',}},
-        body="Lethargy Sayon +2",
-        hands="Leth. Ganth. +2",
+        body="Lethargy Sayon +3",
+        hands="Leth. Ganth. +3",
         legs="Jhakri Slops +2",
         feet={ name="Vitiation Boots +1", augments={'Immunobreak Chance',}},
         neck={ name="Duelist's Torque", augments={'Path: A',}},
@@ -402,15 +402,15 @@ function init_gear_sets()
 
     sets.midcast['Elemental Magic'] = {
         ammo="Pemphredo Tathlum",
-        head="Leth. Chappel +2",
-        body="Lethargy Sayon +2",
-        hands="Leth. Ganth. +2",
-        legs="Leth. Fuseau +2",
+        head="Leth. Chappel +3",
+        body="Lethargy Sayon +3",
+        hands="Leth. Ganth. +3",
+        legs="Leth. Fuseau +3",
         feet="Leth. Houseaux +3",
         neck="Sibyl Scarf",
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Malignance Earring",
-        right_ear="Hermetic Earring",
+        right_ear="Regal Earring",
         left_ring="Ayanmo Ring",
         right_ring="Jhakri Ring",
         back = gear.RdmCMB,
@@ -418,7 +418,11 @@ function init_gear_sets()
 
     sets.midcast['Elemental Magic'].ConserveMP = set_combine(sets.midcast['Elemental Magic'], {})
 
-    sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {neck="Mizu. Kubikazari",})
+    sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {
+        --body="Bunzi's Robe",
+        --hands="Bunzi's Gloves",
+        neck="Mizu. Kubikazari",
+    })
 
     sets.magic_burst.ConserveMP = set_combine(sets.midcast['Elemental Magic'], {}) 
 
@@ -441,11 +445,14 @@ function init_gear_sets()
 
     
     sets.buff.ComposureOther = set_combine(sets.midcast['Enhancing Magic'], {
-        head="Leth. Chappel +2",
-        legs="Leth. Fuseau +2",
+        head="Leth. Chappel +3",
+        body="Lethargy Sayon +3",
+        hands="Leth. Ganth. +3",
+        legs="Leth. Fuseau +3",
+        feet="Leth. Houseaux +3",
     })
 
-    sets.buff.Saboteur = {hands="Leth. Ganth. +2"}
+    sets.buff.Saboteur = {hands="Leth. Ganth. +3"}
     
     -- Sets to return to when not performing an action.
     
@@ -536,7 +543,7 @@ function init_gear_sets()
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
-        legs="Leth. Fuseau +2",
+        legs="Leth. Fuseau +3",
         feet="Leth. Houseaux +3",
         neck="Clotharius Torque",
         waist="Reiki Yotai",
