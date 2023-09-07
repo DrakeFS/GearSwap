@@ -69,7 +69,7 @@ function init_gear_sets()
     --------------------------------------
     -- Start defining the sets
     --------------------------------------
-    gear.RdmCTP = {name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}}
+    gear.RdmCTP = {name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
     gear.RdmCMB = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10','Mag. Evasion+15',}}
     gear.RdmCES = {name="Ghostfyre Cape", augments={'Enfb.mag. skill +6','Enha.mag. skill +10',}}
     gear.RdmCEnmity = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Enmity+10','Spell interruption rate down-10%',}}
@@ -523,7 +523,7 @@ function init_gear_sets()
     sets.engaged.DW.Enspell = {
         ammo="Paeapua",
         head="Malignance Chapeau",
-        body="Malignance Tabard",
+        body="Ayanmo Corazza +2",
         hands="Aya. Manopolas +2",
         legs="Zoar Subligar +1",
         feet="Aya. Gambieras +2",
@@ -531,7 +531,7 @@ function init_gear_sets()
         waist="Reiki Yotai",
         left_ear="Eabani Earring",
         right_ear="Sherida Earring",
-        left_ring="Petrov Ring",
+        left_ring="Hetairoi Ring",
         right_ring="Pernicious Ring",
         back=gear.RdmCES
     }
