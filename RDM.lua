@@ -411,7 +411,7 @@ function init_gear_sets()
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Malignance Earring",
         right_ear="Regal Earring",
-        left_ring="Ayanmo Ring",
+        left_ring="Freke Ring",
         right_ring="Jhakri Ring",
         back = gear.RdmCMB,
     }
