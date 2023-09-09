@@ -503,7 +503,7 @@ function init_gear_sets()
         ammo="Coiste Bodhar",
         head="Malignance Chapeau",
         body="Malignance Tabard",
-        hands="Malignance Gloves",
+        hands="Bunzi's Gloves",
         legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +2",
         neck="Lissome Necklace",
