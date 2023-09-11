@@ -258,7 +258,7 @@ function init_gear_sets()
         head="Vitiation Chapeau +2",
         body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
         hands="Jhakri Cuffs +2",
-        legs="Atrophy Tights +2",
+        legs="Atrophy Tights +3",
         feet="Leth. Houseaux +3",
         neck="Nodens Gorget",
         right_ear="Mendi. Earring",
@@ -269,24 +269,26 @@ function init_gear_sets()
     sets.midcast.CureSelf = sets.midcast.Cure
 
     sets.midcast['Enhancing Magic'] = {
-        neck= {name="Duelist's Torque", augments={'Path: A',}},
+        head="Umuthi hat",
         body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
         hands="Atrophy Gloves +3",
-        legs="Atrophy Tights +2",
+        legs="Atrophy Tights +3",
         feet="Leth. Houseaux +3",
+        neck= {name="Duelist's Torque", augments={'Path: A',}},
         waist="Embla Sash",
         left_ear="Mimir Earring",
         right_ear="Lethargy Earring +1",
-        back = gear.RdmCMB,
+        back = gear.RdmCES,
     }
 
     sets.midcast.Barstatus = set_combine(sets.midcast['Enhancing Magic'], {})
 
     sets.midcast.Phalanx = set_combine(sets.midcast['Enhancing Magic'], {})
 
-    sets.midcast.MaxSkill = set_combine(sets.midcast['Enhancing Magic'], {
-        neck="Incanter's Torque",
+    sets.midcast['Enhancing Magic'].MaxSkill = set_combine(sets.midcast['Enhancing Magic'], {
         hands={ name="Viti. Gloves +3", augments={'Enhancing Magic duration',}},
+        neck="Incanter's Torque",
+        waist="Olympus sash",
         right_ear="Andoaa Earring",
         back = gear.RdmCES,
     })
@@ -559,7 +561,7 @@ function init_gear_sets()
     sets.weapons.Cure = {main="Daybreak", sub="Sors Shield"}
     sets.weapons.Enfeebling.DW = {main="Daybreak", sub="Bunzi's Rod"}
     sets.weapons.Enhancing.DW = {main="Pukulatmuj +1", sub="Ammurapi Shield"}
-    sets.weapons.Enhancing.DW.Temper = {main="Pukulatmuj +1", sub="Pukulatmuj"}
+    sets.weapons.Enhancing.DW.MaxSkill = {main="Pukulatmuj +1", sub="Pukulatmuj"}
     sets.weapons.Elemental.DW = {main="Daybreak", sub="Bunzi's Rod"}
     sets.weapons.Cure.DW = {main="Daybreak", sub="Bunzi's Rod"}
 end
@@ -628,7 +630,7 @@ function job_midcast(spell, action, spellMap, eventArgs)
         if spell.skill == 'Enhancing Magic' then
             if state.CombatForm.value == 'DW' then
                 if max_enhancing_skill:contains(spell.name) then
-                    equip(sets.weapons.Enhancing.DW.Temper)
+                    equip(sets.weapons.Enhancing.DW.MaxSkill)
                 else
                     equip(sets.weapons.Enhancing.DW)
                 end
@@ -668,7 +670,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if buffactive.composure and spell.target.type == 'PLAYER' then
             equip(sets.buff.ComposureOther)
         elseif max_enhancing_skill:contains(spell.name) then
-            equip(sets.midcast.MaxSkill)
+            equip(sets.midcast['Enhancing Magic'].MaxSkill)
         end
     elseif spellMap == 'Cure' then
         if spell.target.type == 'SELF' then
