@@ -75,10 +75,9 @@ function init_gear_sets()
         feet="Bihu Slippers +1",
     })
 
-    sets.precast.FC['Honor March'] = set_combine(sets.precast.BardSong, {
-        range="Marsyas",
-    })
+    sets.precast.FC['Honor March'] = set_combine(sets.precast.FC.BardSong, {range="Marsyas"})
 
+    sets.precast.FC['Aria of Passion'] = set_combine(sets.precast.FC.BardSong, {range="Loughnashade"})
     
 
     sets.precast.JA.Nightingale = {feet="Bihu Slippers +1"}
@@ -147,6 +146,7 @@ function init_gear_sets()
     --sets.midcast.Carol = {hands="Mousai Gages +1"}
     --sets.midcast.Etude = {head="Mousai Turban +1"}
     sets.midcast['Honor March'] = set_combine(sets.midcast.BardSong, {range="Marsyas", hands="Fili Manchettes +3"})
+    sets.midcast['Aria of Passion'] = set_combine(sets.midcast.BardSong, {range="Loughnashade"})
     sets.midcast.Madrigal = set_combine(sets.midcast.BardSong,{head="Fili Calot +3", back=gear.BrdCFC})
     sets.midcast.Mambo = set_combine(sets.midcast.BardSong,{feet="Mousai Crackows +1"})
     sets.midcast.March = set_combine(sets.midcast.BardSong,{hands="Fili Manchettes +3"})
