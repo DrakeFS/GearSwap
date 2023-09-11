@@ -71,7 +71,7 @@ function init_gear_sets()
     --------------------------------------
     gear.RdmCTP = {name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
     gear.RdmCMB = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10','Mag. Evasion+15',}}
-    gear.RdmCES = {name="Ghostfyre Cape", augments={'Enfb.mag. skill +6','Enha.mag. skill +10',}}
+    gear.RdmCES = {name="Ghostfyre Cape", augments={'Enfb.mag. skill +1','Enha.mag. skill +1','Mag. Acc.+5','Enh. Mag. eff. dur. +19',}}
     gear.RdmCEnmity = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Enmity+10','Spell interruption rate down-10%',}}
     gear.RdmStrWS = {name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
     gear.RdmMndWS = {name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%',}}

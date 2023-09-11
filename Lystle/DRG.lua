@@ -90,24 +90,26 @@ function init_gear_sets()
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
         ammo="Oshasha's Treatise",
-        head="Sulevia's Mask +2",
-        body="Sulevia's Plate. +2",
-        hands="Sulev. Gauntlets +2",
-        legs="Sulevi. Cuisses +2",
+        head="Flam. Zucchetto +2",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Flam. Manopolas +2",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Sulev. Leggings +2",
         neck="Rep. Plat. Medal",
         waist="Sailfi Belt",
         left_ear="Sherida Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Begrudging Ring",
-        right_ring="Sulevia's Ring",
+        right_ring="Lehko's Ring",
         back=gear.DrgCTP,
     }
+
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
     
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Stardiver'] = set_combine(sets.precast.WS, {
-    waist="Shadow Belt",
+        neck="Shadow Gorget",
+        waist="Shadow Belt",
     })
     
     sets.precast.WS['Stardiver'].Mid = set_combine(sets.precast.WS['Stardiver'], {})
@@ -201,9 +203,9 @@ function init_gear_sets()
         neck="Clotharius Torque",
         waist="Dynamic Belt",
         left_ear="Sherida Earring",
-        right_ear="Brutal Earring",
+        right_ear="Crep. Earring",
         left_ring="Rajas Ring",
-        right_ring="Sulevia's Ring",
+        right_ring="Lehko's Ring",
         back=gear.DrgCTP,
     }
 
