@@ -95,8 +95,8 @@ function init_gear_sets()
         hands="Flam. Manopolas +2",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Sulev. Leggings +2",
-        neck="Rep. Plat. Medal",
-        waist="Sailfi Belt",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
         left_ear="Sherida Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Begrudging Ring",
@@ -107,10 +107,7 @@ function init_gear_sets()
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {})
     
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
-    sets.precast.WS['Stardiver'] = set_combine(sets.precast.WS, {
-        neck="Shadow Gorget",
-        waist="Shadow Belt",
-    })
+    sets.precast.WS['Stardiver'] = set_combine(sets.precast.WS, {})
     
     sets.precast.WS['Stardiver'].Mid = set_combine(sets.precast.WS['Stardiver'], {})
     
@@ -128,10 +125,7 @@ function init_gear_sets()
     
     sets.precast.WS['Drakesbane'].Acc = set_combine(sets.precast.WS['Drakesbane'].Mid, {})
     
-    sets.precast.WS['Impulse Drive'] = set_combine(sets.precast.WS, {
-    neck="Soil Gorget",
-    waist="Soil Belt"
-    })
+    sets.precast.WS['Impulse Drive'] = set_combine(sets.precast.WS, {})
     
     sets.precast.WS['Impulse Drive'].Mid = set_combine(sets.precast.WS['Impulse Drive'], {})
     

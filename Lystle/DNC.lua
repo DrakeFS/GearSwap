@@ -22,8 +22,8 @@ sets.precast.WS = {
     hands="Meg. Gloves +2",
     legs={ name="Nyame Flanchard", augments={'Path: B',}},
     feet="Mummu Gamash. +2",
-    neck="Clotharius Torque",
-    waist="Dynamic Belt",
+    neck="Fotia Gorget",
+    waist="Fotia Belt",
     left_ear="Sherida Earring",
     right_ear="Crep. Earring",
     left_ring="Begrudging Ring",
@@ -35,11 +35,9 @@ sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
     ammo="Falcon Eye",
     hands="Mummu Wrists +2",
     legs="Mummu Kecks +2",
-    waist="Soil Belt",
 })
 
 sets.precast.WS['Rudra\'s Storm'] = set_combine(sets.precast.WS, {
-    waist = "Shadow Belt",
     right_ear = "Moonshade Earring",
 })
 

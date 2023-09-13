@@ -140,8 +140,8 @@ function init_gear_sets()
         hands="Meg. Gloves +2",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Jute Boots +1",
-        neck="Clotharius Torque",
-        waist="Dynamic Belt",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
         left_ear="Sherida Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Mummu Ring",
@@ -162,16 +162,13 @@ function init_gear_sets()
     sets.precast.WS['Dancing Edge'].SATA = set_combine(sets.precast.WS['Dancing Edge'], {})
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
-    waist="Shadow Belt",
     right_ear="Crep. Earring",
     })
     sets.precast.WS['Evisceration'].SA = set_combine(sets.precast.WS['Evisceration'], {})
     sets.precast.WS['Evisceration'].TA = set_combine(sets.precast.WS['Evisceration'], {})
     sets.precast.WS['Evisceration'].SATA = set_combine(sets.precast.WS['Evisceration'], {})
 
-    sets.precast.WS["Rudra's Storm"] = set_combine(sets.precast.WS, {
-    waist="Shadow Belt",
-    })
+    sets.precast.WS["Rudra's Storm"] = set_combine(sets.precast.WS, {})
     sets.precast.WS["Rudra's Storm"].SA = set_combine(sets.precast.WS["Rudra's Storm"], {})
     sets.precast.WS["Rudra's Storm"].TA = set_combine(sets.precast.WS["Rudra's Storm"], {})
     sets.precast.WS["Rudra's Storm"].SATA = set_combine(sets.precast.WS["Rudra's Storm"], {})
@@ -193,8 +190,6 @@ function init_gear_sets()
         hands="Meg. Gloves +2",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Nyame Sollerets",
-        neck="Breeze Gorget",
-        waist="Cornelia's Belt",
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         right_ear={ name="Skulk. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','"Store TP"+4',}},
         left_ring="Meghanada Ring",
@@ -207,7 +202,6 @@ function init_gear_sets()
     sets.precast.WS["Savage Blade"] = set_combine(sets.precast.WS, {
         legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet="Meg. Jam. +1",
-        neck="Sanctity Necklace",
         left_ring="Meghanada Ring",
     })
 
