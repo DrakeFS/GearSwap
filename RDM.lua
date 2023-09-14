@@ -134,9 +134,9 @@ function init_gear_sets()
     sets.precast.WS = {
         ammo="Oshasha's Treatise",
         head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
-        body="Ayanmo Corazza +2",
+        body="Lethargy Sayon +3",
         hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
+        legs="Leth. Fuseau +3",
         feet="Leth. Houseaux +3",
         neck="Sanctity Necklace",
         waist="Windbuffet Belt +1",
@@ -153,7 +153,6 @@ function init_gear_sets()
         head="Jhakri Coronal +2",
         body="Atrophy Tabard +3",
         hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Malignance Earring",
@@ -163,42 +162,32 @@ function init_gear_sets()
         back=gear.RdmCMB,
     }
 
-    sets.precast.WS['Seraph Blade'] = {
-        ammo="Pemphredo Tathlum",
-        head="Jhakri Coronal +2",
-        body="Jhakri Robe +2",
-        legs="Jhakri Slops +2",
+    sets.precast.WS['Seraph Blade'] = set_combine(sets.precast.WS, {
+        head="Leth. Chappel +3",
         neck="Fotia Gorget",
         waist="Fotia Belt",
+        left_ear="Malignance Earring",
         back=gear.RdmCMB,
-    }
+    })
     
-    sets.precast.WS['Sanguine Blade'] ={
-        ammo="Regal Gem",
+    sets.precast.WS['Sanguine Blade'] = set_combine(sets.precast.WS, {
         head="Pixie Hairpin +1",
-        body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
         neck="Sibyl Scarf",
         waist="Fotia Belt",
         left_ear="Malignance Earring",
         right_ear="Regal Earring",
         right_ring="Archon Ring",
         back=gear.RdmCMB,
-    }
+    })
     
     sets.precast.WS['Red Lotus Blade'] = set_combine( sets.precast.WS['Seraph Blade'],{})
     
     sets.precast.WS['Black Halo'] = set_combine( sets.precast.WS, {
         ammo="Oshasha's Treatise",
         head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
-        body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
-        hands="Jhakri Cuffs +2",
-        legs="Leth. Fuseau +3",
-        feet="Leth. Houseaux +3",
-        neck={ name="Duelist's Torque", augments={'Path: A',}},
+        neck="Fotia Gorget",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Regal Earring",
+        left_ear={ name="Lethargy Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
         back=gear.RdmMndWS,
     })
 
@@ -384,7 +373,7 @@ function init_gear_sets()
         head={ name="Vitiation Chapeau +2", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Lethargy Sayon +3",
         hands="Leth. Ganth. +3",
-        legs="Jhakri Slops +2",
+        legs="Leth. Fuseau +3",
         feet={ name="Vitiation Boots +1", augments={'Immunobreak Chance',}},
         neck={ name="Duelist's Torque", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
