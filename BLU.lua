@@ -292,9 +292,18 @@ function init_gear_sets()
     sets.midcast['Blue Magic']['Feather Tickle'] = set_combine(sets.midcast['Blue Magic'].Magical, sets.precast.FC)
 
     sets.midcast['Blue Magic'].Healing = {
+        ammo="Impatiens",
+        head="Hashishin Kavuk +3",
+        body="Vrikodara Jupon",
         hands="Hashi. Bazu. +3",
+        legs="Hashishin Tayt +3",
+        feet="Hashi. Basmak +3",
+        neck="Incanter's Torque",
+        waist="Gishdubar Sash",
         left_ear="Mendi. Earring",
-        right_ear="Regal Earring"
+        right_ear="Regal Earring",
+        left_ring="Kunaji Ring",
+        back="Solemnity Cape",
     }
 
     sets.midcast['Blue Magic'].SkillBasedBuff = {
