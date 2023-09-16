@@ -295,7 +295,7 @@ function init_gear_sets()
         ammo="Impatiens",
         head="Hashishin Kavuk +3",
         body="Vrikodara Jupon",
-        hands="Hashi. Bazu. +3",
+        hands={ name="Telchine Gloves", augments={'Potency of "Cure" effect received+5%',}},
         legs="Hashishin Tayt +3",
         feet="Hashi. Basmak +3",
         neck="Incanter's Torque",
