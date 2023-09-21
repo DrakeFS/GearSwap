@@ -84,19 +84,21 @@ sets.precast.FC = {}  -- Fast Cast Set
 
 -- sets.precast.RA = {}  -- Ranged delay reduction.  Ignore if uneeded, remove the first "--" to activate.
 
+-- sets.precast.JA['Job Ability name'] = {}  -- sets for specefic job abilites.  Ignore if uneeded, remove the first "--" to activate.
+
 sets.precast.WS = {}  -- General Weapon Skill Set
 
 -- sets.precast.WS['WS Name'] = set_combine(sets.precast.WS, {gear goes here}) -- Specific Weapon Skill Set.  Ignore if uneeded, remove the first "--" to activate.
 
-sets.midcast = {} -- Casting Set
-
 -- sets.midcast.RA = {} -- Ranged TP Set.  Ignore if uneeded, remove the first "--" to activate.
 
--- sets.midcast['Spell Name or Magic Type'] = set_combine(sets.midcast, {gear goes here}) -- Specific casting set for a spell or magic type (ie. Enhancing Magic).  Ignore if uneeded, remove the first "--" to activate.
+-- sets.midcast['Spell Name or Magic Type'] = {gear goes here} -- Specific casting set for a spell (ie.  Fire IV or Dia II) or magic type (ie. Enhancing Magic for casting buffs or Elemental Magic for nuking ).  Ignore if uneeded, remove the first "--" to activate.
+
+-- sets.midcast.Cure = {gear goes here}  -- Specific casting set for Cure, Curaga and Cura spells.  Ignore if uneeded, remove the first "--" to activate. 
 
 sets.defense.PDT = {}  -- Defense set, Press F10 to equip, Alt-F12 to unequip
 
--- sets.idle = {} -- Gear to stand around in.  Regen and\or Refresh sets work well here.  Ignore if uneeded, remove the first "--" to activate.
+-- sets.idle = {} -- Gear to stand around in.  DT (-Damage Taken, -Physical Damage Taken and -Magical Damage Taken), Movespeed, Regen and\or Refresh sets work well here.  Ignore if uneeded, remove the first "--" to activate.
 
 sets.engaged = {} -- TP Set
 
