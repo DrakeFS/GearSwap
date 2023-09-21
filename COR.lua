@@ -50,6 +50,9 @@ function job_setup()
     -- Initialize Quick Draw state
     state.QDrawElement = M{['description'] = 'Quick Draw Element'}
 
+    -- Element of Quickdraw
+    QuickdrawElement = {['Fire']='Fire Shot',['Ice']='Ice Shot',['Wind']='Wind Shot',['Earth']="Earth Shot",['Lightning']='Thunder Shot',['Water']='Water Shot',['Light']='Light Shot',['Dark']='Dark Shot'}
+
     -- Add Rolls to roll tracking state
     state.roll1:options("Corsair's Roll", "Ninja Roll", "Hunter's Roll", "Chaos Roll", "Magus's Roll", "Healer's Roll", "Puppet Roll",
     "Choral Roll", "Monk's Roll", "Beast Roll", "Samurai Roll", "Evoker's Roll", "Rogue's Roll", "Warlock's Roll", "Fighter's Roll", 
@@ -427,6 +430,11 @@ function job_post_precast(spell, action, spellMap)
     end
 end
 
+function job_midcast(spell, action, spellMap)
+    if QuickdrawElement:contains(spell.name) and (world.weather_element == QuickdrawElement[spell.name] or world.day_element == QuickdrawElement[spell.name]) then
+        equip(sets.weatherbelt)
+    end
+end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 function job_aftercast(spell, action, spellMap, eventArgs)
