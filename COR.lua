@@ -431,8 +431,11 @@ function job_post_precast(spell, action, spellMap)
 end
 
 function job_midcast(spell, action, spellMap)
-    if QuickdrawElement:contains(spell.name) and (world.weather_element == QuickdrawElement[spell.name] or world.day_element == QuickdrawElement[spell.name]) then
+    add_to_chat(123,''..spell.name)
+    local spellused = spell.name
+    if QuickdrawElement[]:contains(''..spellused..'') and (world.weather_element == QuickdrawElement[spell.name] or world.day_element == QuickdrawElement[spell.name]) then
         equip(sets.weatherbelt)
+        add_to_chat(122, "Weather Equipped")
     end
 end
 
