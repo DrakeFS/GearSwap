@@ -50,8 +50,8 @@ function job_setup()
     -- Initialize Quick Draw state
     state.QDrawElement = M{['description'] = 'Quick Draw Element'}
 
-    -- Element of Quickdraw
-    QuickdrawElement = {['Fire']='Fire Shot',['Ice']='Ice Shot',['Wind']='Wind Shot',['Earth']="Earth Shot",['Lightning']='Thunder Shot',['Water']='Water Shot',['Light']='Light Shot',['Dark']='Dark Shot'}
+    -- Elements of Quickdraw
+    QuickdrawElement = {['Fire Shot']='Fire',['Ice Shot']='Ice',['Wind Shot']='Wind',['Earth Shot']="Earth",['Thunder Shot']='Lightning',['Water Shot']='Water',['Light Shot']='Light',['Dark Shot']='Dark'}
 
     -- Add Rolls to roll tracking state
     state.roll1:options("Corsair's Roll", "Ninja Roll", "Hunter's Roll", "Chaos Roll", "Magus's Roll", "Healer's Roll", "Puppet Roll",
@@ -431,11 +431,8 @@ function job_post_precast(spell, action, spellMap)
 end
 
 function job_midcast(spell, action, spellMap)
-    add_to_chat(123,''..spell.name)
-    local spellused = spell.name
-    if QuickdrawElement[]:contains(''..spellused..'') and (world.weather_element == QuickdrawElement[spell.name] or world.day_element == QuickdrawElement[spell.name]) then
+    if QuickdrawElement[spell.english]and (world.weather_element == QuickdrawElement[spell.english] or world.day_element == QuickdrawElement[spell.english]) then
         equip(sets.weatherbelt)
-        add_to_chat(122, "Weather Equipped")
     end
 end
 
