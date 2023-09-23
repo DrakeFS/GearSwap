@@ -67,8 +67,8 @@ function job_setup()
     state.QDrawElement:options("Light", "Dark", "Fire", "Water", "Thunder", "Earth", "Wind", "Ice")
 
     -- Sets default roll states on lua load
-    state.roll1:set("Samurai Roll")
-    state.roll2:set("Chaos Roll")
+    state.roll1:set("Chaos Roll")
+    state.roll2:set("Samurai Roll")
 
     -- set default shot
     state.QDrawElement:set("Light")
@@ -213,8 +213,15 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
+        head="Nyame Helm",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Rep. Plat. Medal",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        right_ear="Ishvara Earring",
+        left_ring="Epaminondas's Ring",
+        right_ring="Cornelia's Ring",
     })
 
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
@@ -223,7 +230,7 @@ function init_gear_sets()
 
     sets.precast.WS['Last Stand'] = {
         ammo = gear.PWSAmmo,
-        head="Meghanada Visor +2",
+        head="Malignance Chapeau",
         body="Laksa. Frac +3",
         hands="Chasseur's Gants +2",
         legs="Meg. Chausses +2",
@@ -231,9 +238,9 @@ function init_gear_sets()
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        right_ear="Ishvara Earring",
+        right_ear="Crep. Earring",
         left_ring="Ilabrat Ring",
-        right_ring="Dingir Ring",
+        right_ring="Cornelia's Ring",
         back=gear.CorPRWSC,
     }
 
@@ -255,9 +262,19 @@ function init_gear_sets()
         back=gear.CorMRWSC,
     }
 
-    sets.precast.WS['Leaden Salute'] = set_combine(sets.precast.WS['Wildfire'], {
+    sets.precast.WS['Leaden Salute'] = {
         head="Pixie Hairpin +1",
-        left_ring="Archon Ring",
+        body="Laksa. Frac +3",
+        hands="Chasseur's Gants +3",
+        legs="Nyame Flanchard",
+        feet="Lanun Bottes +3",
+        neck="Sibyl Scarf",
+        waist="Yemaya Belt",
+        ear1="Friomisi Earring",
+        ear2="Moonshade Earring",
+        ring1="Cornelia's ring",
+        ring2="Dingir Ring",
+        back=gear.CorMRWSC,
     })
 
     -- Midcast Sets
