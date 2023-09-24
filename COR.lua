@@ -185,7 +185,7 @@ function init_gear_sets()
     sets.precast.WS = {
         head="Meghanada Visor +2",
         body="Laksa. Frac +3",
-        hands="Chasseur's Gants +2",
+        hands="Chasseur's Gants +3",
         legs="Meg. Chausses +2",
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Fotia Gorget",
@@ -232,7 +232,7 @@ function init_gear_sets()
         ammo = gear.PWSAmmo,
         head="Malignance Chapeau",
         body="Laksa. Frac +3",
-        hands="Chasseur's Gants +2",
+        hands="Chasseur's Gants +3",
         legs="Meg. Chausses +2",
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Fotia Gorget",
@@ -275,7 +275,7 @@ function init_gear_sets()
         ring1="Cornelia's ring",
         ring2="Dingir Ring",
         back=gear.CorMRWSC,
-    })
+    }
 
     -- Midcast Sets
     --sets.midcast.FastRecast = {}
