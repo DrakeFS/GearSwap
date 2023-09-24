@@ -410,6 +410,7 @@ function init_gear_sets()
     sets.midcast['Elemental Magic'].ConserveMP = set_combine(sets.midcast['Elemental Magic'], {})
 
     sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {
+        hands="Ea Cuffs",
         neck="Mizu. Kubikazari",
     })
 
