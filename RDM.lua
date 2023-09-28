@@ -194,18 +194,15 @@ function init_gear_sets()
     sets.precast.WS['Aeolian Edge'] = set_combine( sets.precast.WS['Seraph Blade'],{})
     
     sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
-        ammo="Jukukik Feather",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands="Jhakri Cuffs +2",
-        legs="Aya. Cosciales +2",
-        feet="Battlecast Gaiters",
+        body="Ayanmo Corazza +2",
+        hands="Aya. Manopolas +2",
+        legs="Nyame Flanchard",
+        feet="Aya. Gambieras +2",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Sherida Earring",
-        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Petrov Ring",
         right_ring="Begrudging Ring",
+        back=gear.RdmCTP,
     })
 
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
@@ -499,8 +496,8 @@ function init_gear_sets()
         feet="Aya. Gambieras +2",
         neck="Lissome Necklace",
         waist="Windbuffet Belt +1",
-        left_ear="Crep. Earring",
-        right_ear="Sherida Earring",
+        left_ear="Sherida Earring",
+        right_ear="Crep. Earring",
         left_ring="Pernicious Ring",
         right_ring="Petrov Ring",
         back=gear.RdmCTP,
@@ -508,7 +505,7 @@ function init_gear_sets()
 
     sets.engaged.DW = set_combine(sets.engaged, {
         waist="Reiki Yotai",
-        left_ear="Eabani Earring",
+        right_ear="Eabani Earring",
     })
 
     sets.engaged.DW.Enspell = {
@@ -520,8 +517,8 @@ function init_gear_sets()
         feet="Aya. Gambieras +2",
         neck="Clotharius Torque",
         waist="Reiki Yotai",
-        left_ear="Eabani Earring",
-        right_ear="Sherida Earring",
+        left_ear="Sherida Earring",
+        right_ear="Eabani Earring",
         left_ring="Hetairoi Ring",
         right_ring="Pernicious Ring",
         back=gear.RdmCES
@@ -536,8 +533,8 @@ function init_gear_sets()
         feet="Leth. Houseaux +3",
         neck="Clotharius Torque",
         waist="Reiki Yotai",
-        left_ear="Eabani Earring",
-        right_ear="Crep. Earring",
+        left_ear="Crep. Earring",
+        right_ear="Eabani Earring",
         left_ring="Varar Ring",
         right_ring="Cacoethic Ring",
         back=gear.RdmCTP,
