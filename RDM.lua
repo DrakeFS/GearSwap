@@ -135,11 +135,11 @@ function init_gear_sets()
         ammo="Oshasha's Treatise",
         head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Lethargy Sayon +3",
-        hands="Jhakri Cuffs +2",
-        legs="Leth. Fuseau +3",
+        hands="Atrophy Gloves +3",
+        legs="Nyame Flanchard",
         feet="Leth. Houseaux +3",
-        neck="Sanctity Necklace",
-        waist="Windbuffet Belt +1",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
         left_ear="Ishvara Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Cornelia's Ring",
@@ -164,34 +164,43 @@ function init_gear_sets()
 
     sets.precast.WS['Seraph Blade'] = set_combine(sets.precast.WS, {
         head="Leth. Chappel +3",
+        hands="Jhakri Cuffs +2",
+        legs="Leth. Fuseau +3",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Malignance Earring",
         back=gear.RdmCMB,
     })
-    
+
     sets.precast.WS['Sanguine Blade'] = set_combine(sets.precast.WS, {
         head="Pixie Hairpin +1",
-        neck="Sibyl Scarf",
-        waist="Fotia Belt",
+        hands="Jhakri Cuffs +2",
+        legs="Leth. Fuseau +3",
         left_ear="Malignance Earring",
         right_ear="Regal Earring",
         right_ring="Archon Ring",
         back=gear.RdmCMB,
     })
-    
-    sets.precast.WS['Red Lotus Blade'] = set_combine( sets.precast.WS['Seraph Blade'],{})
+
+    sets.precast.WS['Red Lotus Blade'] = set_combine( sets.precast.WS['Seraph Blade'],{
+        neck="Sibyl Scarf",
+        right_ear="Regal Earring",
+    })
+
+    sets.precast.WS['Burning Blade'] = sets.precast.WS['Red Lotus Blade']
     
     sets.precast.WS['Black Halo'] = set_combine( sets.precast.WS, {
-        ammo="Oshasha's Treatise",
-        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
-        neck="Fotia Gorget",
-        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear={ name="Lethargy Earring", augments={'System: 1 ID: 1676 Val: 0','Accuracy+6','Mag. Acc.+6',}},
+        neck="Rep. Plat. Medal",
+        waist="Sailfi Belt +1",
+        right_ear="Regal Earring",
         back=gear.RdmMndWS,
     })
 
-    sets.precast.WS['Aeolian Edge'] = set_combine( sets.precast.WS['Seraph Blade'],{})
+    sets.precast.WS['Aeolian Edge'] = set_combine( sets.precast.WS['Seraph Blade'],{
+        neck="Sibyl Scarf",
+        right_ear="Regal Earring",
+        right_ring="Freke Ring",
+    })
     
     sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
         ammo="Jukukik Feather",
@@ -209,13 +218,9 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
-        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
-        body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
-        legs="Nyame Flanchard",
-        feet="Leth. Houseaux +3",
         neck="Rep. Plat. Medal",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-
+        right_ear="Regal Earring",
     })
     
     sets.precast.WS['Empyreal Arrow'] = {
