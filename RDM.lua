@@ -219,6 +219,8 @@ function init_gear_sets()
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         right_ear="Regal Earring",
     })
+
+    --sets.precast.WS["Ruthless Stroke"] = sets.precast.WS["Savage Blade"]
     
     sets.precast.WS['Empyreal Arrow'] = {
         head="Malignance Chapeau",
@@ -587,6 +589,8 @@ function handle_WS()
         send_command('@input /ws "Black Halo" <t>')
     elseif player.equipment.main == "Almace" then
         send_command('@input /ws "Chant du Cygne" <t>')
+    elseif player.equipment.main == "Mpu Gandring" then
+        send_command('@input /ws "Ruthless Stroke" <t>')
     else
         add_to_chat(122, "No WS set for this weapon")
     end    
