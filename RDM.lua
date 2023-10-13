@@ -220,7 +220,11 @@ function init_gear_sets()
         right_ear="Regal Earring",
     })
 
-    --sets.precast.WS["Ruthless Stroke"] = sets.precast.WS["Savage Blade"]
+    sets.precast.WS["Ruthless Stroke"] = set_combine(sets.precast.WS, {
+        neck="Rep. Plat. Medal",
+        waist="Sailfi Belt +1",
+        right_ear="Sherida Earring",
+    })
     
     sets.precast.WS['Empyreal Arrow'] = {
         head="Malignance Chapeau",

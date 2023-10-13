@@ -316,9 +316,6 @@ end
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
 
--- Run after the general midcast() is done.
--- eventArgs is the same one used in job_midcast, in case information needs to be persisted.
-
 function job_precast(spell, action, spellMap, eventArgs)
     if spell.name == 'Utsusemi: Ichi' and ShadowType == 'Ni' and (buffactive['Copy Image (3)'] or buffactive['Copy Image (4+)']) then
         cancel_spell()
