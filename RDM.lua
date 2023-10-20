@@ -232,12 +232,11 @@ function init_gear_sets()
         hands="Malignance Gloves",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
-        neck="Fotia Gorget",
+        neck="Marked Gorget",
         waist="Yemaya Belt",
         left_ear="Clearview Earring",
         right_ear="Crep. Earring",
-        left_ring="Ilabrat Ring",
-        right_ring="Cornelia's Ring",
+        right_ring="Ilabrat Ring",
         back=gear.RdmStrWS
     }
 
