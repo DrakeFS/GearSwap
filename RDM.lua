@@ -203,14 +203,23 @@ function init_gear_sets()
     })
     
     sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +2",
-        legs="Nyame Flanchard",
-        feet="Aya. Gambieras +2",
-        neck="Fotia Gorget",
-        waist="Fotia Belt",
+        ammo="Coiste Bodhar",
+        head="Malignance Chapeau",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
+        legs="Viti. Tights +3",
+        feet="Leth. Houseaux +3",
         left_ear="Sherida Earring",
-        right_ring="Begrudging Ring",
+        right_ear="Leth. Earring +1",
+        right_ring="Ilabrat Ring",
+        back=gear.RdmCTP,
+    })
+    sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS,{
+        head="Leth. Chappel +3",
+        hands="Leth. Ganth. +3",
+        legs="Viti. Tights +3",
+        left_ear="Sherida Earring",
+        right_ring="Ilabrat Ring",
         back=gear.RdmCTP,
     })
 
@@ -594,6 +603,8 @@ function handle_WS()
         send_command('@input /ws "Chant du Cygne" <t>')
     elseif player.equipment.main == "Mpu Gandring" then
         send_command('@input /ws "Ruthless Stroke" <t>')
+    elseif player.equipment.main == "Tauret" then
+        send_command('@input /ws "Evisceration" <t>')
     else
         add_to_chat(122, "No WS set for this weapon")
     end    
@@ -696,7 +707,7 @@ end
 
 function job_post_aftercast(spell, action, spellMap, eventArgs)
     if state.RangedMode.value then
-        equip({range = 'Ullr', ammo = 'Platnimum arrow'})
+        equip({range = 'Ullr', ammo = 'Platinum arrow'})
     end
 end
 
