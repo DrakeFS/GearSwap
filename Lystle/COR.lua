@@ -225,7 +225,7 @@ function init_gear_sets()
         head="Nyame Helm",
         body={ name="Nyame Mail", augments={'Path: B',}},
         hands="Malignance Gloves",
-        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        legs="Carmine Cuisses +1",
         feet="Nyame Sollerets",
         neck="Loricate Torque",
         right_ring="Defending Ring",

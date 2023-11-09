@@ -260,13 +260,16 @@ function init_gear_sets()
     })
 
     sets.midcast.Cure = {
-        head="Vitiation Chapeau +2",
+        head="Vitiation Chapeau +3",
         body= {name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
-        hands="Jhakri Cuffs +2",
-        legs="Atrophy Tights +3",
+        hands="Kaykaus Cuffs +1",
+        legs="Kaykaus Tights +1",
         feet="Leth. Houseaux +3",
-        neck="Nodens Gorget",
+        neck="Incanter's Torque",
+        left_ear="Mimir Earring",
         right_ear="Mendi. Earring",
+        left_ring="Naji's Loop",
+        right_ring="Vocane Ring",
         back="Solemnity Cape",
     }
 
@@ -466,8 +469,8 @@ function init_gear_sets()
     
     -- Idle sets
     sets.idle = {
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
+        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+        body="Lethargy Sayon +3",
         hands="Malignance Gloves",
         legs="Carmine Cuisses +1",
         feet="Nyame Sollerets",
@@ -709,6 +712,13 @@ function job_post_aftercast(spell, action, spellMap, eventArgs)
     if state.RangedMode.value then
         equip({range = 'Ullr', ammo = 'Platinum arrow'})
     end
+end
+
+function job_customize_melee_set(meleeSet)
+    if state.RangedMode.value then
+        meleeSet = set_combine(meleeSet, {range = 'Ullr', ammo = 'Platinum arrow'})
+    end
+    return meleeSet
 end
 
 function display_current_job_state(eventArgs)
