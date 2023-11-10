@@ -82,9 +82,9 @@ function init_gear_sets()
     -- sets.ExtraRegen = {head="Ocelomeh Headpiece +1"}
     sets.Kiting = {feet="Jute Boots +1",}
 
-    sets.buff['Sneak Attack'] = {}
+    --sets.buff['Sneak Attack'] = {}
 
-    sets.buff['Trick Attack'] = {}
+    --sets.buff['Trick Attack'] = {}
 
     -- Actions we want to use to tag TH.
     sets.precast.Step = sets.TreasureHunter
@@ -97,25 +97,30 @@ function init_gear_sets()
     --------------------------------------
 
     -- Precast sets to enhance JAs
-    --[[sets.precast.JA['Collaborator'] = {head="Raider's Bonnet +2"}
-    sets.precast.JA['Accomplice'] = {head="Raider's Bonnet +2"}
-    sets.precast.JA['Flee'] = {feet="Pillager's Poulaines +1"}
-    sets.precast.JA['Hide'] = {body="Pillager's Vest +1"}
-    sets.precast.JA['Conspirator'] = {} -- {body="Raider's Vest +2"}
-    sets.precast.JA['Steal'] = {head="Plunderer's Bonnet",hands="Pillager's Armlets +1",legs="Pillager's Culottes +1",feet="Pillager's Poulaines +1"}
-    sets.precast.JA['Despoil'] = {legs="Raider's Culottes +2",feet="Raider's Poulaines +2"}
-    sets.precast.JA['Perfect Dodge'] = {hands="Plunderer's Armlets +1"}
-    sets.precast.JA['Feint'] = {} -- {legs="Assassin's Culottes +2"}
+    --sets.precast.JA['Collaborator'] = {}
+    --sets.precast.JA['Accomplice'] = {}
+    sets.precast.JA['Flee'] = {feet="Pill. Poulaines +3",}
+    --sets.precast.JA['Hide'] = {}
+    --sets.precast.JA['Conspirator'] = {} 
+    sets.precast.JA['Steal'] = {
+        ammo="Barathrum",
+        head="Rogue's Bonnet",
+        legs="Assassin's Culottes",
+        feet="Pill. Poulaines +3",
+        left_ring="Gorney Ring",
+    }
+    --sets.precast.JA['Despoil'] = {}
+    --sets.precast.JA['Perfect Dodge'] = {}
+    --sets.precast.JA['Feint'] = {} 
 
-    sets.precast.JA['Sneak Attack'] = sets.buff['Sneak Attack']
-    sets.precast.JA['Trick Attack'] = sets.buff['Trick Attack']
-    ]]
+    --sets.precast.JA['Sneak Attack'] = sets.buff['Sneak Attack']
+    --sets.precast.JA['Trick Attack'] = sets.buff['Trick Attack']
 
     -- Waltz set (chr and vit)
-    sets.precast.Waltz = {}
+    --sets.precast.Waltz = {}
 
     -- Don't need any special gear for Healing Waltz.
-    sets.precast.Waltz['Healing Waltz'] = {}
+    --sets.precast.Waltz['Healing Waltz'] = {}
 
 
     -- Fast cast sets for spells
@@ -152,36 +157,21 @@ function init_gear_sets()
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
-    sets.precast.WS['Exenterator'].SA = set_combine(sets.precast.WS['Exenterator'], {})
+    --[[sets.precast.WS['Exenterator'].SA = set_combine(sets.precast.WS['Exenterator'], {})
     sets.precast.WS['Exenterator'].TA = set_combine(sets.precast.WS['Exenterator'], {})
-    sets.precast.WS['Exenterator'].SATA = set_combine(sets.precast.WS['Exenterator'], {})
+    sets.precast.WS['Exenterator'].SATA = set_combine(sets.precast.WS['Exenterator'], {})]]
 
     sets.precast.WS['Dancing Edge'] = set_combine(sets.precast.WS, {})
-    sets.precast.WS['Dancing Edge'].SA = set_combine(sets.precast.WS['Dancing Edge'], {})
-    sets.precast.WS['Dancing Edge'].TA = set_combine(sets.precast.WS['Dancing Edge'], {})
-    sets.precast.WS['Dancing Edge'].SATA = set_combine(sets.precast.WS['Dancing Edge'], {})
-
+    
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
-    right_ear="Crep. Earring",
+        right_ear="Crep. Earring",
     })
-    sets.precast.WS['Evisceration'].SA = set_combine(sets.precast.WS['Evisceration'], {})
-    sets.precast.WS['Evisceration'].TA = set_combine(sets.precast.WS['Evisceration'], {})
-    sets.precast.WS['Evisceration'].SATA = set_combine(sets.precast.WS['Evisceration'], {})
-
+    
     sets.precast.WS["Rudra's Storm"] = set_combine(sets.precast.WS, {})
-    sets.precast.WS["Rudra's Storm"].SA = set_combine(sets.precast.WS["Rudra's Storm"], {})
-    sets.precast.WS["Rudra's Storm"].TA = set_combine(sets.precast.WS["Rudra's Storm"], {})
-    sets.precast.WS["Rudra's Storm"].SATA = set_combine(sets.precast.WS["Rudra's Storm"], {})
-
+    
     sets.precast.WS['Shark Bite'] = set_combine(sets.precast.WS, {})
-    sets.precast.WS['Shark Bite'].SA = set_combine(sets.precast.WS['Shark Bite'], {})
-    sets.precast.WS['Shark Bite'].TA = set_combine(sets.precast.WS['Shark Bite'], {})
-    sets.precast.WS['Shark Bite'].SATA = set_combine(sets.precast.WS['Shark Bite'], {})
-
+    
     sets.precast.WS['Mandalic Stab'] = set_combine(sets.precast.WS, {})
-    sets.precast.WS['Mandalic Stab'].SA = {}
-    sets.precast.WS['Mandalic Stab'].TA = {}
-    sets.precast.WS['Mandalic Stab'].SATA = {}
     
     sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {
         ammo="Oshasha's Treatise",
