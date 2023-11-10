@@ -91,12 +91,15 @@ function init_gear_sets()
 
     -- Precast sets to enhance JAs
     --[[sets.precast.JA['Collaborator'] = {head="Raider's Bonnet +2"}
-    sets.precast.JA['Accomplice'] = {head="Raider's Bonnet +2"}
-    sets.precast.JA['Flee'] = {feet="Pillager's Poulaines +1"}
+    sets.precast.JA['Accomplice'] = {head="Raider's Bonnet +2"}  
     sets.precast.JA['Hide'] = {body="Pillager's Vest +1"}
-    sets.precast.JA['Conspirator'] = {} -- {body="Raider's Vest +2"}
-    sets.precast.JA['Steal'] = {head="Plunderer's Bonnet",hands="Pillager's Armlets +1",legs="Pillager's Culottes +1",feet="Pillager's Poulaines +1"}
-    sets.precast.JA['Despoil'] = {legs="Raider's Culottes +2",feet="Raider's Poulaines +2"}
+    sets.precast.JA['Conspirator'] = {} -- {body="Raider's Vest +2"}]]
+    sets.precast.JA['Flee'] = {feet="Pill. Poulaines +2",}
+    sets.precast.JA['Steal'] = {
+        legs="Assassin's Culottes",
+        feet="Pill. Poulaines +2",
+    }
+    --[[sets.precast.JA['Despoil'] = {legs="Raider's Culottes +2",feet="Raider's Poulaines +2"}
     sets.precast.JA['Perfect Dodge'] = {hands="Plunderer's Armlets +1"}
     sets.precast.JA['Feint'] = {} -- {legs="Assassin's Culottes +2"}
 
@@ -125,18 +128,18 @@ function init_gear_sets()
 
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-        ammo="Jukukik Feather",
-        head="Malignance Chapeau",
-        body="Mummu Jacket +1",
-        hands="Mummu Wrists +1",
-        legs=gear.SamTTP,
+        ammo="Oshasha's Treatise",
+        head={ name="Herculean Helm", augments={'Phys. dmg. taken -1%','Weapon skill damage +3%','"Treasure Hunter"+1','Accuracy+20 Attack+20',}},
+        body="Mummu Jacket +2",
+        hands="Meg. Gloves +2",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Fotia Gorget",
         waist="Fotia Belt",
-        left_ear="Ishvara Earring",
+        left_ear="Sherida Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Rajas Ring",
-        right_ring="Mummu Ring",
+        left_ring="Epaminondas's Ring",
+        right_ring="Cornelia's Ring",
         back="Sacro Mantle",
     }
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {ammo="Honed Tathlum"})
@@ -159,13 +162,14 @@ function init_gear_sets()
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
         ammo="C. Palug Stone",
-        ead="Mummu Bonnet +1",
-        body="Meg. Cuirie +1",
+        head="Mummu Bonnet +1",
+        body="Abnoba Kaftan",
+        hands="Mummu Wrists +1",
         legs="Mummu Kecks +1",
         feet="Mummu Gamash. +1",
         right_ear="Odr Earring",
-        left_ring="Apate Ring",
-        back="Sacro Mantle",
+        left_ring="Begrudging Ring",
+        right_ring="Ilabrat Ring",
     })
     sets.precast.WS['Evisceration'].Acc = set_combine(sets.precast.WS['Evisceration'], {})
     -- sets.precast.WS['Evisceration'].Mod = set_combine(sets.precast.WS['Evisceration'], {})
@@ -190,21 +194,14 @@ function init_gear_sets()
     sets.precast.WS['Mandalic Stab'] = set_combine(sets.precast.WS, {})
     sets.precast.WS['Mandalic Stab'].Acc = set_combine(sets.precast.WS['Mandalic Stab'], {})
     -- sets.precast.WS['Mandalic Stab'].Mod = set_combine(sets.precast.WS['Mandalic Stab'], {back="Kayapa Cape",waist=gear.ElementalBelt})
-    sets.precast.WS['Mandalic Stab'].SA = {}
-    sets.precast.WS['Mandalic Stab'].TA = {}
-    sets.precast.WS['Mandalic Stab'].SATA = {}
+    sets.precast.WS['Mandalic Stab'].SA = set_combine(sets.precast.WS['Mandalic Stab'], {})
+    sets.precast.WS['Mandalic Stab'].TA = set_combine(sets.precast.WS['Mandalic Stab'], {})
+    sets.precast.WS['Mandalic Stab'].SATA = set_combine(sets.precast.WS['Mandalic Stab'], {})
     
     sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {})
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
     
-    sets.precast.WS['Savage Blade'] = {
-        ammo="Aqreqaq Bomblet",
-        head="Meghanada Visor +2",
-        body="Rawhide Vest",
-        hands="Meg. Gloves +1",
-        feet="Meg. Jam. +2",
-        right_ring="Apate Ring",
-    }
+    sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {body="Rawhide Vest"})
     
     --------------------------------------
     -- Midcast sets
@@ -232,14 +229,18 @@ function init_gear_sets()
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 
     sets.idle = {
+        ammo="Crepuscular Pebble",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
-        legs="Nyame Flanchard",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Jute Boots +1",
         neck="Sanctity Necklace",
-        left_ring="Vocane Ring",
-        right_ring="Defending Ring",
+        waist="Flume Belt",
+        left_ear="Odnowa Earring",
+        right_ear="Odnowa Earring +1",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
         back="Solemnity Cape",
     }
 
@@ -366,6 +367,24 @@ function init_gear_sets()
 
 end
 
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'ws' then
+        handle_WS()
+        eventArgs.handled = true
+   end
+end
+
+function handle_WS()
+    if player.equipment.main == "Tauret" then
+        send_command('@input /ws "Evisceration" <t>')
+    elseif player.equipment.main == "Naegling" then
+        send_command('@input /ws "Savage Blade" <t>')
+    elseif player.equipment.main == "Mpu Gandring" then
+        send_command('@input /ws "Ruthless Stroke" <t>')
+    else
+        add_to_chat(122, "No WS set for this weapon")
+    end    
+end
 
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
