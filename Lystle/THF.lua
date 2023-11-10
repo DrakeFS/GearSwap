@@ -222,8 +222,15 @@ function init_gear_sets()
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
 
     sets.idle = {
-        feet="Jute Boots +1",
-        neck="Sanctity Necklace",    
+        head="Nyame Helm",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Malignance Gloves",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Pill. Poulaines +3",
+        neck="Sanctity Necklace",
+        left_ring="Meghanada Ring",
+        right_ring="Defending Ring",
+        back="Solemnity Cape",  
     }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
