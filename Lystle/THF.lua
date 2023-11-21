@@ -137,19 +137,16 @@ function init_gear_sets()
 
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {    
-        main={ name="Skinflayer", augments={'"Repair" potency +1%','MND+5','"Treasure Hunter"+2','DMG:+4',}},
-        sub={ name="Taming Sari", augments={'STR+1','"Treasure Hunter"+1',}},
         ammo="Oshasha's Treatise",
         head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
         body={ name="Nyame Mail", augments={'Path: B',}},
         hands="Meg. Gloves +2",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
-        feet="Jute Boots +1",
         neck="Fotia Gorget",
         waist="Fotia Belt",
         left_ear="Sherida Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        left_ring="Mummu Ring",
+        left_ring="Epaminondas's Ring",
         right_ring="Begrudging Ring",
         back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
     }
@@ -164,7 +161,14 @@ function init_gear_sets()
     sets.precast.WS['Dancing Edge'] = set_combine(sets.precast.WS, {})
     
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {
+        head="Mummu Bonnet +2",
+        body="Mummu Jacket +2",
+        hands="Mummu Wrists +2",
+        legs="Mummu Kecks +2",
+        feet="Mummu Gamash. +2",
         right_ear="Crep. Earring",
+        left_ring="Lehko's Ring",
+        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
     })
     
     sets.precast.WS["Rudra's Storm"] = set_combine(sets.precast.WS, {})
@@ -174,17 +178,10 @@ function init_gear_sets()
     sets.precast.WS['Mandalic Stab'] = set_combine(sets.precast.WS, {})
     
     sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {
-        ammo="Oshasha's Treatise",
-        head={ name="Herculean Helm", augments={'Accuracy+15','"Fast Cast"+4','Weapon skill damage +7%','Accuracy+16 Attack+16','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
-        body={ name="Nyame Mail", augments={'Path: B',}},
-        hands="Meg. Gloves +2",
-        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Nyame Sollerets",
-        left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
-        right_ear={ name="Skulk. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','"Store TP"+4',}},
-        left_ring="Meghanada Ring",
-        right_ring="Mummu Ring",
-        back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ear={ name="Skulk. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','"Store TP"+4',}},
+        left_ring="Mummu Ring",
     })
     
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
@@ -192,7 +189,7 @@ function init_gear_sets()
     sets.precast.WS["Savage Blade"] = set_combine(sets.precast.WS, {
         legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet="Meg. Jam. +1",
-        left_ring="Meghanada Ring",
+        right_ring="Meghanada Ring",
     })
 
 
@@ -263,18 +260,17 @@ function init_gear_sets()
 
     -- Normal melee group
     sets.engaged = {    
-        ammo="Coiste Bodhar",
         head="Mummu Bonnet +2",
-        body="Meg. Cuirie +2",
+        body="Malignance Tabard",
         hands="Malignance Gloves",
-        legs="Meg. Chausses +2",
+        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet="Mummu Gamash. +2",
         neck="Clotharius Torque",
-        waist="Dynamic Belt",
+        waist="Shetal Stone",
         left_ear="Sherida Earring",
-        right_ear="Suppanomimi",
+        right_ear={ name="Skulk. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','"Store TP"+4',}},
         left_ring="Rajas Ring",
-        right_ring="Begrudging Ring",
+        right_ring="Lehko's Ring",
         back = gear.ThfCTP,
     }
     

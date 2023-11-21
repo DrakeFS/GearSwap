@@ -711,10 +711,11 @@ end
 function job_post_aftercast(spell, action, spellMap, eventArgs)
     if state.RangedMode.value then
         equip({range = 'Ullr', ammo = 'Platinum arrow'})
+        
     end
 end
 
-function job_customize_melee_set(meleeSet)
+function customize_melee_set(meleeSet)
     if state.RangedMode.value then
         meleeSet = set_combine(meleeSet, {range = 'Ullr', ammo = 'Platinum arrow'})
     end
@@ -779,7 +780,7 @@ AEBurst = false
 
 if player and player.index and windower.ffxi.get_mob_by_index(player.index) then
 
-    windower.register_event('action', function(act)
+    windower.raw_register_event('action', function(act)
         for _, target in pairs(act.targets) do
             local battle_target = windower.ffxi.get_mob_by_target("t")
             if battle_target ~= nil and target.id == battle_target.id then
@@ -794,7 +795,7 @@ if player and player.index and windower.ffxi.get_mob_by_index(player.index) then
         end
     end)
 
-    windower.register_event('prerender', function()
+    windower.raw_register_event('prerender', function()
         --Items we want to check every second
         if os.time() > time_start then
             time_start = os.time()
