@@ -64,6 +64,17 @@ function user_setup()
     update_combat_form()
 end
 
+function user_unload()
+    send_command('unbind ^q gs c toggle WeaponMode')
+    send_command('unbind !q gs c toggle MagicBurst')
+    send_command('unbind @q gs c toggle AutoEquipBurst')
+    send_command('unbind ^` gs c cycle NukeElement')
+    send_command('unbind ~^` gs c cycleback NukeElement')
+    send_command('unbind !` gs c cycle NukeTier')
+    send_command('unbind ~!` gs c cycleback NukeTier')
+    send_command('unbind @= gs c toggle MACC')
+end
+
 -- Define sets and vars used by this job file.
 function init_gear_sets()
     --------------------------------------
@@ -359,7 +370,7 @@ function init_gear_sets()
         head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Atrophy Tabard +3",
         hands="Leth. Ganth. +3",
-        legs="Leth. Fuseau +3",
+        legs="Chironic Hose",
         feet="Leth. Houseaux +3",
         neck={ name="Duelist's Torque", augments={'Path: A',}},
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
@@ -611,7 +622,7 @@ function handle_WS()
     else
         add_to_chat(122, "No WS set for this weapon")
     end    
-end 
+end
 
 function handle_nuking()
     send_command('@input /ma "'..nukes[state.NukeTier.value][state.NukeElement.value]..'" <t>')

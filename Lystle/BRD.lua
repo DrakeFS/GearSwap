@@ -258,15 +258,18 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.idle = {
+        ammo="Amar Cluster",
         head="Fili Calot +3",
-        body="Annoint. Kalasiris",
-        hands="Fili Manchettes +3",
+        body="Adamantite Armor",
+        hands="Nyame Gauntlets",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Fili Cothurnes +2",
-        neck="Loricate Torque",
+        neck="Sanctity Necklace",
+        waist="Plat. Mog. Belt",
+        left_ear="Mimir Earring",
+        right_ear="Gersemi Earring",
         left_ring="Defending Ring",
-        right_ring="Inyanga Ring",
-        waist="Fucho-no-obi",
+        right_ring="Wuji Ring",
         back=gear.BrdTPC,
     }
 
@@ -355,7 +358,23 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'wsit' then
+        handle_WS()
+    end
+end
 
+function handle_WS()
+    if player.equipment.main == "Naegling" then
+        send_command('@input /ws "Savage Blade" <t>')
+    elseif player.equipment.main == "Mpu Gandring" then
+        send_command('@input /ws "Ruthless Stroke" <t>')
+    elseif player.equipment.main == "Tauret" then
+        send_command('@input /ws "Evisceration" <t>')
+    else
+        add_to_chat(122, "No WS set for this weapon")
+    end    
+end
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
 function job_precast(spell, action, spellMap, eventArgs)
@@ -530,6 +549,10 @@ end
 
 
 function on_job_change()
-    set_macro_page(1, 10)
+    if player.sub_job == "DNC" then
+        set_macro_page(2, 10)
+    else
+        set_macro_page(1, 10)
+    end
     send_command('wait 5;input /lockstyleset 3')
 end

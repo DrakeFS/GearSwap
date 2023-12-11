@@ -67,8 +67,8 @@ function job_setup()
     state.QDrawElement:options("Light", "Dark", "Fire", "Water", "Thunder", "Earth", "Wind", "Ice")
 
     -- Sets default roll states on lua load
-    state.roll1:set("Chaos Roll")
-    state.roll2:set("Samurai Roll")
+    state.roll1:set("Beast Roll")
+    state.roll2:set("Companion's Roll")
 
     -- set default shot
     state.QDrawElement:set("Light")
@@ -139,7 +139,7 @@ function init_gear_sets()
     
     sets.precast.CorsairRoll = {
         head={ name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}},
-        hands="Chasseur's Gants +1",
+        hands="Chasseur's Gants +3",
         neck="Regal necklace",
         left_ring="Luzaf's Ring",
         back=gear.CorRTP,

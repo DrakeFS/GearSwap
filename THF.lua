@@ -121,7 +121,7 @@ function init_gear_sets()
 
 
     -- Ranged snapshot gear
-    -- sets.precast.RA = {}
+    sets.precast.RA = {range = "Albin Bane"}
 
 
     -- Weaponskill sets
@@ -213,7 +213,7 @@ function init_gear_sets()
     sets.midcast.Utsusemi = {}
 
     -- Ranged gear
-    sets.midcast.RA = {}
+    sets.midcast.RA = {range = "Albin Bane"}
 
     sets.midcast.RA.Acc = {}
 
@@ -287,17 +287,17 @@ function init_gear_sets()
 
     -- Normal melee group
     sets.engaged = {    
-        ammo="Ginsen",
+        ammo={ name="Coiste Bodhar", augments={'Path: A',}},
         head="Malignance Chapeau",
         body="Malignance Tabard",
-        hands=gear.AdhGTP,
+        hands="Malignance Gloves",
         legs=gear.SamTTP,
         feet=gear.HercBTP,
         neck="Assassin's Gorget",
         waist="Windbuffet Belt +1",
         left_ear="Cessance Earring",
-        right_ear="Crep. Earring",
-        left_ring="Rajas Ring",
+        right_ear="Sherida Earring",
+        left_ring="Petrov Ring",
         right_ring="Pernicious Ring",
         back="Sacro Mantle",
     }

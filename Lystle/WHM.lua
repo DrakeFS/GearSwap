@@ -14,6 +14,8 @@ end
 function job_setup()
     state.Buff['Afflatus Solace'] = buffactive['Afflatus Solace'] or false
     state.Buff['Afflatus Misery'] = buffactive['Afflatus Misery'] or false
+    state.WeaponMode = M(true)
+    WHMspellMap()
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -26,8 +28,14 @@ function user_setup()
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT')
 
+    send_command('bind ^q gs c toggle WeaponMode')
+
     select_default_macro_book()
     lockstyleset()
+end
+
+function user_unload()
+    send_command('unbind ^q gs c toggle WeaponMode')
 end
 
 -- Define sets and vars used by this job file.
@@ -44,7 +52,7 @@ function init_gear_sets()
     -- Fast cast sets for spells
     sets.precast.FC = {
         ammo="Sapience Orb",
-        head="Nahtirah Hat",
+        head="Bunzi's Hat",
         body="Inyanga Jubbah +2",
         hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
         legs="Aya. Cosciales +2",
@@ -81,9 +89,25 @@ function init_gear_sets()
     -- Weaponskill sets
 
     -- Default set for any weaponskill that isn't any more specifically defined
-    sets.precast.WS = {}
+    sets.precast.WS = {
+        ammo="Oshasha's Treatise",
+        head="Aya. Zucchetto +2",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Bunzi's Gloves",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Aya. Gambieras +1",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Crep. Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Epaminondas's Ring",
+        right_ring="Lehko's Ring",
+    }
 
-    sets.precast.WS['Flash Nova'] = {}
+    sets.precast.WS['Flash Nova'] = set_combine(sets.precast.WS, {
+        head="Nyame Helm",
+        feet="Nyame Sollerets",
+    })
 
     -- Midcast Sets
     
@@ -91,8 +115,8 @@ function init_gear_sets()
     
     -- Cure sets
     sets.midcast.Cure = {
-        main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
-        sub="Sors Shield",
+        --main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
+        --sub="Sors Shield",
         head="Theo. Cap +1",
         body="Kaykaus Bliaut",
         hands="Theophany Mitts",
@@ -106,13 +130,13 @@ function init_gear_sets()
         right_ring="Lebeche Ring",
         back=gear.WhmCFC,
     }
-
-    sets.midcast.CureSolace = sets.midcast.Cure
-
+    
     sets.midcast.Curaga = sets.midcast.Cure
 
-    sets.midcast.CureMelee = sets.midcast.Cure
+    sets.midcast.StatusRemoval = set_combine(sets.precast.FC,{})
 
+    sets.midcast["Erase"] = sets.midcast.StatusRemoval
+    
     sets.midcast.Cursna = {
         head="Ebers Cap",
         body="Ebers Bliaut",
@@ -127,12 +151,13 @@ function init_gear_sets()
         back=gear.WhmCFC,
     }
 
-    sets.midcast.StatusRemoval = {}
-
     -- 110 total Enhancing Magic Skill; caps even without Light Arts
     sets.midcast['Enhancing Magic'] = {
-        main="Beneficus",
-        hands="Inyan. Dastanas +2",
+        --main="Beneficus",
+        head="Umuthi Hat",
+        body="Adamantite Armor",
+        hands="Dynasty Mitts",
+        legs={ name="Piety Pantaln. +3", augments={'Enhances "Afflatus Misery" effect',}},
         feet="Theo. Duckbills +3",
         neck="Melic Torque",
         waist="Embla Sash",
@@ -148,7 +173,7 @@ function init_gear_sets()
         head="Ebers Cap",
         body="Ebers Bliaut",
         hands="Ebers Mitts",
-        legs="Ebers Pant. +3",
+        legs={ name="Piety Pantaln. +3", augments={'Enhances "Afflatus Misery" effect',}},
         feet="Ebers Duckbills +2",
     })
 
@@ -190,8 +215,6 @@ function init_gear_sets()
 
     -- Idle sets (default idle set not needed since the other three are defined, but leaving for testing purposes)
     sets.idle = {
-        main={ name="Queller Rod", augments={'MND+15','Mag. Acc.+15','"Cure" potency +15%',}},
-        sub="Sors Shield",
         head="Aya. Zucchetto +2",
         body="Annoint. Kalasiris",
         hands="Aya. Manopolas +1",
@@ -249,23 +272,37 @@ function init_gear_sets()
     
     -- Basic set for if no TP weapon is defined.
     sets.engaged = {
+        ammo="Amar Cluster",
         head="Aya. Zucchetto +2",
-        hands="Aya. Manopolas +1",
         body="Ayanmo Corazza +2",
+        hands="Bunzi's Gloves",
         legs="Aya. Cosciales +2",
         feet="Aya. Gambieras +1",
-        neck="Sanctity Necklace",
-        waist="Life Belt",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Begrudging Ring",
-        right_ring="Ayanmo Ring",
+        neck="Clotharius Torque",
+        waist="Cornelia's Belt",
+        left_ear="Crep. Earring",
+        right_ear="Brutal Earring",
+        left_ring="Crepuscular Ring",
+        right_ring="Lehko's Ring",
     }
 
+    sets.engaged.DW = set_combine(sets.engaged, {
+        waist="Shetal Stone",
+        left_ear="Suppanomimi",
+    })
 
     -- Buff sets: Gear that needs to be worn to actively enhance a current player buff.
     sets.buff['Divine Caress'] = {}
     sets.Sublimation = {waist = "Embla Sash",}
+
+    sets.weapons = {}
+    sets.weapons.FC = {sub="Chanter's Shield"}
+    sets.weapons.Enfeebling = {}
+    sets.weapons.Enhancing = {main="Gada"}
+    sets.weapons.Elemental = {}
+    sets.weapons.Cure = {main="Queller Rod", sub="Sors Shield"}
+    sets.weapons.NA = {main="Yagrush"}
+    sets.weapons.Bar = {main="Beneficus"}
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -274,23 +311,29 @@ end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.
---[[function job_precast(spell, action, spellMap, eventArgs)
-    if spell.english == "Paralyna" and buffactive.Paralyzed then
-        -- no gear swaps if we're paralyzed, to avoid blinking while trying to remove it.
-        eventArgs.handled = true
+function job_precast(spell, action, spellMap, eventArgs)
+    if state.WeaponMode.value then
+        mainhand = player.equipment.main
+        offhand = player.equipment.sub
+        equip(sets.weapons.FC)
     end
-    
-    if spell.skill == 'Healing Magic' then
-        gear.default.obi_back = "Mending Cape"
-    else
-        gear.default.obi_back = "Toro Cape"
-    end
-end]]
+end
 
--- Forces an update on 
-function job_buff_change(buff, gain)
-    if buff == "Sublimation: Activated" then
-        send_command('gs c update')
+function job_midcast(spell, action, spellMap, eventArgs)
+    if state.WeaponMode.value then
+        if whmBARelemental:contains() then
+            equip(sets.weapons.Bar)
+        elseif whmNAspells:contains(spell.name) then
+            equip(sets.weapons.NA)
+        elseif spell.skill == 'Enhancing Magic' then
+            equip(sets.weapons.Enhancing)
+        elseif spell.skill == 'Enfeebling Magic' then
+            equip(sets.weapons.Enfeebling)
+        elseif spell.skill == 'Elemental Magic' then
+            equip(sets.weapons.Elemental)
+        elseif spellMap == 'Cure' then
+            equip(sets.weapons.Cure)
+        end
     end
 end
 
@@ -301,28 +344,33 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
     end
 end
 
--------------------------------------------------------------------------------------------------------------------
--- Job-specific hooks for non-casting events.
--------------------------------------------------------------------------------------------------------------------
-
--- Handle notifications of general user state change.
-function job_state_change(stateField, newValue, oldValue)
-    if stateField == 'Offense Mode' then
-        if newValue == 'Normal' then
-            disable('main','sub','range')
-        else
-            enable('main','sub','range')
-        end
+function job_aftercast(spell, action, spellMap, eventArgs)
+    if state.WeaponMode.value then
+        equip({main = mainhand, sub = offhand})
     end
 end
 
+-- Forces an update on 
+function job_buff_change(buff, gain)
+    if buff == "Sublimation: Activated" then
+        send_command('gs c update')
+    end
+end
 
--------------------------------------------------------------------------------------------------------------------
--- User code that supplements standard library decisions.
--------------------------------------------------------------------------------------------------------------------
+function update_combat_form()    
+    if cf_check() then --checks if cf_check() exists
+        cf_check() -- Check for 2H, Single or Duel Wield, function is defined in the Dagna-Globals.lua
+    end
+end
+
+function job_update()
+    update_combat_form()
+end
+
+
 
 -- Custom spell mapping.
-function job_get_spell_map(spell, default_spell_map)
+--[[function job_get_spell_map(spell, default_spell_map)
     if spell.action_type == 'Magic' then
         if (default_spell_map == 'Cure' or default_spell_map == 'Curaga') and player.status == 'Engaged' then
             return "CureMelee"
@@ -336,38 +384,10 @@ function job_get_spell_map(spell, default_spell_map)
             end
         end
     end
-end
-
-
-function customize_idle_set(idleSet)
-    if player.mpp < 51 then
-        idleSet = set_combine(idleSet, sets.latent_refresh)
-    end
-    if buffactive['Sublimation: Activated'] then
-        idleSet = set_combine(idleSet, sets.Sublimation)
-    end
-    
-    return idleSet
-end
+end]]
 
 -- Called by the 'update' self-command.
 function job_update(cmdParams, eventArgs)
-    if cmdParams[1] == 'user' and not areas.Cities:contains(world.area) then
-        local needsArts = 
-            player.sub_job:lower() == 'sch' and
-            not buffactive['Light Arts'] and
-            not buffactive['Addendum: White'] and
-            not buffactive['Dark Arts'] and
-            not buffactive['Addendum: Black']
-            
-        if not buffactive['Afflatus Solace'] and not buffactive['Afflatus Misery'] then
-            if needsArts then
-                send_command('@input /ja "Afflatus Solace" <me>;wait 1.2;input /ja "Light Arts" <me>')
-            else
-                send_command('@input /ja "Afflatus Solace" <me>')
-            end
-        end
-    end
 end
 
 
@@ -375,6 +395,12 @@ end
 function display_current_job_state(eventArgs)
     display_current_caster_state()
     eventArgs.handled = true
+end
+
+function WHMspellMap()
+    whmNAspells = S{"Cursna","Blindna","Esuna","Paralyna","Poisona","Silena","Stona","Viruna","Erase"}
+    whmBARelemental =S{"Barfira","Barblizzra","Baraera","Barstonra","Barthundra","Barwatera"}
+    whmBARstatus = S{'Barpoison','Barparalyze','Barvirus','Barsilence','Barpetrify','Barblind','Baramnesia','Barsleep','Barpoisonra','Barparalyzra','Barvira','Barsilencera','Barpetra','Barblindra','Baramnesra','Barsleepra'}
 end
 
 -------------------------------------------------------------------------------------------------------------------

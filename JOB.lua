@@ -84,15 +84,15 @@ sets.precast.FC = {}  -- Fast Cast Set
 
 -- sets.precast.RA = {}  -- Ranged delay reduction.  Ignore if uneeded, remove the first "--" to activate.
 
--- sets.precast.JA['Job Ability name'] = {}  -- sets for specefic job abilites.  Ignore if uneeded, remove the first "--" to activate.
+-- sets.precast.JA["Job Ability name"] = {}  -- sets for specefic job abilites.  Ignore if uneeded, remove the first "--" to activate.
 
 sets.precast.WS = {}  -- General Weapon Skill Set
 
--- sets.precast.WS['WS Name'] = set_combine(sets.precast.WS, {gear goes here}) -- Specific Weapon Skill Set.  Ignore if uneeded, remove the first "--" to activate.
+-- sets.precast.WS["WS Name"] = set_combine(sets.precast.WS, {gear goes here}) -- Specific Weapon Skill Set.  Ignore if uneeded, remove the first "--" to activate.
 
 -- sets.midcast.RA = {} -- Ranged TP Set.  Ignore if uneeded, remove the first "--" to activate.
 
--- sets.midcast['Spell Name or Magic Type'] = {gear goes here} -- Specific casting set for a spell (ie.  Fire IV or Dia II) or magic type (ie. Enhancing Magic for casting buffs or Elemental Magic for nuking ).  Ignore if uneeded, remove the first "--" to activate.
+-- sets.midcast["Spell Name or Magic Type"] = {gear goes here} -- Specific casting set for a spell (ie.  Fire IV or Dia II) or magic type (ie. Enhancing Magic for casting buffs or Elemental Magic for nuking ).  Ignore if uneeded, remove the first "--" to activate.
 
 -- sets.midcast.Cure = {gear goes here}  -- Specific casting set for Cure, Curaga and Cura spells.  Ignore if uneeded, remove the first "--" to activate. 
 
