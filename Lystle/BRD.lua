@@ -105,13 +105,21 @@ function init_gear_sets()
         left_ear="Brutal Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Begrudging Ring",
-        right_ring="Ayanmo Ring",
+        right_ring="Epaminondas's Ring",
         back={ name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS, {})
 
-    sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
+    sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {
+        ammo="Coiste Bodhar",
+        head="Fili Calot +3",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Fili Manchettes +3",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        right_ear="Crep. Earring",
+        left_ring="Rajas Ring",
+    })
 
     sets.precast.WS['Mordant Rime'] = set_combine(sets.precast.WS, {})
 
