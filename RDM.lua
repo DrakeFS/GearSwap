@@ -509,6 +509,21 @@ function init_gear_sets()
 
     sets.defense.MDT = set_combine(sets.defense.PDT, {})
 
+    sets.HP = {
+        head="Nyame Helm",
+        body="Nyame Mail",
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        neck="Sanctity Necklace",
+        waist="Plat. Mog. Belt",
+        left_ear="Odnowa Earring",
+        right_ear="Odnowa Earring +1",
+        left_ring="Beeline Ring",
+        right_ring="Ilabrat Ring",
+        back="Reiki Cloak",
+    }
+    
     sets.Kiting = {legs="Carmine Cuisses +1"}
 
     sets.latent_refresh = {}

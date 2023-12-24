@@ -260,6 +260,7 @@ function init_gear_sets()
 
     -- Normal melee group
     sets.engaged = {    
+        ammo="Coiste Bodhar",
         head="Mummu Bonnet +2",
         body="Malignance Tabard",
         hands="Malignance Gloves",
@@ -268,7 +269,7 @@ function init_gear_sets()
         neck="Clotharius Torque",
         waist="Shetal Stone",
         left_ear="Sherida Earring",
-        right_ear={ name="Skulk. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','"Store TP"+4',}},
+        right_ear={ name="Skulk. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+14','Mag. Acc.+14','"Store TP"+5',}},
         left_ring="Rajas Ring",
         right_ring="Lehko's Ring",
         back = gear.ThfCTP,

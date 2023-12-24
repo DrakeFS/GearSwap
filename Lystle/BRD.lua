@@ -339,9 +339,10 @@ function init_gear_sets()
     })
     
     sets.weapons = {}
-    sets.weapons.FC = {main='Kali'}
+    sets.weapons.FC = {main={name='Kali',bag = "Wardrobe"}}
+    sets.weapons.FC.DW = {main={name='Kali',bag = "Wardrobe"}, sub={name="Kali",bag="Wardrobe 3"}}
     sets.weapons.BardSong = {main='Kali'}
-    sets.weapons.BardSong.DW = {main='Kali', sub='Tauret'}
+    sets.weapons.BardSong.DW = {main={name='Kali',bag = "Wardrobe"}, sub={name="Kali",bag="Wardrobe 3"}}
     sets.weapons.Healing = {main='Daybreak'}
     sets.weapons.Healing.DW = {main='Daybreak', sub='Kali'}
     sets.weapons.Enhancing = {main='Kali'}
@@ -384,15 +385,15 @@ function job_precast(spell, action, spellMap, eventArgs)
         offhand = player.equipment.sub
         if state.CombatForm.value == 'DW' then
             if spell.type == "BardSong" then
-                equip(sets.weapons.FC)
+                equip(sets.weapons.FC.DW)
             elseif spellMap == "Cure" then
-                equip(sets.weapons.FC)
+                equip(sets.weapons.FC.DW)
             elseif spell.skill == "Enhancing Magic" then
-                equip(sets.weapons.FC)
+                equip(sets.weapons.FC.DW)
             elseif spell.name == 'Dispelga' then
                 equip(sets.weapons.Dispelga.FC.DW)
             elseif spell.skill == "Enfeebling Magic" then
-                equip(sets.weapons.FC)
+                equip(sets.weapons.FC.DW)
             end
         else
             if spell.type == "BardSong" then
@@ -551,8 +552,9 @@ end
 function on_job_change()
     if player.sub_job == "DNC" then
         set_macro_page(2, 10)
+        send_command('wait 5;input /lockstyleset 10')
     else
         set_macro_page(1, 10)
+        send_command('wait 5;input /lockstyleset 3')
     end
-    send_command('wait 5;input /lockstyleset 3')
 end

@@ -333,7 +333,7 @@ function init_gear_sets()
     ----------------------------------------- Idle Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    sets.idle = {}
+    sets.idle = set_combine(sets.defense.PDT, {})
 
     sets.idle.DT = {}
 
@@ -350,9 +350,9 @@ function init_gear_sets()
     sets.defense.Knockback = {}
 
     sets.defense.PDT = {
-        head="Aya. Zucchetto +2",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +2",
+        head="Nyame Helm",
+        body="Nyame Mail",
+        hands="Nyame Gauntlets",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
@@ -372,18 +372,19 @@ function init_gear_sets()
     ------------------------------------------------------------------------------------------------
 
     sets.engaged = {
-        ammo="Ginsen",
-        head="Aya. Zucchetto +2",
+        ammo={ name="Coiste Bodhar", augments={'Path: A',}},
+        head={ name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="Ayanmo Corazza +2",
         hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +2",
+        legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet={ name="Herculean Boots", augments={'DEX+9','"Triple Atk."+3','Accuracy+11 Attack+11',}},
         neck="Clotharius Torque",
         waist="Windbuffet Belt +1",
         left_ear="Sherida Earring",
         right_ear="Cessance Earring",
-        left_ring="Pernicious Ring",
-        right_ring="Petrov Ring",
+        left_ring="Ilabrat Ring",
+        right_ring="Hetairoi Ring",
+        back="Xucau Mantle",
     }
     
     sets.engaged.THand = sets.enganged
