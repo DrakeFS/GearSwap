@@ -319,7 +319,7 @@ function init_gear_sets()
     sets.latent_refresh = {waist="Fucho-no-obi"}
 
     sets.engaged = {
-        ammo="Coiste Bodhar",
+        range={ name="Linos", augments={'Accuracy+15','"Store TP"+4','Quadruple Attack +3',}},
         head="Aya. Zucchetto +2",
         body="Ayanmo Corazza +2",
         hands="Bunzi's Gloves",

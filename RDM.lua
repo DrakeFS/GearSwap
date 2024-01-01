@@ -174,16 +174,16 @@ function init_gear_sets()
     }
 
     sets.precast.WS['Seraph Blade'] = set_combine(sets.precast.WS, {
+        ammo="Sroda Tathlum",
         head="Leth. Chappel +3",
         hands="Jhakri Cuffs +2",
         legs="Leth. Fuseau +3",
-        neck="Fotia Gorget",
-        waist="Fotia Belt",
         left_ear="Malignance Earring",
         back=gear.RdmCMB,
     })
 
     sets.precast.WS['Sanguine Blade'] = set_combine(sets.precast.WS, {
+        ammo="Sroda Tathlum",
         head="Pixie Hairpin +1",
         hands="Jhakri Cuffs +2",
         legs="Leth. Fuseau +3",
@@ -214,22 +214,26 @@ function init_gear_sets()
     })
     
     sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
-        ammo="Coiste Bodhar",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands="Malignance Gloves",
-        legs="Viti. Tights +3",
+        ammo={ name="Coiste Bodhar", augments={'Path: A',}},
+        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+        body="Ayanmo Corazza +2",
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs="Atrophy Tights +3",
         feet="Leth. Houseaux +3",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
         left_ear="Sherida Earring",
-        right_ear="Leth. Earring +1",
+        right_ear={ name="Leth. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+11','Mag. Acc.+11','"Dbl.Atk."+3',}},
+        left_ring="Begrudging Ring",
         right_ring="Ilabrat Ring",
         back=gear.RdmCTP,
     })
+
     sets.precast.WS['Evisceration'] = set_combine(sets.precast.WS,{
-        head="Leth. Chappel +3",
-        hands="Leth. Ganth. +3",
-        legs="Viti. Tights +3",
+        hands="Malignance Gloves",
+        legs={ name="Viti. Tights +2", augments={'Enspell Damage','Accuracy',}},
         left_ear="Sherida Earring",
+        left_ring="Begrudging Ring",
         right_ring="Ilabrat Ring",
         back=gear.RdmCTP,
     })
@@ -440,6 +444,7 @@ function init_gear_sets()
     sets.midcast['Elemental Magic'].ConserveMP = set_combine(sets.midcast['Elemental Magic'], {})
 
     sets.magic_burst = set_combine(sets.midcast['Elemental Magic'], {
+        ammo="Sroda Tathlum",
         hands="Ea Cuffs",
         neck="Mizu. Kubikazari",
     })
@@ -705,6 +710,8 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         elseif state.MACC.value and max_magic_accuracy:contains(spell.name) then 
             equip(sets.MACC)
         end
+    elseif spell.name:contains("Protect") or spell.name:contains("Shell") then
+        equip(sets.midcast.Enhancing)
     elseif spell.skill == 'Enhancing Magic' then
         if buffactive.composure and spell.target.type == 'PLAYER' then
             equip(sets.buff.ComposureOther)

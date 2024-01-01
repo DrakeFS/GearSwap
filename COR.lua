@@ -121,8 +121,8 @@ function init_gear_sets()
     --------------------------------------
     -- Define job specific gear
     
-    gear.TPAmmo = "Chrono Bullet"
-    gear.PWSAmmo = gear.TPAmmo
+    gear.TPAmmo = "Voluspa Bullet"
+    gear.PWSAmmo = "Chrono Bullet"
     gear.MWSAmmo = "Orichalc. Bullet"
     gear.QDrawAmmo = "Hauksbok Bullet"
     gear.CorRTP = {name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','Accuracy+10','"Store TP"+10','Phys. dmg. taken-10%',}}
@@ -244,7 +244,7 @@ function init_gear_sets()
         back=gear.CorPRWSC,
     }
 
-    sets.precast.WS['Last Stand'].Acc = set_combine(sets.precast.WS['Last Stand'], {})
+    --sets.precast.WS['Last Stand'].Acc = set_combine(sets.precast.WS['Last Stand'], {})
        
     sets.precast.WS['Wildfire'] = {        
         ammo = gear.MWSAmmo,
@@ -476,6 +476,8 @@ function job_self_command(cmdParams, eventArgs)
     elseif cmdParams[1]:lower() == 'rollcmd' then
         handle_roll(cmdParams[2],cmdParams[3],cmdParams[4])
         eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'getbullet' then
+        handle_get_more_bullets()
     end
 end
 
@@ -483,6 +485,13 @@ function handle_qdraw()
     local element = state.QDrawElement.value
     
     send_command('@input /ja "'..element..' Shot" <t>')
+end
+
+function handle_get_more_bullets()
+    equip({waist="Chr. Bul. Pouch"})
+    send_command('gs disable waist;wait 10;input /item "Chr. Bul. Pouch" <me>;wait 2;gs enable waist')
+    --send_command('wait 10;input /item "Chr. Bul. Pouch" <me>')
+    --send_command('wait 12;gs enable waist')
 end
 
 function handle_roll(rollNumber, rollExecute, rollMod)
