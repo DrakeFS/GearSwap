@@ -490,8 +490,6 @@ end
 function handle_get_more_bullets()
     equip({waist="Chr. Bul. Pouch"})
     send_command('gs disable waist;wait 10;input /item "Chr. Bul. Pouch" <me>;wait 2;gs enable waist')
-    --send_command('wait 10;input /item "Chr. Bul. Pouch" <me>')
-    --send_command('wait 12;gs enable waist')
 end
 
 function handle_roll(rollNumber, rollExecute, rollMod)

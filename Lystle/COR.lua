@@ -58,8 +58,8 @@ function job_setup()
     state.QDrawElement:options("Light", "Dark", "Fire", "Water", "Thunder", "Earth", "Wind", "Ice")
 
     -- Sets default roll states on lua load
-    state.roll1:set("Drachen Roll")
-    state.roll2:set("Fighter's Roll")
+    state.roll1:set("Chaos Roll")
+    state.roll2:set("Samurai Roll")
 
     -- set default shot
     state.QDrawElement:set("Light")
