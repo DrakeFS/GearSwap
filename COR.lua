@@ -393,7 +393,7 @@ function init_gear_sets()
 
     sets.engaged.LowHaste = set_combine(sets.engaged, {})
     
-    sets.engaged.Acc = {}
+    sets.engaged.Acc = set_combine(sets.engaged, {})
 
     sets.engaged.DW = set_combine(sets.engaged, {})
     
@@ -411,7 +411,7 @@ function init_gear_sets()
 
     sets.engaged.DW.LowHaste = set_combine(sets.engaged.DW.MidHaste, {})
     
-    sets.engaged.Acc.DW = {}
+    sets.engaged.DW.Acc = set_combine(sets.engaged.DW, {})
     
     sets.weatherbelt = {}
 end
