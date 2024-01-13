@@ -639,6 +639,8 @@ function handle_WS()
         send_command('@input /ws "Ruthless Stroke" <t>')
     elseif player.equipment.main == "Tauret" then
         send_command('@input /ws "Evisceration" <t>')
+    elseif player.equipment.main == "Caliburnus" then
+        send_command('@input /ws "Imperator" <t>')
     else
         add_to_chat(122, "No WS set for this weapon")
     end    

@@ -534,6 +534,8 @@ function handle_WS()
         send_command('@input /ws "Black Halo" <t>')
     elseif player.equipment.main == "Almace" then
         send_command('@input /ws "Chant du Cygne" <t>')
+    elseif player.equipment.main == "Caliburnus" then
+        send_command('@input /ws "Imperator" <t>')
     else
         add_to_chat(122, "No WS set for this weapon")
     end    

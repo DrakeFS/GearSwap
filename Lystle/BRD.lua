@@ -96,7 +96,7 @@ function init_gear_sets()
     sets.precast.WS = {
         ammo="Oshasha's Treatise",
         head="Aya. Zucchetto +2",
-        body={ name="Nyame Mail", augments={'Path: B',}},
+        body={ name="Bihu Jstcorps. +3", augments={'Enhances "Troubadour" effect',}},
         hands="Aya. Manopolas +1",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Aya. Gambieras +1",
@@ -114,7 +114,6 @@ function init_gear_sets()
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {
         ammo="Coiste Bodhar",
         head="Fili Calot +3",
-        body={ name="Nyame Mail", augments={'Path: B',}},
         hands="Fili Manchettes +3",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         right_ear="Crep. Earring",

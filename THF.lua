@@ -198,7 +198,15 @@ function init_gear_sets()
     sets.precast.WS['Mandalic Stab'].TA = set_combine(sets.precast.WS['Mandalic Stab'], {})
     sets.precast.WS['Mandalic Stab'].SATA = set_combine(sets.precast.WS['Mandalic Stab'], {})
     
-    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {})
+    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {
+        head="Nyame Helm",
+        body="Nyame Mail",
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        neck="Sibyl Scarf",
+        left_ear="Ishvara Earring",
+    })
+
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
     
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {body="Rawhide Vest"})
@@ -265,14 +273,18 @@ function init_gear_sets()
     -- Defense sets
 
     sets.defense.Evasion = {
+        ammo="Crepuscular Pebble",
         head="Malignance Chapeau",
         body="Malignance Tabard",
         hands="Malignance Gloves",
-        legs="Nyame Flanchard",
-        feet="Nyame Sollerets",
-        neck="Loricate Torque +1",
-        left_ring="Vocane Ring",
-        right_ring="Defending Ring",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Jute Boots +1",
+        neck={ name="Bathy Choker +1", augments={'Path: A',}},
+        waist="Kasiri Belt",
+        left_ear="Eabani Earring",
+        right_ear="Ethereal Earring",
+        left_ring="Defending Ring",
+        right_ring="Vocane Ring",
         back="Solemnity Cape",
     }
 
@@ -393,7 +405,7 @@ end
 -- Run after the general precast() is done.
 function job_post_precast(spell, action, spellMap, eventArgs)
     if spell.english == 'Aeolian Edge' and state.TreasureMode.value ~= 'None' then
-        equip(sets.TreasureHunter)
+        equip(sets.precast.WS['Aeolian Edge'].TH)
     elseif spell.english=='Sneak Attack' or spell.english=='Trick Attack' or spell.type == 'WeaponSkill' then
         if state.TreasureMode.value == 'SATA' or state.TreasureMode.value == 'Fulltime' then
             equip(sets.TreasureHunter)
