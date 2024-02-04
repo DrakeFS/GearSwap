@@ -45,7 +45,7 @@ end
 
 -- Setup vars that are user-dependent.  Can override this function in a sidecar file.
 function user_setup()
-    state.OffenseMode:options('None', 'Enspell','AccEnspell')
+    state.OffenseMode:options('None','Enspell','AccEnspell')
     state.HybridMode:options('Normal')
     state.IdleMode:options('Normal', 'Leveling')
     state.NukeElement:options('Fire', 'Blizzard', 'Aero', 'Stone', 'Thunder', 'Water')
@@ -86,6 +86,7 @@ function init_gear_sets()
     gear.RdmCEnmity = {name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Enmity+10','Spell interruption rate down-10%',}}
     gear.RdmStrWS = {name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
     gear.RdmMndWS = {name="Sucellos's Cape", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%',}}
+    gear.WSArrow = "Gold Arrow"
             
     sets.TreasureHunter = {
         ammo="Per. Lucky Egg",
@@ -242,6 +243,12 @@ function init_gear_sets()
         neck="Rep. Plat. Medal",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         right_ear="Regal Earring",
+    })
+
+    sets.precast.WS['Knights of Round'] = set_combine(sets.precast.WS, {
+        neck="Rep. Plat. Medal",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        right_ear="Sherida Earring",
     })
 
     sets.precast.WS["Ruthless Stroke"] = set_combine(sets.precast.WS, {
@@ -641,6 +648,8 @@ function handle_WS()
         send_command('@input /ws "Evisceration" <t>')
     elseif player.equipment.main == "Caliburnus" then
         send_command('@input /ws "Imperator" <t>')
+    elseif player.equipment.main == "Excalibur" then
+        send_command('@input /ws "Knights of Round" <t>')
     else
         add_to_chat(122, "No WS set for this weapon")
     end    
@@ -665,7 +674,7 @@ end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
     if state.RangedMode.value then
-        equip({range = 'Ullr', ammo = 'Platnimum arrow'})
+        equip({range = 'Ullr', ammo = gear.WSArrow})
     end
 end        
 
@@ -733,7 +742,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         equip(sets.midcast.Barstatus)
     end
     if state.RangedMode.value then
-        equip({range = 'Ullr', ammo = 'Platnimum arrow'})
+        equip({range = 'Ullr', ammo = gear.WSArrow})
     end
 end
 
@@ -745,7 +754,7 @@ end
 
 function job_post_aftercast(spell, action, spellMap, eventArgs)
     if state.RangedMode.value then
-        equip({range = 'Ullr', ammo = 'Platinum arrow'})
+        equip({range = 'Ullr', ammo = gear.WSArrow})
         
     end
 end

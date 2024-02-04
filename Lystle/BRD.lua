@@ -18,6 +18,7 @@ end
 function user_setup()
     state.OffenseMode:options('Normal', 'Acc')
     state.CastingMode:options('Normal', 'Resistant')
+    state.PhysicalDefenseMode:options('PDT', 'EVA')
 
     send_command('bind ^q gs c toggle WeaponSwapMode')
 
@@ -282,7 +283,7 @@ function init_gear_sets()
 
     sets.idle.DT = set_combine(sets.idle, sets.defense.PDT)
 
-    sets.idle.MEva = {}
+    sets.idle.EVA = set_combine(sets.idle,sets.defense.EVA)
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
     

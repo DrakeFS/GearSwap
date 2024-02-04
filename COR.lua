@@ -133,7 +133,7 @@ function init_gear_sets()
     
     sets.precast.JA['Triple Shot'] = {body="Navarch's Frac +2"}
     sets.precast.JA['Snake Eye'] = {legs="Lanun Trews"}
-    sets.precast.JA['Wild Card'] = {feet="Lanun Bottes +2"}
+    sets.precast.JA['Wild Card'] = {feet="Lanun Bottes +3"}
     sets.precast.JA['Random Deal'] = {body="Lanun Frac"}
 
     
@@ -186,8 +186,8 @@ function init_gear_sets()
         head="Meghanada Visor +2",
         body="Laksa. Frac +3",
         hands="Chasseur's Gants +3",
-        legs="Meg. Chausses +2",
-        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Lanun Bottes +3",
         neck="Fotia Gorget",
         waist="Fotia Belt",        
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
@@ -214,7 +214,6 @@ function init_gear_sets()
 
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
         head="Nyame Helm",
-        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Rep. Plat. Medal",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
@@ -222,6 +221,17 @@ function init_gear_sets()
         right_ear="Ishvara Earring",
         left_ring="Epaminondas's Ring",
         right_ring="Cornelia's Ring",
+    })
+
+    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {
+        head="Nyame Helm",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        neck="Sibyl Scarf",
+        left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        right_ear="Friomisi Earring",
+        left_ring="Dingir Ring",
+        right_ring="Cornelia's Ring",
+        back={ name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}},
     })
 
     sets.precast.WS['Exenterator'] = set_combine(sets.precast.WS, {})
@@ -263,17 +273,15 @@ function init_gear_sets()
     }
 
     sets.precast.WS['Leaden Salute'] = {
+        ammo = gear.MWSAmmo,
         head="Pixie Hairpin +1",
         body="Laksa. Frac +3",
         hands="Chasseur's Gants +3",
         legs="Nyame Flanchard",
-        feet="Lanun Bottes +3",
         neck="Sibyl Scarf",
         waist="Yemaya Belt",
-        ear1="Friomisi Earring",
-        ear2="Moonshade Earring",
-        ring1="Cornelia's ring",
-        ring2="Dingir Ring",
+        right_ear="Friomisi Earring",
+        left_ring="Archon Ring",
         back=gear.CorMRWSC,
     }
 
@@ -289,7 +297,7 @@ function init_gear_sets()
         body={ name="Herculean Vest", augments={'Pet: INT+1','Accuracy+5','"Treasure Hunter"+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}},
         hands={ name="Carmine Fin. Ga. +1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
         legs={ name="Herculean Trousers", augments={'Sklchn.dmg.+4%','Attack+10','Magic burst dmg.+10%','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
-        feet={ name="Lanun Bottes +2", augments={'Enhances "Wild Card" effect',}},
+        feet={ name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}},
         neck="Sanctity Necklace",
         left_ear="Novio Earring",
         right_ear="Friomisi Earring",
@@ -489,7 +497,7 @@ end
 
 function handle_get_more_bullets()
     equip({waist="Chr. Bul. Pouch"})
-    send_command('gs disable waist;wait 10;input /item "Chr. Bul. Pouch" <me>;wait 2;gs enable waist')
+    send_command('gs disable waist;wait 12;input /item "Chr. Bul. Pouch" <me>;wait 2;gs enable waist')
 end
 
 function handle_roll(rollNumber, rollExecute, rollMod)

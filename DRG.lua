@@ -59,25 +59,24 @@ function init_gear_sets()
     }
     -- Precast Sets
     -- Precast sets to enhance JAs
-    sets.precast.JA['Angon'] = {ammo = "Angon"}
-    
     sets.precast.JA.Jump = {
         body={ name="Ptero. Mail +3", augments={'Enhances "Spirit Surge" effect',}},
         hands="Vis. Fng. Gaunt. +2",
         feet="Ostro Greaves",
     }
-
-    sets.precast.JA['Ancient Circle'] = {}
-
     sets.precast.JA['High Jump'] = set_combine(sets.precast.JA.Jump, {})
     sets.precast.JA['Soul Jump'] = set_combine(sets.precast.JA.Jump, {})
     sets.precast.JA['Spirit Jump'] = set_combine(sets.precast.JA.Jump, {})
     sets.precast.JA['Super Jump'] = sets.precast.JA.Jump
-
+    sets.precast.JA['Ancient Circle'] = {}
     sets.precast.JA['Spirit Link'] = {}
     sets.precast.JA['Call Wyvern'] = {body="Ptero. Mail +3",}
     sets.precast.JA['Deep Breathing'] = {}
     sets.precast.JA['Spirit Surge'] = {}
+    sets.precast.JA['Angon'] = {
+        ammo = "Angon",
+        hands={ name="Ptero. Fin. G. +3", augments={'Enhances "Angon" effect',}},
+    }
         
     -- Waltz set (chr and vit)
     sets.precast.Waltz = {}
@@ -93,12 +92,12 @@ function init_gear_sets()
         ammo="Knobkierrie",
         head="Peltast's Mezail +3",
         body={ name="Ptero. Mail +3", augments={'Enhances "Spirit Surge" effect',}},
-        hands={ name="Ptero. Fin. G. +2", augments={'Enhances "Angon" effect',}},
+        hands={ name="Ptero. Fin. G. +3", augments={'Enhances "Angon" effect',}},
         legs="Vishap Brais +2",
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Shulmanu Collar",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        left_ear="Sherida Earring",
+        left_ear="Thrud Earring",
         right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         left_ring="Epaminondas's Ring",
         right_ring="Cornelia's Ring",
@@ -107,13 +106,21 @@ function init_gear_sets()
            
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS['Stardiver'] = set_combine(sets.precast.WS, {
+        body="Gleti's Cuirass",
+        hands="Gleti's Gauntlets",
+        legs="Gleti's Breeches",
         neck="Fotia Gorget",
         waist="Fotia Belt",
     })
     
     sets.precast.WS["Camlann's Torment"] = set_combine(sets.precast.WS, {
+        head="Peltast's Mezail +3",
+        body="Gleti's Cuirass",
+        hands={ name="Ptero. Fin. G. +3", augments={'Enhances "Angon" effect',}},
+        legs="Gleti's Breeches",
         neck="Fotia Gorget",
-        waist="Fotia Belt"
+        waist="Fotia Belt",
+        right_ear={ name="Pel. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','Crit.hit rate+4',}},
     })
     
     sets.precast.WS['Drakesbane'] = set_combine(sets.precast.WS, {})
@@ -168,7 +175,7 @@ function init_gear_sets()
         head="Flam. Zucchetto +2",
         body="Flamma Korazin +2",
         hands="Flam. Manopolas +2",
-        legs={ name="Ptero. Brais +2", augments={'Enhances "Strafe" effect',}},
+        legs={ name="Ptero. Brais +3", augments={'Enhances "Strafe" effect',}},
         feet="Flam. Gambieras +2",
         neck={ name="Vim Torque +1", augments={'Path: A',}},
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},

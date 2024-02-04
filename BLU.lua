@@ -190,6 +190,15 @@ function init_gear_sets()
         right_ring="Jhakri Ring"
     })
 
+    sets.precast.WS["Realmrazer"] = set_combine(sets.precast.WS, {
+        body="Hashishin Mintan +3",
+        hands="Hashi. Bazu. +3",
+        legs="Hashishin Tayt +3",
+        feet="Hashi. Basmak +3",
+        neck="Fotia Gorget",
+        right_ear="Regal Earring",
+    })
+
     -- Midcast Sets
     sets.midcast.FastRecast = {}
     
@@ -403,7 +412,7 @@ function init_gear_sets()
         neck={ name="Bathy Choker +1", augments={'Path: A',}},
         waist="Kasiri Belt",
         left_ear="Eabani Earring",
-        right_ear="Ethereal Earring",
+        right_ear="Infused Earring",
         left_ring="Defending Ring",
         right_ring="Vocane Ring",
         back=gear.BluCEVA
