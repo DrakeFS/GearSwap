@@ -90,7 +90,7 @@ function init_gear_sets()
 
     sets.idle = set_combine(sets.defense.PDT,{
         body="Jhakri Robe +2",
-        feet="Geomancy Sandals",
+        feet="Geo. Sandals +3",
     })
 
     sets.idle.Pet = set_combine(sets.idle, { -- Pet DT Caps @ 38%

@@ -28,6 +28,7 @@ function job_setup()
     state.test = M(false)
 
     setup_blue_magic() --setup mappings for blue magic
+    EVASpells = S{'Dream Flower','Sheep Song','Yawn','Magic Fruit','Occultation'}
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -138,12 +139,17 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Sanguine Blade'] = set_combine(sets.precast.WS, {
-        head = "Pixie Hairpin +1",
-        hands=gear.HercGMB,
+        ammo="Oshasha's Treatise",
+        head="Pixie Hairpin +1",
+        body="Hashishin Mintan +3",
+        hands="Hashi. Bazu. +3",
+        legs={ name="Luhlaza Shalwar +3", augments={'Enhances "Assimilation" effect',}},
+        feet="Hashi. Basmak +3",
         neck="Fotia Gorget",
+        waist="Fotia Belt",
         left_ear="Regal Earring",
-        right_ear="Friomisi Earring", 
-        left_ring="Jhakri Ring",
+        right_ear="Friomisi Earring",
+        left_ring="Cornelia's Ring",
         right_ring="Archon Ring",
         back=gear.BluCMB
     })
@@ -280,7 +286,7 @@ function init_gear_sets()
         waist={ name="Acuity Belt +1", augments={'Path: A',}},
         left_ear="Njordr Earring",
         right_ear=gear.BluEMAC,
-        left_ring="Jhakri Ring",
+        left_ring="Crepuscular Ring",
         right_ring="Ayanmo Ring",
         back=gear.BluCMAC
     }
@@ -591,7 +597,11 @@ function job_post_midcast(spell, action, spellMap, eventArgs, midcastSet)
         end
     end
 
-    if state.EvasionMode.value and (spell.name == 'Dream Flower' or spell.name == 'Sheep Song' or spell.name == 'Yawn') then
+    --[[if state.EvasionMode.value and (spell.name == 'Dream Flower' or spell.name == 'Sheep Song' or spell.name == 'Yawn' or spell.name == 'Magic Fruit') then
+        equip(sets.Evasion)
+    end]]
+
+    if state.EvasionMode.value and EVASpells:contains(spell.name) then
         equip(sets.Evasion)
     end
 end

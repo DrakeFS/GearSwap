@@ -52,7 +52,7 @@ function user_setup()
     -- send_command('bind ^` input /ja "Flee" <me>')
     send_command('bind ^= gs c cycle treasuremode')
     send_command('bind !- gs c cycle targetmode')
-    state.TreasureMode:set('Fulltime')
+    --state.TreasureMode:set('Fulltime')
     select_default_macro_book()
     lockstyleset()
 end
