@@ -183,8 +183,7 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Black Halo'] = set_combine(sets.precast.WS['Savage Blade'], {
-        neck="Fotia Gorget",
-        waist="Fotia Belt"
+        left_ear="Regal Earring",
     })
 
     sets.precast.WS['Black Halo'].PDL = set_combine(sets.precast.WS['Black Halo'], {
@@ -200,7 +199,6 @@ function init_gear_sets()
         body="Hashishin Mintan +3",
         hands="Hashi. Bazu. +3",
         legs="Hashishin Tayt +3",
-        feet="Hashi. Basmak +3",
         neck="Fotia Gorget",
         right_ear="Regal Earring",
     })
