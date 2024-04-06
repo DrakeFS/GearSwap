@@ -147,7 +147,7 @@ function init_gear_sets()
         ammo="Oshasha's Treatise",
         head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Lethargy Sayon +3",
-        hands="Atrophy Gloves +3",
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
         legs="Nyame Flanchard",
         feet="Leth. Houseaux +3",
         neck="Fotia Gorget",
@@ -215,16 +215,10 @@ function init_gear_sets()
     })
     
     sets.precast.WS['Chant du Cygne'] = set_combine(sets.precast.WS, {
-        ammo={ name="Coiste Bodhar", augments={'Path: A',}},
-        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
         body="Ayanmo Corazza +2",
-        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
-        legs="Atrophy Tights +3",
-        feet="Leth. Houseaux +3",
-        neck="Fotia Gorget",
-        waist="Fotia Belt",
+        legs={ name="Viti. Tights +3", augments={'Enspell Damage','Accuracy',}},
         left_ear="Sherida Earring",
-        right_ear={ name="Leth. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+11','Mag. Acc.+11','"Dbl.Atk."+3',}},
+        right_ear="Leth. Earring +1",
         left_ring="Begrudging Ring",
         right_ring="Ilabrat Ring",
         back=gear.RdmCTP,
@@ -307,7 +301,7 @@ function init_gear_sets()
         neck= {name="Duelist's Torque", augments={'Path: A',}},
         waist="Embla Sash",
         left_ear="Mimir Earring",
-        right_ear="Lethargy Earring +1",
+        right_ear="Leth. Earring +1",
         back = gear.RdmCES,
     }
 
