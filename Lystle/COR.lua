@@ -128,7 +128,9 @@ function init_gear_sets()
 
     
     sets.precast.CorsairRoll = {
+        main="Lanun Knife",
         range="Compensator",
+        ammo=empty,
         head={ name="Lanun Tricorne", augments={'Enhances "Winning Streak" effect',}},
         hands="Chasseur's Gants +2",
         left_ring="Luzaf's Ring",
@@ -144,7 +146,7 @@ function init_gear_sets()
     
     sets.precast.FoldDoubleBust = {hands="Lanun Gants +1"}
     
-    --sets.precast.CorsairShot = {head="Blood Mask"}
+    sets.precast.CorsairShot = {head="Blood Mask"}
     
 
     -- Waltz set (chr and vit)
@@ -218,11 +220,20 @@ function init_gear_sets()
     sets.midcast.RA.Acc = {}
 
     sets.midcast['Dia']={
-        head="Nyame Helm",
+        main="Tauret",
+        ammo="Ghastly Tathlum",
+        head={ name="Nyame Helm", augments={'Path: B',}},
         body={ name="Nyame Mail", augments={'Path: B',}},
-        hands="Nyame Gloves",
+        hands="Nyame Gauntlets",
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Nyame Sollerets",
+        neck="Sibyl Scarf",
+        waist="Korin Obi",
+        left_ear="Hermetic Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Crepuscular Ring",
+        right_ring="Defending Ring",
+        back="Camulus's Mantle",
     }
 
     

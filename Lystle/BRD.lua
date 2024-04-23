@@ -260,6 +260,21 @@ function init_gear_sets()
     sets.midcast.Protectra = sets.midcast.Protect
     sets.midcast.Shell = sets.midcast.Protect
     sets.midcast.Shellra = sets.midcast.Shell]]
+
+    sets.midcast['Dia'] = {
+        main="Daybreak",
+        ammo="Ghastly Tathlum",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Nyame Gauntlets",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
+        neck="Sibyl Scarf",
+        waist="Korin Obi",
+        left_ear="Hermetic Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        back=gear.BrdCFC,
+    }
    
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Idle Sets --------------------------------------------
@@ -428,7 +443,7 @@ function job_midcast(spell, action, spellMap, eventArgs)
                 equip(sets.weapons.Healing.DW)
             elseif spell.skill == "Enhancing Magic" then
                 equip(sets.weapons.Enhancing.DW)
-            elseif spell.name == 'Dispelga' then
+            elseif spell.name == 'Dispelga' or spell.name == 'Dia' then
                 equip(sets.weapons.Dispelga.DW)
             elseif spell.skill == "Enfeebling Magic" then
                 equip(sets.weapons.Enfeebling.DW)
@@ -440,7 +455,7 @@ function job_midcast(spell, action, spellMap, eventArgs)
                 equip(sets.weapons.Healing)
             elseif spell.skill == "Enhancing Magic" then
                 equip(sets.weapons.Enhancing)
-            elseif spell.name == 'Dispelga' then
+            elseif spell.name == 'Dispelga' or spell.name == 'Dia' then
                 equip(sets.weapons.Dispelga)
             elseif spell.skill == "Enfeebling Magic" then
                 equip(sets.weapons.Enfeebling)
