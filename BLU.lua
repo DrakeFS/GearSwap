@@ -381,7 +381,7 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Sanctity Necklace",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back=gear.BluCTP
     }
 
@@ -398,7 +398,7 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         waist="Plat. Mog. Belt",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back=gear.BluCTP
     }
 
@@ -418,7 +418,7 @@ function init_gear_sets()
         left_ear="Eabani Earring",
         right_ear="Infused Earring",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back=gear.BluCEVA
     }
 

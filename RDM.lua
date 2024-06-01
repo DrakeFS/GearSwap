@@ -285,7 +285,6 @@ function init_gear_sets()
         left_ear="Mimir Earring",
         right_ear="Mendi. Earring",
         left_ring="Naji's Loop",
-        right_ring="Vocane Ring",
         back="Solemnity Cape",
     }
 
@@ -493,7 +492,7 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Sanctity Necklace",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back=gear.RdmCTP,
     }
     
@@ -509,7 +508,7 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         waist="Windbuffet Belt +1",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back="Solemnity Cape",
     }
 

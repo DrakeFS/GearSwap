@@ -248,7 +248,7 @@ function init_gear_sets()
         left_ear="Odnowa Earring",
         right_ear="Odnowa Earring +1",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back="Solemnity Cape",
     }
 
@@ -284,7 +284,7 @@ function init_gear_sets()
         left_ear="Eabani Earring",
         right_ear="Ethereal Earring",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back="Solemnity Cape",
     }
 

@@ -170,7 +170,7 @@ function init_gear_sets()
         feet="Danzo Sune-Ate",
         neck="Loricate Torque +1",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back="Solemnity Cape",
 	}
 
@@ -189,7 +189,7 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Loricate Torque +1",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back="Solemnity Cape",
 	}
 

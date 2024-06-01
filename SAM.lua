@@ -4,11 +4,22 @@ function get_sets()
 end
 
 function job_setup()
-
+    state.WSSelection = M{['description'] = 'Selected Weapon skill'}
+    state.WSSelection:options('fudo','jinpu','shoha')
+    state.WSSelection:set('fudo')
+    WeaponSkills = {['fudo'] = 'Fudo',['jinpu']='jinpu',['shoha']='shoha'}
 end
 
 function user_setup()
     on_job_change()
+
+    send_command('bind ^` gs c cycle WSSelection')
+    send_command('bind ~^` gs c cycleback WSSelection')
+end
+
+function user_unload()
+    send_command('unbind ^` gs c cycle WSSelection')
+    send_command('unbind ~^` gs c cycleback WSSelection')
 end
 
 function init_gear_sets()
@@ -65,7 +76,7 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         waist="Plat. Mog. Belt",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back=gear.BackTP
     }
 
@@ -79,9 +90,11 @@ function init_gear_sets()
         neck="Loricate Torque +1",
         waist="Plat. Mog. Belt",
         left_ring="Defending Ring",
-        right_ring="Vocane Ring",
+        right_ring="Shneddick Ring",
         back=gear.BackTP
     }
+
+    sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
 
     sets.engaged = {
         ammo={ name="Coiste Bodhar", augments={'Path: A',}},
@@ -98,6 +111,20 @@ function init_gear_sets()
         right_ring="Ilabrat Ring",
         back=gear.BackTP
     }
+end
+
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'ws' then
+        if cmdParams[2]:lower() == 'use' then
+            send_command('input /ws "Tachi: '..WeaponSkills[state.WSSelection.value]..'" <t>')
+        elseif  cmdParams[2]:lower() == 'set' then
+            if state.WSSelection:contains(cmdParams[3]:lower()) then
+                state.WSSelection:set(cmdParams[3]:lower())
+            else
+                add_to_chat(123,"Not a selectable Weaponskill")
+            end
+        end
+    end
 end
 
 function on_job_change()
