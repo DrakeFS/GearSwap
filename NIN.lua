@@ -99,7 +99,9 @@ function init_gear_sets()
         left_ring="Kishar Ring",
 	}
 	
-    sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {})
+    sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {
+        neck="Magoraga Beads",
+    })
 
     -- Snapshot for ranged
     sets.precast.RA = {}
@@ -133,7 +135,15 @@ function init_gear_sets()
 
     sets.precast.WS['Blade: Ten'] = set_combine(sets.precast.WS, {})
 
-    sets.precast.WS['Aeolian Edge'] = {}
+    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS,{
+        head="Nyame Helm",
+        body="Nyame Mail",
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+    })
+
+    sets.precast.WS['Red Lotus Blade'] = sets.precast.WS['Aeolian Edge']
 
     
     --------------------------------------
@@ -144,7 +154,21 @@ function init_gear_sets()
 	
     sets.midcast.Utsusemi = set_combine(sets.precast.FC.Utsusemi, {})
 
-    sets.midcast.ElementalNinjutsu = {}
+    sets.midcast.ElementalNinjutsu = {
+        ammo="Ghastly Tathlum +1",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        neck="Sibyl Scarf",
+        waist="Anguinus Belt",
+        left_ear="Friomisi Earring",
+        right_ear="Hermetic Earring",
+        left_ring="Dingir Ring",
+        right_ring="Shiva Ring",
+        back="Sacro Mantle",
+    }
 
     sets.midcast.ElementalNinjutsu.Resistant = set_combine(sets.midcast.ElementalNinjutsu, {})
 

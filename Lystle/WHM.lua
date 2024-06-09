@@ -51,7 +51,7 @@ function init_gear_sets()
 
     -- Fast cast sets for spells
     sets.precast.FC = {
-        ammo="Sapience Orb",
+        ammo="Impatiens",
         head="Bunzi's Hat",
         body="Inyanga Jubbah +2",
         hands={ name="Fanatic Gloves", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
@@ -153,7 +153,6 @@ function init_gear_sets()
 
     -- 110 total Enhancing Magic Skill; caps even without Light Arts
     sets.midcast['Enhancing Magic'] = {
-        --main="Beneficus",
         head="Umuthi Hat",
         body="Adamantite Armor",
         hands="Dynasty Mitts",
@@ -225,18 +224,23 @@ function init_gear_sets()
         left_ear="Glorious Earring",
         right_ear="Nourish. Earring +1",
         left_ring="Inyanga Ring",
-        right_ring="Ayanmo Ring",
+        right_ring="Shneddick Ring",
         back=gear.WhmCFC,
     }
 
     sets.idle.PDT = {
-        head="Aya. Zucchetto +2",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +1",
-        left_ring="Inyanga Ring",
-        right_ring="Ayanmo Ring",
+        ammo="Amar Cluster",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Nyame Gauntlets",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
+        neck="Sanctity Necklace",
+        waist="Plat. Mog. Belt",
+        left_ear="Glorious Earring",
+        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
+        left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
         back=gear.WhmCFC
     }
 
@@ -247,13 +251,18 @@ function init_gear_sets()
     -- Defense sets
 
     sets.defense.PDT = {
-        head="Aya. Zucchetto +2",
-        body="Ayanmo Corazza +2",
-        hands="Aya. Manopolas +1",
-        legs="Aya. Cosciales +2",
-        feet="Aya. Gambieras +1",
-        left_ring="Inyanga Ring",
-        right_ring="Ayanmo Ring",
+        ammo="Amar Cluster",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Nyame Gauntlets",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
+        neck="Sanctity Necklace",
+        waist="Plat. Mog. Belt",
+        left_ear="Glorious Earring",
+        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
+        left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
         back=gear.WhmCFC
     }
 
@@ -308,6 +317,22 @@ end
 -------------------------------------------------------------------------------------------------------------------
 -- Job-specific hooks for standard casting events.
 -------------------------------------------------------------------------------------------------------------------
+
+function job_self_command(cmdParams, eventArgs)
+   if cmdParams[1]:lower() == 'sneaks' then
+        if player.sub_job == 'SCH' and buffactive['Light Arts'] then
+            send_command('input /ja accession <me>;wait 2;input /ma sneak <me>')
+        else
+            send_command('@input /ma sneak <me>')
+        end
+    elseif cmdParams[1]:lower() == 'invis' then
+        if player.sub_job == 'SCH' and buffactive['Light Arts'] then
+            send_command('input /ja accession <me>;wait 2;input /ma invisible <me>')
+        else
+            send_command('@input /ma invisible <me>')
+        end
+    end
+end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 -- Set eventArgs.useMidcastGear to true if we want midcast gear equipped on precast.

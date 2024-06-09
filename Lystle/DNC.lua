@@ -51,7 +51,7 @@ sets.defense.PDT = {
     left_ear="Odnowa Earring +1",
     right_ear="Eabani Earring",
     left_ring="Defending Ring",
-    right_ring="Meghanada Ring",
+    right_ring="Shneddick Ring",
     back=gear.TPCape,
 }
 

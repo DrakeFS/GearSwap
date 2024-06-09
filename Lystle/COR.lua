@@ -261,6 +261,7 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Loricate Torque",
         right_ring="Defending Ring",
+        right_ring="Shneddick Ring",
     }
 
     sets.defense.MDT = {}

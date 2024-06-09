@@ -446,7 +446,7 @@ function init_gear_sets()
         back=gear.BluCTP
     }
 
-    sets.engaged.TizAM3 = set_combine(sets.emgaged, {
+    sets.engaged.TizAM3 = set_combine(sets.engaged, {
         head="Malignance Chapeau",
     })
 

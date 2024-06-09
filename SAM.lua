@@ -53,7 +53,7 @@ function init_gear_sets()
         head="Mpaca's Cap",
         body={ name="Nyame Mail", augments={'Path: B',}},
         hands="Kasuga Kote +3",
-        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        legs="Wakido Haidate +3",
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Rep. Plat. Medal",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
@@ -63,6 +63,11 @@ function init_gear_sets()
         right_ring="Epaminondas's Ring",
         back=gear.BackPWS
     }
+
+    sets.precast.WS['Tachi: Jinpu'] = set_combine(sets.precast.WS,{
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+    })
 
     -- sets.midcast.RA = {} -- Ranged TP Set.  Ignore if uneeded, remove the first "--" to activate.
 

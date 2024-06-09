@@ -50,6 +50,9 @@ function global_on_load()
     send_command('bind !f12 gs c reset DefenseMode')
     send_command('bind != gs c toggle CapacityMode')
     send_command('bind ^= gs c cycle treasuremode')
+    send_command('bind @f send @others /follow dagna')
+    send_command('bind @2 send @all gs c sneaks')
+    send_command('bind @3 send @all gs c invis')
 
 end
 
@@ -69,6 +72,9 @@ function global_on_unload()
     send_command('unbind !f12')
     send_command('unbind !=')
     send_command('unbind ^=')
+    send_command('unbind @f')
+    send_command('unbind @2')
+    send_command('unbind @3')
 end
 
 -- Global intercept on midcast.

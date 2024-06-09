@@ -97,18 +97,18 @@ function init_gear_sets()
     sets.precast.WS.MS = set_combine(sets.precast.WS, {})
     
     sets.precast.WS['Decimation'] = {
-        ammo="Seething Bomblet",
+        ammo="Coiste Bodhar",
         head="Flam. Zucchetto +2",
-        body={ name="Found. Breastplate", augments={'Accuracy+5','Attack+3','"Mag.Atk.Bns."+1',}},
-        hands="Sulev. Gauntlets +2",
-        legs="Sulev. Cuisses +2",
-        feet="Sulev. Leggings +2",
-        neck="Clotharius Torque",
-        waist="Sailfi Belt",
-        left_ear="Steelflash Earring",
-        right_ear="Bladeborn Earring",
-        left_ring="Sulevia's Ring",
-        right_ring="Begrudging Ring",
+        body="Flamma Korazin +2",
+        hands="Flam. Manopolas +2",
+        legs="Flamma Dirs +2",
+        feet="Flam. Gambieras +2",
+        neck="Rep. Plat. Medal",
+        waist="Shetal Stone",
+        left_ear="Thrud Earring",
+        right_ear={ name="Boii Earring +2", augments={'System: 1 ID: 1676 Val: 0','Accuracy+16','Mag. Acc.+16','Crit.hit rate+6','STR+7 VIT+7',}},
+        left_ring="Lehko's Ring",
+        right_ring="Rajas Ring",
         back=gear.WarCTP,
     }
 
@@ -171,9 +171,22 @@ function init_gear_sets()
     sets.idle.Weak = set_combine(sets.idle, {})
     
     -- Defense sets
-    sets.defense.PDT = {}
+    sets.defense.PDT = {
+        ammo="Amar Cluster",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Nyame Gauntlets",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
+        neck="Loricate Torque",
+        waist="Plat. Mog. Belt",
+        left_ear="Glorious Earring",
+        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
+        left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
+    }
     sets.defense.Reraise = set_combine(sets.defense.PDT, {})
-    sets.defense.MDT = {}
+    sets.defense.MDT = set_combine(sets.defense.PDT, {})
 
     -- Gear to wear for kiting
     sets.Kiting = {}
@@ -191,7 +204,7 @@ function init_gear_sets()
     -- If using a weapon that isn't specified later, the basic engaged sets should automatically be used.
     -- Equip the weapon you want to use and engage, disengage, or force update with f12, the correct gear will be used; default weapon is whats equip when file loads.
     sets.engaged = {
-        ammo="Seething Bomblet",
+        ammo="Coiste Bodhar",
         head="Flam. Zucchetto +2",
         body="Flamma Korazin +2",
         hands="Flam. Manopolas +2",
@@ -200,9 +213,9 @@ function init_gear_sets()
         neck="Clotharius Torque",
         waist="Dynamic Belt",
         left_ear="Suppanomimi",
-        right_ear="Eabani Earring",
-        left_ring="Sulevia's Ring",
-        right_ring="Begrudging Ring",
+        right_ear={ name="Boii Earring +2", augments={'System: 1 ID: 1676 Val: 0','Accuracy+16','Mag. Acc.+16','Crit.hit rate+6','STR+7 VIT+7',}},
+        left_ring="Lehko's Ring",
+        right_ring="Rajas Ring",
         back=gear.WarCTP,
     }
     
@@ -226,8 +239,8 @@ function init_gear_sets()
         waist="Dynamic Belt",
         left_ear="Suppanomimi",
         right_ear="Eabani Earring",
-        left_ring="Sulevia's Ring",
-        right_ring="Begrudging Ring",
+        left_ring="Lehko's Ring",
+        right_ring="Rajas Ring",
         back=gear.WarCTP,
     }
     
@@ -247,11 +260,11 @@ function init_gear_sets()
         legs="Flamma Dirs +2",
         feet="Flam. Gambieras +2",
         neck="Clotharius Torque",
-        waist="Dynamic Belt",
+        waist="Shetal Stone",
         left_ear="Suppanomimi",
-        right_ear="Eabani Earring",
-        left_ring="Sulevia's Ring",
-        right_ring="Begrudging Ring",
+        right_ear={ name="Boii Earring +2", augments={'System: 1 ID: 1676 Val: 0','Accuracy+16','Mag. Acc.+16','Crit.hit rate+6','STR+7 VIT+7',}},
+        left_ring="Lehko's Ring",
+        right_ring="Rajas Ring",
         back=gear.WarCTP,
     }
     

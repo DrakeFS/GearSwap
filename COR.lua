@@ -379,7 +379,7 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-        head="Malignance Chapeau",
+        head=gear.AdhHTP,
         body="Malignance Tabard",
         hands=gear.AdhGTP,
         legs=gear.SamTTP,

@@ -619,6 +619,10 @@ function job_self_command(cmdParams, eventArgs)
         handle_nuking()
     elseif cmdParams[1]:lower() == 'wsit' then
         handle_WS()
+    elseif cmdParams[1]:lower() == 'sneaks' then
+        send_command('@input /ma sneak <me>')
+    elseif cmdParams[1]:lower() == 'invis' then
+        send_command('@input /ma invisible <me>')
     end
 end
 

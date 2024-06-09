@@ -196,7 +196,13 @@ function init_gear_sets()
     --------------------------------------
     -- Midcast sets
     --------------------------------------
-
+    sets.midcast['ELemental Magic'] = {
+        head="Nyame Helm",
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Nyame Gauntlets",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
+    }
     sets.midcast.FastRecast = {}
 
     -- Specific spells
@@ -244,8 +250,8 @@ function init_gear_sets()
         legs="Mummu Kecks +2",
         feet="Meg. Jam. +1",
         neck="Loricate Torque",
-        left_ring="Meghanada Ring",
-        right_ring="Defending Ring",
+        left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
         back="Solemnity Cape",
     }
 

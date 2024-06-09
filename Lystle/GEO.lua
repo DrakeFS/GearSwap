@@ -85,12 +85,14 @@ function init_gear_sets()
         neck="Loricate Torque",
         waist="Plat. Mog. Belt",
         left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
         back="Solemnity Cape",
     }
 
     sets.idle = set_combine(sets.defense.PDT,{
         body="Jhakri Robe +2",
         feet="Geo. Sandals +3",
+        right_ring="Shneddick Ring",
     })
 
     sets.idle.Pet = set_combine(sets.idle, { -- Pet DT Caps @ 38%

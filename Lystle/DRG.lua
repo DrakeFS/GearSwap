@@ -168,6 +168,7 @@ function init_gear_sets()
         feet="Sulev. Leggings +2",
         neck="Loricate Torque",
         left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
         back="Solemnity Cape",
     }
 

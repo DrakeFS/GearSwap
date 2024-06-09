@@ -314,6 +314,7 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         waist="Plat. Mog. Belt",
         left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
     }
 
     sets.defense.MDT = set_combine(sets.defense.PDT,{})
@@ -385,6 +386,10 @@ end
 function job_self_command(cmdParams, eventArgs)
     if cmdParams[1]:lower() == 'wsit' then
         handle_WS()
+    elseif cmdParams[1]:lower() == 'sneaks' then
+        send_command('@input /ma sneak <me>')
+    elseif cmdParams[1]:lower() == 'invis' then
+        send_command('@input /ma invisible <me>')    
     end
 end
 
