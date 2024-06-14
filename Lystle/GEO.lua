@@ -178,8 +178,15 @@ function job_aftercast(spell, action, spellMap, eventArgs)
     end
 end
 
-
 function on_job_change()
     set_macro_page(6, 19)
     send_command('wait 5;input /lockstyleset 81')
+end
+
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1]:lower() == 'sneaks' then
+        send_command('@input /ma sneak <me>')
+    elseif cmdParams[1]:lower() == 'invis' then
+        send_command('@input /ma invisible <me>')
+    end
 end

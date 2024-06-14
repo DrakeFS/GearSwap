@@ -375,7 +375,7 @@ function init_gear_sets()
     sets.weapons.Enfeebling.DW = {main='Tauret', sub='Daybreak'}
     sets.weapons.Dispelga = {main='Daybreak'}
     sets.weapons.Dispelga.DW = {main='Daybreak', sub='Tauret'}
-    sets.weapons.Dispelga.FC = {}
+    sets.weapons.Dispelga.FC = {main='Daybreak',}
     sets.weapons.Dispelga.FC.DW = {main='Daybreak', sub='Kali'}
 end
 

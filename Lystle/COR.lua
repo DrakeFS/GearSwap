@@ -128,7 +128,7 @@ function init_gear_sets()
 
     
     sets.precast.CorsairRoll = {
-        main="Lanun Knife",
+        --main="Lanun Knife",
         range="Compensator",
         ammo=empty,
         head={ name="Lanun Tricorne", augments={'Enhances "Winning Streak" effect',}},
@@ -167,7 +167,7 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-        ammo="Oshasha's Treatise",
+        --ammo="Oshasha's Treatise",
         head="Mummu Bonnet +2",
         body="Mummu Jacket +2",
         hands="Chasseur's Gants +2",
@@ -219,7 +219,7 @@ function init_gear_sets()
 
     sets.midcast.RA.Acc = {}
 
-    sets.midcast['Dia']={
+    --[[sets.midcast['Dia']={
         main="Tauret",
         ammo="Ghastly Tathlum",
         head={ name="Nyame Helm", augments={'Path: B',}},
@@ -234,7 +234,7 @@ function init_gear_sets()
         left_ring="Crepuscular Ring",
         right_ring="Defending Ring",
         back="Camulus's Mantle",
-    }
+    }]]
 
     
     -- Sets to return to when not performing an action.
@@ -248,6 +248,7 @@ function init_gear_sets()
         feet="Nyame Sollerets",
         neck="Loricate Torque",
         right_ring="Defending Ring",
+        right_ring="Shneddick Ring",
     }
 
     sets.idle.Town = set_combine(sets.idle,{body="Councilor's Garb",})
@@ -278,16 +279,18 @@ function init_gear_sets()
     
     -- Normal melee group
     sets.engaged = {
-        ammo="Ginsen",
         head="Mummu Bonnet +2",
-        body="Mummu Jacket +2",
-        hands="Chasseur's Gants +2",
+        body="Malignance Tabard",
+        hands="Malignance Gloves",
         legs="Meg. Chausses +2",
         feet="Mummu Gamash. +2",
-        neck="Clotharius Torque",
+        neck="Lissome Necklace",
         waist="Dynamic Belt",
-        left_ring="Begrudging Ring",
+        left_ear="Tripudio Earring",
+        right_ear="Crep. Earring",
+        left_ring="Lehko's Ring",
         right_ring="Rajas Ring",
+        back="Atheling Mantle",
     }
 
     sets.engaged.MaxHaste = set_combine(sets.engaged, {})
@@ -303,8 +306,8 @@ function init_gear_sets()
     sets.engaged.DW = set_combine(sets.engaged, {})
 
     sets.engaged.DW.MaxHaste = set_combine(sets.engaged.DW, {
-        left_ear="Eabani Earring",
-        right_ear="Suppanomimi",
+        waist='Shetal Stone',
+        left_ear="Suppanomimi",
     })
 
     sets.engaged.DW.HighHaste = set_combine(sets.engaged.DW.MaxHaste, {})
@@ -364,6 +367,14 @@ function job_self_command(cmdParams, eventArgs)
     elseif cmdParams[1]:lower() == 'rollcmd' then
         handle_roll(cmdParams[2],cmdParams[3],cmdParams[4])
         eventArgs.handled = true
+    elseif cmdParams[1]:lower() == 'sneaks' then
+        if player.sub_job == 'WHM' then
+            send_command('@input /ma sneak <me>')
+        end
+    elseif cmdParams[1]:lower() == 'invis' then
+        if player.sub_job == 'WHM' then
+            send_command('@input /ma invisible <me>')
+        end
     end
 end
 
@@ -462,7 +473,7 @@ function display_current_job_state(eventArgs)
     msg = msg .. 'Off.: '..state.OffenseMode.current
     msg = msg .. ', Rng.: '..state.RangedMode.current
     msg = msg .. ', WS.: '..state.WeaponskillMode.current
-    msg = msg .. ', QD.: '..state.CastingMode.current
+    msg = msg .. ', QD.: '..state.QDrawElement.current
 
     if state.DefenseMode.value ~= 'None' then
         local defMode = state[state.DefenseMode.value ..'DefenseMode'].current

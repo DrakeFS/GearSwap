@@ -146,9 +146,9 @@ function init_gear_sets()
     sets.precast.WS = {
         ammo="Oshasha's Treatise",
         head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
-        body="Lethargy Sayon +3",
+        body={ name="Nyame Mail", augments={'Path: B',}},
         hands={ name="Nyame Gauntlets", augments={'Path: B',}},
-        legs="Nyame Flanchard",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet="Leth. Houseaux +3",
         neck="Fotia Gorget",
         waist="Fotia Belt",
@@ -160,19 +160,19 @@ function init_gear_sets()
     }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
-    sets.precast.WS['Requiescat'] = {
-        ammo="Pemphredo Tathlum",
-        head="Jhakri Coronal +2",
-        body="Atrophy Tabard +3",
-        hands="Jhakri Cuffs +2",
-        neck="Fotia Gorget",
-        waist="Fotia Belt",
-        left_ear="Malignance Earring",
-        right_ear="Snotra Earring",
-        left_ring="Petrov Ring",
-        right_ring="Pernicious Ring",
-        back=gear.RdmCMB,
-    }
+
+    sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
+        neck="Rep. Plat. Medal",
+        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+        left_ear="Sherida Earring",
+    })
+
+    sets.precast.WS['Black Halo'] = set_combine( sets.precast.WS, {
+        neck="Rep. Plat. Medal",
+        waist="Sailfi Belt +1",
+        left_ear="Regal Earring",
+        back=gear.RdmMndWS,
+    })
 
     sets.precast.WS['Seraph Blade'] = set_combine(sets.precast.WS, {
         ammo="Sroda Tathlum",
@@ -180,14 +180,15 @@ function init_gear_sets()
         hands="Jhakri Cuffs +2",
         legs="Leth. Fuseau +3",
         left_ear="Malignance Earring",
-        back=gear.RdmCMB,
+        back=gear.RdmMndWS,
     })
 
     sets.precast.WS['Sanguine Blade'] = set_combine(sets.precast.WS, {
         ammo="Sroda Tathlum",
         head="Pixie Hairpin +1",
-        hands="Jhakri Cuffs +2",
+        body="Lethargy Sayon +3",
         legs="Leth. Fuseau +3",
+        neck="Sibyl Scarf",
         left_ear="Malignance Earring",
         right_ear="Regal Earring",
         right_ring="Archon Ring",
@@ -200,13 +201,6 @@ function init_gear_sets()
     })
 
     sets.precast.WS['Burning Blade'] = sets.precast.WS['Red Lotus Blade']
-    
-    sets.precast.WS['Black Halo'] = set_combine( sets.precast.WS, {
-        neck="Rep. Plat. Medal",
-        waist="Sailfi Belt +1",
-        right_ear="Regal Earring",
-        back=gear.RdmMndWS,
-    })
 
     sets.precast.WS['Aeolian Edge'] = set_combine( sets.precast.WS['Seraph Blade'],{
         neck="Sibyl Scarf",
@@ -233,12 +227,6 @@ function init_gear_sets()
         back=gear.RdmCTP,
     })
 
-    sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {
-        neck="Rep. Plat. Medal",
-        waist={ name="Sailfi Belt +1", augments={'Path: A',}},
-        right_ear="Regal Earring",
-    })
-
     sets.precast.WS['Knights of Round'] = set_combine(sets.precast.WS, {
         neck="Rep. Plat. Medal",
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
@@ -263,6 +251,20 @@ function init_gear_sets()
         right_ear="Crep. Earring",
         right_ring="Ilabrat Ring",
         back=gear.RdmStrWS
+    }
+
+    sets.precast.WS['Requiescat'] = {
+        ammo="Pemphredo Tathlum",
+        head="Jhakri Coronal +2",
+        body="Atrophy Tabard +3",
+        hands="Jhakri Cuffs +2",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Malignance Earring",
+        right_ear="Snotra Earring",
+        left_ring="Petrov Ring",
+        right_ring="Pernicious Ring",
+        back=gear.RdmCMB,
     }
 
     -- Midcast Sets

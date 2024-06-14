@@ -69,6 +69,13 @@ function init_gear_sets()
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
     })
 
+    sets.precast.WS['Raiden Thrust'] = set_combine(sets.precast.WS,{
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+    })
+
+
     -- sets.midcast.RA = {} -- Ranged TP Set.  Ignore if uneeded, remove the first "--" to activate.
 
     sets.defense.PDT = {
@@ -107,8 +114,8 @@ function init_gear_sets()
         body="Kasuga Domaru +3",
         hands="Flam. Manopolas +2",
         legs="Kasuga Haidate +3",
-        feet={ name="Ryuo Sune-Ate", augments={'HP+50','"Store TP"+4','"Subtle Blow"+7',}},
-        neck={ name="Vim Torque +1", augments={'Path: A',}},
+        feet="Flam. Gambieras +2",
+        neck={ name="Sam. Nodowa +1", augments={'Path: A',}},
         waist="Sarissapho. Belt",
         left_ear="Crep. Earring",
         right_ear="Cessance Earring",

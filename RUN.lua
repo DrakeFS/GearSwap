@@ -350,15 +350,14 @@ function init_gear_sets()
     sets.defense.Knockback = {}
 
     sets.defense.PDT = {
-        head="Nyame Helm",
-        body="Nyame Mail",
-        hands="Nyame Gauntlets",
-        legs="Nyame Flanchard",
-        feet="Nyame Sollerets",
-        neck="Loricate Torque +1",
-        waist="Flume Belt",
-        left_ring="Vocane Ring",
-        right_ring="Defending Ring",
+        ammo="Crepuscular Pebble",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
+        left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
     }
 
     sets.defense.MDT = {}

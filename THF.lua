@@ -198,16 +198,24 @@ function init_gear_sets()
     sets.precast.WS['Mandalic Stab'].TA = set_combine(sets.precast.WS['Mandalic Stab'], {})
     sets.precast.WS['Mandalic Stab'].SATA = set_combine(sets.precast.WS['Mandalic Stab'], {})
     
-    sets.precast.WS['Aeolian Edge'] = set_combine(sets.precast.WS, {
-        head="Nyame Helm",
-        body="Nyame Mail",
+    sets.precast.WS['Aeolian Edge'] = {
+        ammo="Oshasha's Treatise",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
         hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck="Sibyl Scarf",
-        left_ear="Ishvara Earring",
-    })
+        waist="Fotia Belt",
+        left_ear="Friomisi Earring",
+        right_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        left_ring="Epaminondas's Ring",
+        right_ring="Cornelia's Ring",
+    }
 
     sets.precast.WS['Aeolian Edge'].TH = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
+
+    sets.precast.WS['Cyclone'] = set_combine(sets.precast.WS['Aeolian Edge'], sets.TreasureHunter)
     
     sets.precast.WS['Savage Blade'] = set_combine(sets.precast.WS, {body="Rawhide Vest"})
     
@@ -273,12 +281,12 @@ function init_gear_sets()
     -- Defense sets
 
     sets.defense.Evasion = {
-        ammo="Crepuscular Pebble",
-        head="Malignance Chapeau",
-        body="Malignance Tabard",
-        hands="Malignance Gloves",
+        ammo="Amar Cluster",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands={ name="Nyame Gauntlets", augments={'Path: B',}},
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
-        feet="Jute Boots +1",
+        feet={ name="Nyame Sollerets", augments={'Path: B',}},
         neck={ name="Bathy Choker +1", augments={'Path: A',}},
         waist="Kasiri Belt",
         left_ear="Eabani Earring",

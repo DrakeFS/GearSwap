@@ -305,11 +305,12 @@ function init_gear_sets()
     sets.Sublimation = {waist = "Embla Sash",}
 
     sets.weapons = {}
-    sets.weapons.FC = {sub="Chanter's Shield"}
+    sets.weapons.FC = {main="Yagrush",sub="Chanter's Shield"}
     sets.weapons.Enfeebling = {}
     sets.weapons.Enhancing = {main="Gada"}
     sets.weapons.Elemental = {}
     sets.weapons.Cure = {main="Queller Rod", sub="Sors Shield"}
+    sets.weapons.Cure.SCH = {main={name="Chatoyant Staff",priority=10}, sub="Enki Strap",}
     sets.weapons.NA = {main="Yagrush"}
     sets.weapons.Bar = {main="Beneficus"}
 end
@@ -346,9 +347,9 @@ end
 
 function job_midcast(spell, action, spellMap, eventArgs)
     if state.WeaponMode.value then
-        if whmBARelemental:contains() then
+        if whmBARelemental:contains(spell.english) then
             equip(sets.weapons.Bar)
-        elseif whmNAspells:contains(spell.name) then
+        elseif whmNAspells:contains(spell.english) then
             equip(sets.weapons.NA)
         elseif spell.skill == 'Enhancing Magic' then
             equip(sets.weapons.Enhancing)
@@ -357,7 +358,11 @@ function job_midcast(spell, action, spellMap, eventArgs)
         elseif spell.skill == 'Elemental Magic' then
             equip(sets.weapons.Elemental)
         elseif spellMap == 'Cure' then
-            equip(sets.weapons.Cure)
+            if player.sub_job == 'SCH' then
+                equip(sets.weapons.Cure.SCH)
+            else
+                equip(sets.weapons.Cure)
+            end
         end
     end
 end
