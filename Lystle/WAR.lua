@@ -75,19 +75,19 @@ function init_gear_sets()
 
     -- Weaponskill sets
     sets.precast.WS = {
-    ammo="Seething Bomblet",
-    head="Sulevia's Mask +2",
-    body="Sulevia's Plate. +2",
-    hands="Sulev. Gauntlets +2",
-    legs="Sulevi. Cuisses +2",
-    feet="Sulev. Leggings +2",
-    neck="Sanctity Necklace",
-    waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Sulevia's Ring",
-    right_ring="Begrudging Ring",
-    back="Atheling Mantle",
+        ammo="Knobkierrie",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Sulev. Gauntlets +2",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Sulev. Leggings +2",
+        neck="Rep. Plat. Medal",
+        waist="Cornelia's Belt",
+        left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
+        right_ear={ name="Boii Earring +2", augments={'System: 1 ID: 1676 Val: 0','Accuracy+16','Mag. Acc.+16','Crit.hit rate+6','STR+7 VIT+7',}},
+        left_ring="Lehko's Ring",
+        right_ring="Epaminondas's Ring",
+        back=gear.WarCTP,
     }
     
     
@@ -125,7 +125,6 @@ function init_gear_sets()
         right_ear="Bladeborn Earring",
         left_ring="Sulevia's Ring",
         right_ring="Begrudging Ring",
-        back={ name="Cichol's Mantle", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     --------------------------------------
@@ -149,19 +148,18 @@ function init_gear_sets()
 
     -- Idle sets
     sets.idle = {
-    ammo="Seething Bomblet",
-    head="Sulevia's Mask +2",
-    body="Sulevia's Plate. +2",
-    hands="Sulev. Gauntlets +2",
-    legs="Sulevi. Cuisses +2",
-    feet="Sulev. Leggings +2",
-    neck="Sanctity Necklace",
-    waist="Dynamic Belt",
-    left_ear="Steelflash Earring",
-    right_ear="Bladeborn Earring",
-    left_ring="Sulevia's Ring",
-    right_ring="Begrudging Ring",
-    back="Solemnity Cape",
+        ammo="Amar Cluster",
+        head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
+        hands="Nyame Gauntlets",
+        legs={ name="Nyame Flanchard", augments={'Path: B',}},
+        feet="Nyame Sollerets",
+        neck="Loricate Torque",
+        waist="Plat. Mog. Belt",
+        left_ear="Glorious Earring",
+        right_ear={ name="Nourish. Earring +1", augments={'Path: A',}},
+        left_ring="Defending Ring",
+        right_ring="Shneddick Ring",
     }
 
     sets.idle.Town = set_combine(sets.idle, {body="Councilor's Garb",})
@@ -229,7 +227,7 @@ function init_gear_sets()
     -- Two Handed sets
     --------------------------------------  
     sets.engaged.THand = {
-        ammo="Seething Bomblet",
+        ammo="Coiste Bodhar",
         head="Flam. Zucchetto +2",
         body="Flamma Korazin +2",
         hands="Flam. Manopolas +2",
@@ -237,8 +235,8 @@ function init_gear_sets()
         feet="Flam. Gambieras +2",
         neck="Clotharius Torque",
         waist="Dynamic Belt",
-        left_ear="Suppanomimi",
-        right_ear="Eabani Earring",
+        left_ear="Brutal Earring",
+        right_ear={ name="Boii Earring +2", augments={'System: 1 ID: 1676 Val: 0','Accuracy+16','Mag. Acc.+16','Crit.hit rate+6','STR+7 VIT+7',}},
         left_ring="Lehko's Ring",
         right_ring="Rajas Ring",
         back=gear.WarCTP,

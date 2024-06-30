@@ -51,11 +51,11 @@ function init_gear_sets()
     sets.precast.WS = {
         ammo="Knobkierrie",
         head="Mpaca's Cap",
-        body={ name="Nyame Mail", augments={'Path: B',}},
+        body={ name="Sakonji Domaru +3", augments={'Enhances "Overwhelm" effect',}},
         hands="Kasuga Kote +3",
         legs="Wakido Haidate +3",
         feet={ name="Nyame Sollerets", augments={'Path: B',}},
-        neck="Rep. Plat. Medal",
+        neck={ name="Sam. Nodowa +1", augments={'Path: A',}},
         waist={ name="Sailfi Belt +1", augments={'Path: A',}},
         left_ear={ name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
         right_ear="Thrud Earring",
@@ -65,12 +65,14 @@ function init_gear_sets()
     }
 
     sets.precast.WS['Tachi: Jinpu'] = set_combine(sets.precast.WS,{
+        body={ name="Nyame Mail", augments={'Path: B',}},
         hands={ name="Nyame Gauntlets", augments={'Path: B',}},
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
     })
 
     sets.precast.WS['Raiden Thrust'] = set_combine(sets.precast.WS,{
         head={ name="Nyame Helm", augments={'Path: B',}},
+        body={ name="Nyame Mail", augments={'Path: B',}},
         hands={ name="Nyame Gauntlets", augments={'Path: B',}},
         legs={ name="Nyame Flanchard", augments={'Path: B',}},
     })
